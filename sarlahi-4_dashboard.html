@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarlahi-4 Election Forecast</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;900&family=Libre+Baskerville:wght@700&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --rsp-color: #0EA5E9;  /* Bright blue for RSP */
+            --uml-color: #DC2626;    /* Red for UML */
+            --nc-color: #16A34A;     /* Green for NC */
+            
+            /* Sagarmatha Analytics Brand Colors */
+            --brand-primary: #1E3A8A;      /* Deep Blue */
+            --brand-secondary: #F8FAFC;    /* Snow White */
+            --brand-accent: #F97316;       /* Sunrise Orange */
+            --brand-success: #065F46;      /* Forest Green */
+            
+            --bg-primary: #FAFBFC;
+            --bg-secondary: #FFFFFF;
+            --text-primary: #1D3557;
+            --text-secondary: #457B9D;
+            --border: #E8EEF2;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #3B82F6 100%);
+            color: white;
+            padding: 1.5rem 0 2.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .brand-bar {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+        
+        .brand-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .brand-tagline {
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+        
+        .election-date {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-top: 1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        .alert-banner {
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .alert-banner h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-banner p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+        
+        .key-findings {
+            color: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+        
+        .key-findings h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .finding-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        
+        .finding-item::before {
+            content: '→';
+            font-weight: 900;
+            margin-right: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .probability-section {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 2px solid var(--border);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        
+        .prob-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .prob-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .monte-carlo-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        
+        .probability-meter {
+            position: relative;
+            height: 120px;
+            background: linear-gradient(90deg, 
+                var(--nc-color) 0%, 
+                var(--nc-color) 61.260000000000005%, 
+                var(--rsp-color) 61.260000000000005%, 
+                var(--rsp-color) 100%);
+            border-radius: 8px;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .probability-marker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 4px;
+            height: 140px;
+            background: rgba(255,255,255,0.4);
+            z-index: 2;
+        }
+        
+        .probability-marker::before {
+            content: '50%';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        
+        .prob-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+        
+        .prob-label {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .prob-candidate-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .prob-percentage {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .prob-label.rsp .prob-percentage { color: var(--rsp-color); }
+        .prob-label.uml .prob-percentage { color: var(--uml-color); }
+        .prob-label.nc .prob-percentage { color: var(--nc-color); }
+        
+        .prob-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .prob-confidence {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .expected-outcome {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            border: 2px solid var(--border);
+        }
+        
+        .expected-outcome h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .candidate-result {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .candidate-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .candidate-result-name {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .candidate-result-pct {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .result-bar {
+            height: 50px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .result-bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .result-bar-fill.rsp {
+            background: linear-gradient(90deg, var(--rsp-color), #0284c7);
+        }
+        
+        .result-bar-fill.uml {
+            background: linear-gradient(90deg, var(--uml-color), #b91c1c);
+        }
+        
+        .result-bar-fill.nc {
+            background: linear-gradient(90deg, var(--nc-color), #15803d);
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 2px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .card-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--text-primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-box {
+            background: #FFF3CD;
+            border-left: 5px solid var(--accent-yellow);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--bg-primary);
+            border-radius: 8px;
+            border-top: 4px solid var(--text-primary);
+        }
+        
+        .stat-value {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        
+        .scenarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .scenario-card {
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 2px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .scenario-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .scenario-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .scenario-prob {
+            background: var(--accent-yellow);
+            color: var(--text-primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .scenario-outcome {
+            margin: 1rem 0;
+        }
+        
+        .outcome-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+        }
+        
+        .scenario-winner {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 6px;
+            border-left: 4px solid var(--rsp-color);
+            font-weight: 600;
+        }
+        
+        .scenario-winner.competitive {
+            border-left-color: var(--accent-yellow);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--bg-secondary);
+            border-top: 2px solid var(--border);
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .dashboard-grid, .scenarios-grid { grid-template-columns: 1fr; }
+            .prob-percentage { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="brand-bar">
+            <div class="brand-logo">
+                🏔️ <span>Sagarmatha Analytics</span>
+            </div>
+            <div style="flex: 1;"></div>
+            <div class="brand-tagline">Peak Election Intelligence</div>
+        </div>
+        <div class="header-content">
+            <h1 class="title">Sarlahi-4 Election Forecast</h1>
+            <p class="subtitle">Zero-Sum Competition Model • CLEAR FAVORITE</p>
+            <div class="election-date">⏰ ELECTION: 2026-03-05 (38 days)</div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Alert Banner -->
+        <div class="alert-banner" style="background: linear-gradient(135deg, #15803d 0%, #22c55e 100%); color: #ffffff;">
+            <h2>🎯 GAGAN KUMAR THAPA: 61.3% WIN PROBABILITY</h2>
+            <p>
+                AMARESH KUMAR SINGH: 38.7% chance<br>
+                Expected: Gagan Kumar Thapa 40.5% vs Amaresh Kumar Singh 34.0% (15.4-point margin)<br>
+                <strong>CLEAR FAVORITE</strong>
+            </p>
+        </div>
+        
+        <!-- Key Findings -->
+        <div class="key-findings" style="background: linear-gradient(135deg, #15803d 0%, #22c55e 100%); color: #ffffff;">
+            <h3>📊 Key Insights</h3>
+            <div class="finding-item">Gagan Kumar Thapa favored at 61.3%, Amaresh Kumar Singh has 38.7% chance</div>
+            <div class="finding-item">Expected margin: 15.4 percentage points</div>
+            <div class="finding-item">Forecast confidence: MEDIUM</div>
+        </div>
+        
+        <!-- Probability Section -->
+        <section class="probability-section">
+            <div class="prob-header">
+                <h2 class="prob-title">Win Probability</h2>
+                <p class="prob-description">Based on 5,000 Monte Carlo simulations</p>
+                <div class="monte-carlo-badge">📊 Balanced Model • Data-Driven</div>
+            </div>
+            
+            <div class="probability-meter">
+                <div class="probability-marker"></div>
+            </div>
+            
+            <div class="prob-labels">
+                <div class="prob-label nc">
+                    <div class="prob-candidate-name">🌳 GAGAN KUMAR THAPA</div>
+                    <div class="prob-percentage">61.3<span style="font-size: 0.5em;">%</span></div>
+                    <div class="prob-description">Nepali Congress</div>
+                    <div class="prob-confidence">3063 of 5000 wins - Slight Edge</div>
+                </div>
+                <div class="prob-label rsp">
+                    <div class="prob-candidate-name">🔔 AMARESH KUMAR SINGH</div>
+                    <div class="prob-percentage">38.7<span style="font-size: 0.5em;">%</span></div>
+                    <div class="prob-description">Rastriya Swatantra Party</div>
+                    <div class="prob-confidence">1937 of 5000 wins - Real Chance</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Expected Outcome -->
+        <section class="expected-outcome">
+            <h3>🎯 Expected Result</h3>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: --nc-color !important;">
+                        🌳 GAGAN KUMAR THAPA (Nepali Congress) ★ LIKELY WINNER
+                    </span>
+                    <span class="candidate-result-pct" style="color: --nc-color !important;">
+                        40.5%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 40.5%;">
+                        37,482 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 11.4% - 76.2%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                        🔔 AMARESH KUMAR SINGH (Rastriya Swatantra Party)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        34.0%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill rsp" style="width: 34.0%;">
+                        31,436 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 11.8% - 73.8%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                        ☀️ AMARESH KUMAR YADAV (CPN-UML)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        6.5%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill uml" style="width: 6.5%;">
+                        5,991 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 2.3% - 10.7%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         RANJIT RAY (MAOIST)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        6.1%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 6.1%;">
+                        5,604 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 2.3% - 9.1%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         RAMESHWAR RAY YADAV (JSP)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        4.7%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 4.7%;">
+                        4,392 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 1.7% - 8.6%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         RAKESH KUMAR MISHRA (JP)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        3.6%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 3.6%;">
+                        3,290 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 1.3% - 4.6%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         RAMANATH PRASAD SAH (UCPN)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        2.1%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 2.1%;">
+                        1,901 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 0.8% - 2.5%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         OTHERS
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        1.1%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 1.1%;">
+                        1,000 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 1.0% - 1.2%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         PRAVEEN KUMAR JHA (RPP)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        0.5%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 0.5%;">
+                        465 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 0.2% - 0.6%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         PITAMBAR SINGH KUSHWAHA (UNP)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        0.5%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 0.5%;">
+                        462 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 0.2% - 0.6%
+                </div>
+            </div>
+
+            <div class="candidate-result">
+                <div class="candidate-result-header">
+                    <span class="candidate-result-name" style="color: var(--text-primary) !important;">
+                         RAMCHARIT SAHNI (DLP)
+                    </span>
+                    <span class="candidate-result-pct" style="color: var(--text-primary) !important;">
+                        0.5%
+                    </span>
+                </div>
+                <div class="result-bar">
+                    <div class="result-bar-fill nc" style="width: 0.5%;">
+                        462 votes
+                    </div>
+                </div>
+                <div style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    95% CI: 0.2% - 0.6%
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: var(--bg-primary); border-radius: 8px;">
+                <div style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem;">
+                    Expected Margin: <span style="color: var(--rsp-color);">+15.4 percentage points</span>
+                </div>
+                <div style="font-size: 1.1rem; color: var(--text-secondary);">
+                    Gagan Kumar Thapa wins by 14,218 votes | Total: ~92,485 votes
+                </div>
+            </div>
+        </section>
+        
+        <!-- Dashboard Grid (Candidate Paths + Stats) -->
+        <div class="dashboard-grid">
+            <!-- Key Statistics -->
+            <div class="card">
+                <h3 class="card-title">Key Statistics</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--nc-color);">61.3%</div>
+                        <div class="stat-label">Gagan Kumar Thapa Win Chance</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--rsp-color);">38.7%</div>
+                        <div class="stat-label">Amaresh Kumar Singh Win Chance</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-value">15.4%</div>
+                        <div class="stat-label">Expected Margin</div>
+                    </div>
+                    
+                    <div class="stat-box">
+                        <div class="stat-value">MEDIUM</div>
+                        <div class="stat-label">Confidence Level</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scenario Breakdown -->
+        <h2 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; text-align: center; margin-bottom: 2rem;">
+            Consolidation Scenarios
+        </h2>
+        
+        <div class="scenarios-grid">
+
+            <div class="scenario-card" style="border: 3px solid var(--accent-yellow);">
+                <div class="scenario-header">
+                    <span class="scenario-name">All Separate ⭐</span>
+                    <span class="scenario-prob">30%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    MOST LIKELY SCENARIO
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong style="color: var(--rsp-color);">33.4%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong>31.8%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>AMARESH KUMAR SINGH</strong> wins 1017/1452 (70%)
+                    
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">Jsp To Nc</span>
+                    <span class="scenario-prob">15%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong style="color: var(--rsp-color);">40.2%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong>31.4%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>GAGAN KUMAR THAPA</strong> wins 759/759 (100%)
+                    
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">Uml Maoist To Nc</span>
+                    <span class="scenario-prob">10%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong style="color: var(--rsp-color);">47.1%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong>31.3%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>GAGAN KUMAR THAPA</strong> wins 489/489 (100%)
+                    
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">Jsp Uml Maoist To Nc</span>
+                    <span class="scenario-prob">15%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong style="color: var(--rsp-color);">51.8%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong>31.4%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>GAGAN KUMAR THAPA</strong> wins 771/771 (100%)
+                    
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">Jsp To Rsp</span>
+                    <span class="scenario-prob">10%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong style="color: var(--rsp-color);">35.5%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong>35.4%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winnercompetitive">
+                    <strong>AMARESH KUMAR SINGH</strong> wins 243/472 (51%)
+                     - COMPETITIVE
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">Uml Maoist To Rsp</span>
+                    <span class="scenario-prob">8%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong style="color: var(--rsp-color);">41.4%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong>35.3%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>AMARESH KUMAR SINGH</strong> wins 426/436 (98%)
+                    
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">All To Nc</span>
+                    <span class="scenario-prob">7%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong style="color: var(--rsp-color);">75.2%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong>12.7%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>GAGAN KUMAR THAPA</strong> wins 370/370 (100%)
+                    
+                </div>
+            </div>
+
+            <div class="scenario-card" style="">
+                <div class="scenario-header">
+                    <span class="scenario-name">All To Rsp</span>
+                    <span class="scenario-prob">5%</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">
+                    
+                </p>
+                <div class="scenario-outcome">
+                    <div class="outcome-row">
+                        <span>AMARESH KUMAR SINGH:</span>
+                        <strong style="color: var(--rsp-color);">73.9%</strong>
+                    </div>
+                    <div class="outcome-row">
+                        <span>GAGAN KUMAR THAPA:</span>
+                        <strong>11.5%</strong>
+                    </div>
+                </div>
+                <div class="scenario-winner">
+                    <strong>AMARESH KUMAR SINGH</strong> wins 251/251 (100%)
+                    
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Bottom Line -->
+        <div style="background: linear-gradient(135deg, #15803d 0%, #22c55e 100%); color: #ffffff; padding: 3rem; border-radius: 12px; text-align: center; margin-top: 3rem;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem;">
+                FORECAST SUMMARY
+            </h2>
+            <p style="font-size: 1.4rem; font-weight: 600; line-height: 2; max-width: 1000px; margin: 0 auto;">
+                Gagan Kumar Thapa is the clear favorite 
+                with a 61.3% chance of winning. 
+                Expected result: Gagan Kumar Thapa 40.5%, 
+                Amaresh Kumar Singh 34.0%.
+            </p>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p style="font-weight: 600; margin-bottom: 0.5rem;">
+            Sarlahi-4 Election Forecast
+        </p>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            Updated: January 24, 2026
+        </p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">
+            <strong>🏔️ Sagarmatha Analytics</strong> • Peak Election Intelligence from the Himalayas<br>
+            Zero-sum competition model • Transparent methodology • Open source
+        </p>
+        <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 1rem;">
+            <em>Disclaimer: Election forecasts are probabilistic predictions, not guarantees. Actual results may differ.</em>
+        </p>
+    </footer>
+</body>
+</html>
