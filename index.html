@@ -40,6 +40,29 @@
             opacity: 0.9;
         }
         
+        .nav-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -96,11 +119,6 @@
             margin-top: 3rem;
         }
         
-        .footer a {
-            color: #1E3A8A;
-            text-decoration: none;
-        }
-        
         @media (max-width: 768px) {
             h1 {
                 font-size: 1.5rem;
@@ -108,6 +126,15 @@
             
             .dashboard-list {
                 grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -117,6 +144,10 @@
         <div class="logo">🏔️</div>
         <h1>Sagarmatha Analytics</h1>
         <p class="tagline">Peak Election Intelligence</p>
+        
+        <div class="nav-buttons">
+            <a href="about.html" class="nav-button">Who We Are</a>
+        </div>
     </header>
 
     <div class="container">
@@ -139,7 +170,7 @@
             <strong>🏔️ Sagarmatha Analytics</strong> • Peak Election Intelligence from the Himalayas
         </p>
         <p style="margin-top: 0.5rem;">
-            Open source • Transparent methodology • Zero-sum models
+            Transparent methodology • Zero-sum models
         </p>
         <p style="margin-top: 1rem; font-size: 0.9rem;">
             <em>Disclaimer: Election forecasts are probabilistic predictions, not guarantees.</em>
@@ -147,13 +178,14 @@
     </footer>
 
     <script>
-        // Auto-discover dashboards based on naming pattern
-        // Dashboards should be named: {constituency}_dashboard.html
+        // List of available dashboards
+        // Update this array as you add new constituencies
         
         const dashboards = [
             { file: 'jhapa-5_dashboard.html', name: 'Jhapa-5', description: 'Balen Shah vs KP Sharma Oli' },
             { file: 'sarlahi-4_dashboard.html', name: 'Sarlahi-4', description: 'Gagan Kumar Thapa vs Amaresh Kumar Singh' }
-            // Add more as you generate them
+            // Add more as you generate them:
+            // { file: 'kathmandu-1_dashboard.html', name: 'Kathmandu-1', description: 'Your candidates' }
         ];
         
         const container = document.getElementById('dashboard-list');

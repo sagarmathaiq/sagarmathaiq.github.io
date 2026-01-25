@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who We Are - Sagarmatha Analytics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background: #F9FAFB;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .content h2 {
+            color: #1E3A8A;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .content ul {
+            margin-bottom: 1rem;
+        }
+        
+        .content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #6B7280;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">🏔️</div>
+        <h1>About Us</h1>
+        <a href="index.html" class="back-link">← Back to Forecasts</a>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>About Sagarmatha Analytics</h2>
+            <p>
+                Sagarmatha Analytics is a quantitative research initiative specializing in electoral forecasting 
+                and applied data science. Our team comprises Nepali professionals with advanced training 
+                in Physics, Mathematics, and statistical modeling, computational methods, and quantitative analysis.
+            </p>
+            <p>
+                We develop probabilistic forecasting frameworks that leverage Bayesian inference, Monte Carlo 
+                simulation, and game-theoretic principles to model electoral competition. Our methodological 
+                approach is grounded in peer-reviewed statistical techniques adapted to the unique challenges 
+                of forecasting in data-sparse environments.
+            </p>
+            <p>
+                Named after Mount Everest (Sagarmatha in Nepali), our mission is to advance the science of 
+                electoral forecasting in South Asia through transparent, reproducible methodologies that 
+                appropriately quantify uncertainty rather than projecting false precision.
+            </p>
+
+            <h2>Research Methodology</h2>
+            <p>
+                Our forecasting framework treats parliamentary elections as constrained optimization problems 
+                within a zero-sum competitive structure. Unlike conventional polling aggregation methods, we 
+                model the electorate as a fixed resource where vote gains by one candidate necessarily 
+                correspond to losses by others—a fundamental constraint often violated by traditional approaches.
+            </p>
+            <p>
+                We employ hierarchical modeling techniques that decompose candidate strength into constituent 
+                components: (1) historical party support adjusted for demographic shifts, (2) candidate-specific 
+                effects including incumbency advantage and celebrity status, and (3) stochastic consolidation 
+                dynamics among minor party voters. Monte Carlo methods generate probability distributions over 
+                electoral outcomes while maintaining zero-sum consistency across all simulations.
+            </p>
+
+            <h2>Nepal 2082: Methodological Challenges</h2>
+            <p>
+                The 2082 parliamentary elections present several analytical challenges that require 
+                novel modeling approaches:
+            </p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Structural volatility:</strong> Emergence of new political parties (RSP) with limited historical data</li>
+                <li><strong>Celebrity candidacies:</strong> High-profile candidates (Balen Shah, Gagan Kumar Thapa) with non-traditional appeal</li>
+                <li><strong>Generational realignment:</strong> Youth mobilization creating potential for non-linear voter behavior</li>
+                <li><strong>Coalition uncertainty:</strong> Complex multi-party consolidation scenarios requiring probability weighting</li>
+            </ul>
+            <p>
+                These factors necessitate forecasting models that can incorporate expert judgment on candidate 
+                strength while maintaining statistical rigor through probabilistic uncertainty quantification.
+            </p>
+
+            <h2>Technical Approach</h2>
+            <p>
+                Our model architecture consists of four primary components:
+            </p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Base vote estimation:</strong> Historical party support scaled by voter registration growth and expected turnout</li>
+                <li><strong>Strength multipliers:</strong> Parameterized adjustments for celebrity appeal, local connections, party organization, and demographic factors</li>
+                <li><strong>Personal vote premium:</strong> Individual candidate effects derived from historical FPTP-PR differentials</li>
+                <li><strong>Zero-sum normalization:</strong> Vote allocation ensuring aggregate predictions equal expected turnout</li>
+            </ul>
+            <p>
+                Model parameters are calibrated using historical election data, expert assessments, and 
+                constituency-specific characteristics. Uncertainty is propagated through Monte Carlo 
+                simulation (n=1,000) with configurable variance parameters reflecting forecast confidence.
+            </p>
+
+            <h2>Transparency and Limitations</h2>
+            <p>
+                We acknowledge several key limitations in our approach: (1) parameter estimates incorporate 
+                subjective expert judgment in the absence of high-quality polling data, (2) consolidation 
+                scenario probabilities are based on political analyst assessments rather than empirical 
+                measurement, and (3) the model assumes independent voter behavior within scenarios, potentially 
+                understating correlated uncertainty.
+            </p>
+            <p>
+                All forecasts are presented as probability distributions rather than point predictions, 
+                with explicit confidence levels provided. We encourage critical evaluation of our 
+                methodology and welcome engagement from the research community.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+                <strong>Email:</strong> sagarmathiq@gmail.com<br>
+                <strong>Twitter:</strong> @sagarmathiq
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>
+            <strong>🏔️ Sagarmatha Analytics</strong> • Peak Election Intelligence from the Himalayas
+        </p>
+    </footer>
+</body>
+</html>
