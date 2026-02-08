@@ -106,8 +106,8 @@ body {
 .probability-meter {
     position: relative; height: 100px;
     background: linear-gradient(90deg,
-        var(--nc-color, var(--default-color)) 0%, var(--nc-color, var(--default-color)) 88.56%,
-        var(--rsp-color, var(--default-color)) 88.56%, var(--rsp-color, var(--default-color)) 100%);
+        var(--nc-color, var(--default-color)) 0%, var(--nc-color, var(--default-color)) 74.16%,
+        var(--rsp-color, var(--default-color)) 74.16%, var(--rsp-color, var(--default-color)) 100%);
     border-radius: 8px; margin: 1.5rem 0; overflow: visible;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
 }
@@ -267,7 +267,7 @@ body {
   <div class="header-content">
     <h1 class="title">sarlahi-4 Election Forecast</h1>
     <p class="subtitle">Data-Driven Monte Carlo Simulation • CLEAR FAVORITE</p>
-    <div class="election-date">⏰ ELECTION: 2026-03-05 (30 days)</div>
+    <div class="election-date">⏰ ELECTION: 2026-03-05 (24 days)</div>
   </div>
 </header>
 
@@ -275,10 +275,10 @@ body {
 
 <!-- ── 1. Alert Banner ── -->
 <div class="alert-banner">
-  <h2>🎯 GAGAN KUMAR THAPA (Nepali Congress): 88.6% WIN PROBABILITY</h2>
+  <h2>🎯 GAGAN KUMAR THAPA (Nepali Congress): 74.2% WIN PROBABILITY</h2>
   <p>
-    AMARESH KUMAR SINGH (Rastriya Swatantra Party): 11.4% chance<br>
-    Expected: Gagan Kumar Thapa 31.1% vs Amaresh Kumar Singh 23.7% (7.4-point margin)<br>
+    AMARESH KUMAR SINGH (Rastriya Swatantra Party): 25.8% chance<br>
+    Expected: Gagan Kumar Thapa 28.4% vs Amaresh Kumar Singh 23.8% (4.7-point margin)<br>
     <strong>CLEAR FAVORITE</strong>
   </p>
 </div>
@@ -286,10 +286,10 @@ body {
 <!-- ── 2. Key Insights ── -->
 <div class="key-findings">
   <h3>📊 Key Forecast Insights</h3>
-  <div class="finding-item">Gagan Kumar Thapa favored at 88.6%, but Amaresh Kumar Singh has a 11.4% real chance</div>
-  <div class="finding-item">Expected 7.4-point margin — consolidation scenarios matter</div>
-  <div class="finding-item">Confidence: HIGH based on 10,000 simulations</div>
-  <div class="finding-item">95% CI: Gagan Kumar Thapa 23.3%–40.2%, Amaresh Kumar Singh 17.7%–30.3%</div>
+  <div class="finding-item">Gagan Kumar Thapa favored at 74.2%, but Amaresh Kumar Singh has a 25.8% real chance</div>
+  <div class="finding-item">Expected 4.7-point margin — consolidation scenarios matter</div>
+  <div class="finding-item">Confidence: MEDIUM based on 10,000 simulations</div>
+  <div class="finding-item">95% CI: Gagan Kumar Thapa 20.0%–38.3%, Amaresh Kumar Singh 16.3%–32.0%</div>
 </div>
 
 <!-- ── 3. Win Probability Meter ── -->
@@ -305,15 +305,15 @@ body {
   <div class="prob-labels">
     <div class="prob-label top">
       <div class="prob-candidate-name">🌳 GAGAN KUMAR THAPA</div>
-      <div class="prob-percentage">88.6<span style="font-size:0.5em;">%</span></div>
+      <div class="prob-percentage">74.2<span style="font-size:0.5em;">%</span></div>
       <div class="prob-description">Nepali Congress</div>
-      <div class="prob-confidence">8,856 of 10,000 wins — Favored</div>
+      <div class="prob-confidence">7,416 of 10,000 wins — Favored</div>
     </div>
     <div class="prob-label second">
       <div class="prob-candidate-name">🔔 AMARESH KUMAR SINGH</div>
-      <div class="prob-percentage">11.4<span style="font-size:0.5em;">%</span></div>
+      <div class="prob-percentage">25.8<span style="font-size:0.5em;">%</span></div>
       <div class="prob-description">Rastriya Swatantra Party</div>
-      <div class="prob-confidence">1,143 of 10,000 wins — Real Chance</div>
+      <div class="prob-confidence">2,582 of 10,000 wins — Real Chance</div>
     </div>
   </div>
 </section>
@@ -327,15 +327,15 @@ body {
       <span class="candidate-result-name" style="color: var(--nc-color, var(--default-color));">
         🌳 Gagan Kumar Thapa (Nepali Congress)  ★ LIKELY WINNER
       </span>
-      <span class="candidate-result-pct" style="color: var(--nc-color, var(--default-color));">31.1%</span>
+      <span class="candidate-result-pct" style="color: var(--nc-color, var(--default-color));">28.4%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill nc" style="width:31.1%;">
-        28,067 votes
+      <div class="result-bar-fill nc" style="width:28.4%;">
+        25,669 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 23.3% – 40.2%
+      95% CI: 20.0% – 38.3%
     </div>
   </div>
 
@@ -344,15 +344,32 @@ body {
       <span class="candidate-result-name" style="">
         🔔 Amaresh Kumar Singh (Rastriya Swatantra Party)
       </span>
-      <span class="candidate-result-pct" style="">23.7%</span>
+      <span class="candidate-result-pct" style="">23.8%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill rsp" style="width:23.7%;">
-        21,394 votes
+      <div class="result-bar-fill rsp" style="width:23.8%;">
+        21,464 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 17.7% – 30.3%
+      95% CI: 16.3% – 32.0%
+    </div>
+  </div>
+
+  <div class="candidate-result">
+    <div class="candidate-result-header">
+      <span class="candidate-result-name" style="">
+        ☀️ Amnish Kumar Yadav (CPN-UML)
+      </span>
+      <span class="candidate-result-pct" style="">9.0%</span>
+    </div>
+    <div class="result-bar">
+      <div class="result-bar-fill uml" style="width:9.0%;">
+        8,128 votes
+      </div>
+    </div>
+    <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
+      95% CI: 4.8% – 14.9%
     </div>
   </div>
 
@@ -361,15 +378,15 @@ body {
       <span class="candidate-result-name" style="">
         🌾 Ram Sahay Prasad Yadav (JSP)
       </span>
-      <span class="candidate-result-pct" style="">9.0%</span>
+      <span class="candidate-result-pct" style="">8.1%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill jsp" style="width:9.0%;">
-        8,141 votes
+      <div class="result-bar-fill jsp" style="width:8.1%;">
+        7,282 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 3.2% – 16.5%
+      95% CI: 4.0% – 14.4%
     </div>
   </div>
 
@@ -378,32 +395,32 @@ body {
       <span class="candidate-result-name" style="">
         🔴 Ranjit Ray (CPN (Maoist))
       </span>
-      <span class="candidate-result-pct" style="">8.7%</span>
+      <span class="candidate-result-pct" style="">6.2%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill maoist" style="width:8.7%;">
-        7,824 votes
+      <div class="result-bar-fill maoist" style="width:6.2%;">
+        5,582 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 4.5% – 14.4%
+      95% CI: 3.4% – 10.4%
     </div>
   </div>
 
   <div class="candidate-result">
     <div class="candidate-result-header">
       <span class="candidate-result-name" style="">
-        ☀️ Amaresh Kumar Yadav (CPN-UML)
+         Madhumala Yadav (MADHUMALA)
       </span>
-      <span class="candidate-result-pct" style="">7.9%</span>
+      <span class="candidate-result-pct" style="">6.0%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill uml" style="width:7.9%;">
-        7,157 votes
+      <div class="result-bar-fill default" style="width:6.0%;">
+        5,379 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 3.3% – 13.8%
+      95% CI: 3.3% – 10.2%
     </div>
   </div>
 
@@ -412,15 +429,15 @@ body {
       <span class="candidate-result-name" style="">
         🌻 Ram Babu Ray (Janata Party)
       </span>
-      <span class="candidate-result-pct" style="">5.3%</span>
+      <span class="candidate-result-pct" style="">5.5%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill jp" style="width:5.3%;">
-        4,784 votes
+      <div class="result-bar-fill jp" style="width:5.5%;">
+        4,958 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 2.2% – 10.3%
+      95% CI: 3.1% – 9.5%
     </div>
   </div>
 
@@ -429,15 +446,15 @@ body {
       <span class="candidate-result-name" style="">
          Bhagawati Devi (UCPN)
       </span>
-      <span class="candidate-result-pct" style="">4.0%</span>
+      <span class="candidate-result-pct" style="">5.1%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill default" style="width:4.0%;">
-        3,583 votes
+      <div class="result-bar-fill default" style="width:5.1%;">
+        4,651 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 1.8% – 7.8%
+      95% CI: 2.9% – 9.3%
     </div>
   </div>
 
@@ -446,59 +463,42 @@ body {
       <span class="candidate-result-name" style="">
         🏔️ Mahesh Mahato (RPP)
       </span>
-      <span class="candidate-result-pct" style="">3.5%</span>
+      <span class="candidate-result-pct" style="">5.1%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill rpp" style="width:3.5%;">
-        3,163 votes
+      <div class="result-bar-fill rpp" style="width:5.1%;">
+        4,598 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 1.6% – 7.2%
+      95% CI: 2.8% – 9.2%
     </div>
   </div>
 
   <div class="candidate-result">
     <div class="candidate-result-header">
       <span class="candidate-result-name" style="">
-         Dummy (DLP)
+         UNK2 (UNP)
       </span>
-      <span class="candidate-result-pct" style="">3.4%</span>
+      <span class="candidate-result-pct" style="">2.9%</span>
     </div>
     <div class="result-bar">
-      <div class="result-bar-fill default" style="width:3.4%;">
-        3,115 votes
+      <div class="result-bar-fill default" style="width:2.9%;">
+        2,630 votes
       </div>
     </div>
     <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 1.5% – 7.5%
-    </div>
-  </div>
-
-  <div class="candidate-result">
-    <div class="candidate-result-header">
-      <span class="candidate-result-name" style="">
-         Dummy (UNP)
-      </span>
-      <span class="candidate-result-pct" style="">3.4%</span>
-    </div>
-    <div class="result-bar">
-      <div class="result-bar-fill default" style="width:3.4%;">
-        3,102 votes
-      </div>
-    </div>
-    <div style="margin-top:0.4rem; font-size:0.88rem; color:var(--text-secondary);">
-      95% CI: 1.5% – 7.4%
+      95% CI: 1.8% – 3.9%
     </div>
   </div>
 
   <!-- Margin summary -->
   <div style="text-align:center; margin-top:1.8rem; padding:1.8rem; background:var(--bg-primary); border-radius:8px;">
     <div style="font-size:1.5rem; font-weight:700; margin-bottom:0.7rem;">
-      Expected Margin: <span style="color:var(--nc-color, var(--default-color));">+7.4 percentage points</span>
+      Expected Margin: <span style="color:var(--nc-color, var(--default-color));">+4.7 percentage points</span>
     </div>
     <div style="font-size:1rem; color:var(--text-secondary);">
-      Gagan Kumar Thapa leads by 6,674 votes | Total turnout: ~90,330 votes
+      Gagan Kumar Thapa leads by 4,204 votes | Total turnout: ~90,342 votes
     </div>
   </div>
 </section>
@@ -511,19 +511,19 @@ body {
     <h3 class="card-title">Key Statistics</h3>
     <div class="stats-grid">
       <div class="stat-box">
-        <div class="stat-value" style="color:var(--nc-color, var(--default-color));">88.6%</div>
+        <div class="stat-value" style="color:var(--nc-color, var(--default-color));">74.2%</div>
         <div class="stat-label">Gagan Kumar Thapa Win</div>
       </div>
       <div class="stat-box">
-        <div class="stat-value" style="color:var(--rsp-color, var(--default-color));">11.4%</div>
+        <div class="stat-value" style="color:var(--rsp-color, var(--default-color));">25.8%</div>
         <div class="stat-label">Amaresh Kumar Singh Win</div>
       </div>
       <div class="stat-box">
-        <div class="stat-value">7.4</div>
+        <div class="stat-value">4.7</div>
         <div class="stat-label">Point Margin</div>
       </div>
       <div class="stat-box">
-        <div class="stat-value">6.7K</div>
+        <div class="stat-value">4.2K</div>
         <div class="stat-label">Vote Margin</div>
       </div>
       <div class="stat-box">
@@ -531,13 +531,13 @@ body {
         <div class="stat-label">Simulations</div>
       </div>
       <div class="stat-box">
-        <div class="stat-value">HIGH</div>
+        <div class="stat-value">MEDIUM</div>
         <div class="stat-label">Confidence</div>
       </div>
     </div>
     <div class="info-box">
       <strong>Model:</strong> core_contestable<br>
-      <strong>Generated:</strong> February 02, 2026 22:23<br>
+      <strong>Generated:</strong> February 08, 2026 11:40<br>
       <strong>Method:</strong> Monte Carlo • Core + Contestable decomposition
       <br><strong>Consolidation:</strong> Enabled (5 scenarios)
     </div>
@@ -549,19 +549,19 @@ body {
 
     <div class="race-block">
       <strong>Clear Favorite:</strong><br>
-      7.4-point margin (6,674 votes)
+      4.7-point margin (4,204 votes)
     </div>
 
     <div class="race-block">
       <strong>Projected Winner:</strong> Gagan Kumar Thapa (Nepali Congress)<br>
-      Win Probability: 88.6%<br>
-      Confidence: HIGH
+      Win Probability: 74.2%<br>
+      Confidence: MEDIUM
     </div>
 
     <div class="race-block">
       <strong>Credible Intervals (95%):</strong><br>
-      🌳 Gagan Kumar Thapa: 23.3% – 40.2%<br>
-      🔔 Amaresh Kumar Singh: 17.7% – 30.3%
+      🌳 Gagan Kumar Thapa: 20.0% – 38.3%<br>
+      🔔 Amaresh Kumar Singh: 16.3% – 32.0%
       <br><small style="color:var(--text-secondary); margin-top:0.3rem; display:block;">
         Ranges reflect uncertainty in contestable voter allocation
       </small>
@@ -575,7 +575,7 @@ body {
     <div class="scenario-card highlighted">
       <div class="scenario-header">
         <span class="scenario-name">All Separate</span>
-        <span class="scenario-prob">29%</span>
+        <span class="scenario-prob">30%</span>
       </div>
       <p class="scenario-tag">Baseline — no party drops out</p>
       <div class="scenario-outcome">
@@ -583,17 +583,17 @@ body {
           <span style="color: var(--nc-color, var(--default-color)); font-weight:600;">
             🌳 Gagan Kumar Thapa
           </span>
-          <strong style="color: var(--nc-color, var(--default-color));">28.8%</strong>
+          <strong style="color: var(--nc-color, var(--default-color));">26.8%</strong>
         </div>
         <div class="outcome-row">
           <span style="color: var(--rsp-color, var(--default-color)); font-weight:600;">
             🔔 Amaresh Kumar Singh
           </span>
-          <strong>23.3%</strong>
+          <strong>23.6%</strong>
         </div>
       </div>
       <div class="scenario-footer">
-        <strong>Gagan Kumar Thapa</strong> wins 2,558/2,940 (87%)
+        <strong>Gagan Kumar Thapa</strong> wins 2,057/2,981 (69%)
         
       </div>
     </div>
@@ -609,17 +609,17 @@ body {
           <span style="color: var(--nc-color, var(--default-color)); font-weight:600;">
             🌳 Gagan Kumar Thapa
           </span>
-          <strong style="color: var(--nc-color, var(--default-color));">35.5%</strong>
+          <strong style="color: var(--nc-color, var(--default-color));">31.1%</strong>
         </div>
         <div class="outcome-row">
           <span style="color: var(--rsp-color, var(--default-color)); font-weight:600;">
             🔔 Amaresh Kumar Singh
           </span>
-          <strong>23.2%</strong>
+          <strong>23.5%</strong>
         </div>
       </div>
       <div class="scenario-footer">
-        <strong>Gagan Kumar Thapa</strong> wins 2,471/2,505 (99%)
+        <strong>Gagan Kumar Thapa</strong> wins 2,131/2,477 (86%)
         
       </div>
     </div>
@@ -627,32 +627,6 @@ body {
     <div class="scenario-card">
       <div class="scenario-header">
         <span class="scenario-name">Jp To Rsp</span>
-        <span class="scenario-prob">16%</span>
-      </div>
-      
-      <div class="scenario-outcome">
-        <div class="outcome-row">
-          <span style="color: var(--nc-color, var(--default-color)); font-weight:600;">
-            🌳 Gagan Kumar Thapa
-          </span>
-          <strong style="color: var(--nc-color, var(--default-color));">28.7%</strong>
-        </div>
-        <div class="outcome-row">
-          <span style="color: var(--rsp-color, var(--default-color)); font-weight:600;">
-            🔔 Amaresh Kumar Singh
-          </span>
-          <strong>25.9%</strong>
-        </div>
-      </div>
-      <div class="scenario-footer">
-        <strong>Gagan Kumar Thapa</strong> wins 1,107/1,565 (71%)
-        
-      </div>
-    </div>
-
-    <div class="scenario-card">
-      <div class="scenario-header">
-        <span class="scenario-name">Ncp To Nc</span>
         <span class="scenario-prob">15%</span>
       </div>
       
@@ -661,17 +635,17 @@ body {
           <span style="color: var(--nc-color, var(--default-color)); font-weight:600;">
             🌳 Gagan Kumar Thapa
           </span>
-          <strong style="color: var(--nc-color, var(--default-color));">28.8%</strong>
+          <strong style="color: var(--nc-color, var(--default-color));">26.8%</strong>
         </div>
         <div class="outcome-row">
           <span style="color: var(--rsp-color, var(--default-color)); font-weight:600;">
             🔔 Amaresh Kumar Singh
           </span>
-          <strong>23.3%</strong>
+          <strong>25.0%</strong>
         </div>
       </div>
       <div class="scenario-footer">
-        <strong>Gagan Kumar Thapa</strong> wins 1,303/1,518 (86%)
+        <strong>Gagan Kumar Thapa</strong> wins 935/1,535 (61%)
         
       </div>
     </div>
@@ -687,7 +661,33 @@ body {
           <span style="color: var(--nc-color, var(--default-color)); font-weight:600;">
             🌳 Gagan Kumar Thapa
           </span>
-          <strong style="color: var(--nc-color, var(--default-color));">33.0%</strong>
+          <strong style="color: var(--nc-color, var(--default-color));">30.3%</strong>
+        </div>
+        <div class="outcome-row">
+          <span style="color: var(--rsp-color, var(--default-color)); font-weight:600;">
+            🔔 Amaresh Kumar Singh
+          </span>
+          <strong>23.6%</strong>
+        </div>
+      </div>
+      <div class="scenario-footer">
+        <strong>Gagan Kumar Thapa</strong> wins 1,260/1,511 (83%)
+        
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header">
+        <span class="scenario-name">Ncp To Nc</span>
+        <span class="scenario-prob">15%</span>
+      </div>
+      
+      <div class="scenario-outcome">
+        <div class="outcome-row">
+          <span style="color: var(--nc-color, var(--default-color)); font-weight:600;">
+            🌳 Gagan Kumar Thapa
+          </span>
+          <strong style="color: var(--nc-color, var(--default-color));">26.9%</strong>
         </div>
         <div class="outcome-row">
           <span style="color: var(--rsp-color, var(--default-color)); font-weight:600;">
@@ -697,7 +697,7 @@ body {
         </div>
       </div>
       <div class="scenario-footer">
-        <strong>Gagan Kumar Thapa</strong> wins 1,417/1,472 (96%)
+        <strong>Gagan Kumar Thapa</strong> wins 1,033/1,496 (69%)
         
       </div>
     </div>
@@ -709,13 +709,13 @@ body {
   <h2>FORECAST SUMMARY</h2>
   <p>
     Gagan Kumar Thapa is the clear favorite
-    (88.6%).
-    Expected outcome: Gagan Kumar Thapa 31.1%,
-    Amaresh Kumar Singh 23.7%
-    (7.4-point margin).
+    (74.2%).
+    Expected outcome: Gagan Kumar Thapa 28.4%,
+    Amaresh Kumar Singh 23.8%
+    (4.7-point margin).
   </p>
   <div class="meta-line">
-    Data-Driven • 10,000 Simulations • HIGH Confidence
+    Data-Driven • 10,000 Simulations • MEDIUM Confidence
   </div>
 </div>
 
@@ -726,7 +726,7 @@ body {
   <p style="font-weight:600; color:var(--text-primary); font-size:1rem; margin-bottom:0.4rem;">
     sarlahi-4 Election Forecast
   </p>
-  <p>Updated: February 02, 2026 22:23</p>
+  <p>Updated: February 08, 2026 11:40</p>
   <p>
     <strong>🏔️ Sagarmatha Analytics</strong> • Peak Election Intelligence from the Himalayas<br>
     Zero-sum competition model • Transparent methodology • Open source
