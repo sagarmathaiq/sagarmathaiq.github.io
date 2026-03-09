@@ -77,6 +77,74 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
+        .post-mortem-banner {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(30,58,138,0.3);
+        }
+
+        .pm-left { flex: 1; min-width: 200px; }
+
+        .pm-label {
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: .15em;
+            color: rgba(255,255,255,.6);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .pm-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 6px;
+            letter-spacing: -.02em;
+        }
+
+        .pm-desc {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,.75);
+            line-height: 1.5;
+        }
+
+        .pm-links {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .pm-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .pm-btn:hover { opacity: 0.85; }
+
+        .pm-btn-primary {
+            background: white;
+            color: #1E3A8A;
+        }
+
+        .pm-btn-secondary {
+            background: rgba(255,255,255,.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,.3);
+        }
+
         .dashboard-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -136,6 +204,20 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            .post-mortem-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pm-links {
+                width: 100%;
+            }
+
+            .pm-btn {
+                flex: 1;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -154,13 +236,25 @@
         <div class="intro">
             <h2>Nepal 2082 Election Forecasts</h2>
             <p>
-                Transparent, probabilistic forecasts for Nepal's upcoming 2082 parliamentary elections. 
-                We divide electorate into core and contestable votes to predict constituency-level outcomes in competitive 
-                races. Explore our available forecasts below for detailed insights and anlysis.
+                Transparent, probabilistic forecasts for Nepal's 2082 parliamentary elections.
+                We divide the electorate into core and contestable votes to predict constituency-level outcomes in competitive
+                races. The election was held on Falgun 21, 2082 — all 165 seats have been declared.
             </p>
         </div>
 
-        <h2>Available Forecasts</h2>
+        <div class="post-mortem-banner">
+            <div class="pm-left">
+                <div class="pm-label">POST-ELECTION · FALGUN 2082</div>
+                <div class="pm-title">2082 Model Post-Mortem</div>
+                <div class="pm-desc">RSP won 125 FPTP seats and 48.2% of the PR vote — a majority government. Full forecast vs. actual breakdown, province-by-province accuracy, and lessons for 2087.</div>
+            </div>
+            <div class="pm-links">
+                <a href="forecast_accuracy_writeup.html" class="pm-btn pm-btn-primary">Read post-mortem</a>
+                <a href="constituency_results.html" class="pm-btn pm-btn-secondary">All 165 results</a>
+            </div>
+        </div>
+
+        <h2>Published Forecasts</h2>
         <div class="dashboard-list" id="dashboard-list">
             <!-- Dashboards will be loaded here by JavaScript -->
         </div>
