@@ -5,42 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Constituency Results — Nepal 2082</title>
 <style>
-:root { --border-gray:#e0e0e0; --light-gray:#f5f5f5; --charcoal:#1a1a1a; }
+:root {
+  --green:#15803D; --amber:#B45309; --red:#B91C1C;
+  --light-gray:#F9FAFB; --mid-gray:#6B7280;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
-body { background:#F9FAFB; color:var(--charcoal); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; font-size:13px; line-height:1.6; }
-.page { max-width:900px; margin:0 auto; padding:0 0 80px; }
-.header { background:linear-gradient(135deg,#1E3A8A 0%,#3B82F6 100%); color:white; padding:32px 40px 28px; margin-bottom:28px; }
-.brand { font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.7; margin-bottom:8px; font-family:'Courier New',monospace; }
-h1 { font-size:22px; font-weight:700; letter-spacing:-.02em; margin-bottom:5px; }
-.meta { font-size:11px; opacity:.7; font-family:'Courier New',monospace; }
-.back-link { font-size:11px; font-family:'Courier New',monospace; color:rgba(255,255,255,.75); text-decoration:none; display:inline-flex; align-items:center; gap:5px; margin-bottom:14px; }
-.back-link:hover { color:white; }
-.content { padding:0 40px; }
-.scorecard { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
-.sc-box { background:white; border:1px solid var(--border-gray); border-radius:5px; padding:12px 18px; flex:1; min-width:110px; text-align:center; }
-.sc-val { font-size:24px; font-weight:700; display:block; font-family:'Courier New',monospace; }
-.sc-lbl { font-size:10px; color:#666; text-transform:uppercase; letter-spacing:.1em; }
-.section-title { font-family:'Courier New',monospace; font-size:9px; text-transform:uppercase; letter-spacing:.2em; color:#666; margin:24px 0 12px; display:flex; align-items:center; gap:10px; }
-.section-title::after { content:''; flex:1; height:1px; background:var(--border-gray); }
-.prov-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:8px; margin-bottom:24px; }
-.results-table { width:100%; border-collapse:collapse; font-size:12px; background:white; border:1px solid var(--border-gray); border-radius:6px; overflow:hidden; }
-.results-table th { text-align:left; padding:9px 12px; font-size:9px; text-transform:uppercase; letter-spacing:.12em; color:#666; border-bottom:2px solid var(--border-gray); background:var(--light-gray); font-weight:600; }
-.results-table td { padding:7px 12px; border-bottom:1px solid #f0f0f0; vertical-align:middle; }
-.prov-header td { color:white; padding:8px 12px; }
-.badge { display:inline-block; padding:2px 8px; border-radius:3px; font-size:9px; font-family:'Courier New',monospace; font-weight:700; letter-spacing:.05em; }
-.badge-green { background:#DCFCE7; color:#166534; }
-.badge-amber { background:#FEF3C7; color:#92400E; }
-.badge-red   { background:#FEE2E2; color:#991B1B; }
-.source-note { font-size:10px; color:#666; font-family:'Courier New',monospace; background:var(--light-gray); border-radius:3px; padding:5px 10px; margin-top:8px; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; background:var(--light-gray); color:#1F2937; font-size:14px; line-height:1.5; }
+.page { max-width:900px; margin:0 auto; padding:0 0 3rem; }
+.header { background:linear-gradient(135deg,#1E3A8A 0%,#3B82F6 100%); color:white; padding:1.5rem 2rem; }
+.header h1 { font-size:1.4rem; font-weight:800; margin-bottom:4px; }
+.header p { font-size:0.85rem; opacity:.8; }
+.back-link { display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,.8);text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:3px;padding:5px 12px; }
+.content { padding:1.5rem 2rem; }
+.scorecard { display:flex; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.sc-box { background:white; border-radius:6px; padding:12px 20px; box-shadow:0 1px 3px rgba(0,0,0,.08); text-align:center; min-width:100px; }
+.sc-val { display:block; font-size:1.8rem; font-weight:800; line-height:1; }
+.sc-lbl { display:block; font-size:11px; color:var(--mid-gray); margin-top:4px; }
+.section-title { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--mid-gray); margin-bottom:10px; font-family:'Courier New',monospace; }
+.prov-summary { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:10px; margin-bottom:2rem; }
+.badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:3px; font-family:'Courier New',monospace; letter-spacing:.04em; }
+.badge-green { background:#DCFCE7; color:var(--green); }
+.badge-amber { background:#FEF9C3; color:var(--amber); }
+.badge-red { background:#FEE2E2; color:var(--red); }
+table { width:100%; border-collapse:collapse; background:white; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+th { background:#1E3A8A; color:white; padding:10px 12px; text-align:left; font-size:12px; font-weight:600; }
+td { padding:8px 12px; border-bottom:1px solid #F3F4F6; font-size:13px; }
+tr:last-child td { border-bottom:none; }
+@media(max-width:600px) {
+  .content { padding:1rem; }
+  .scorecard { gap:.5rem; }
+  .sc-box { min-width:80px; padding:10px; }
+  .prov-summary { grid-template-columns:1fr 1fr; }
+}
 </style>
 </head>
 <body>
 <div class="page">
 <div class="header">
+  <h1>All 165 Constituency Results — Nepal 2082</h1>
+  <p>Published forecast (March 3, 2026) vs. official EC results</p>
   <a href="forecast_accuracy_writeup.html" class="back-link">← Back to post-mortem</a>
-  <div class="brand">SagarmathaIQ · Analytica Nepal · Constituency Results · Falgun 2082</div>
-  <h1>Predicted vs. Actual — All 165 Constituencies</h1>
-  <div class="meta">Published forecast (March 1, 2082) vs. official results · Source: result.election.gov.np · All 165 seats declared</div>
 </div>
 <div class="content">
 <div class="scorecard">
@@ -87,6 +91,1044 @@ h1 { font-size:22px; font-weight:700; letter-spacing:-.02em; margin-bottom:5px; 
     <div style="height:4px;background:rgba(0,0,0,.08);border-radius:2px;overflow:hidden"><div style="width:37.5%;height:100%;background:#B91C1C;border-radius:2px"></div></div>
   </div>
 </div>
+<div class="section-title">All constituencies</div>
+<table>
+  <thead>
+    <tr>
+      <th>Constituency</th>
+      <th>Predicted</th>
+      <th>Actual</th>
+      <th style="text-align:center">Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #86EFAC">
+        Bagmati Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">25/33</span>
+      </td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Bhaktapur-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#6D28D9;flex-shrink:0"></span><span style="font-weight:600;color:#6D28D9">NMKP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Bhaktapur-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Chitwan-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Chitwan-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Chitwan-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Dhading-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">63%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dhading-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">86%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dolakha-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">50%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-10</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-5</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-6</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-7</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-8</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kathmandu-9</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kavrepalanchok-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">64%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kavrepalanchok-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">81%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Lalitpur-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">51%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Lalitpur-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Lalitpur-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Makwanpur-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Makwanpur-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">57%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Nuwakot-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">38%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Nuwakot-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">77%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Ramechhap-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">44%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rasuwa-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sindhuli-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">70%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sindhuli-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">49%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sindhupalchok-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sindhupalchok-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">43%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #FCD34D">
+        Gandaki Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">10/18</span>
+      </td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Baglung-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">56%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Baglung-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">85%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Gorkha-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">52%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Gorkha-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">79%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kaski-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kaski-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kaski-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Lamjung-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">45%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Manang-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Mustang-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Myagdi-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">93%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#9CA3AF;flex-shrink:0"></span><span style="font-weight:600;color:#9CA3AF">IND</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Nawalparasi (Bardaghat Susta East)-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Nawalparasi (Bardaghat Susta East)-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">61%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Parvat-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">65%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Syangja-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">47%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Syangja-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">72%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Tanahun-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Tanahun-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">53%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #FCD34D">
+        Karnali Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">8/12</span>
+      </td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Dailekh-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">79%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dailekh-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">55%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dolpa-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Humla-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">76%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Jajarkot-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Jumla-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">54%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#EC4899;flex-shrink:0"></span><span style="font-weight:600;color:#EC4899">RPP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kalikot-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Mugu-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">77%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rukum West-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Salyan-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">46%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Surkhet-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Surkhet-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">50%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #FCA5A5">
+        Koshi Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">13/28</span>
+      </td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Bhojpur-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#0891B2;flex-shrink:0"></span><span style="font-weight:600;color:#0891B2">SS</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Dhankuta-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Ilam-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">74%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Ilam-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Jhapa-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">75%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Jhapa-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Jhapa-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">73%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Jhapa-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Jhapa-5</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">59%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Khotang-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">92%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#0891B2;flex-shrink:0"></span><span style="font-weight:600;color:#0891B2">SS</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Morang-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">63%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Morang-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">55%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Morang-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Morang-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">48%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Morang-5</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Morang-6</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">73%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Okhaldhunga-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">74%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Panchthar-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Sankhuwasabha-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">52%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Solukhumbu-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sunsari-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#0891B2;flex-shrink:0"></span><span style="font-weight:600;color:#0891B2">SS</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Sunsari-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sunsari-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">50%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sunsari-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Taplejung-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">86%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Terhathum-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Udayapur-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">47%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Udayapur-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">73%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #FCD34D">
+        Lumbini Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">13/26</span>
+      </td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Arghakhanchi-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Banke-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Banke-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span><span style="font-weight:600;color:#7C3AED">JSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Banke-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">61%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Bardiya-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">84%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Bardiya-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">50%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Dang-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">96%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Dang-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Dang-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">83%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Gulmi-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Gulmi-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kapilvastu-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">55%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kapilvastu-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kapilvastu-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">94%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Nawalparasi (Bardaghat Susta West)-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">51%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Nawalparasi (Bardaghat Susta West)-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">89%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Palpa-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Palpa-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">43%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Pyuthan-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rolpa-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rukum East-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">MAOIST</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rupandehi-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rupandehi-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rupandehi-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">97%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Rupandehi-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">94%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rupandehi-5</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">64%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #FCA5A5">
+        Madhesh Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">7/32</span>
+      </td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Bara-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">82%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Bara-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span><span style="font-weight:600;color:#7C3AED">JSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">81%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Bara-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">48%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Bara-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">76%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dhanusha-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">30%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#CA8A04;flex-shrink:0"></span><span style="font-weight:600;color:#CA8A04">NCP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dhanusha-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span><span style="font-weight:600;color:#7C3AED">JSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">33%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dhanusha-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dhanusha-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">65%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Mahottari-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">55%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Mahottari-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">94%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Mahottari-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span><span style="font-weight:600;color:#7C3AED">JSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">99%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Mahottari-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span><span style="font-weight:600;color:#7C3AED">JSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">61%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Parsa-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span><span style="font-weight:600;color:#7C3AED">JSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">69%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Parsa-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Parsa-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">95%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Parsa-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Rautahat-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rautahat-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">88%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Rautahat-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Rautahat-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Saptari-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0"></span><span style="font-weight:600;color:#F59E0B">JP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Saptari-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0"></span><span style="font-weight:600;color:#F59E0B">JP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Saptari-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">65%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Saptari-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0"></span><span style="font-weight:600;color:#F59E0B">JP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Sarlahi-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">95%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sarlahi-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">78%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Sarlahi-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">68%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Sarlahi-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">90%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Siraha-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">67%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Siraha-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0"></span><span style="font-weight:600;color:#F59E0B">JP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">62%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Siraha-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">68%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Siraha-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#F59E0B;flex-shrink:0"></span><span style="font-weight:600;color:#F59E0B">JP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">92%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" style="background:#F3F4F6;padding:8px 12px;font-weight:700;font-size:12px;color:#374151;border-left:3px solid #FCA5A5">
+        Sudurpashchim Province <span style="font-weight:400;color:#6B7280;margin-left:8px;font-family:'Courier New',monospace;font-size:11px">6/16</span>
+      </td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Achham-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">89%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Achham-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">93%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Baitadi-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">66%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Bajhang-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">59%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Bajura-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">96%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Dadeldhura-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Darchula-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">76%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Doti-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">86%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kailali-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">98%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kailali-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">47%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#F0FDF4">
+      <td style="font-weight:500">Kailali-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">54%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-green">HIT</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kailali-4</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">42%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kailali-5</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">69%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kanchanpur-1</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#DC2626;flex-shrink:0"></span><span style="font-weight:600;color:#DC2626">UML</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">58%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kanchanpur-2</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">71%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+    <tr style="background:#FEF2F2">
+      <td style="font-weight:500">Kanchanpur-3</td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#16A34A;flex-shrink:0"></span><span style="font-weight:600;color:#16A34A">NC</span></span><span style="font-family:'Courier New',monospace;font-size:10px;color:#9CA3AF;margin-left:6px">100%</span></td>
+      <td><span style="display:inline-flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:50%;background:#2563EB;flex-shrink:0"></span><span style="font-weight:600;color:#2563EB">RSP</span></span></td>
+      <td style="text-align:center"><span class="badge badge-red">MISS</span></td>
+    </tr>
+  </tbody>
+</table>
 </div>
 </div>
 </body>
