@@ -1,458 +1,963 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2082 Model Post-Mortem — SagarmathaIQ</title>
-<style>
-:root {
-  --charcoal:#1a1a1a; --mid-gray:#555; --border-gray:#e0e0e0;
-  --page-bg:#F9FAFB; --light-gray:#f5f5f5;
-  --green:#15803D; --red:#B91C1C; --amber:#B45309;
-  --blue:#1D4ED8;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--page-bg); color:var(--charcoal); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; font-size:14px; line-height:1.75; }
-.page { max-width:760px; margin:0 auto; padding:0 24px 80px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2082 Model Post-Mortem — SagarmathaIQ</title>
+  <style>
+    :root {
+      --charcoal: #1a1a1a;
+      --mid-gray: #555;
+      --border-gray: #e0e0e0;
+      --page-bg: #F9FAFB;
+      --light-gray: #f5f5f5;
+      --green: #15803D;
+      --red: #B91C1C;
+      --amber: #B45309;
+      --blue: #1D4ED8;
+    }
 
-.header { background:linear-gradient(135deg,#1E3A8A 0%,#3B82F6 100%); color:white; padding:36px 40px 30px; margin:0 -24px 40px; }
-.brand { font-size:10px; letter-spacing:.2em; text-transform:uppercase; opacity:.65; margin-bottom:10px; font-family:'Courier New',monospace; }
-h1 { font-size:24px; font-weight:800; letter-spacing:-.03em; margin-bottom:6px; line-height:1.3; }
-.meta { font-size:11px; opacity:.65; font-family:'Courier New',monospace; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* Score bar */
-.scorebar { display:flex; gap:0; height:8px; border-radius:4px; overflow:hidden; margin:28px 0 6px; }
-.scorebar-hit  { background:var(--green); }
-.scorebar-miss { background:var(--red); }
-.scorebar-labels { display:flex; justify-content:space-between; font-family:'Courier New',monospace; font-size:10px; color:var(--mid-gray); margin-bottom:28px; }
+    body {
+      background: var(--page-bg);
+      color: var(--charcoal);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+    }
 
-section { margin-bottom:36px; }
-h2 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--mid-gray); margin-bottom:14px; padding-bottom:6px; border-bottom:1px solid var(--border-gray); }
-p { margin-bottom:12px; color:#374151; }
-p:last-child { margin-bottom:0; }
-strong { color:var(--charcoal); }
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
 
-/* Province accuracy table */
-.prov-table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:4px; }
-.prov-table th { text-align:left; padding:7px 10px; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--mid-gray); border-bottom:2px solid var(--border-gray); }
-.prov-table td { padding:8px 10px; border-bottom:1px solid #f0f0f0; }
-.prov-table tr:last-child td { border-bottom:none; }
-.acc-bar-wrap { width:90px; height:6px; background:#E5E7EB; border-radius:3px; overflow:hidden; display:inline-block; vertical-align:middle; margin-right:8px; }
-.acc-bar-fill { height:100%; border-radius:3px; }
-.acc-val { font-family:'Courier New',monospace; font-size:11px; }
-.badge { display:inline-block; padding:2px 7px; border-radius:3px; font-size:10px; font-family:'Courier New',monospace; font-weight:700; }
-.badge-green  { background:#DCFCE7; color:#166534; }
-.badge-amber  { background:#FEF3C7; color:#92400E; }
-.badge-red    { background:#FEE2E2; color:#991B1B; }
+    .header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      color: white;
+      padding: 36px 40px 30px;
+      margin: 0 -24px 40px;
+    }
 
-/* Key findings */
-.finding { display:flex; gap:14px; margin-bottom:14px; align-items:flex-start; }
-.finding-num { font-family:'Courier New',monospace; font-size:11px; font-weight:700; color:white; background:var(--charcoal); border-radius:3px; padding:2px 7px; flex-shrink:0; margin-top:2px; }
-.finding-num.red { background:var(--red); }
-.finding-num.green { background:var(--green); }
-.finding-text { font-size:13px; color:#374151; line-height:1.65; }
-.finding-text strong { color:var(--charcoal); }
+    .brand {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: .65;
+      margin-bottom: 10px;
+      font-family: 'Courier New', monospace;
+    }
 
-/* Gagan Thapa */
-.chain { display:flex; align-items:center; gap:0; flex-wrap:wrap; margin:10px 0; }
-.chain-step { background:var(--light-gray); border:1px solid var(--border-gray); border-radius:3px; padding:5px 10px; font-size:12px; color:#374151; }
-.chain-arrow { color:#D1D5DB; padding:0 5px; font-size:16px; }
-.chain-end { background:#FEE2E2; border:1px solid #FECACA; border-radius:3px; padding:5px 10px; font-size:12px; color:var(--red); font-weight:700; }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
 
-.source-note { font-size:10px; color:var(--mid-gray); font-family:'Courier New',monospace; background:var(--light-gray); border-radius:3px; padding:5px 10px; margin-top:8px; }
+    .meta {
+      font-size: 11px;
+      opacity: .65;
+      font-family: 'Courier New', monospace;
+    }
 
-.byline-block {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 20px;
-  background: white;
-  border-bottom: 2px solid #E5E7EB;
-  font-size: 13px;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.byline-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #374151;
-  flex-wrap: wrap;
-}
-.byline-author {
-  font-weight: 700;
-  color: #1E3A8A;
-}
-.byline-sep {
-  color: #9CA3AF;
-}
-.byline-date {
-  color: #4B5563;
-}
-.byline-location {
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  color: #6B7280;
-}
-.byline-right {}
-.byline-tag {
-  font-family: 'Courier New', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  color: white;
-  background: #1E3A8A;
-  padding: 3px 8px;
-  border-radius: 3px;
-}
-</style>
+    /* Score bar */
+    .scorebar {
+      display: flex;
+      gap: 0;
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 28px 0 6px;
+    }
+
+    .scorebar-hit {
+      background: var(--green);
+    }
+
+    .scorebar-miss {
+      background: var(--red);
+    }
+
+    .scorebar-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      color: var(--mid-gray);
+      margin-bottom: 28px;
+    }
+
+    section {
+      margin-bottom: 36px;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--mid-gray);
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: #374151;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--charcoal);
+    }
+
+    /* Province accuracy table */
+    .prov-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .prov-table th {
+      text-align: left;
+      padding: 7px 10px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--mid-gray);
+      border-bottom: 2px solid var(--border-gray);
+    }
+
+    .prov-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .prov-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .acc-bar-wrap {
+      width: 90px;
+      height: 6px;
+      background: #E5E7EB;
+      border-radius: 3px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .acc-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .acc-val {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+    }
+
+    .badge-green {
+      background: #DCFCE7;
+      color: #166534;
+    }
+
+    .badge-amber {
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    .badge-red {
+      background: #FEE2E2;
+      color: #991B1B;
+    }
+
+    /* Key findings */
+    .finding {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+      align-items: flex-start;
+    }
+
+    .finding-num {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: white;
+      background: var(--charcoal);
+      border-radius: 3px;
+      padding: 2px 7px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .finding-num.red {
+      background: var(--red);
+    }
+
+    .finding-num.green {
+      background: var(--green);
+    }
+
+    .finding-text {
+      font-size: 13px;
+      color: #374151;
+      line-height: 1.65;
+    }
+
+    .finding-text strong {
+      color: var(--charcoal);
+    }
+
+    /* Gagan Thapa */
+    .chain {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 10px 0;
+    }
+
+    .chain-step {
+      background: var(--light-gray);
+      border: 1px solid var(--border-gray);
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 12px;
+      color: #374151;
+    }
+
+    .chain-arrow {
+      color: #D1D5DB;
+      padding: 0 5px;
+      font-size: 16px;
+    }
+
+    .chain-end {
+      background: #FEE2E2;
+      border: 1px solid #FECACA;
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 12px;
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .source-note {
+      font-size: 10px;
+      color: var(--mid-gray);
+      font-family: 'Courier New', monospace;
+      background: var(--light-gray);
+      border-radius: 3px;
+      padding: 5px 10px;
+      margin-top: 8px;
+    }
+
+    .byline-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      background: white;
+      border-bottom: 2px solid #E5E7EB;
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .byline-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #374151;
+      flex-wrap: wrap;
+    }
+
+    .byline-author {
+      font-weight: 700;
+      color: #1E3A8A;
+    }
+
+    .byline-sep {
+      color: #9CA3AF;
+    }
+
+    .byline-date {
+      color: #4B5563;
+    }
+
+    .byline-location {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: #6B7280;
+    }
+
+    .byline-right {}
+
+    .byline-tag {
+      font-family: 'Courier New', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: white;
+      background: #1E3A8A;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --charcoal: #F3F4F6;
+        --mid-gray: #9CA3AF;
+        --border-gray: #374151;
+        --page-bg: #111827;
+        --light-gray: #1F2937;
+        --green: #4ADE80;
+        --red: #F87171;
+        --amber: #FBBF24;
+        --blue: #60A5FA;
+      }
+
+      body {
+        background: var(--page-bg);
+        color: var(--charcoal);
+      }
+
+      p {
+        color: #D1D5DB;
+      }
+
+      strong {
+        color: #F9FAFB;
+      }
+
+      .finding-text {
+        color: #D1D5DB;
+      }
+
+      .finding-text strong {
+        color: #F9FAFB;
+      }
+
+      .finding-num {
+        background: #374151;
+      }
+
+      .finding-num.red {
+        background: #991B1B;
+      }
+
+      .finding-num.green {
+        background: #166534;
+      }
+
+      .prov-table td {
+        border-bottom-color: #1F2937;
+      }
+
+      .acc-bar-wrap {
+        background: #374151;
+      }
+
+      .badge-green {
+        background: #14532D;
+        color: #86EFAC;
+      }
+
+      .badge-amber {
+        background: #451A03;
+        color: #FCD34D;
+      }
+
+      .badge-red {
+        background: #450A0A;
+        color: #FCA5A5;
+      }
+
+      .chain-step {
+        background: #1F2937;
+        border-color: #374151;
+        color: #D1D5DB;
+      }
+
+      .chain-arrow {
+        color: #4B5563;
+      }
+
+      .chain-end {
+        background: #450A0A;
+        border-color: #7F1D1D;
+        color: #FCA5A5;
+      }
+
+      .source-note {
+        background: #1F2937;
+        color: #9CA3AF;
+      }
+
+      .byline-block {
+        background: #1F2937;
+        border-bottom-color: #374151;
+      }
+
+      .byline-left {
+        color: #D1D5DB;
+      }
+
+      .byline-author {
+        color: #93C5FD;
+      }
+
+      .byline-date {
+        color: #9CA3AF;
+      }
+
+      .byline-location {
+        color: #6B7280;
+      }
+
+      /* PR and province tables */
+      table {
+        background: #1F2937 !important;
+      }
+
+      th {
+        background: #1E3A8A !important;
+      }
+
+      td {
+        border-bottom-color: #374151 !important;
+      }
+
+      tr[style*="background:#F0FDF4"] {
+        background: #0F2D1A !important;
+      }
+
+      tr[style*="background:#FEF2F2"] {
+        background: #2D0F0F !important;
+      }
+
+      tr[style*="background:#F0F9FF"] {
+        background: #0C1A2E !important;
+      }
+
+      tr[style*="background:#FFFBEB"] {
+        background: #2D1F00 !important;
+      }
+
+      tr[style*="background:var(--light-gray)"] {
+        background: #374151 !important;
+      }
+
+      /* inline-style text overrides for table cells */
+      td[style*="color:#374151"] {
+        color: #D1D5DB !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="page">
+  <div class="page">
 
-<div class="header">
-  <div class="brand">SagarmathaIQ · Analytica Nepal · Post-Election Model Audit · Falgun 2082</div>
-  <h1>2082 Election: Model Post-Mortem</h1>
-  <div class="meta">Published forecast (March 1, 2082) vs. official results · result.election.gov.np · All 165 seats declared</div>
-  <a href="constituency_results.html" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,.8);text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:3px;padding:5px 12px">
-    View all 165 constituency results →
-  </a>
-</div>
-
-<!-- Byline -->
-<div class="byline-block">
-  <div class="byline-left">
-    <span class="byline-author">By SagarmathaIQ Team</span>
-    <span class="byline-sep">·</span>
-    <span class="byline-date">March 9, 2026</span>
-    <span class="byline-sep">·</span>
-    <span class="byline-location">KATHMANDU</span>
-  </div>
-  <div class="byline-right">
-    <span class="byline-tag">POST-ELECTION ANALYSIS</span>
-  </div>
-</div>
-
-<!-- Byline -->
-<div style="border-bottom:1px solid #E5E7EB;padding:14px 0 16px;margin-bottom:0">
-  <div style="max-width:720px">
-    <div style="font-size:11px;font-family:'Courier New',monospace;color:#6B7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">Analysis</div>
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#374151">
-      <span style="font-weight:700;color:#1E3A8A">SagarmathaIQ Team</span>
-      <span style="color:#D1D5DB">|</span>
-      <span>March 9, 2026</span>
-      <span style="color:#D1D5DB">|</span>
-      <span style="color:#6B7280">8 min read</span>
+    <div class="header">
+      <div class="brand">SagarmathaIQ · Analytica Nepal · Post-Election Model Audit · Falgun 2082</div>
+      <h1>2082 Election: Model Post-Mortem</h1>
+      <div class="meta">Published forecast (March 1, 2082) vs. official results · result.election.gov.np · All 165 seats
+        declared</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+        <a href="index.html"
+          style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,.8);text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:3px;padding:5px 12px">
+          ← Back to home
+        </a>
+        <a href="constituency_results.html"
+          style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,.8);text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:3px;padding:5px 12px">
+          View all 165 constituency results →
+        </a>
+      </div>
     </div>
+
+    <!-- Byline -->
+    <div class="byline-block">
+      <div class="byline-left">
+        <span class="byline-author">By SagarmathaIQ Team</span>
+        <span class="byline-sep">·</span>
+        <span class="byline-date">March 9, 2026</span>
+        <span class="byline-sep">·</span>
+        <span class="byline-location">KATHMANDU</span>
+      </div>
+      <div class="byline-right">
+        <span class="byline-tag">POST-ELECTION ANALYSIS</span>
+      </div>
+    </div>
+
+    <!-- Byline -->
+    <div style="border-bottom:1px solid #E5E7EB;padding:14px 0 16px;margin-bottom:0">
+      <div style="max-width:720px">
+        <div
+          style="font-size:11px;font-family:'Courier New',monospace;color:#6B7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">
+          Analysis</div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;color:#374151">
+          <span style="font-weight:700;color:#1E3A8A">SagarmathaIQ Team</span>
+          <span style="color:#D1D5DB">|</span>
+          <span>March 9, 2026</span>
+          <span style="color:#D1D5DB">|</span>
+          <span style="color:#6B7280">8 min read</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Score bar -->
+    <div class="scorebar">
+      <div class="scorebar-hit" style="width:49.7%"></div>
+      <div class="scorebar-miss" style="width:40.6%"></div>
+    </div>
+    <div class="scorebar-labels">
+      <span style="color:var(--green)">■ 82 correct (49.7%)</span>
+      <span style="color:var(--red)">83 wrong ■</span>
+    </div>
+
+    <!-- Big picture -->
+    <section>
+      <h2>What happened</h2>
+      <p>Nepal's 2082 election was not a close race. RSP won 125 of 165 FPTP seats — a majority government on its own,
+        the first time any party has done that in the republic era. The result came from a near-total collapse of NC and
+        UML outside their mountain strongholds, driven by the youth-led 2025 uprising that ended KP Sharma Oli's
+        government. Balen Shah defeating Oli in his own constituency of Jhapa-5 was the symbolic headline. Rabi
+        Lamichhane won Chitwan-2 for the third time.</p>
+      <p>NC fell from 89 seats (2079) to 18. UML fell from 78 to 9. Gagan Thapa's NC 2.0 pitch did not land — he lost
+        Sarlahi-4, the Madhesh constituency he deliberately chose to contest in. NCP (Prachanda) held 8 seats,
+        concentrated in Karnali and Rukum. Shram Sanskriti won 3 FPTP seats as an urban left alternative. The PR vote
+        was even more decisive: RSP took 47.7% of the national PR vote.</p>
+    </section>
+
+    <!-- Province accuracy -->
+    <section>
+      <h2>Province accuracy</h2>
+      <table class="prov-table">
+        <thead>
+          <tr>
+            <th>Province</th>
+            <th>Correct / Total</th>
+            <th>Accuracy</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Bagmati</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">27 / 33</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:82%;background:var(--green)"></div>
+              </div><span class="acc-val">82%</span>
+            </td>
+            <td><span class="badge badge-green">Best</span></td>
+          </tr>
+          <tr>
+            <td><strong>Gandaki</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">10 / 18</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:56%;background:var(--amber)"></div>
+              </div><span class="acc-val">56%</span>
+            </td>
+            <td><span class="badge badge-amber">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>Karnali</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">8 / 12</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:67%;background:var(--amber)"></div>
+              </div><span class="acc-val">67%</span>
+            </td>
+            <td><span class="badge badge-amber">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>Lumbini</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">13 / 26</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:50%;background:var(--amber)"></div>
+              </div><span class="acc-val">50%</span>
+            </td>
+            <td><span class="badge badge-amber">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sudurpashchim</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">6 / 16</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:38%;background:var(--red)"></div>
+              </div><span class="acc-val">38%</span>
+            </td>
+            <td><span class="badge badge-red">Failed</span></td>
+          </tr>
+          <tr>
+            <td><strong>Koshi</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">13 / 28</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:46%;background:var(--amber)"></div>
+              </div><span class="acc-val">46%</span>
+            </td>
+            <td><span class="badge badge-amber">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>Madhesh</strong></td>
+            <td style="font-family:'Courier New',monospace;font-size:12px">7 / 32</td>
+            <td>
+              <div class="acc-bar-wrap">
+                <div class="acc-bar-fill" style="width:22%;background:var(--red)"></div>
+              </div><span class="acc-val">22%</span>
+            </td>
+            <td><span class="badge badge-red">Failed</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="source-note">Dhanusha-1 counted as NCP (certificate issued, under court challenge)</div>
+    </section>
+
+    <!-- What worked / what didn't -->
+    <section>
+      <h2>What the model got right</h2>
+
+      <div class="finding">
+        <span class="finding-num green">✓</span>
+        <div class="finding-text"><strong>RSP as the dominant force in urban Nepal.</strong> Kathmandu Valley (14/15),
+          Kaski, Chitwan, Jhapa — the model called the RSP sweep across all major urban centres correctly. These weren't
+          marginal calls. The prior already showed RSP consolidating educated urban voters away from UML and NC, and win
+          probabilities in those seats were high enough that even a model underestimating RSP's national magnitude still
+          got them right. That's a meaningful distinction from a lucky call.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num green">✓</span>
+        <div class="finding-text"><strong>NCP's floor.</strong> Forecast 9, actual 8 — the model correctly identified
+          that Prachanda and Barsha Man Pun would hold in Karnali and Rukum. The party did not collapse.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num green">✓</span>
+        <div class="finding-text"><strong>RSP as largest party.</strong> The model gave RSP a 67.6% probability of being
+          the largest party. It won an outright majority — the right direction, just underestimated scale.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What went wrong</h2>
+
+      <div class="finding">
+        <span class="finding-num red">✗</span>
+        <div class="finding-text"><strong>Madhesh was a complete miss.</strong> RSP won 31 of 32 seats. The model
+          forecast NC, JSP and others in most of these, treating Madhesh as a multi-party competitive region with deep
+          identity politics. It was not — RSP's wave overrode all of it. This is the single biggest structural failure:
+          no Madhesh-specific wave term.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num red">✗</span>
+        <div class="finding-text"><strong>RSP scale was underestimated everywhere.</strong> The model forecast RSP at 56
+          FPTP seats. Actual was 125. Even the p97.5 upper bound of the simulation (78 seats) was 47 seats below
+          reality. The 2079 PR baselines used to calibrate vote shares were built for a multi-party equilibrium that no
+          longer existed.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num red">✗</span>
+        <div class="finding-text"><strong>JSP collapsed entirely.</strong> Forecast 6 seats, won 0. Parties under
+          existential pressure need explicit collapse scenario branches — a Gaussian model cannot generate zero-seat
+          outcomes from a 6-seat mean.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num red">✗</span>
+        <div class="finding-text"><strong>No constituency is 100% certain.</strong> Bhaktapur-1 was assigned 100% to
+          NMKP. RSP won it. Every seat needs a non-zero probability floor for the wave party.</div>
+      </div>
+    </section>
+
+    <!-- Gagan Thapa -->
+    <section>
+      <h2> <span style="color:var(--red)">Our High-profile miss: Gagan Thapa (Sarlahi-4) </span> </h2>
+      <p>When Thapa won the NC presidency ~2 months before the election in 2082, our model — like most analysts —
+        absorbed the NC Version 2.0 narrative: new generation leader, reform credentials, likely stops the NC's
+        bleeding. The forecast gave NC a mean of 67 total seats and a 27.7% chance of being the largest party. Thapa
+        himself made a bold territorial bet: instead of defending a safe hill seat, he contested Sarlahi-4 in Madhesh —
+        a signal, he argued, that NC could speak to all of Nepal.</p>
+      <div class="chain">
+        <div class="chain-step">New NC president</div><span class="chain-arrow">→</span>
+        <div class="chain-step">Generational signal</div><span class="chain-arrow">→</span>
+        <div class="chain-step">Voter confidence recovered</div><span class="chain-arrow">→</span>
+        <div class="chain-end">None of it materialized</div>
+      </div>
+      <p>The model called Sarlahi-4 for Gagan Thapa (NC) with a high-certainty wrong call. Thapa got 22,831 votes but
+        lost overwhelmingly to RSP's Amaresh Kumar Singh. The defeat had several compounding factors: Balen Shah effect
+        in Terai; the language barrier made direct outreach to Madhesi voters difficult; and internal party opponents
+        reportedly worked against him too. Looking at the PR vote, NC got ~10k less PR vote than Gagan got in FTFP
+        indicating upper level leaders didn't support newer faces in congress.</p>
+      <p>Thapa had deliberately chosen a Madhesh constituency rather than defend his own KTM-4 seat — a strategic bet
+        that he could contest nationally while committing minimal time to any single constituency. That calculation
+        failed. The model treated Sarlahi-4 as a historic NC hold and never accounted for the structural wave dynamics
+        in Madhesh province or the hyper-local political dynamics. It was a confident wrong call on both counts.</p>
+      <p><strong>For 2087:</strong> NC's baseline likely needs be anchored to their actual 2082 result of 18 FPTP seats,
+        not a reversion to historical norms depending on the political landscape. Whether Thapa rebuilds the party over
+        the next five years is an empirical question the next election will answer.</p>
+    </section>
+
+    <!-- 2087 -->
+
+    <section>
+      <h2>Proportional representation results</h2>
+
+      <p>The PR vote was even more decisive than FPTP. RSP took <strong>47.7%</strong> of the national PR vote — nearly
+        half the electorate — which no single party has done in the republic era. NC and UML, despite decades of
+        organisational depth, each finished around 13–16%.</p>
+
+      <p style="font-size:12px;font-family:'Courier New',monospace;color:var(--mid-gray);margin-bottom:10px">Forecast
+        vs. actual PR vote share — with 95% confidence intervals</p>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin:0 0 16px">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border-gray)">
+            <th
+              style="text-align:left;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              Party</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              Forecast</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              CI [95%]</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              Actual</th>
+            <th
+              style="text-align:left;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
+            <td style="padding:8px 10px;font-weight:700;color:#2563EB">RSP</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">26.5%</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">
+              [20.3–44.9]%</td>
+            <td
+              style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#2563EB">
+              47.7%</td>
+            <td style="padding:8px 10px"><span class="badge badge-red">Above ceiling</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#F0FDF4">
+            <td style="padding:8px 10px;font-weight:700;color:#16A34A">NC</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">20.6%</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">
+              [17.4–25.7]%</td>
+            <td
+              style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#16A34A">
+              16.2%</td>
+            <td style="padding:8px 10px"><span class="badge badge-amber">Below forecast, inside CI</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
+            <td style="padding:8px 10px;font-weight:700;color:#DC2626">UML</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">20.5%</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">
+              [17.2–27.1]%</td>
+            <td
+              style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#DC2626">
+              13.4%</td>
+            <td style="padding:8px 10px"><span class="badge badge-red">Below lower bound</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
+            <td style="padding:8px 10px;font-weight:700;color:#CA8A04">NCP</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">14.1%</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">
+              [10.6–23.7]%</td>
+            <td
+              style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#CA8A04">
+              7.5%</td>
+            <td style="padding:8px 10px"><span class="badge badge-red">Below lower bound</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
+            <td style="padding:8px 10px;font-weight:700;color:#7C3AED">JSP</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">6.9%</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">
+              [4.0–10.9]%</td>
+            <td
+              style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#9CA3AF">
+              1.7%</td>
+            <td style="padding:8px 10px"><span class="badge badge-red">Eliminated (below 3%)</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#F0FDF4">
+            <td style="padding:8px 10px;font-weight:700;color:#EC4899">RPP</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">6.6%</td>
+            <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">
+              [3.3–14.1]%</td>
+            <td
+              style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#EC4899">
+              3.1%</td>
+            <td style="padding:8px 10px"><span class="badge badge-amber">Inside CI, barely above threshold</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>RSP's actual PR share of 47.7% sits <strong>above the p97.5 upper bound</strong> of the model's simulation
+        (44.9%) — meaning the outcome was beyond the most optimistic scenario in 10,000 runs. The model was right that
+        RSP would lead, but the scale was simply not in its prior. UML and NCP both fell below their lower bounds,
+        suggesting the vote consolidation toward RSP was more total than any scenario anticipated. NC's result was the
+        most accurately forecast — inside the CI and close to the lower tail. JSP's collapse to 1.7% and elimination
+        from parliament was the starkest individual miss.</p>
+
+      <p style="font-size:12px;font-family:'Courier New',monospace;color:var(--mid-gray);margin-top:14px">Final seat
+        totals (FPTP + PR)</p>
+      <table style="width:100%;border-collapse:collapse;font-size:12px;margin:8px 0">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border-gray)">
+            <th
+              style="text-align:left;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              Party</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              PR Votes</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              PR Share</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              PR Seats</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              FPTP</th>
+            <th
+              style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">
+              Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f0f0f0;background:#F0F9FF">
+            <td style="padding:7px 10px;font-weight:700;color:#2563EB">RSP</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">51,63,493</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">47.7%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">57</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">125</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">182</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0">
+            <td style="padding:7px 10px;font-weight:700;color:#16A34A">NC</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">17,51,172</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">16.2%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">20</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">18</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">38</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0">
+            <td style="padding:7px 10px;font-weight:700;color:#DC2626">UML</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">14,55,884</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">13.4%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">16</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">9</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">25</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0">
+            <td style="padding:7px 10px;font-weight:700;color:#CA8A04">NCP</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">8,11,577</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">7.5%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">9</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">8</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">17</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0">
+            <td style="padding:7px 10px;font-weight:700;color:#0891B2">SS</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3,85,848</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3.6%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">4</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">7</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0">
+            <td style="padding:7px 10px;font-weight:700;color:#EC4899">RPP</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3,30,684</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3.1%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">4</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">1</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">5</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f0f0f0">
+            <td style="padding:7px 10px;color:#9CA3AF">JSP</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">1,82,285
+            </td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">1.7%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">— (below 3%)
+            </td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">0</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">0</td>
+          </tr>
+          <tr style="background:var(--light-gray);font-weight:700;border-top:2px solid var(--border-gray)">
+            <td style="padding:7px 10px">TOTAL</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">1,08,35,027</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">100%</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">110</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">165</td>
+            <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">275</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>RSP's combined total of <strong>182 seats</strong> gives it a majority of 44 above the 138 threshold. The PR
+        result mirrors the FPTP wave almost exactly — this was not a split-ticket quirk, it was a genuine national
+        consolidation.</p>
+
+    </section>
+
+    <section>
+      <h2>Changes for 2087</h2>
+      <div class="finding">
+        <span class="finding-num">1</span>
+        <div class="finding-text">Build a Madhesh-specific structural model. Provincial identity politics and RSP wave
+          dynamics need separate treatment.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num">2</span>
+        <div class="finding-text">Use 2082 FPTP results as the new baseline — not 2079 PR shares. RSP at 125 seats and
+          47.7% PR nationally is the new prior.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num">3</span>
+        <div class="finding-text">Add Shram Sanskriti as a modelled party. 3 FPTP + 4 PR in their first election is a
+          real baseline.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num">4</span>
+        <div class="finding-text">Add collapse scenario branches for parties under existential pressure. JSP at 0 seats
+          cannot come from a Gaussian distribution.</div>
+      </div>
+      <div class="finding">
+        <span class="finding-num">5</span>
+        <div class="finding-text">Cap constituency certainty at 95%. No seat is 100%.</div>
+      </div>
+    </section>
+
   </div>
-</div>
-
-<!-- Score bar -->
-<div class="scorebar">
-  <div class="scorebar-hit"  style="width:49.7%"></div>
-  <div class="scorebar-miss" style="width:40.6%"></div>
-</div>
-<div class="scorebar-labels">
-  <span style="color:var(--green)">■ 82 correct (49.7%)</span>
-  <span style="color:var(--red)">83 wrong ■</span>
-</div>
-
-<!-- Big picture -->
-<section>
-  <h2>What happened</h2>
-  <p>Nepal's 2082 election was not a close race. RSP won 125 of 165 FPTP seats — a majority government on its own, the first time any party has done that in the republic era. The result came from a near-total collapse of NC and UML outside their mountain strongholds, driven by the youth-led 2025 uprising that ended KP Sharma Oli's government. Balen Shah defeating Oli in his own constituency of Jhapa-5 was the symbolic headline. Rabi Lamichhane won Chitwan-2 for the third time.</p>
-  <p>NC fell from 89 seats (2079) to 18. UML fell from 78 to 9. Gagan Thapa's NC 2.0 pitch did not land — he lost Sarlahi-4, the Madhesh constituency he deliberately chose to contest in. NCP (Prachanda) held 8 seats, concentrated in Karnali and Rukum. Shram Sanskriti won 3 FPTP seats as an urban left alternative. The PR vote was even more decisive: RSP took 48% nationally.</p>
-</section>
-
-<!-- Province accuracy -->
-<section>
-  <h2>Province accuracy</h2>
-  <table class="prov-table">
-    <thead>
-      <tr>
-        <th>Province</th>
-        <th>Correct / Total</th>
-        <th>Accuracy</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Bagmati</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">27 / 33</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:82%;background:var(--green)"></div></div><span class="acc-val">82%</span></td>
-        <td><span class="badge badge-green">Best</span></td>
-      </tr>
-      <tr>
-        <td><strong>Gandaki</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">10 / 18</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:56%;background:var(--amber)"></div></div><span class="acc-val">56%</span></td>
-        <td><span class="badge badge-amber">Partial</span></td>
-      </tr>
-      <tr>
-        <td><strong>Karnali</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">8 / 12</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:67%;background:var(--amber)"></div></div><span class="acc-val">67%</span></td>
-        <td><span class="badge badge-amber">Partial</span></td>
-      </tr>
-      <tr>
-        <td><strong>Lumbini</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">13 / 26</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:50%;background:var(--amber)"></div></div><span class="acc-val">50%</span></td>
-        <td><span class="badge badge-amber">Partial</span></td>
-      </tr>
-      <tr>
-        <td><strong>Sudurpashchim</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">6 / 16</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:38%;background:var(--red)"></div></div><span class="acc-val">38%</span></td>
-        <td><span class="badge badge-red">Failed</span></td>
-      </tr>
-      <tr>
-        <td><strong>Koshi</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">13 / 28</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:46%;background:var(--amber)"></div></div><span class="acc-val">46%</span></td>
-        <td><span class="badge badge-amber">Partial</span></td>
-      </tr>
-      <tr>
-        <td><strong>Madhesh</strong></td>
-        <td style="font-family:'Courier New',monospace;font-size:12px">7 / 32</td>
-        <td><div class="acc-bar-wrap"><div class="acc-bar-fill" style="width:22%;background:var(--red)"></div></div><span class="acc-val">22%</span></td>
-        <td><span class="badge badge-red">Failed</span></td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="source-note">Dhanusha-1 counted as NCP (certificate issued, under court challenge)</div>
-</section>
-
-<!-- What worked / what didn't -->
-<section>
-  <h2>What the model got right</h2>
-
-  <div class="finding">
-    <span class="finding-num green">✓</span>
-    <div class="finding-text"><strong>RSP urban core.</strong> Kathmandu Valley, Kaski, Chitwan, Jhapa — the model called the RSP sweep across all major urban centres correctly.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num green">✓</span>
-    <div class="finding-text"><strong>NCP's floor.</strong> Forecast 9, actual 8 — the model correctly identified that Prachanda and Barsha Man Pun would hold in Karnali and Rukum. The party did not collapse.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num green">✓</span>
-    <div class="finding-text"><strong>RSP as largest party.</strong> The model gave RSP a 67.6% probability of being the largest party. It won an outright majority — the right direction, just underestimated scale.</div>
-  </div>
-</section>
-
-<section>
-  <h2>What went wrong</h2>
-
-  <div class="finding">
-    <span class="finding-num red">✗</span>
-    <div class="finding-text"><strong>Madhesh was a complete miss.</strong> RSP won 31 of 32 seats. The model forecast NC, JSP and others in most of these, treating Madhesh as a multi-party competitive region with deep identity politics. It was not — RSP's wave overrode all of it. This is the single biggest structural failure: no Madhesh-specific wave term.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num red">✗</span>
-    <div class="finding-text"><strong>RSP scale was underestimated everywhere.</strong> The model forecast RSP at 56 FPTP seats. Actual was 125. Even the p97.5 upper bound of the simulation (78 seats) was 47 seats below reality. The 2079 PR baselines used to calibrate vote shares were built for a multi-party equilibrium that no longer existed.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num red">✗</span>
-    <div class="finding-text"><strong>JSP collapsed entirely.</strong> Forecast 6 seats, won 0. Parties under existential pressure need explicit collapse scenario branches — a Gaussian model cannot generate zero-seat outcomes from a 6-seat mean.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num red">✗</span>
-    <div class="finding-text"><strong>No constituency is 100% certain.</strong> Bhaktapur-1 was assigned 100% to NMKP. RSP won it. Every seat needs a non-zero probability floor for the wave party.</div>
-  </div>
-</section>
-
-<!-- Gagan Thapa -->
-<section>
-  <h2> <span style="color:var(--red)">Our High-profile miss: Gagan Thapa (Sarlahi-4) </span> </h2>
-  <p>When Thapa won the NC presidency ~2 months before the election in 2082, our model — like most analysts — absorbed the NC Version 2.0 narrative: new generation leader, reform credentials, likely stops the NC's bleeding. The forecast gave NC a mean of 67 total seats and a 27.7% chance of being the largest party. Thapa himself made a bold territorial bet: instead of defending a safe hill seat, he contested Sarlahi-4 in Madhesh — a signal, he argued, that NC could speak to all of Nepal.</p>
-  <div class="chain">
-    <div class="chain-step">New NC president</div><span class="chain-arrow">→</span>
-    <div class="chain-step">Generational signal</div><span class="chain-arrow">→</span>
-    <div class="chain-step">Voter confidence recovered</div><span class="chain-arrow">→</span>
-    <div class="chain-end">None of it materialized</div>
-  </div>
-  <p>The model called Sarlahi-4 for Gagan Thapa (NC) with a high-certainty wrong call. Thapa got 22,831 votes but lost overwhelmingly to RSP's Amaresh Kumar Singh. The defeat had several compounding factors: Balen Shah effect in Terai; the language barrier made direct outreach to Madhesi voters difficult; and internal party opponents reportedly worked against him too. Looking at the PR vote, NC got ~10k less PR vote than Gagan got in FTFP indicating upper level leaders didn’t support newer faces in congress.</p>
-  <p>Thapa had deliberately chosen a Madhesh constituency rather than defend his own KTM-4 seat — a strategic bet that he could contest nationally while committing minimal time to any single constituency. That calculation failed. The model treated Sarlahi-4 as a historic NC hold and never accounted for the structural wave dynamics in Madhesh province or the hyper-local political dynamics. It was a confident wrong call on both counts.</p>
-  <p><strong>For 2087:</strong> NC's baseline likely needs be anchored to their actual 2082 result of 18 FPTP seats, not a reversion to historical norms depending on the political landscape. Whether Thapa rebuilds the party over the next five years is an empirical question the next election will answer.</p>
-</section>
-
-<!-- 2087 -->
-
-<section>
-  <h2>Proportional representation results</h2>
-
-  <p>The PR vote was even more decisive than FPTP. RSP took <strong>48.2%</strong> of the national PR vote — nearly half the electorate — which no single party has done in the republic era. NC and UML, despite decades of organisational depth, each finished around 13–16%.</p>
-
-  <p style="font-size:12px;font-family:'Courier New',monospace;color:var(--mid-gray);margin-bottom:10px">Forecast vs. actual PR vote share — with 95% confidence intervals</p>
-  <table style="width:100%;border-collapse:collapse;font-size:12px;margin:0 0 16px">
-    <thead>
-      <tr style="border-bottom:2px solid var(--border-gray)">
-        <th style="text-align:left;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">Party</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">Forecast</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">CI [95%]</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">Actual</th>
-        <th style="text-align:left;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">Verdict</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
-        <td style="padding:8px 10px;font-weight:700;color:#2563EB">RSP</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">26.5%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">[20.3–44.9]%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#2563EB">48.2%</td>
-        <td style="padding:8px 10px"><span class="badge badge-red">Above ceiling</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#F0FDF4">
-        <td style="padding:8px 10px;font-weight:700;color:#16A34A">NC</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">20.6%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">[17.4–25.7]%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#16A34A">16.2%</td>
-        <td style="padding:8px 10px"><span class="badge badge-amber">Below forecast, inside CI</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
-        <td style="padding:8px 10px;font-weight:700;color:#DC2626">UML</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">20.5%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">[17.2–27.1]%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#DC2626">13.5%</td>
-        <td style="padding:8px 10px"><span class="badge badge-red">Below lower bound</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
-        <td style="padding:8px 10px;font-weight:700;color:#CA8A04">NCP</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">14.1%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">[10.6–23.7]%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#CA8A04">7.3%</td>
-        <td style="padding:8px 10px"><span class="badge badge-red">Below lower bound</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#FEF2F2">
-        <td style="padding:8px 10px;font-weight:700;color:#7C3AED">JSP</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">6.9%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">[4.0–10.9]%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#9CA3AF">1.5%</td>
-        <td style="padding:8px 10px"><span class="badge badge-red">Eliminated (below 3%)</span></td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#F0FDF4">
-        <td style="padding:8px 10px;font-weight:700;color:#EC4899">RPP</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace">6.6%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;color:var(--mid-gray)">[3.3–14.1]%</td>
-        <td style="padding:8px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700;color:#EC4899">3.2%</td>
-        <td style="padding:8px 10px"><span class="badge badge-amber">Inside CI, barely above threshold</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p>RSP's actual PR share of 48.2% sits <strong>above the p97.5 upper bound</strong> of the model's simulation (44.9%) — meaning the outcome was beyond the most optimistic scenario in 10,000 runs. The model was right that RSP would lead, but the scale was simply not in its prior. UML and NCP both fell below their lower bounds, suggesting the vote consolidation toward RSP was more total than any scenario anticipated. NC's result was the most accurately forecast — inside the CI and close to the lower tail. JSP's collapse to 1.5% and elimination from parliament was the starkest individual miss.</p>
-
-  <p style="font-size:12px;font-family:'Courier New',monospace;color:var(--mid-gray);margin-top:14px">Final seat totals (FPTP + PR)</p>
-  <table style="width:100%;border-collapse:collapse;font-size:12px;margin:8px 0">
-    <thead>
-      <tr style="border-bottom:2px solid var(--border-gray)">
-        <th style="text-align:left;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">Party</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">PR Votes</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">PR Share</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">PR Seats</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">FPTP</th>
-        <th style="text-align:right;padding:6px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--mid-gray)">Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="border-bottom:1px solid #f0f0f0;background:#F0F9FF">
-        <td style="padding:7px 10px;font-weight:700;color:#2563EB">RSP</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">47,25,407</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">48.2%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">59</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">125</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">184</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:7px 10px;font-weight:700;color:#16A34A">NC</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">15,88,482</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">16.2%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">19</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">18</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">37</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:7px 10px;font-weight:700;color:#DC2626">UML</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">13,25,708</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">13.5%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">16</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">9</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">25</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:7px 10px;font-weight:700;color:#CA8A04">NCP</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">7,15,307</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">7.3%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">9</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">8</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">17</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:7px 10px;font-weight:700;color:#0891B2">SS</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3,35,768</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3.4%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">4</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">7</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:7px 10px;font-weight:700;color:#EC4899">RPP</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3,11,221</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3.2%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">3</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">1</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;font-weight:700">4</td>
-      </tr>
-      <tr style="border-bottom:1px solid #f0f0f0">
-        <td style="padding:7px 10px;color:#9CA3AF">JSP</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">1,48,797</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">1.5%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">— (below 3%)</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">0</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace;color:#9CA3AF">0</td>
-      </tr>
-      <tr style="background:var(--light-gray);font-weight:700;border-top:2px solid var(--border-gray)">
-        <td style="padding:7px 10px">TOTAL</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">98,10,999</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">100%</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">110</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">165</td>
-        <td style="padding:7px 10px;text-align:right;font-family:'Courier New',monospace">275</td>
-      </tr>
-    </tbody>
-  </table>
-  <p>RSP's combined total of <strong>184 seats</strong> gives it a majority of 46 above the 138 threshold. The PR result mirrors the FPTP wave almost exactly — this was not a split-ticket quirk, it was a genuine national consolidation.</p>
-
-</section>
-
-<section>
-  <h2>Changes for 2087</h2>
-  <div class="finding">
-    <span class="finding-num">1</span>
-    <div class="finding-text">Build a Madhesh-specific structural model. Provincial identity politics and RSP wave dynamics need separate treatment.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num">2</span>
-    <div class="finding-text">Use 2082 FPTP results as the new baseline — not 2079 PR shares. RSP at 125 seats and 48% PR nationally is the new prior.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num">3</span>
-    <div class="finding-text">Add Shram Sanskriti as a modelled party. 3 FPTP + 4 PR in their first election is a real baseline.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num">4</span>
-    <div class="finding-text">Add collapse scenario branches for parties under existential pressure. JSP at 0 seats cannot come from a Gaussian distribution.</div>
-  </div>
-  <div class="finding">
-    <span class="finding-num">5</span>
-    <div class="finding-text">Cap constituency certainty at 95%. No seat is 100%.</div>
-  </div>
-</section>
-
-</div>
 </body>
+
 </html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology — SagarmathaIQ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.7;
+            color: #1F2937;
+            background: #F9FAFB;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-button.active {
+            background: rgba(255, 255, 255, 0.35);
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .page-intro {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-intro h2 {
+            font-size: 1.6rem;
+            color: #1E3A8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-intro p {
+            color: #4B5563;
+        }
+
+        .toc {
+            background: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            border-radius: 0 6px 6px 0;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .toc h3 {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #1E3A8A;
+            margin-bottom: 0.75rem;
+        }
+
+        .toc ol {
+            padding-left: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .toc a {
+            color: #2563EB;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            color: #1E3A8A;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #DBEAFE;
+        }
+
+        .section h3 {
+            font-size: 1.05rem;
+            color: #1F2937;
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        .section p {
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .formula-block {
+            background: #F1F5F9;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.92rem;
+            line-height: 1.8;
+            color: #1E293B;
+            overflow-x: auto;
+            white-space: pre;
+        }
+
+        .formula-block .comment {
+            color: #64748B;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+
+        th {
+            background: #1E3A8A;
+            color: white;
+            padding: 0.6rem 0.85rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.55rem 0.85rem;
+            border-bottom: 1px solid #E5E7EB;
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) td {
+            background: #F9FAFB;
+        }
+
+        td code {
+            background: #EFF6FF;
+            padding: 0.1rem 0.35rem;
+            border-radius: 3px;
+            font-size: 0.88rem;
+            color: #1E3A8A;
+        }
+
+        .callout {
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.93rem;
+        }
+
+        .callout-blue {
+            background: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            color: #1E3A8A;
+        }
+
+        .callout-amber {
+            background: #FFFBEB;
+            border-left: 4px solid #F59E0B;
+            color: #78350F;
+        }
+
+        .callout-red {
+            background: #FEF2F2;
+            border-left: 4px solid #EF4444;
+            color: #7F1D1D;
+        }
+
+        .callout-green {
+            background: #F0FDF4;
+            border-left: 4px solid #22C55E;
+            color: #14532D;
+        }
+
+        .callout strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-list {
+            counter-reset: steps;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .step-list li {
+            counter-increment: steps;
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+
+        .step-list li::before {
+            content: counter(steps);
+            background: #1E3A8A;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            min-width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .mini-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 6px;
+            padding: 1rem;
+        }
+
+        .mini-card h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748B;
+            margin-bottom: 0.4rem;
+        }
+
+        .mini-card p {
+            font-size: 0.9rem;
+            color: #1F2937;
+            margin: 0;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .tag-critical {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #9CA3AF;
+            font-size: 0.85rem;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0F172A;
+                color: #E2E8F0;
+            }
+
+            .page-intro,
+            .section {
+                background: #1E293B;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            }
+
+            .page-intro p,
+            .section p {
+                color: #CBD5E1;
+            }
+
+            .section h2 {
+                color: #93C5FD;
+                border-bottom-color: #1E3A8A;
+            }
+
+            .section h3 {
+                color: #E2E8F0;
+            }
+
+            .toc {
+                background: rgba(30, 58, 138, 0.2);
+            }
+
+            .toc a {
+                color: #93C5FD;
+            }
+
+            .formula-block {
+                background: #0F172A;
+                border-color: #334155;
+                color: #93C5FD;
+            }
+
+            .formula-block .comment {
+                color: #64748B;
+            }
+
+            th {
+                background: #1E3A8A;
+            }
+
+            td {
+                border-bottom-color: #334155;
+            }
+
+            tr:nth-child(even) td {
+                background: #1E293B;
+            }
+
+            td code {
+                background: rgba(30, 58, 138, 0.3);
+                color: #93C5FD;
+            }
+
+            .mini-card {
+                background: #0F172A;
+                border-color: #334155;
+            }
+
+            .mini-card p {
+                color: #CBD5E1;
+            }
+
+            .callout-blue {
+                background: rgba(30, 58, 138, 0.3);
+                color: #93C5FD;
+            }
+
+            .callout-amber {
+                background: rgba(120, 53, 15, 0.2);
+                color: #FDE68A;
+            }
+
+            .callout-red {
+                background: rgba(127, 29, 29, 0.2);
+                color: #FCA5A5;
+            }
+
+            .callout-green {
+                background: rgba(20, 83, 45, 0.2);
+                color: #86EFAC;
+            }
+
+            footer {
+                color: #475569;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">🏔️</div>
+        <h1>SagarmathaIQ</h1>
+        <p class="tagline">Peak Election Intelligence</p>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button">Forecasts</a>
+            <a href="methodology.html" class="nav-button active">Methodology</a>
+            <a href="about.html" class="nav-button">Who We Are</a>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="page-intro">
+            <h2>How We Build Election Forecasts</h2>
+            <p>
+                This page documents the modeling framework behind SagarmathaIQ's election forecasts.
+                It was first applied to Nepal's 2082 parliamentary election and is designed to carry
+                forward into future cycles with updated baselines and structural improvements.
+            </p>
+        </div>
+
+        <nav class="toc">
+            <h3>Contents</h3>
+            <ol>
+                <li><a href="#overview">1. Framework overview</a></li>
+                <li><a href="#data">2. Data sources and baselines</a></li>
+                <li><a href="#fptp">3. FPTP constituency model</a></li>
+                <li><a href="#pr">4. PR seat allocator</a></li>
+                <li><a href="#simulation">5. Simulation and uncertainty</a></li>
+                <li><a href="#validation">6. Validation approach</a></li>
+                <li><a href="#limitations">7. Known limitations</a></li>
+                <li><a href="#roadmap">8. Planned improvements (2087)</a></li>
+            </ol>
+        </nav>
+
+        <section class="section" id="overview">
+            <h2>1. Framework overview</h2>
+            <p>
+                Nepal uses a mixed-member proportional (MMP) system: 165 seats decided by first-past-the-post
+                (FPTP) voting in single-member constituencies, and 110 seats allocated by party-list proportional
+                representation (PR) from national vote share. We model these independently and combine them for
+                total seat projections.
+            </p>
+            <div class="two-col">
+                <div class="mini-card">
+                    <h4>FPTP component</h4>
+                    <p>Constituency-level probabilistic model. Outputs a win-probability distribution over all
+                        registered parties per seat.</p>
+                </div>
+                <div class="mini-card">
+                    <h4>PR component</h4>
+                    <p>National vote-share projection with Monte Carlo draws. Seats allocated via the largest remainder
+                        method with a 3% threshold.</p>
+                </div>
+            </div>
+            <p>
+                Both models share a common party taxonomy and are calibrated to the same historical baseline
+                (2079 election results). Outputs are published as probability distributions, not point estimates,
+                to reflect genuine uncertainty.
+            </p>
+        </section>
+
+        <section class="section" id="data">
+            <h2>2. Data sources and baselines</h2>
+            <h3>Primary baseline</h3>
+            <p>
+                The 2079 general election results serve as the prior for both models. At constituency level
+                we use 2079 FPTP vote counts per candidate per party. At national level we use 2079 PR vote
+                totals to anchor party share priors.
+            </p>
+            <h3>Supplementary inputs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Input</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Candidate registration data</td>
+                        <td>Determines which parties contest each constituency. A party absent from a seat gets zero
+                            probability mass.</td>
+                    </tr>
+                    <tr>
+                        <td>Party-level swing signals</td>
+                        <td>National-level adjustments fed into constituency z-score factors (see §3).</td>
+                    </tr>
+                    <tr>
+                        <td>Known candidate strength</td>
+                        <td>Encodes prior knowledge for high-profile incumbents or notable challengers via the
+                            <code>z1</code> parameter.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>District-level demographic splits</td>
+                        <td>Used selectively for constituencies where ethnolinguistic composition strongly predicts
+                            party loyalty (Madhesh, Terai).</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="callout callout-blue">
+                <strong>Note for 2087</strong>
+                The 2082 FPTP results replace 2079 as the primary baseline. RSP won 125 FPTP seats and ~48%
+                of the PR vote; these figures replace the 2079 PR share allocations as the dominant-party prior.
+            </div>
+        </section>
+
+        <section class="section" id="fptp">
+            <h2>3. FPTP constituency model</h2>
+            <p>
+                The core of the FPTP model is a zero-sum Dirichlet distribution over candidate vote shares
+                within each constituency. This naturally enforces that all shares sum to one and produces a
+                full probability distribution rather than a single predicted outcome.
+            </p>
+
+            <h3>Vote share prior construction</h3>
+            <p>
+                Each party's prior concentration parameter is derived from its 2079 performance in the same
+                constituency (or the district average when local data is unavailable), adjusted by two
+                calibration factors:
+            </p>
+            <div class="formula-block">α_party = baseline_share × exp(z0 + z1)
+
+                baseline_share = party's historical vote share in this constituency
+                z0 = national swing factor (shared across a province)
+                z1 = candidate-specific strength adjustment (default 0.0)</div>
+            <p>
+                The <code>z0</code> parameter encodes province-level or national swings from polling or
+                qualitative intelligence. The <code>z1</code> parameter is reserved for constituency-specific
+                overrides: popular incumbents, floor-crossing candidates, or known strongholds.
+            </p>
+
+            <h3>Sampling procedure</h3>
+            <ol class="step-list">
+                <li>Construct the Dirichlet concentration vector <strong>α</strong> for all contesting candidates in the
+                    seat.</li>
+                <li>Draw 10,000 samples from <strong>Dir(α)</strong>. Each draw is a complete vote-share vector summing
+                    to 1.</li>
+                <li>For each draw, identify the plurality winner. This gives a win-probability estimate for every
+                    candidate.</li>
+                <li>Aggregate win probabilities across all seats to generate province- and national-level seat
+                    projections.</li>
+            </ol>
+
+            <h3>Confidence reporting</h3>
+            <p>
+                Published forecasts report the win probability of the leading candidate and credible intervals
+                from simulation draws. Labels: "safe" above 85%, "likely" at 65–85%, "competitive" below 65%.
+            </p>
+            <div class="callout callout-amber">
+                <strong>Known issue — 2082</strong>
+                Several constituencies were assigned 100% win probability, which is epistemically wrong
+                regardless of apparent dominance. The 2087 model caps all constituency probabilities at 97%.
+            </div>
+        </section>
+
+        <section class="section" id="pr">
+            <h2>4. PR seat allocator</h2>
+            <p>
+                Nepal's 110 PR seats are allocated using the Hare quota / largest remainder method,
+                consistent with the Election Commission's official procedure.
+            </p>
+
+            <h3>Threshold and eligibility</h3>
+            <p>
+                Parties must clear 3% of the national PR vote to be eligible for any PR seats.
+                Parties below this threshold are excluded before allocation begins; their vote shares
+                are not redistributed.
+            </p>
+
+            <h3>Allocation steps</h3>
+            <div class="formula-block">quota = total_valid_votes / 110
+                automatic = floor(party_votes / quota) # for each eligible party
+                remainder = party_votes - (automatic × quota)
+                remainder_seats → allocated in descending order of remainder</div>
+
+            <h3>PR vote share projection</h3>
+            <p>
+                PR vote share is modeled separately from FPTP vote share. The baseline is each party's
+                2079 PR vote fraction. National swing factors derived from FPTP simulation outputs apply
+                as a soft update. The result is a distribution over national PR vote shares; we draw
+                samples, run allocation per draw, and report the resulting PR seat distribution.
+            </p>
+            <div class="callout callout-blue">
+                <strong>Why FPTP and PR shares differ</strong>
+                Voters frequently split their ballot in Nepal's MMP system. A party can win few FPTP seats
+                but retain strong PR support, or vice versa. We do not assume the two are equal.
+            </div>
+        </section>
+
+        <section class="section" id="simulation">
+            <h2>5. Simulation and uncertainty</h2>
+            <p>
+                Both models use Monte Carlo simulation to propagate uncertainty from constituency level
+                through to national seat totals.
+            </p>
+
+            <h3>FPTP simulation</h3>
+            <p>
+                10,000 draws are taken independently per constituency. Seat counts are summed across
+                constituencies to produce a distribution over total FPTP seats per party. Reported
+                intervals are the 2.5th and 97.5th percentiles.
+            </p>
+
+            <h3>PR simulation</h3>
+            <p>
+                PR vote shares are drawn using a Dirichlet process at the national level.
+                For each of 10,000 drawn national vote-share vectors the allocator runs and outputs
+                a seat count, giving a full marginal distribution per party.
+            </p>
+
+            <h3>Combined totals</h3>
+            <p>
+                FPTP and PR draws are paired by index and summed. Reported as: median total seats [p2.5 – p97.5].
+            </p>
+            <div class="callout callout-red">
+                <strong>2082 calibration failure</strong>
+                RSP's actual PR share (47.9%) exceeded our p97.5 ceiling (44.9%). FPTP simulations similarly
+                underestimated RSP's scale. The z0 loading was set too conservatively. The 2087 model anchors
+                the RSP prior directly to 2082 FPTP results.
+            </div>
+        </section>
+
+        <section class="section" id="validation">
+            <h2>6. Validation approach</h2>
+
+            <h3>Pre-election calibration</h3>
+            <p>
+                Before each forecast cycle, parameters are tested against the most recent prior election as a
+                pseudo out-of-sample check. Z-factors are adjusted until the model reconstructs historical
+                results within acceptable error bounds. This does not guarantee forward accuracy but catches
+                obvious mis-specification.
+            </p>
+
+            <h3>Post-election audit</h3>
+            <p>
+                After each election we publish a structured post-mortem comparing published forecast probabilities
+                against official results. Metrics tracked: overall hit rate, per-province accuracy, hit rate by
+                confidence tier (safe / likely / competitive), and PR vote share error vs. the credible interval.
+            </p>
+            <div class="callout callout-green">
+                <strong>2082 post-mortem</strong>
+                Overall FPTP accuracy: 82/165 (49.7%). KTM Valley: 14/15 (93%). Madhesh: 7/32 (22%).
+                Full analysis: <a href="forecast_accuracy_writeup.html"
+                    style="color:inherit;text-decoration:underline;">post-mortem writeup</a>.
+            </div>
+        </section>
+
+        <section class="section" id="limitations">
+            <h2>7. Known limitations</h2>
+
+            <h3>No polling data</h3>
+            <p>
+                Nepal lacks a consistent publicly available polling infrastructure. All priors come from
+                historical results and qualitative inputs. There is no mechanism to incorporate survey-based
+                vote intention.
+            </p>
+
+            <h3>Structural breaks in new constituencies</h3>
+            <p>
+                Boundary changes between cycles leave some constituencies without a clean historical analogue.
+                For these seats we fall back to district-level averages, which are a weaker prior.
+            </p>
+
+            <h3>Madhesh and ethnic-vote dynamics <span class="tag tag-critical">Critical</span></h3>
+            <p>
+                The current model treats Madhesh constituencies with the same Dirichlet framework as the rest
+                of the country. In 2082 this badly underestimated RSP's regional sweep (31 of 32 seats).
+                Madhesh operates on qualitatively different dynamics — ethnolinguistic identity, cross-provincial
+                migration, bloc voting — not captured by a generic vote-share prior.
+            </p>
+
+            <h3>Unmodeled parties <span class="tag tag-critical">Critical</span></h3>
+            <p>
+                In 2082, Shram Sanskriti won 3 FPTP and 4 PR seats but was not modeled as a distinct party.
+                Its vote share was absorbed into "other," leading to systematic overestimates for NC and NCP
+                in the seats it contested.
+            </p>
+
+            <h3>Party collapse scenarios</h3>
+            <p>
+                The model has no explicit mechanism for party collapse or vote-transfer cascades. JSP's
+                near-elimination (1.6% PR share vs. 6.9% forecast) was not flagged as a plausible tail scenario.
+                Parties with declining trajectory need explicit collapse branches.
+            </p>
+        </section>
+
+        <section class="section" id="roadmap">
+            <h2>8. Planned improvements (2087)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Change</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Madhesh structural model — separate swing term with ethnolinguistic covariates</td>
+                        <td>Critical</td>
+                        <td>Planned</td>
+                    </tr>
+                    <tr>
+                        <td>Probability cap at 97% per constituency — no 100% certainty calls</td>
+                        <td>Critical</td>
+                        <td>Planned</td>
+                    </tr>
+                    <tr>
+                        <td>Shram Sanskriti added as a modeled party with 2082 results as baseline</td>
+                        <td>Critical</td>
+                        <td>Planned</td>
+                    </tr>
+                    <tr>
+                        <td>RSP prior re-anchored to 2082 FPTP results (125 seats, ~48% PR)</td>
+                        <td>High</td>
+                        <td>Planned</td>
+                    </tr>
+                    <tr>
+                        <td>JSP and Janajati party collapse scenarios — explicit low-support branches</td>
+                        <td>High</td>
+                        <td>Planned</td>
+                    </tr>
+                    <tr>
+                        <td>NCP stronghold anchoring — prior constrained to confirmed NCP districts</td>
+                        <td>Medium</td>
+                        <td>Planned</td>
+                    </tr>
+                    <tr>
+                        <td>Calibration report published alongside forecasts for full transparency</td>
+                        <td>Medium</td>
+                        <td>Planned</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <footer style="background:#1E293B;color:#94A3B8;text-align:center;padding:2.5rem 1rem;margin-top:0;">
+        <div style="font-size:1rem;font-weight:700;color:white;margin-bottom:0.4rem;">🏔️ SagarmathaIQ</div>
+        <div style="font-size:0.85rem;color:#64748B;margin-bottom:1rem;">Open quantitative analysis from the Himalayas
+        </div>
+        <div
+            style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:0.85rem;margin-bottom:1.25rem;">
+            <a href="index.html" style="color:#94A3B8;text-decoration:none;">Forecasts</a>
+            <a href="about.html" style="color:#94A3B8;text-decoration:none;">Who We Are</a>
+            <a href="mailto:sagarmathaiq@gmail.com" style="color:#94A3B8;text-decoration:none;">Email Us</a>
+        </div>
+        <hr style="border:none;border-top:1px solid #334155;max-width:400px;margin:0 auto 1.25rem;">
+        <p style="font-size:0.78rem;color:#475569;max-width:600px;margin:0 auto;">
+            Methodology documented here reflects the 2082 model. Parameters and structural assumptions
+            will be revised for the 2087 cycle based on lessons from the post-mortem.
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sagarmatha Analytics - Nepal 2082 Election Forecasts</title>
+    <title>SagarmathaIQ — Data Analytics & Modeling</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
             color: #1F2937;
             background: #F9FAFB;
         }
-        
+
+        /* ── Header ── */
         .header {
-            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+            position: relative;
             color: white;
-            padding: 2rem;
             text-align: center;
+            overflow: hidden;
         }
-        
+
+        .header-hero {
+            position: absolute;
+            inset: 0;
+            background: url('hero-banner.png') center center / cover no-repeat;
+            z-index: 0;
+        }
+
+        .header-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(15, 30, 80, 0.62) 0%,
+                    rgba(10, 20, 60, 0.72) 100%);
+            z-index: 1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 3.5rem 2rem 2.5rem;
+        }
+
         .logo {
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
-        
-        h1 {
+
+        .header h1 {
             font-size: 2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
-        
+
         .tagline {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             opacity: 0.9;
         }
-        
+
         .nav-buttons {
             margin-top: 1.5rem;
             display: flex;
@@ -47,264 +71,578 @@
             justify-content: center;
             flex-wrap: wrap;
         }
-        
+
         .nav-button {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
             transition: background 0.3s;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        
+
         .nav-button:hover {
-            background: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.3);
         }
-        
+
+        /* ── Layout ── */
         .container {
-            max-width: 1200px;
-            margin: 2rem auto;
+            max-width: 1100px;
+            margin: 2.5rem auto;
             padding: 0 1rem;
         }
-        
-        .intro {
+
+        /* ── Mission card ── */
+        .mission {
             background: white;
             padding: 2rem;
             border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
         }
-        
-        .post-mortem-banner {
-            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+
+        .mission h2 {
+            font-size: 1.2rem;
+            color: #1E3A8A;
+            margin-bottom: 0.6rem;
+        }
+
+        .mission p {
+            color: #4B5563;
+            font-size: 0.97rem;
+        }
+
+        /* ── Section headings ── */
+        .section-heading {
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Project card ── */
+        .project-card {
+            background: white;
             border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+        }
+
+        .project-card-header {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
             padding: 1.5rem 2rem;
-            margin-bottom: 2rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             gap: 1.5rem;
             flex-wrap: wrap;
-            box-shadow: 0 2px 8px rgba(30,58,138,0.3);
         }
 
-        .pm-left { flex: 1; min-width: 200px; }
+        .project-card-left {
+            flex: 1;
+            min-width: 200px;
+        }
 
-        .pm-label {
+        .project-label {
             font-size: 0.7rem;
             font-family: 'Courier New', monospace;
-            letter-spacing: .15em;
-            color: rgba(255,255,255,.6);
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 4px;
             font-weight: 700;
         }
 
-        .pm-title {
-            font-size: 1.3rem;
+        .project-title {
+            font-size: 1.35rem;
             font-weight: 800;
             color: white;
             margin-bottom: 6px;
-            letter-spacing: -.02em;
+            letter-spacing: -0.02em;
         }
 
-        .pm-desc {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,.75);
-            line-height: 1.5;
+        .project-desc {
+            font-size: 0.87rem;
+            color: white;
+            line-height: 1.55;
         }
 
-        .pm-links {
+        .status-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            margin-top: 0.6rem;
+        }
+
+        .status-complete {
+            background: rgba(34, 197, 94, 0.25);
+            color: #86EFAC;
+        }
+
+        .project-links {
             display: flex;
             gap: 10px;
             flex-shrink: 0;
             flex-wrap: wrap;
+            align-items: flex-start;
         }
 
-        .pm-btn {
+        .proj-btn {
             padding: 0.6rem 1.2rem;
             border-radius: 5px;
-            font-size: 0.85rem;
+            font-size: 0.83rem;
             font-weight: 600;
             text-decoration: none;
             transition: opacity 0.2s;
             white-space: nowrap;
         }
 
-        .pm-btn:hover { opacity: 0.85; }
+        .proj-btn:hover {
+            opacity: 0.85;
+        }
 
-        .pm-btn-primary {
+        .proj-btn-primary {
             background: white;
             color: #1E3A8A;
         }
 
-        .pm-btn-secondary {
-            background: rgba(255,255,255,.15);
+        .proj-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
             color: white;
-            border: 1px solid rgba(255,255,255,.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        .dashboard-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+        /* ── Project stats bar ── */
+        .project-stats {
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid #F3F4F6;
+            flex-wrap: wrap;
         }
-        
-        .dashboard-card {
+
+        .stat-item {
+            flex: 1;
+            min-width: 120px;
+            padding: 1rem 1.5rem;
+            border-right: 1px solid #F3F4F6;
+        }
+
+        .stat-item:last-child {
+            border-right: none;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-bottom: 2px;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1E3A8A;
+        }
+
+        /* ── Forecast banner cards ── */
+        .forecast-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .forecast-banner {
+            background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+            border-radius: 6px;
+            padding: 1.1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .forecast-banner-alt {
+            background: linear-gradient(135deg, #1E293B 0%, #1E3A8A 100%);
+        }
+
+        .forecast-banner-left {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .forecast-banner-label {
+            font-size: 0.65rem;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2px;
+            font-weight: 700;
+        }
+
+        .forecast-banner-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 3px;
+        }
+
+        .forecast-banner-desc {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.45;
+        }
+
+        .forecast-banner-btn {
             background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
+            color: #1E3A8A;
+            padding: 0.5rem 1.1rem;
+            border-radius: 5px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: opacity 0.2s;
+        }
+
+        .forecast-banner-btn:hover {
+            opacity: 0.85;
+        }
+
+        .forecast-banner-btn-alt {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* ── Dashboard grid (kept for fallback) ── */
+        .project-dashboards {
+            padding: 1.5rem 2rem;
+        }
+
+        .project-dashboards h3 {
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6B7280;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .dashboard-card {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            padding: 1rem 1.25rem;
+            border-radius: 6px;
             text-decoration: none;
             color: inherit;
             display: block;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
-        
+
         .dashboard-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-color: #3B82F6;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12);
         }
-        
+
         .dashboard-title {
-            font-size: 1.3rem;
+            font-size: 0.97rem;
             font-weight: 700;
             color: #1E3A8A;
-            margin-bottom: 0.5rem;
+            margin-bottom: 3px;
         }
-        
+
         .dashboard-meta {
             color: #6B7280;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
-        
+
+        /* ── Footer ── */
         .footer {
+            background: #1E293B;
+            color: #94A3B8;
             text-align: center;
-            padding: 2rem;
-            color: #6B7280;
+            padding: 2.5rem 1rem;
             margin-top: 3rem;
         }
-        
+
+        .footer-brand {
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            color: #64748B;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid #334155;
+            margin: 1.25rem auto;
+            max-width: 400px;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.78rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            line-height: 1.6;
+        }
+
+        .footer-visitor {
+            margin-top: 0.75rem;
+        }
+
+        /* ── Dark mode ── */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0F172A;
+                color: #E2E8F0;
+            }
+
+            .mission,
+            .project-card {
+                background: #1E293B;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            }
+
+            .mission p {
+                color: #CBD5E1;
+            }
+
+            .project-stats {
+                border-bottom-color: #334155;
+            }
+
+            .stat-item {
+                border-right-color: #334155;
+            }
+
+            .dashboard-card {
+                background: #0F172A;
+                border-color: #334155;
+            }
+
+            .dashboard-card:hover {
+                border-color: #3B82F6;
+            }
+
+            .dashboard-title {
+                color: #93C5FD;
+            }
+
+            .dashboard-meta {
+                color: #94A3B8;
+            }
+
+            .footer {
+                background: #020617;
+            }
+        }
+
         @media (max-width: 768px) {
-            h1 {
+            .header h1 {
                 font-size: 1.5rem;
             }
-            
-            .dashboard-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-buttons {
+
+            .project-card-header {
                 flex-direction: column;
             }
-            
+
+            .project-links {
+                width: 100%;
+            }
+
+            .proj-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
             .nav-button {
                 width: 100%;
                 max-width: 300px;
             }
-
-            .post-mortem-banner {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .pm-links {
-                width: 100%;
-            }
-
-            .pm-btn {
-                flex: 1;
-                text-align: center;
-            }
         }
     </style>
 </head>
+
 <body>
+
     <header class="header">
-        <div class="logo">🏔️</div>
-        <h1>SagarmathaIQ</h1>
-        <p class="tagline">Peak Election Intelligence</p>
-        
-        <div class="nav-buttons">
-            <a href="about.html" class="nav-button">Who We Are</a>
+        <div class="header-hero"></div>
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="logo">🏔️</div>
+            <h1>SagarmathaIQ</h1>
+            <p class="tagline">Quantitative modeling and data analysis for complex real-world systems</p>
+            <div class="nav-buttons">
+                <a href="about.html" class="nav-button">Who We Are</a>
+            </div>
         </div>
     </header>
 
     <div class="container">
-        <div class="intro">
-            <h2>Nepal 2082 Election Forecasts</h2>
+
+        <div class="mission">
+            <h2>What we do</h2>
             <p>
-                Transparent, probabilistic forecasts for Nepal's 2082 parliamentary elections.
-                We divide the electorate into core and contestable votes to predict constituency-level outcomes in competitive
-                races. The election was held on Falgun 21, 2082 — all 165 seats have been declared.
+                SagarmathaIQ is an independent analytics and modeling group. We apply probabilistic modeling,
+                simulation, and statistical analysis to problems where data is messy, uncertainty is real, and
+                clear thinking matters. Our work is open, methodology-first, and built to be reproducible.
+                Current focus: political and social systems in South Asia.
             </p>
         </div>
 
-        <div class="post-mortem-banner">
-            <div class="pm-left">
-                <div class="pm-label">POST-ELECTION · FALGUN 2082</div>
-                <div class="pm-title">2082 Model Post-Mortem</div>
-                <div class="pm-desc">RSP won 125 FPTP seats and 48.2% of the PR vote — a majority government. Full forecast vs. actual breakdown, province-by-province accuracy, and lessons for 2087.</div>
+        <div class="section-heading">Our Projects</div>
+
+        <div class="project-card">
+            <div class="project-card-header">
+                <div class="project-card-left">
+                    <div class="project-label">Election Forecasting · Nepal</div>
+                    <div class="project-title">Nepal 2082 Parliamentary Election</div>
+                    <div class="project-desc">
+                        Constituency-level probabilistic forecasts for all 165 FPTP seats and the 110-seat
+                        PR allocation. Built on a zero-sum Dirichlet model with Monte Carlo simulation,
+                        calibrated to 2079 results. The election concluded on Falgun 21, 2082.
+                    </div>
+                    <span class="status-badge status-complete">Completed — Post-mortem published</span>
+                </div>
+                <div class="project-links">
+                    <a href="forecast_accuracy_writeup.html" class="proj-btn proj-btn-primary">Read post-mortem</a>
+                    <a href="constituency_results.html" class="proj-btn proj-btn-secondary">All 165 results</a>
+                </div>
             </div>
-            <div class="pm-links">
-                <a href="forecast_accuracy_writeup.html" class="pm-btn pm-btn-primary">Read post-mortem</a>
-                <a href="constituency_results.html" class="pm-btn pm-btn-secondary">All 165 results</a>
+
+            <div class="project-stats">
+                <div class="stat-item">
+                    <div class="stat-label">FPTP Accuracy</div>
+                    <div class="stat-value">82 / 165</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">KTM Valley</div>
+                    <div class="stat-value">14 / 15</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">RSP Final Seats</div>
+                    <div class="stat-value">182 / 275</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Constituencies Modeled</div>
+                    <div class="stat-value">165</div>
+                </div>
+            </div>
+
+            <div class="project-dashboards">
+                <h3>Published Forecasts</h3>
+                <div class="forecast-cards">
+
+                    <div class="forecast-banner">
+                        <div class="forecast-banner-left">
+                            <div class="forecast-banner-label">National · 275 Seats</div>
+                            <div class="forecast-banner-title">National Forecast</div>
+                            <div class="forecast-banner-desc">Full parliament projection — 165 FPTP seats and 110-seat
+                                PR allocation combined.</div>
+                        </div>
+                        <a href="national_dashboard.html" class="forecast-banner-btn">View dashboard</a>
+                    </div>
+
+                    <div class="forecast-banner forecast-banner-alt">
+                        <div class="forecast-banner-left">
+                            <div class="forecast-banner-label">Constituency · Jhapa-5</div>
+                            <div class="forecast-banner-title">Jhapa-5</div>
+                            <div class="forecast-banner-desc">Balen Shah vs KP Sharma Oli — the most watched
+                                constituency of the 2082 cycle.</div>
+                        </div>
+                        <a href="jhapa-5_dashboard.html" class="forecast-banner-btn forecast-banner-btn-alt">View
+                            dashboard</a>
+                    </div>
+
+                    <div class="forecast-banner forecast-banner-alt">
+                        <div class="forecast-banner-left">
+                            <div class="forecast-banner-label">Constituency · Sarlahi-4</div>
+                            <div class="forecast-banner-title">Sarlahi-4</div>
+                            <div class="forecast-banner-desc">Gagan Kumar Thapa vs Amaresh Kumar Singh — a
+                                high-confidence call that didn't hold.</div>
+                        </div>
+                        <a href="sarlahi-4_dashboard.html" class="forecast-banner-btn forecast-banner-btn-alt">View
+                            dashboard</a>
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <h2>Published Forecasts</h2>
-        <div class="dashboard-list" id="dashboard-list">
-            <!-- Dashboards will be loaded here by JavaScript -->
-        </div>
     </div>
 
     <footer class="footer">
-        <p>
-            <strong>🏔️ SagarmathaIQ</strong> • Peak Election Intelligence from the Himalayas
+        <div class="footer-brand">🏔️ SagarmathaIQ</div>
+        <div class="footer-tagline">Open quantitative analysis from the Himalayas</div>
+        <div class="footer-links">
+            <a href="methodology.html">Methodology</a>
+            <a href="about.html">Who We Are</a>
+            <a href="mailto:sagarmathaiq@gmail.com">Email Us</a>
+        </div>
+        <hr class="footer-divider">
+        <p class="footer-disclaimer">
+            All forecasts are probabilistic estimates, not guarantees. Models are built on historical data
+            and qualitative inputs; they do not account for all real-world variables. Results should be
+            interpreted alongside their stated uncertainty ranges.
         </p>
-        <p style="margin-top: 0.5rem;">
-            Transparent methodology • Zero-sum models
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.9rem;">
-            <em>Disclaimer: Election forecasts are probabilistic predictions, not guarantees. Consider all uncertainty and external factors when interpreting the results.</em>
-        </p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; color: #9CA3AF;">
-            <img src="https://hits.sh/sagarmathaiq.github.io.svg?extraCount=8590&style=flat&label=Visitors&color=6B7280&labelColor=374151"
-                 alt="Visitor count"
-                 style="height: 1.2em; vertical-align: middle; opacity: 0.8;">
-        </p>
+        <div class="footer-visitor">
+            <img src="https://hits.sh/sagarmathaiq.github.io.svg?extraCount=8590&style=flat&label=Visitors&color=475569&labelColor=1E293B"
+                alt="Visitor count" style="height:1.1em;vertical-align:middle;opacity:0.7;">
+        </div>
     </footer>
 
-    <script>
-        // List of available dashboards
-        // Update this array as you add new constituencies
-        
-        const dashboards = [
-            { file: 'national_dashboard.html', name: 'National Forecast', description: '275-seat Parliament (PR + FTFP)' },
-            { file: 'jhapa-5_dashboard.html', name: 'Jhapa-5', description: 'Balen Shah vs KP Sharma Oli' },
-            { file: 'sarlahi-4_dashboard.html', name: 'Sarlahi-4', description: 'Gagan Kumar Thapa vs Amaresh Kumar Singh' }
-            // Add more as you generate them:
-            // { file: 'kathmandu-1_dashboard.html', name: 'Kathmandu-1', description: 'Your candidates' }
-        ];
-        
-        const container = document.getElementById('dashboard-list');
-        
-        if (dashboards.length === 0) {
-            container.innerHTML = '<p style="color: #6B7280; padding: 2rem;">No forecasts available yet. Check back soon!</p>';
-        } else {
-            dashboards.forEach(dashboard => {
-                const card = document.createElement('a');
-                card.href = dashboard.file;
-                card.className = 'dashboard-card';
-                card.innerHTML = `
-                    <div class="dashboard-title">${dashboard.name}</div>
-                    <div class="dashboard-meta">${dashboard.description}</div>
-                `;
-                container.appendChild(card);
-            });
-        }
-    </script>
 </body>
+
 </html>

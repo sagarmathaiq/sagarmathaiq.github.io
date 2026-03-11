@@ -2,239 +2,429 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Who We Are - SagarmathaIQ</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — SagarmathaIQ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1F2937;
-            background: #F9FAFB;
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      background: #F9FAFB;
+      color: #1F2937;
+      font-size: 14px;
+      line-height: 1.75;
+    }
 
-        .header {
-            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
 
-        .logo {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
+    .header {
+      background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+      color: white;
+      padding: 36px 40px 30px;
+      margin: 0 -24px 40px;
+    }
 
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
+    .brand {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      opacity: .9;
+      margin-bottom: 10px;
+      font-family: 'Courier New', monospace;
+    }
 
-        .back-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: white;
-            text-decoration: none;
-            opacity: 0.9;
-        }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: 6px;
+    }
 
-        .back-link:hover {
-            opacity: 1;
-        }
+    .meta {
+      font-size: 11px;
+      opacity: .9;
+      font-family: 'Courier New', monospace;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: rgba(255, 255, 255, .8);
+      text-decoration: none;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 3px;
+      padding: 5px 12px;
+    }
 
-        .content {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
+    section {
+      margin-bottom: 40px;
+    }
 
-        .content h2 {
-            color: #1E3A8A;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
+    h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #6B7280;
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #E5E7EB;
+    }
 
-        .content h2:first-child {
-            margin-top: 0;
-        }
+    p {
+      margin-bottom: 12px;
+      color: #374151;
+    }
 
-        .content p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 4px;
+    }
 
-        .content ul {
-            margin-bottom: 1rem;
-        }
+    .team-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+      border-top: 3px solid #1E3A8A;
+      text-align: center;
+    }
 
-        .content li {
-            margin-bottom: 0.5rem;
-        }
+    /* Photo box */
+    .photo-wrap {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 14px;
+    }
 
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            color: #6B7280;
-            margin-top: 3rem;
-        }
+    .photo-wrap img,
+    .photo-initials {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
 
-        @media (max-width: 768px) {
-            .content {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+    .photo-initials {
+      background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.02em;
+      user-select: none;
+    }
+
+    .photo-upload-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 26px;
+      height: 26px;
+      background: #1E3A8A;
+      border: 2px solid white;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .photo-upload-btn:hover {
+      background: #2563EB;
+    }
+
+    .photo-upload-btn svg {
+      width: 13px;
+      height: 13px;
+      fill: white;
+    }
+
+    .photo-upload-input {
+      display: none;
+    }
+
+    .photo-hint {
+      font-size: 10px;
+      color: #9CA3AF;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 8px;
+    }
+
+
+    .team-role {
+      font-size: 10px;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #1E3A8A;
+      margin-bottom: 10px;
+    }
+
+    .team-bio {
+      font-size: 12px;
+      color: #6B7280;
+      line-height: 1.65;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    .team-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-family: 'Courier New', monospace;
+      color: #1E3A8A;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .team-link:hover {
+      text-decoration: underline;
+    }
+
+    .team-link svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    .contact-line {
+      font-size: 12px;
+      color: #6B7280;
+      font-family: 'Courier New', monospace;
+      margin-top: 8px;
+    }
+
+    .contact-line a {
+      color: #1E3A8A;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #111827;
+        color: #F3F4F6;
+      }
+
+      p,
+      .team-bio {
+        color: #D1D5DB;
+      }
+
+      h2 {
+        color: #9CA3AF;
+        border-bottom-color: #374151;
+      }
+
+      .team-card {
+        background: #1F2937;
+        box-shadow: none;
+        border: 1px solid #374151;
+      }
+
+      .team-card {
+        border-top: 3px solid #3B82F6;
+      }
+
+      .team-name {
+        color: #F9FAFB;
+      }
+
+      .team-role,
+      .team-link {
+        color: #93C5FD;
+      }
+
+      .team-link {
+        color: #60A5FA;
+      }
+
+      .photo-upload-btn {
+        border-color: #1F2937;
+      }
+
+      .contact-line {
+        color: #6B7280;
+      }
+
+      .contact-line a {
+        color: #60A5FA;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="logo">🏔️</div>
-        <h1>About Us</h1>
-        <a href="index.html" class="back-link">← Back to Forecasts</a>
-    </header>
+  <div class="page">
 
-    <div class="container">
-        <div class="content">
-            <h2>About SagarmathaIQ</h2>
-            <p>
-                SagarmathaIQ is a quantitative research initiative focused on election forecasting in Nepal.
-                Our team consists of Nepali professionals with PhDs in physics and mathematics, currently
-                working in statistical modeling and data science at multinational companies.
-            </p>
-            <p>
-                We build probabilistic forecasting models using established statistical techniques adapted to
-                Nepal's unique electoral context. Rather than making single-number predictions, we generate
-                thousands of simulated elections to show the range of possible outcomes and their relative
-                likelihoods.
-            </p>
-            <p>
-                Named after Mount Everest (Sagarmatha in Nepali), our mission is to provide transparent,
-                data-driven election analysis that honestly represents uncertainty rather than projecting
-                false confidence. We believe good forecasting acknowledges what we don't know as clearly
-                as what we do.
-            </p>
-
-            <h2>Research Methodology</h2>
-            <p>
-                Our forecasting approach recognizes that each party has a reliable base of support plus
-                additional votes that depend on the political mood. We model this by dividing votes into
-                two parts: (1) a guaranteed minimum based on each party's current organizational strength,
-                and (2) contested votes that shift between parties based on national sentiment.
-            </p>
-            <p>
-                A key challenge is accounting for new parties like RSP. In 2079, RSP was just starting out
-                with minimal organization. But by 2082, they've built a real nationwide presence. Simply
-                using their 2079 numbers would underestimate their current strength. We account for this
-                growth by setting their baseline higher-around 20% nationally-based on their youth support
-                and urban expansion since 2079.
-            </p>
-            <p>
-                The model tracks national political trends-like anti-establishment sentiment and ideological
-                preferences-and applies them consistently across both the proportional (PR) and direct election
-                (FPTP) systems. This ensures our forecasts for both parts of parliament are realistic and
-                internally consistent.</p>
-
-            <h2>Key Forecasting Challenges</h2>
-            <p>
-                The 2082 parliamentary elections present several unique challenges:
-            </p>
-            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-                <li><strong>New party growth:</strong> RSP's 2079 results don't reflect their 2082 strength. They've
-                    grown significantly in organization and support, so we can't just use old numbers.</li>
-                <li><strong>Multi-party races:</strong> Every constituency has multiple competitive candidates from
-                    different parties. The model simulates all major parties competing in each race rather than limiting
-                    to just two candidates.</li>
-                <li><strong>Changed political climate:</strong> The GenZ uprising shifted the baseline political mood.
-                    There's clearly elevated anti-establishment sentiment compared to pre-uprising norms.</li>
-                <li><strong>Two election systems:</strong> Nepal elects parliament through both proportional voting (PR)
-                    and direct constituency races (FPTP). The same national trends affect both, so we model them
-                    together rather than separately.</li>
-            </ul>
-            <p>
-                Accounting for all parties in every constituency is important for accuracy. RSP is now genuinely
-                competitive in many districts where they might have been overlooked using simpler approaches.
-            </p>
-
-            <h2>How the Model Works</h2>
-            <p>
-                The forecasting model combines historical voting patterns with current political realities:
-            </p>
-            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-                <li><strong>Party strength baselines:</strong> Each party starts with a minimum support level reflecting
-                    their actual 2082 organizational presence, not just 2079 results</li>
-                <li><strong>National trends:</strong> We track overall political sentiment (anti-establishment feelings,
-                    ideological shifts) and apply these consistently across all races</li>
-                <li><strong>Local competition:</strong> Direct elections (FPTP) account for all major parties competing
-                    in each constituency, not just the previous winner and runner-up</li>
-                <li><strong>Uncertainty modeling:</strong> Rather than single predictions, we run thousands of simulated
-                    elections to show the range of possible outcomes</li>
-            </ul>
-            <p>
-                Our forecasts were refined using detailed analysis of specific races. For example, examining
-                the Jhapa-5 contest helped us better calibrate how much stronger RSP has become since 2079
-                and how post-GenZ sentiment affects the baseline political environment.
-            </p>
-            <p>
-                All results shown in our dashboards come from 10,000 simulated elections. This approach
-                lets us present probabilities (like "UML has an 87% chance of winning the most seats")
-                rather than false precision ("UML will win exactly 84 seats").
-            </p>
-
-            <h2>Transparency and Limitations</h2>
-            <p>
-                Our forecasts involve several sources of uncertainty that readers should understand:
-            </p>
-            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-                <li><strong>Limited polling data:</strong> Nepal lacks high-quality public polling, so our party
-                    strength estimates rely on political analysis and historical patterns rather than direct survey data
-                </li>
-                <li><strong>Expert judgment:</strong> Decisions about how much parties have grown since 2079 incorporate
-                    assessments from political observers and ground reporting</li>
-                <li><strong>Simplified model:</strong> Real politics is complex. Our model captures major trends
-                    (anti-establishment sentiment, party strength) but can't account for every local factor</li>
-                <li><strong>Turnout assumptions:</strong> We assume 65% turnout based on 2079 patterns. Actual turnout
-                    could differ and change competitive dynamics</li>
-                <li><strong>Independent races:</strong> The model treats each constituency as somewhat independent,
-                    which might miss coordinated regional swings</li>
-            </ul>
-            <p>
-                We validate our approach by comparing forecasts against detailed political reporting from
-                specific constituencies. For example, analysis of the Jhapa-5 race helped confirm and refine
-                our assumptions about RSP's growth and current political sentiment.
-            </p>
-            <p>
-                All forecasts are presented as probabilities and ranges (95% confidence intervals), never
-                as exact predictions. When we say "UML has 87% chance of winning most seats," we're showing
-                that UML led in 87 out of 100 simulated elections-not claiming certainty about the outcome.
-            </p>
-
-            <h2>Contact</h2>
-            <p>
-                <strong>Email:</strong> sagarmathiq@gmail.com<br>
-                <strong>Twitter:</strong> @sagarmathiq
-            </p>
-        </div>
+    <div class="header">
+      <div class="brand">SagarmathaIQ · Analytica Nepal</div>
+      <h1>Who We Are</h1>
+      <div style="margin-top:1.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html" class="back-link">Forecasts</a>
+        <a href="methodology.html" class="back-link">Methodology</a>
+      </div>
     </div>
 
-    <footer class="footer">
-        <p>
-            <strong>🏔️ SagarmathaIQ</strong> • Peak Election Intelligence from the Himalayas
-        </p>
-    </footer>
-</body>
+    <section>
+      <h2>The Project</h2>
+      <p>SagarmathaIQ started as a weekend exercise: could a probabilistic model — built on public data, zero-sum vote
+        share distributions, and Monte Carlo simulation — forecast Nepal's 2082 parliamentary elections at the
+        constituency level?</p>
+      <p>We are not political scientists or professional forecasters. We are researchers with backgrounds in data
+        science, statistical modeling, and materials science who share an interest in Nepal and a belief that
+        transparent, quantitative analysis is more useful than punditry. All methodology and results are published
+        openly.</p>
+    </section>
 
-</html>
+    <section>
+      <h2>The Team</h2>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="photo-wrap">
+            <div class="photo-initials" id="photo-display-dipak">DR</div>
+            <label class="photo-upload-btn" for="photo-input-dipak" title="Upload photo">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 16V4m0 0l-4 4m4-4l4 4M4 20h16" stroke="white" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </label>
+            <input class="photo-upload-input" type="file" id="photo-input-dipak" accept="image/*"
+              onchange="loadPhoto(this,'photo-display-dipak')">
+          </div>
+          <div class="photo-hint">click + to upload photo</div>
+          <div class="team-name">Dipak Rimal</div>
+          <div class="team-role">Lead Modeller</div>
+          <div class="team-bio">Data scientist with 10+ years across academia and industry. Training in particle physics
+            taught him to find signal in noisy data — the same approach now drives his work in AI and analytics. Has led
+            interdisciplinary projects across domains from particle collisions to bee colony sizes to student learning
+            patterns, always focused on understanding complex systems and creating measurable impact. For this project,
+            built the FPTP constituency model, PR seat allocator, Monte Carlo simulation pipeline, and all published
+            dashboards.
+          </div>
+          <a href="https://www.linkedin.com/in/dipakrimal/" target="_blank" class="team-link">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-wrap">
+            <div class="photo-initials" id="photo-display-puskar">PC</div>
+            <label class="photo-upload-btn" for="photo-input-puskar" title="Upload photo">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 16V4m0 0l-4 4m4-4l4 4M4 20h16" stroke="white" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </label>
+            <input class="photo-upload-input" type="file" id="photo-input-puskar" accept="image/*"
+              onchange="loadPhoto(this,'photo-display-puskar')">
+          </div>
+          <div class="photo-hint">click + to upload photo</div>
+          <div class="team-name">Puskar Chapagain</div>
+          <div class="team-role">Statistical Modelling</div>
+          <div class="team-bio">Research scientist and course director at Southern Arkansas University with 15+ years in
+            statistical modeling and experimental design. Leads the probabilistic modeling framework and prior
+            calibration.</div>
+          <a href="https://www.linkedin.com/in/puskar-chapagain/" target="_blank" class="team-link">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="team-card">
+          <div class="photo-wrap">
+            <div class="photo-initials" id="photo-display-nabraj">NB</div>
+            <label class="photo-upload-btn" for="photo-input-nabraj" title="Upload photo">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 16V4m0 0l-4 4m4-4l4 4M4 20h16" stroke="white" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" fill="none" />
+              </svg>
+            </label>
+            <input class="photo-upload-input" type="file" id="photo-input-nabraj" accept="image/*"
+              onchange="loadPhoto(this,'photo-display-nabraj')">
+          </div>
+          <div class="photo-hint">click + to upload photo</div>
+          <div class="team-name">Nabraj Bhattarai</div>
+          <div class="team-role">Research &amp; Analysis</div>
+          <div class="team-bio">Materials scientist specialising in electron microscopy and nanoparticle
+            characterisation. Contributes rigorous quantitative research methodology and ground-level electoral context
+            for Nepal.</div>
+          <a href="https://www.linkedin.com/in/nabraj-bhattarai-32365379/" target="_blank" class="team-link">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions, corrections, or feedback on the model are welcome.</p>
+      <div><a href="mailto:sagarmathaiq@gmail.com">Email us</a></div>
+    </section>
+
+  </div>
+
+  <footer style="background:#1E293B;color:#94A3B8;text-align:center;padding:2.5rem 1rem;margin-top:2rem;">
+    <div style="font-size:1rem;font-weight:700;color:white;margin-bottom:0.4rem;">🏔️ SagarmathaIQ</div>
+    <div style="font-size:0.85rem;color:#64748B;margin-bottom:1rem;">Open quantitative analysis from the Himalayas</div>
+    <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:0.85rem;margin-bottom:1.25rem;">
+      <a href="index.html" style="color:#94A3B8;text-decoration:none;">Forecasts</a>
+      <a href="methodology.html" style="color:#94A3B8;text-decoration:none;">Methodology</a>
+      <a href="mailto:sagarmathaiq@gmail.com" style="color:#94A3B8;text-decoration:none;">Email Us</a>
+    </div>
+    <hr style="border:none;border-top:1px solid #334155;max-width:400px;margin:0 auto 1.25rem;">
+    <p style="font-size:0.78rem;color:#475569;max-width:600px;margin:0 auto;">
+      SagarmathaIQ is an independent research group. We are not affiliated with any political party,
+      government body, or election commission. All analysis is published openly and in good faith.
+    </p>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    function loadPhoto(input, targetId) {
+      if (!input.files || !input.files[0]) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const container = document.getElementById(targetId);
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.alt = 'Team photo';
+        img.style.width = '88px';
+  
