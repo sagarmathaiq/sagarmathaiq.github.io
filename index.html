@@ -144,6 +144,7 @@
             flex-wrap: wrap;
         }
 
+
         .project-card-left {
             flex: 1;
             min-width: 200px;
@@ -168,7 +169,7 @@
 
         .project-desc {
             font-size: 0.87rem;
-            color: white;
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.55;
         }
 
@@ -187,6 +188,11 @@
         .status-complete {
             background: rgba(34, 197, 94, 0.25);
             color: #86EFAC;
+        }
+
+        .status-published {
+            background: rgba(56, 189, 248, 0.25);
+            color: #7DD3FC;
         }
 
         .project-links {
@@ -256,6 +262,24 @@
             color: #1E3A8A;
         }
 
+        .stat-value-sky {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0284C7;
+        }
+
+        .stat-value-neg {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #DC2626;
+        }
+
+        .stat-value-pos {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #059669;
+        }
+
         /* ── Forecast banner cards ── */
         .forecast-cards {
             display: flex;
@@ -302,7 +326,7 @@
 
         .forecast-banner-desc {
             font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.45;
         }
 
@@ -324,12 +348,12 @@
         }
 
         .forecast-banner-btn-alt {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
-        /* ── Dashboard grid (kept for fallback) ── */
+        /* ── Dashboard section ── */
         .project-dashboards {
             padding: 1.5rem 2rem;
         }
@@ -544,6 +568,9 @@
 
         <div class="section-heading">Our Projects</div>
 
+        <!-- ══════════════════════════════════════════════════════
+         PROJECT 1 — Nepal 2082 Election Forecast
+    ══════════════════════════════════════════════════════ -->
         <div class="project-card">
             <div class="project-card-header">
                 <div class="project-card-left">
@@ -621,7 +648,53 @@
             </div>
         </div>
 
-    </div>
+        <!-- ══════════════════════════════════════════════════════
+         PROJECT 2 — Pradesh Fiscal Analysis
+    ══════════════════════════════════════════════════════ -->
+        <div class="project-card">
+            <div class="project-card-header">
+                <div class="project-card-left">
+                    <div class="project-label">Fiscal Analysis · Nepal Federalism</div>
+                    <div class="project-title">Nepal's Pradesh Structure: White Elephant or Misdiagnosed Problem?</div>
+                    <div class="project-desc">
+                        A data-first factcheck of the claim that Nepal's seven provincial governments are
+                        unaffordably costly. Built on audited expenditure data from the Financial Comptroller
+                        General Office (FCGO) and Nepal's Medium-Term Expenditure Framework. All findings
+                        are derived from primary government sources — not newspaper framing.
+                    </div>
+                    <span class="status-badge status-published">Published — March 2026</span>
+                </div>
+                <div class="project-links">
+                    <a href="pradesh-fiscal-analysis.html" class="proj-btn proj-btn-primary">View analysis</a>
+                </div>
+            </div>
+
+            <div class="project-stats">
+                <div class="stat-item">
+                    <div class="stat-label">Province Share of Spending</div>
+                    <div class="stat-value">10.7%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Provinces as % of GDP</div>
+                    <div class="stat-value">3.8%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Federal Deficit (FY 2022/23)</div>
+                    <div class="stat-value">Rs 181B</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Federal Recurrent Share</div>
+                    <div class="stat-value">69.8%</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">CapEx Baseline Deviation</div>
+                    <div class="stat-value">±3%</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div><!-- /container -->
 
     <footer class="footer">
         <div class="footer-brand">🏔️ SagarmathaIQ</div>
@@ -629,20 +702,16 @@
         <div class="footer-links">
             <a href="methodology.html">Methodology</a>
             <a href="about.html">Who We Are</a>
-            <a href="mailto:sagarmathaiq@gmail.com">Email Us</a>
+            <a href="pradesh-fiscal-analysis.html">Pradesh Analysis</a>
+            <a href="/cdn-cgi/l/email-protection#a5d6c4c2c4d7c8c4d1cdc4ccd4e5c2c8c4ccc98bc6cac8">Email Us</a>
         </div>
         <hr class="footer-divider">
         <p class="footer-disclaimer">
             All forecasts are probabilistic estimates, not guarantees. Models are built on historical data
             and qualitative inputs; they do not account for all real-world variables. Results should be
-            interpreted alongside their stated uncertainty ranges.
+            interpreted alongside their stated uncertainty ranges. Fiscal analysis figures sourced from
+            FCGO Consolidated Financial Statement FY 2022/23 (audited).
         </p>
         <div class="footer-visitor">
             <img src="https://hits.sh/sagarmathaiq.github.io.svg?extraCount=8590&style=flat&label=Visitors&color=475569&labelColor=1E293B"
-                alt="Visitor count" style="height:1.1em;vertical-align:middle;opacity:0.7;">
-        </div>
-    </footer>
-
-</body>
-
-</html>
+                alt="Visitor count" style="height:1.1em;vertical-align:middle;opacity:
