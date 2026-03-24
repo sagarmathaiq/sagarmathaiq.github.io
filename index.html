@@ -30,7 +30,7 @@
         .header-hero {
             position: absolute;
             inset: 0;
-            background: url('hero-banner.png') center center / cover no-repeat;
+            background: url('./assets/hero-banner.png') center center / cover no-repeat;
             z-index: 0;
         }
 
@@ -50,8 +50,13 @@
         }
 
         .logo {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
         }
 
         .header h1 {
@@ -545,8 +550,9 @@
         <div class="header-hero"></div>
         <div class="header-overlay"></div>
         <div class="header-content">
-            <div class="logo">🏔️</div>
-            <h1>SagarmathaIQ</h1>
+            <div class="logo">
+                <img src="./assets/sagarmathaiq-logo.jpeg" alt="SagarmathaIQ">
+            </div>
             <p class="tagline">Quantitative modeling and data analysis for complex real-world systems</p>
             <div class="nav-buttons">
                 <a href="about.html" class="nav-button">Who We Are</a>
@@ -559,27 +565,25 @@
         <div class="mission">
             <h2>What we do</h2>
             <p>
-                SagarmathaIQ is an independent analytics and modeling group. We apply probabilistic modeling,
-                simulation, and statistical analysis to problems where data is messy, uncertainty is real, and
-                clear thinking matters. Our work is open, methodology-first, and built to be reproducible.
-                Current focus: political and social systems in South Asia.
+                We're a small, independent group of Nepali researchers currently living in the USA. 
+                who build probabilistic models, perform statistical analysis, and simulations to study real world problems, 
+                where data is messy, uncertainty is real, and clear thinking matters. Our work is open, methodology-first, and built to be reproducible. Current focus: political and social systems in Nepal.
             </p>
         </div>
 
         <div class="section-heading">Our Projects</div>
 
-        <!-- ══════════════════════════════════════════════════════
-         PROJECT 1 — Nepal 2082 Election Forecast
-    ══════════════════════════════════════════════════════ -->
+        <!-- PROJECT 1 — Nepal 2082 Election Forecast -->
         <div class="project-card">
             <div class="project-card-header">
                 <div class="project-card-left">
                     <div class="project-label">Election Forecasting · Nepal</div>
                     <div class="project-title">Nepal 2082 Parliamentary Election</div>
                     <div class="project-desc">
-                        Constituency-level probabilistic forecasts for all 165 FPTP seats and the 110-seat
-                        PR allocation. Built on a zero-sum Dirichlet model with Monte Carlo simulation,
-                        calibrated to 2079 results. The election concluded on Falgun 21, 2082.
+                        We modeled all 165 FPTP constituencies and the 110-seat PR allocation before
+                        the 2082 election. Built on a zero-sum Dirichlet model with 10,000 Monte Carlo
+                        simulations, calibrated against 2079 results. The election wrapped on Falgun 21, 2082
+                        and the post-mortem is now published.
                     </div>
                     <span class="status-badge status-complete">Completed — Post-mortem published</span>
                 </div>
@@ -648,19 +652,16 @@
             </div>
         </div>
 
-        <!-- ══════════════════════════════════════════════════════
-         PROJECT 2 — Pradesh Fiscal Analysis
-    ══════════════════════════════════════════════════════ -->
+        <!-- PROJECT 2 — Pradesh Fiscal Analysis -->
         <div class="project-card">
             <div class="project-card-header">
                 <div class="project-card-left">
                     <div class="project-label">Fiscal Analysis · Nepal Federalism</div>
                     <div class="project-title">Nepal's Pradesh Structure: White Elephant or Misdiagnosed Problem?</div>
                     <div class="project-desc">
-                        A data-first factcheck of the claim that Nepal's seven provincial governments are
-                        unaffordably costly. Built on audited expenditure data from the Financial Comptroller
-                        General Office (FCGO) and Nepal's Medium-Term Expenditure Framework. All findings
-                        are derived from primary government sources — not newspaper framing.
+                        People keep saying the seven Pradesh governments cost too much. We went to the
+                        actual audited accounts — the Financial Comptroller General Office's Consolidated
+                        Financial Statement — to check. The numbers tell a different story than the headlines.
                     </div>
                     <span class="status-badge status-published">Published — March 2026</span>
                 </div>
@@ -697,21 +698,23 @@
     </div><!-- /container -->
 
     <footer class="footer">
-        <div class="footer-brand">🏔️ SagarmathaIQ</div>
-        <div class="footer-tagline">Open quantitative analysis from the Himalayas</div>
+        <div class="footer-brand">
+            <img src="./assets/sagarmathaiq-logo.jpeg" alt="SagarmathaIQ"
+                style="height:2.2rem;width:auto;vertical-align:middle;margin-right:6px;opacity:0.9;">
+        </div>
+        <div class="footer-tagline">Quantitative modeling and data analysis for complex real-world systems</div>
         <div class="footer-links">
             <a href="methodology.html">Methodology</a>
             <a href="about.html">Who We Are</a>
             <a href="pradesh-fiscal-analysis.html">Pradesh Analysis</a>
-            <a href="/cdn-cgi/l/email-protection#a5d6c4c2c4d7c8c4d1cdc4ccd4e5c2c8c4ccc98bc6cac8">Email Us</a>
+            <a href="mailto:sagarmathaiq@gmail.com">Email Us</a>
         </div>
         <hr class="footer-divider">
         <p class="footer-disclaimer">
-            All forecasts are probabilistic estimates, not guarantees. Models are built on historical data
-            and qualitative inputs; they do not account for all real-world variables. Results should be
-            interpreted alongside their stated uncertainty ranges. Fiscal analysis figures sourced from
-            FCGO Consolidated Financial Statement FY 2022/23 (audited).
+            Our forecasts show ranges, not point predictions. Models are built on historical data and
+            reasonable assumptions — they can be wrong. Read the uncertainty ranges, not just the headline numbers.
+            Fiscal figures are from the FCGO Consolidated Financial Statement FY 2022/23 (audited).
         </p>
         <div class="footer-visitor">
             <img src="https://hits.sh/sagarmathaiq.github.io.svg?extraCount=8590&style=flat&label=Visitors&color=475569&labelColor=1E293B"
-                alt="Visitor count" style="height:1.1em;vertical-align:middle;opacity:
+                alt="Visitor count" style="height:1.1em;vertical-align:middle;opacity:0.7;">
