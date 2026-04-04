@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Gulf is Burning. Nepal is Watching. — SagarmathaIQ</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --serif: Georgia, 'Times New Roman', serif;
+    --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --mono:  'SFMono-Regular', 'Courier New', monospace;
+
+    --ink:       #111827;
+    --ink-mid:   #374151;
+    --ink-light: #6b7280;
+    --ink-faint: #9ca3af;
+    --rule:      #e5e7eb;
+    --rule-dark: #d1d5db;
+    --bg:        #ffffff;
+    --bg-tint:   #f9fafb;
+    --bg-chip:   #f3f4f6;
+
+    --red:   #b91c1c;
+    --amber: #b45309;
+    --green: #15803d;
+    --navy:  #1e3a8a;
+    --blue:  #1d4ed8;
+  }
+
+  html { font-size: 17px; }
+  body {
+    font-family: var(--serif);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Site header ── */
+  .site-header {
+    background: var(--bg);
+    border-bottom: 2px solid var(--ink);
+    padding: 0.85rem 0;
+  }
+  .site-header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+  .site-logo { height: 34px; width: auto; }
+  .site-name {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .site-tagline {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    margin-top: 1px;
+  }
+  .header-right {
+    margin-left: auto;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--ink-light);
+    text-align: right;
+  }
+
+  /* ── Article ── */
+  .article { max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+
+  /* ── Headline block ── */
+  .kicker {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.7rem;
+  }
+  h1.headline {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .standfirst {
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink-mid);
+    max-width: 720px;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-tint);
+    border-left: 3px solid var(--navy);
+  }
+  .meta {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.5rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .meta strong { color: var(--ink-mid); }
+
+  /* ── Key stats ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border: 1px solid var(--rule-dark);
+    margin-bottom: 2.5rem;
+  }
+  @media(max-width:700px) { .stat-row { grid-template-columns: repeat(2,1fr); } }
+  .stat-cell {
+    padding: 1rem 1.1rem;
+    border-right: 1px solid var(--rule);
+    background: var(--bg);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+  .stat-val {
+    font-family: var(--sans);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .stat-val.red { color: var(--red); }
+  .stat-note {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    color: var(--ink-light);
+    margin-top: 4px;
+  }
+
+  /* ── Tabs ── */
+  .tab-nav {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 2.5rem;
+    padding: 0.3rem;
+    background: var(--bg-chip);
+    border: 1px solid var(--rule-dark);
+    width: fit-content;
+  }
+  .tab-btn {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink-light);
+    background: none;
+    border: none;
+    padding: 0.65rem 1.75rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--ink); background: var(--rule); }
+  .tab-btn.active {
+    background: var(--navy);
+    color: #ffffff;
+    font-weight: 700;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── Section heading ── */
+  h2.sh {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 2.75rem 0 1.25rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── Chart block ── */
+  .chart-block {
+    border: 1px solid var(--rule-dark);
+    margin: 1.75rem 0;
+    background: var(--bg);
+  }
+  .chart-title {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink);
+    padding: 0.85rem 1.1rem 0.55rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .chart-body { padding: 1.1rem 1.1rem 0.75rem; overflow-x: auto; }
+  .chart-source {
+    font-family: var(--sans);
+    font-size: 0.63rem;
+    color: var(--ink-faint);
+    padding: 0.45rem 1.1rem 0.6rem;
+    border-top: 1px solid var(--rule);
+    background: var(--bg-tint);
+  }
+
+  /* ── Bar rows ── */
+  .bar-chart { display: flex; flex-direction: column; gap: 0.5rem; min-width: 280px; }
+  .bar-row { display: grid; grid-template-columns: 155px 1fr 70px; align-items: center; gap: 0.65rem; }
+  .bar-label { font-family: var(--sans); font-size: 0.74rem; color: var(--ink-mid); text-align: right; line-height: 1.3; }
+  .bar-track { background: var(--bg-chip); height: 20px; position: relative; overflow: hidden; }
+  .bar-fill  { position: absolute; top:0; left:0; height:100%; }
+  .bar-val   { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--navy); text-align: right; }
+  @media(max-width:600px) { .bar-row { grid-template-columns: 100px 1fr 55px; } }
+
+  /* ── Impact card ── */
+  .impact-card {
+    border: 1px solid var(--rule-dark);
+    padding: 1.35rem 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    background: var(--bg);
+  }
+  .impact-card::before {
+    content:""; position:absolute; top:0; left:0; bottom:0; width:3px;
+  }
+  .impact-card.sev-high   { border-left: none; }
+  .impact-card.sev-high::before   { background: var(--red); }
+  .impact-card.sev-medium { border-left: none; }
+  .impact-card.sev-medium::before { background: var(--amber); }
+
+  .card-title {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .sev-pill {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border: 1px solid;
+  }
+  .sev-pill.high   { color: var(--red);   border-color: #fca5a5; background: #fef2f2; }
+  .sev-pill.medium { color: var(--amber); border-color: #fcd34d; background: #fffbeb; }
+
+  .prose {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose p { margin-bottom: 0.7rem; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* ── Callout ── */
+  .callout {
+    background: var(--bg-tint);
+    border-left: 3px solid var(--navy);
+    padding: 0.85rem 1.1rem;
+    margin: 1.25rem 0;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+  }
+  .callout.red   { border-left-color: var(--red);   background: #fef9f9; }
+  .callout.green { border-left-color: var(--green); background: #f7fdf9; }
+
+  /* ── Mitigation table ── */
+  .mit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .mit-table th {
+    font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-faint); font-weight: 700; text-align: left;
+    padding: 0.55rem 0.9rem;
+    border-bottom: 2px solid var(--rule-dark);
+    background: var(--bg-tint);
+  }
+  .mit-table td {
+    padding: 0.8rem 0.9rem;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-mid);
+    line-height: 1.55;
+  }
+  .mit-table td:first-child { font-weight: 600; color: var(--ink); }
+  .mit-table tr:last-child td { border-bottom: none; }
+  .feas {
+    display: inline-block;
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 2px 7px; border: 1px solid;
+  }
+  .feas.high   { color: var(--green); border-color: #86efac; background: #f0fdf4; }
+  .feas.medium { color: var(--amber); border-color: #fcd34d; background: #fffbeb; }
+  .feas.low    { color: var(--red);   border-color: #fca5a5; background: #fef2f2; }
+
+  /* ── Horizon divider ── */
+  .horizon {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin: 2.25rem 0 1.1rem;
+  }
+  .horizon-line { flex: 1; height: 1px; }
+  .horizon-label {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* ── Site nav ── */
+  .site-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+  }
+  .site-nav-link {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ink-light);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }
+  .site-nav-link:hover { color: var(--ink); }
+  .site-nav-link:first-child {
+    color: var(--navy);
+    border: 1px solid var(--rule-dark);
+    padding: 0.3rem 0.75rem;
+  }
+  .site-nav-link:first-child:hover { background: var(--bg-tint); }
+  @media (max-width: 600px) {
+    .site-nav { display: none; }
+  }
+
+  /* ── Footer ── */
+  .article-footer {
+    border-top: 2px solid var(--ink);
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+  .article-footer strong { color: var(--ink-mid); }
+  .article-footer p { margin-bottom: 0.4rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" style="display:flex;align-items:center;gap:0.85rem;text-decoration:none;color:inherit;">
+      <img src="./assets/sagarmathaiq-logo.jpeg" alt="SagarmathaIQ"
+                style="height:2.2rem;width:auto;vertical-align:middle;margin-right:6px;opacity:0.9;">
+      <div>
+        <div class="site-name">SagarmathaIQ</div>
+        <div class="site-tagline">Open quantitative analysis from the Himalayas</div>
+      </div>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html" class="site-nav-link">&#8592; All Projects</a>
+      <a href="about.html" class="site-nav-link">About Us</a>
+      <a href="mailto:sagarmathaiq@gmail.com" class="site-nav-link">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article">
+
+  <div class="kicker">Analysis &middot; April 2026 &middot; Labour &amp; Economy</div>
+  <h1 class="headline">The Gulf is Burning.<br>Nepal is Watching.</h1>
+  <div class="standfirst">
+    On February 28, 2026, the US and Israel struck Iran. Within hours, Iranian missiles were landing in the UAE, Qatar, Kuwait and Bahrain. Nepal was not a target. But 1.73 million Nepalis were already there, working. Remittances are 28.6&percnt; of Nepal&rsquo;s GDP and there is no domestic safety net. So the question was never whether Nepal would feel this war. It was always how badly.
+  </div>
+
+  <div class="meta">
+    <span><strong>Published</strong> April 3, 2026</span>
+    <span><strong>Sources</strong> NRB &middot; MoFA Nepal &middot; World Bank &middot; HRW &middot; ACLED &middot; NLSS-IV</span>
+    <span><strong>Category</strong> Factcheck</span>
+  </div>
+
+  <!-- STAT ROW -->
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-label">Nepalis in Gulf</div>
+      <div class="stat-val">1.73M</div>
+      <div class="stat-note">12 countries</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Remit &percnt; of GDP</div>
+      <div class="stat-val">28.6&percnt;</div>
+      <div class="stat-note">FY 2025/26 record</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Monthly inflow</div>
+      <div class="stat-val">Rs 193B</div>
+      <div class="stat-note">January 2026</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Above poverty line</div>
+      <div class="stat-val red">2.6M</div>
+      <div class="stat-note">By remittances only</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Permits to Gulf</div>
+      <div class="stat-val">80&percnt;</div>
+      <div class="stat-note">Of 839K issued</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);margin-bottom:0.5rem;letter-spacing:0.04em;">
+    Use the tabs below to navigate the analysis.
+  </div>
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="showTab(event,'impact')">
+      <span style="display:block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;opacity:0.7;margin-bottom:2px;">Part 1</span>
+      Impact on Nepal
+    </button>
+    <button class="tab-btn" onclick="showTab(event,'mitigation')">
+      <span style="display:block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;opacity:0.7;margin-bottom:2px;">Part 2</span>
+      What the Balen government must do
+    </button>
+  </nav>
+
+  <!-- ══════ IMPACT ══════ -->
+  <div class="tab-panel active" id="tab-impact">
+
+    <h2 class="sh">Where the workers are</h2>
+
+    <div class="chart-block">
+      <div class="chart-title">Nepali workers by Gulf destination &mdash; FY 2024/25 labor permits issued</div>
+      <div class="chart-body">
+        <div class="bar-chart">
+          <div style="display:grid;grid-template-columns:155px 1fr 70px;gap:0.65rem;margin-bottom:4px;">
+            <div></div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.62rem;color:var(--ink-faint);">
+              <span>0</span><span>100k</span><span>200k</span><span>275k</span>
+            </div>
+            <div></div>
+          </div>
+          <!-- UAE 274590 = 100% -->
+          <div class="bar-row">
+            <div class="bar-label">UAE &nbsp;<span style="font-size:0.62rem;color:var(--red);font-weight:700;">&#9654; Direct strikes</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:100%;background:#b91c1c;"></div></div>
+            <div class="bar-val" style="color:var(--red);">274,590</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Saudi Arabia &nbsp;<span style="font-size:0.62rem;color:var(--amber);font-weight:700;">&#9654; Targeted</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:55.6%;background:#b45309;"></div></div>
+            <div class="bar-val" style="color:var(--amber);">152,557</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Qatar &nbsp;<span style="font-size:0.62rem;color:var(--red);font-weight:700;">&#9654; LNG facility hit</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:51.3%;background:#b91c1c;"></div></div>
+            <div class="bar-val" style="color:var(--red);">140,792</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Kuwait &nbsp;<span style="font-size:0.62rem;color:var(--red);font-weight:700;">&#9654; Airport attack</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:21.5%;background:#b91c1c;"></div></div>
+            <div class="bar-val" style="color:var(--red);">59,065</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Bahrain &nbsp;<span style="font-size:0.62rem;color:var(--red);font-weight:700;">&#9654; US Fleet base hit</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:4.2%;background:#b91c1c;"></div></div>
+            <div class="bar-val" style="color:var(--red);">11,624</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Oman</div>
+            <div class="bar-track"><div class="bar-fill" style="width:3.1%;background:#1e3a8a;opacity:0.5;"></div></div>
+            <div class="bar-val">8,601</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: Ministry of Foreign Affairs Nepal, FY 2024/25. Strike incidents: ACLED Middle East Special Issue, March 2026 &middot; HRW, March 2026 &middot; Coalition on Labor Justice for Migrants, March 2026.</div>
+    </div>
+
+    <div class="callout red">
+      <strong>Four of Nepal&rsquo;s six main Gulf destinations were hit.</strong>
+      Workers under the kafala system have no unemployment insurance, no emergency savings, and contracts that technically keep them tied to their employer even in a war zone. There is no exit clause for &ldquo;missiles hit the airport.&rdquo;
+    </div>
+
+    <h2 class="sh">Remittance growth &mdash; and what is now at risk</h2>
+
+    <div class="chart-block">
+      <div class="chart-title">Remittances as &percnt; of Nepal GDP &mdash; 1993 to 2023</div>
+      <div class="chart-body">
+        <svg viewBox="0 0 620 185" style="width:100%;min-width:300px;display:block;">
+          <!-- Grid -->
+          <line x1="52" y1="22" x2="600" y2="22" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="52" y1="57" x2="600" y2="57" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="52" y1="92" x2="600" y2="92" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="52" y1="127" x2="600" y2="127" stroke="#e5e7eb" stroke-width="1"/>
+          <line x1="52" y1="162" x2="600" y2="162" stroke="#d1d5db" stroke-width="1.5"/>
+          <!-- Y labels -->
+          <text x="46" y="165" text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">0%</text>
+          <text x="46" y="130" text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">10%</text>
+          <text x="46" y="95"  text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">20%</text>
+          <text x="46" y="60"  text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">30%</text>
+          <!--
+            x(yr) = 52 + (yr-1993)/30 * 548
+            y(v)  = 162 - v/30 * 140
+            Points: 1993:0.98 2001:2.5 2002:11.2 2004:13.0 2006:16.5
+                    2008:21.3 2010:22.1 2012:24.0 2015:27.6 2018:24.8
+                    2020:24.2 2022:22.6 2023:26.9
+          -->
+          <polygon
+            points="52,157 234,150 252,110 289,101 326,85 362,62 399,57 435,50 490,33 527,46 564,49 582,56 600,37 600,162 52,162"
+            fill="#1e3a8a" opacity="0.07"/>
+          <polyline
+            points="52,157 234,150 252,110 289,101 326,85 362,62 399,57 435,50 490,33 527,46 564,49 582,56 600,37"
+            fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-linejoin="round"/>
+          <!-- Annotated points -->
+          <!-- 2001 (x=234, y=150) -->
+          <circle cx="234" cy="150" r="4" fill="#1e3a8a"/>
+          <!-- 2002 step change -->
+          <circle cx="252" cy="110" r="5" fill="#b91c1c"/>
+          <line x1="252" y1="104" x2="252" y2="70" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3 2"/>
+          <text x="258" y="68" font-size="8.5" fill="#b91c1c" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700">GCC migration surge</text>
+          <text x="258" y="79" font-size="8" fill="#b91c1c" font-family="'SFMono-Regular','Courier New',monospace">1% → 11% in 1 year</text>
+          <!-- 2015 peak -->
+          <circle cx="490" cy="33" r="4" fill="#1e3a8a"/>
+          <text x="490" y="27" text-anchor="middle" font-size="8.5" fill="#1e3a8a" font-family="'SFMono-Regular','Courier New',monospace" font-weight="700">27.6%</text>
+          <text x="490" y="18" text-anchor="middle" font-size="8" fill="#6b7280" font-family="'Helvetica Neue',Arial,sans-serif">2015 peak</text>
+          <!-- 2023 -->
+          <circle cx="600" cy="37" r="5" fill="#b91c1c"/>
+          <text x="595" y="30" text-anchor="end" font-size="8.5" fill="#b91c1c" font-family="'SFMono-Regular','Courier New',monospace" font-weight="700">26.9%</text>
+          <!-- X labels -->
+          <text x="52"  y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">1993</text>
+          <text x="289" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">2004</text>
+          <text x="490" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">2015</text>
+          <text x="600" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">2023</text>
+        </svg>
+      </div>
+      <div class="chart-source">Source: World Bank WDI (BX.TRF.PWKR.DT.GD.ZS) &middot; NRB Quarterly Economic Bulletin &middot; TheGlobalEconomy.com.</div>
+    </div>
+
+    <h2 class="sh">Impact channels</h2>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Worker safety <span class="sev-pill high">High severity · Immediate</span></div>
+      <div class="prose">
+        <p>Dibas Shrestha was 29. A security guard at Abu Dhabi airport, killed on March 1. In Kuwait, 2,000 Nepalis at a US military base were evacuated the same night. Workers in Bahrain were told to stay put indoors as the US Fifth Fleet base took two Iranian missiles. Nepal has no evacuation plan. The 1990 Gulf War displaced 1.5 million South Asian workers and took 18 months to recover from. That conflict was smaller than this one.</p>
+      </div>
+    </div>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Remittance disruption <span class="sev-pill high">High severity · Days to weeks</span></div>
+      <div class="prose">
+        <p>42&percnt; of Nepal&rsquo;s remittances come from the Gulf. Monthly inflows were running at Rs 133 to 200 billion. When airspace closes and transfer systems go offline, that money stops. Not slowly. It stops. Nepal&rsquo;s foreign exchange reserves can hold for two to three months. After that, the country starts cutting imports. The poverty exposure is not a projection: 2.6 million people are above the poverty line only because someone left for the Gulf.</p>
+      </div>
+    </div>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Return migration with no jobs waiting <span class="sev-pill high">High severity · Months</span></div>
+      <div class="prose">
+        <p>Nepal creates fewer than 100,000 formal jobs a year. Half a million people enter the labour market annually. That gap is why migration became the de facto policy decades ago. Most workers took on NPR 300,000 to 400,000 in informal debt just to get the job. Coming home mid-contract means coming home broke, in debt, with nothing waiting. There is no soft landing here.</p>
+      </div>
+    </div>
+
+    <div class="impact-card sev-medium">
+      <div class="card-title">Fuel, energy and the Balen Shah government <span class="sev-pill medium">Medium severity · Weeks</span></div>
+      <div class="prose">
+        <p>Oil is up roughly 45% since late February and gas by 55%, according to UN ESCAP. Nepal imports every drop of petroleum it uses, holds no strategic reserve, and NOC is bleeding money because its pricing mechanism cannot keep up. People in Kathmandu are already queueing at petrol stations and hunting for cooking gas cylinders.</p>
+        <p>Balen Shah was sworn in days before NOC announced its first price hike. His governance roadmap commits to 13,000 MW of Power Purchase Agreements in 180 days and an energy export strategy in one month. Both are directly relevant to reducing petroleum dependence. He has a real parliamentary majority and political capital no recent PM came close to having. The crisis arrived before he was ready. So did the window.</p>
+      </div>
+    </div>
+
+    <div class="impact-card sev-medium">
+      <div class="card-title">Tourism disruption <span class="sev-pill medium">Medium severity · Immediate</span></div>
+      <div class="prose">
+        <p>Almost every international tourist arrives in Nepal through a Gulf hub airport. The closures hit at the start of trekking season, March to May, the two months when tourism revenue actually matters. Himalaya Airlines pulled every Middle East route. Remittances down, tourism down, at the same time. Nepal&rsquo;s two main foreign exchange sources were compressed simultaneously.</p>
+      </div>
+    </div>
+
+    <h2 class="sh">Provincial poverty &mdash; who bears the shock</h2>
+
+    <div class="chart-block">
+      <div class="chart-title">Poverty rate by province &mdash; NLSS-IV 2022/23, with remittance dependency</div>
+      <div class="chart-body">
+        <div class="bar-chart">
+          <div style="display:grid;grid-template-columns:155px 1fr 70px;gap:0.65rem;margin-bottom:4px;">
+            <div></div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:0.62rem;color:var(--ink-faint);">
+              <span>0%</span><span>10%</span><span>20%</span><span>35%</span>
+            </div>
+            <div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Sudurpaschim&nbsp;<span style="font-size:0.6rem;color:var(--red);font-weight:700;">Very high dep.</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:97.7%;background:#b91c1c;"></div></div>
+            <div class="bar-val" style="color:var(--red);">34.2%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Karnali&nbsp;<span style="font-size:0.6rem;color:var(--red);font-weight:700;">Very high dep.</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:76.3%;background:#b91c1c;"></div></div>
+            <div class="bar-val" style="color:var(--red);">26.7%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Madhesh&nbsp;<span style="font-size:0.6rem;color:var(--amber);font-weight:700;">High dep.</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:65.7%;background:#b45309;"></div></div>
+            <div class="bar-val" style="color:var(--amber);">23.0%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Lumbini&nbsp;<span style="font-size:0.6rem;color:var(--amber);font-weight:700;">High dep.</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:65.1%;background:#b45309;"></div></div>
+            <div class="bar-val" style="color:var(--amber);">22.8%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Koshi</div>
+            <div class="bar-track"><div class="bar-fill" style="width:52.6%;background:#1e3a8a;opacity:0.5;"></div></div>
+            <div class="bar-val">18.4%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Bagmati</div>
+            <div class="bar-track"><div class="bar-fill" style="width:40.3%;background:#1e3a8a;opacity:0.5;"></div></div>
+            <div class="bar-val">14.1%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-label">Gandaki</div>
+            <div class="bar-track"><div class="bar-fill" style="width:34.3%;background:#15803d;opacity:0.6;"></div></div>
+            <div class="bar-val" style="color:var(--green);">12.0%</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-source">Source: Nepal Living Standards Survey IV (2022/23), NSO Nepal. Remittance dependency based on NLSS-IV household income source data and NRB bilateral remittance estimates.</div>
+    </div>
+
+    <div class="callout">
+      Sudurpaschim has 34.2&percnt; poverty <em>with</em> the money flowing. Without it, the province is likely back above 45&percnt;, where the whole country was in 1995. These are the exact districts that send the most men to the Gulf. For most households there, migration is not a supplement to the local economy. It <em>is</em> the local economy.
+    </div>
+
+  </div>
+
+  <!-- ══════ MITIGATION ══════ -->
+  <div class="tab-panel" id="tab-mitigation">
+
+    <!-- BACKDROP -->
+    <h2 class="sh">A new government, a generational crisis, a rare mandate</h2>
+
+    <div class="prose" style="max-width:100%;margin-bottom:2rem;">
+      <p>Balen Shah — engineer, former Kathmandu mayor, first PM with a real parliamentary majority in years — came in on March 27, four days before NOC's first fuel hike. He was elected because people were finished with nine-month governments that treated ministries as rewards. The crisis handed him something rare: a shock every constituency can feel, and a mandate strong enough to push through reforms that died in committee the last ten times. Whether he moves on that is the only question left.</p>
+    </div>
+
+    <div class="callout" style="margin-bottom:2.5rem;">
+      The short-term items below need no new legislation, just budget reallocation and direction. The long-term ones need consistency over years. Nepal has written these same recommendations after every crisis since 1990. Almost none of them got done. The mandate is the variable this time.
+    </div>
+
+    <!-- SHORT TERM -->
+    <div class="horizon">
+      <div class="horizon-line" style="background:var(--red);"></div>
+      <span class="horizon-label" style="color:var(--red);">Do now &mdash; weeks to months</span>
+      <div class="horizon-line" style="background:var(--red);"></div>
+    </div>
+
+    <div class="impact-card sev-high" style="margin-top:1rem;">
+      <div class="card-title">Deploy emergency consular capacity <span class="sev-pill high">Weeks</span></div>
+      <div class="prose"><p>Nepal&rsquo;s Gulf embassies were built for routine paperwork. They are not staffed for a war. 1.73 million workers in an active conflict zone need a 24-hour line and someone who picks up. It is a Vienna Convention obligation. It needs budget reallocation, not a new law.</p></div>
+    </div>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Reinstate labor permits in tiers, not a blanket hold <span class="sev-pill high">Weeks</span></div>
+      <div class="prose"><p>Suspending permits to 12 countries on day one was the right call. Holding the same blanket ban for months is not. Bahrain is not the same situation as Qatar. Oman is not Kuwait. MoFA and MoLESS need to stop running parallel processes and build a joint mechanism that restores permits country by country as conditions shift.</p></div>
+    </div>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Fix NOC and ration fuel demand <span class="sev-pill high">Weeks</span></div>
+      <div class="prose"><p>NOC has lost Rs 18.81 billion since February 28. Rs 13.21 billion of that came in just 15 days. The pricing mechanism cannot keep pace. A transparent formula fixes that. Odd-even vehicle rules across the three main cities save around Rs 220 million a day. Balen banned vehicles from Kathmandu roads when he was mayor. He has the track record and he knows it works.</p></div>
+    </div>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Returnee loan relief <span class="sev-pill high">Months</span></div>
+      <div class="prose"><p>A worker coming home mid-contract is carrying NPR 300,000 to 400,000 in recruitment debt with nothing coming in. Converting that to NRB-backed credit through existing microfinance networks is exactly what Nepal did after the 2015 earthquake. The model already exists. Someone just has to activate it.</p></div>
+    </div>
+
+    <div class="impact-card sev-high">
+      <div class="card-title">Commission a strategic petroleum reserve <span class="sev-pill high">Months</span></div>
+      <div class="prose"><p>A 30-day diesel buffer, about 75 million litres, costs roughly Rs 12 billion. NOC lost more than that in 15 days of this crisis. Balen&rsquo;s roadmap commits to 13,000 MW of PPAs in 180 days. Commission the storage in that same window. Even just announcing a date changes how the market and the public read the situation.</p></div>
+    </div>
+
+    <!-- LONG TERM -->
+    <div class="horizon" style="margin-top:2.5rem;">
+      <div class="horizon-line" style="background:var(--green);"></div>
+      <span class="horizon-label" style="color:var(--green);">Build over years &mdash; the reforms that keep getting deferred</span>
+      <div class="horizon-line" style="background:var(--green);"></div>
+    </div>
+
+    <table class="mit-table" style="margin-top:1rem;">
+      <thead><tr>
+        <th style="width:30%;">Reform</th>
+        <th style="width:50%;">Why it keeps failing and why now is different</th>
+        <th>Feasibility</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>LPG to electric cooking<br><span style="font-weight:400;color:var(--ink-light);font-size:0.76rem;">Redirect surplus hydro to domestic use before exporting</span></td>
+          <td style="font-size:0.76rem;color:var(--ink-light);">Nepal imports all LPG and generates surplus hydropower. The crisis has made the logic undeniable. Balen's energy export roadmap should divert capacity inward first — a sequence change that requires political direction, not new infrastructure.</td>
+          <td><span class="feas medium">Medium</span></td>
+        </tr>
+        <tr>
+          <td>Migration corridor diversification<br><span style="font-weight:400;color:var(--ink-light);font-size:0.76rem;">Japan, South Korea, Australia as lower-risk alternatives to Gulf</span></td>
+          <td style="font-size:0.76rem;color:var(--ink-light);">EPS-Korea is the proven G2G model. Negotiations with Japan and Australia are already at ministry level. The recruitment industry lobbies against diversification because Gulf placements are more profitable. Balen's majority is large enough to override that.</td>
+          <td><span class="feas medium">Medium</span></td>
+        </tr>
+        <tr>
+          <td>Returnee skills pipeline<br><span style="font-weight:400;color:var(--ink-light);font-size:0.76rem;">Certify Gulf-acquired trades for domestic infrastructure deployment</span></td>
+          <td style="font-size:0.76rem;color:var(--ink-light);">Workers return with real construction and logistics skills and no way to prove them. A national registry is cheap to build and exactly the kind of practical, visible reform Balen was elected to deliver.</td>
+          <td><span class="feas high">High</span></td>
+        </tr>
+        <tr>
+          <td>Remittance stabilisation fund<br><span style="font-weight:400;color:var(--ink-light);font-size:0.76rem;">2% levy on institutional transfers; ~Rs 34B/yr shock buffer</span></td>
+          <td style="font-size:0.76rem;color:var(--ink-light);">The Gulf war just demonstrated exactly the shock this fund would absorb. Must be carefully designed to avoid diverting flows to informal channels. Bangladesh and Philippines have explored versions. Politically difficult but no longer easily dismissible.</td>
+          <td><span class="feas low">Low</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  </div>
+
+  <!-- ARTICLE FOOTER -->
+  <footer class="article-footer">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.25rem;">
+      <div>
+        <img src="./assets/sagarmathaiq-logo.jpeg" alt="SagarmathaIQ"
+                style="height:2.2rem;width:auto;vertical-align:middle;margin-right:6px;opacity:0.9;">
+        <div style="font-family:var(--sans);font-size:0.82rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink);margin-bottom:3px;">SagarmathaIQ</div>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);">Open quantitative analysis from the Himalayas</div>
+      </div>
+      </div>
+      <nav style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;">
+        <a href="index.html" style="font-family:var(--sans);font-size:0.72rem;color:var(--navy);text-decoration:none;font-weight:600;">&#8592; All Projects</a>
+        <a href="about.html" style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);text-decoration:none;">About Us</a>
+        <a href="methodology.html" style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);text-decoration:none;">Methodology</a>
+        <a href="mailto:sagarmathaiq@gmail.com" style="font-family:var(--sans);font-size:0.72rem;color:var(--ink-light);text-decoration:none;">Email</a>
+      </nav>
+    </div>
+    <p style="margin-bottom:0.4rem;"><strong>Data sources:</strong> Nepal Rastra Bank &middot; Ministry of Foreign Affairs Nepal &middot; World Bank Nepal Poverty &amp; Equity Brief, April 2024 &middot; NLSS-IV (2022/23), NSO Nepal &middot; ACLED Middle East Special Issue, March 2026 &middot; Human Rights Watch, March 2026 &middot; Coalition on Labor Justice for Migrants in the Gulf, March 9, 2026 &middot; Kathmandu Post, March 2026 &middot; Khabarhub economic analysis, March 2026.</p>
+    <p>All findings are derived from primary sources. Methodology is documented and available on request. &nbsp;&nbsp; &copy; SagarmathaIQ &middot; April 2026</p>
+    <div style="margin-top:1rem;text-align:center;">
+      <img src="https://hits.sh/sagarmathaiq.github.io/nepal-gulf-war-impact.svg?extraCount=0&style=flat&label=Visitors&color=475569&labelColor=1E293B"
+           alt="Visitor count" style="height:1.4rem;width:auto;">
+    </div>
+  </footer>
+
+</article>
+
+</body>
+</html>
