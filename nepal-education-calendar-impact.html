@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nepal's Five-Day School Week — SagarmathaIQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
+  <style>
+    /* ── Article layout overrides & article-specific components ──
+       sagarmathaiq.css provides: reset, Inter font, body color,
+       .section-heading, .insight-box, .verdict-badge, .mono-red/blue,
+       .source-line, dark mode body/surface colors.
+       This block adds only what the article layout needs on top.     */
+
+    :root {
+      --serif: 'Lora', Georgia, 'Times New Roman', serif;
+      --mono: 'SFMono-Regular', 'Courier New', monospace;
+      --bg: #ffffff;
+      --bg-tint: #f0f4ff;
+      --bg-chip: #e8edf5;
+      --ink: #0d1117;
+      --ink-mid: #1f2937;
+      --ink-light: #4b5563;
+      --ink-faint: #6b7280;
+      --rule: #dde3ec;
+      --rule-dark: #c4cdd9;
+      --red: #c0152a;
+      --amber: #b45309;
+      --green: #15803d;
+      --navy: #1a3580;
+      --blue: #1d4ed8;
+    }
+
+    html {
+      font-size: 17px;
+    }
+
+    /* Article needs white bg — sagarmathaiq.css sets #F9FAFB for dashboard */
+    body {
+      background: var(--bg);
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ── Site nav ── */
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-left: auto;
+    }
+
+    .site-nav-link {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #4B5563;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .site-nav-link:hover {
+      color: #1a3580;
+    }
+
+    @media (max-width: 480px) {
+      .site-nav {
+        gap: 0.75rem;
+      }
+
+      .site-nav-link {
+        font-size: 0.72rem;
+      }
+
+      .site-nav-link:not(:first-child) {
+        display: none;
+      }
+    }
+
+    /* ── Site header (white bar — different from dashboard hero) ── */
+    .site-header {
+      background: #fff;
+      border-bottom: 2px solid #111827;
+      padding: 0.75rem 1.5rem;
+    }
+
+    .site-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .site-logo {
+      height: 34px;
+      width: auto;
+    }
+
+    .site-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .site-tagline {
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      font-family: var(--mono);
+    }
+
+    .header-right {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      color: var(--ink-faint);
+    }
+
+    .site-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 0.25rem;
+      align-items: center;
+    }
+
+    .site-nav-link {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      text-decoration: none;
+      padding: 0.35rem 0.7rem;
+      border-radius: 5px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+
+    .site-nav-link:hover {
+      background: var(--bg-tint);
+      color: var(--navy);
+    }
+
+    /* ── Article container ── */
+    article.article {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    /* ── Kicker ── */
+    .kicker {
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ── Headline ── */
+    h1.headline {
+      font-family: var(--serif);
+      font-size: clamp(1.55rem, 3.5vw, 2.1rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.22;
+      max-width: 720px;
+      margin-bottom: 1.1rem;
+    }
+
+    /* ── Standfirst — uses .insight-box from shared CSS as base,
+       but needs navy border + tint bg, so we define it separately ── */
+    .standfirst {
+      font-size: 0.97rem;
+      color: var(--ink-mid);
+      background: var(--bg-tint);
+      border-left: 3px solid var(--navy);
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1rem;
+      max-width: 720px;
+      line-height: 1.65;
+    }
+
+    /* ── Meta row ── */
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .meta strong {
+      color: var(--ink);
+    }
+
+    /* ── Stat row ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      border: 1px solid var(--rule-dark);
+      margin-bottom: 2rem;
+    }
+
+    .stat-cell {
+      padding: 1rem 1.1rem;
+      border-right: 1px solid var(--rule-dark);
+    }
+
+    .stat-cell:last-child {
+      border-right: none;
+    }
+
+    .stat-label {
+      font-size: 0.62rem;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 4px;
+    }
+
+    .stat-val {
+      font-size: 1.35rem;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--navy);
+      line-height: 1.1;
+    }
+
+    .stat-val.amber {
+      color: var(--amber);
+    }
+
+    .stat-note {
+      font-size: 0.68rem;
+      color: var(--ink-faint);
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    /* ── Tab nav — solid filled buttons ── */
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      background: var(--bg-chip);
+      border: 1px solid var(--rule-dark);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink-light);
+      padding: 0.6rem 1.4rem;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .tab-btn:hover {
+      background: var(--bg-tint);
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .tab-btn.active {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* ── Section heading inside article — same as .section-heading in shared CSS ── */
+    h2.sh {
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin: 2rem 0 1rem;
+    }
+
+    /* ── Prose ── */
+    .prose p {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 0.9rem;
+      max-width: 720px;
+    }
+
+    .prose p strong {
+      color: var(--ink);
+      font-family: var(--sans, 'Inter', sans-serif);
+    }
+
+    /* ── Impact cards ── */
+    .impact-card {
+      border: 1px solid var(--rule-dark);
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .impact-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+    }
+
+    .impact-card.sev-high::before {
+      background: var(--red);
+    }
+
+    .impact-card.sev-medium::before {
+      background: var(--amber);
+    }
+
+    .impact-card.sev-low::before {
+      background: var(--green);
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      padding: 0.85rem 1.1rem 0.85rem 1.3rem;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .sev-pill {
+      font-size: 0.6rem;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
+
+    .sev-pill.high {
+      background: #fef2f2;
+      color: var(--red);
+      border: 1px solid #fecaca;
+    }
+
+    .sev-pill.medium {
+      background: #fffbeb;
+      color: var(--amber);
+      border: 1px solid #fde68a;
+    }
+
+    .sev-pill.low {
+      background: #f0fdf4;
+      color: var(--green);
+      border: 1px solid #bbf7d0;
+    }
+
+    .impact-card .prose {
+      padding: 0.85rem 1.1rem 0.85rem 1.3rem;
+    }
+
+    /* ── Callouts — navy (default), amber, red variants ── */
+    .callout {
+      border-left: 3px solid var(--navy);
+      background: #eff6ff;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.88rem;
+      color: #1e40af;
+      margin: 1.25rem 0;
+      max-width: 720px;
+      line-height: 1.65;
+    }
+
+    .callout.amber {
+      border-left-color: var(--amber);
+      background: #fffbeb;
+      color: var(--amber);
+    }
+
+    /* ── Chart block ── */
+    .chart-block {
+      border: 1px solid var(--rule-dark);
+      margin: 1.5rem 0;
+    }
+
+    .chart-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink);
+      padding: 0.7rem 1rem 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .chart-body {
+      padding: 1rem;
+      background: #fff;
+      overflow-x: auto;
+    }
+
+    .chart-source {
+      font-size: 0.62rem;
+      font-family: var(--mono);
+      color: var(--ink-faint);
+      padding: 0.5rem 1rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── Bar charts ── */
+    .bar-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 70px;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .bar-label {
+      color: var(--ink-mid);
+      text-align: right;
+      padding-right: 0.5rem;
+    }
+
+    .bar-track {
+      background: var(--bg-chip);
+      height: 22px;
+    }
+
+    .bar-fill {
+      height: 100%;
+      transition: width 0.4s ease;
+    }
+
+    .bar-val {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--ink);
+      padding-left: 0.3rem;
+    }
+
+    .bar-scale-header {
+      display: grid;
+      grid-template-columns: 160px 1fr 70px;
+      gap: 0.6rem;
+      font-size: 0.6rem;
+      font-family: var(--mono);
+      color: var(--ink-faint);
+      margin-bottom: 0.25rem;
+    }
+
+    .bar-scale-inner {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ── Horizon dividers ── */
+    .horizon {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 1.75rem 0 1rem;
+    }
+
+    .horizon-line {
+      flex: 1;
+      height: 1px;
+    }
+
+    .horizon-label {
+      font-size: 0.68rem;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── Mitigation table ── */
+    .mit-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--rule-dark);
+    }
+
+    .mit-table thead tr {
+      background: var(--bg-tint);
+    }
+
+    .mit-table th {
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+      font-size: 0.62rem;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 700;
+      border-bottom: 1px solid var(--rule-dark);
+    }
+
+    .mit-table td {
+      padding: 0.8rem 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      color: var(--ink-mid);
+    }
+
+    .mit-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mit-action {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.82rem;
+      margin-bottom: 2px;
+    }
+
+    .mit-desc {
+      font-size: 0.73rem;
+      color: var(--ink-light);
+      line-height: 1.5;
+    }
+
+    .feas {
+      font-size: 0.58rem;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .feas.high {
+      background: #f0fdf4;
+      color: var(--green);
+      border: 1px solid #bbf7d0;
+    }
+
+    .feas.medium {
+      background: #fffbeb;
+      color: var(--amber);
+      border: 1px solid #fde68a;
+    }
+
+    .feas.low {
+      background: #fef2f2;
+      color: var(--red);
+      border: 1px solid #fecaca;
+    }
+
+    /* ── Comparison table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin: 1.25rem 0;
+      border: 1px solid var(--rule-dark);
+    }
+
+    .compare-table thead tr {
+      background: var(--bg-tint);
+    }
+
+    .compare-table th {
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+      font-size: 0.62rem;
+      font-family: var(--mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 700;
+      border-bottom: 1px solid var(--rule-dark);
+    }
+
+    .compare-table td {
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-mid);
+    }
+
+    .compare-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-table .country-col {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .highlight-row td {
+      background: #eff6ff;
+    }
+
+    .highlight-row .country-col {
+      color: var(--navy);
+    }
+
+    /* ── Article footer ── */
+    .article-footer {
+      margin-top: 3rem;
+      padding-top: 1.25rem;
+      border-top: 2px solid var(--ink);
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+      font-family: var(--mono);
+      line-height: 1.7;
+    }
+
+    .article-footer p {
+      margin-bottom: 0.4rem;
+    }
+
+    .article-footer strong {
+      color: var(--ink-light);
+    }
+
+    /* ── Dark mode ── */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141c2e;
+        --bg-tint: #1d2a42;
+        --bg-chip: #1d2a42;
+        --ink: #f8fafc;
+        --ink-mid: #e2e8f0;
+        --ink-light: #b0bfd4;
+        --ink-faint: #7a92ae;
+        --rule: #253047;
+        --rule-dark: #2e3f58;
+        --red: #fc8080;
+        --amber: #fcd34d;
+        --green: #6ee7a0;
+        --navy: #a5c8fd;
+        --blue: #7db8fd;
+      }
+
+      .site-header {
+        background: #141c2e;
+        border-bottom-color: #2e3f58;
+      }
+
+      .site-nav-link {
+        color: #94a3b8;
+      }
+
+      .site-nav-link:hover {
+        background: #1d2a42;
+        color: #a5c8fd;
+      }
+
+      .tab-btn {
+        background: #1d2a42;
+        border-color: #2e3f58;
+        color: var(--ink-light);
+      }
+
+      .tab-btn:hover {
+        background: #253047;
+        color: var(--navy);
+        border-color: var(--navy);
+      }
+
+      .tab-btn.active {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+      }
+
+      .callout {
+        background: #1a2f52;
+        border-left-color: var(--navy);
+        color: #a5c8fd;
+      }
+
+      .callout.amber {
+        background: #3a1c02;
+        border-left-color: var(--amber);
+        color: #fde68a;
+      }
+
+      .sev-pill.high {
+        background: #3d0a0a;
+        color: #fca5a5;
+        border-color: #7f1d1d;
+      }
+
+      .sev-pill.medium {
+        background: #3a1c02;
+        color: #fde68a;
+        border-color: #78350f;
+      }
+
+      .sev-pill.low {
+        background: #042712;
+        color: #86efac;
+        border-color: #166534;
+      }
+
+      .feas.high {
+        background: #042712;
+        color: var(--green);
+        border-color: #166534;
+      }
+
+      .feas.medium {
+        background: #3a1c02;
+        color: var(--amber);
+        border-color: #78350f;
+      }
+
+      .feas.low {
+        background: #3d0a0a;
+        color: var(--red);
+        border-color: #7f1d1d;
+      }
+
+      .highlight-row td {
+        background: #1a2f52;
+      }
+
+      .highlight-row .country-col {
+        color: #a5c8fd;
+      }
+
+      .chart-block {
+        border-color: var(--rule-dark);
+      }
+
+      .chart-title {
+        color: var(--ink);
+        border-bottom-color: var(--rule);
+        background: #1d2a42;
+      }
+
+      .chart-body {
+        background: #141c2e;
+      }
+
+      .chart-source {
+        border-top-color: var(--rule);
+        color: var(--ink-faint);
+      }
+
+      .bar-track {
+        background: #1d2a42;
+      }
+
+      .mit-table thead tr {
+        background: #1d2a42;
+      }
+
+      .mit-table td,
+      .mit-table th {
+        border-color: var(--rule-dark);
+      }
+
+      .mit-action {
+        color: var(--ink);
+      }
+
+      .mit-desc {
+        color: var(--ink-light);
+      }
+
+      .compare-table thead tr {
+        background: #1d2a42;
+      }
+
+      .compare-table td,
+      .compare-table th {
+        border-color: var(--rule-dark);
+      }
+
+      .compare-table .country-col {
+        color: var(--ink);
+      }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      html {
+        font-size: 16px;
+      }
+
+      article.article {
+        padding: 1.75rem 1.25rem 2.5rem;
+      }
+
+      h1.headline {
+        font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+      }
+
+      .standfirst {
+        font-size: 0.93rem;
+      }
+
+      .stat-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat-cell:nth-child(3) {
+        border-right: none;
+      }
+
+      .stat-cell:nth-child(4),
+      .stat-cell:nth-child(5),
+      .stat-cell:nth-child(6) {
+        border-top: 1px solid var(--rule-dark);
+      }
+
+      .stat-cell:nth-child(6) {
+        border-right: none;
+      }
+
+      .tab-btn {
+        font-size: 0.82rem;
+        padding: 0.55rem 0.9rem;
+      }
+
+      .bar-row,
+      .bar-scale-header {
+        grid-template-columns: 110px 1fr 58px;
+      }
+
+      .mit-table,
+      .compare-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .header-right {
+        display: none;
+      }
+
+      .site-header-inner {
+        gap: 0.65rem;
+      }
+
+      .site-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      html {
+        font-size: 15px;
+      }
+
+      article.article {
+        padding: 1.25rem 0.9rem 2rem;
+      }
+
+      h1.headline {
+        font-size: clamp(1.2rem, 5.5vw, 1.5rem);
+      }
+
+      .standfirst {
+        font-size: 0.9rem;
+        padding: 0.75rem 0.9rem;
+      }
+
+      .meta {
+        gap: 0.6rem;
+        font-size: 0.72rem;
+      }
+
+      .stat-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--rule-dark);
+      }
+
+      .stat-cell:nth-child(odd) {
+        border-right: 1px solid var(--rule-dark);
+      }
+
+      .stat-cell:nth-child(3),
+      .stat-cell:nth-child(4),
+      .stat-cell:nth-child(5),
+      .stat-cell:nth-child(6) {
+        border-top: none;
+      }
+
+      .stat-cell:last-child,
+      .stat-cell:nth-last-child(2) {
+        border-bottom: none;
+      }
+
+      .stat-val {
+        font-size: 1.15rem;
+      }
+
+      .stat-note {
+        font-size: 0.64rem;
+      }
+
+      .tab-nav {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .tab-btn {
+        font-size: 0.78rem;
+        padding: 0.5rem 1rem;
+      }
+
+      .bar-row,
+      .bar-scale-header {
+        grid-template-columns: 85px 1fr 50px;
+        font-size: 0.7rem;
+      }
+
+      .bar-label {
+        font-size: 0.65rem;
+      }
+
+      .bar-val {
+        font-size: 0.68rem;
+      }
+
+      .card-title {
+        font-size: 0.82rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      .chart-title {
+        font-size: 0.72rem;
+      }
+
+      .prose p {
+        font-size: 0.88rem;
+      }
+
+      .horizon-label {
+        font-size: 0.62rem;
+      }
+
+      .mit-table,
+      .compare-table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        font-size: 0.73rem;
+      }
+
+      .mit-table th,
+      .mit-table td,
+      .compare-table th,
+      .compare-table td {
+        padding: 0.6rem 0.65rem;
+      }
+
+      .site-header-inner {
+        flex-wrap: wrap;
+      }
+
+      .site-name {
+        font-size: 0.88rem;
+      }
+
+      .site-tagline {
+        font-size: 0.62rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      html {
+        font-size: 14px;
+      }
+
+      article.article {
+        padding: 1rem 0.75rem 1.75rem;
+      }
+
+      .stat-row {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-cell {
+        border-right: none !important;
+        border-top: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html"
+        style="display:flex;align-items:center;gap:0.85rem;text-decoration:none;color:inherit;flex-shrink:0;">
+        <img src="./assets/sagarmathaiq-logo.jpeg" alt="SagarmathaIQ" class="site-logo">
+        <div>
+          <div class="site-name">SagarmathaIQ</div>
+          <div class="site-tagline">Open quantitative analysis from the Himalayas</div>
+        </div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="site-nav-link">← All Projects</a>
+        <a href="about.html" class="site-nav-link">About</a>
+        <a href="mailto:sagarmathaiq@gmail.com" class="site-nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <article class="article">
+
+    <!-- KICKER -->
+    <div class="kicker">Impact Analysis · April 2026 · Education Policy</div>
+
+    <!-- HEADLINE -->
+    <h1 class="headline">Nepal's five-day school week: right direction, transition gap ahead</h1>
+
+    <!-- STANDFIRST -->
+    <div class="standfirst">
+      Nepal's April 2026 directive moves the country from a 6-day school week to the 5-day model used by most of the
+      world. The near-term task is updating curriculum and calendar to match the new structure.
+    </div>
+
+    <!-- META -->
+    <div class="meta">
+      <span><strong>Published</strong> April 12, 2026</span>
+      <span><strong>Sources</strong> Government of Nepal Cabinet Directive · PABSON · Nepal Ministry of Education · RTE
+        Act (India) · NCES (USA)</span>
+      <span><strong>Category</strong> Impact Analysis</span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-label">Old weekly hours</div>
+        <div class="stat-val">33 hrs</div>
+        <div class="stat-note">6-day week incl. Friday half-day</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">New weekly hours</div>
+        <div class="stat-val">30 hrs</div>
+        <div class="stat-note">5-day week — aligns with global norm</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Weekly change</div>
+        <div class="stat-val amber">−9.1%</div>
+        <div class="stat-note">3-hour transition gap to manage</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Annual adjustment</div>
+        <div class="stat-val amber">~110 hrs</div>
+        <div class="stat-note">~18–20 days — addressable via calendar reform</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Weekend days gained</div>
+        <div class="stat-val">+52 days</div>
+        <div class="stat-note">52 Sundays now public holidays</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-label">Statutory target</div>
+        <div class="stat-val amber">190 days</div>
+        <div class="stat-note">Needs revised calendar to achieve</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" onclick="showTab(event,'impact')">Impact</button>
+      <button class="tab-btn" onclick="showTab(event,'response')">What can be done</button>
+    </nav>
+
+    <!-- ══════════ TAB 1: IMPACT ══════════ -->
+    <div class="tab-panel active" id="tab-impact">
+
+      <h2 class="sh">The trigger</h2>
+
+      <div class="prose">
+        <p>
+          On <strong>Chaitra 23, 2082</strong>, Nepal's Cabinet made Saturday and Sunday public holidays in response to
+          the Strait of Hormuz disruption — the Nepal Oil Corporation was losing <strong>~Rs 11.7 billion per
+            fortnight</strong>. For schools, the structural nuance: the old week ran Sunday–Friday, with Sunday full
+          (10–4) and Friday a half-day (10–1). The new policy flips this — Sunday off, Friday full. Net result: 3 fewer
+          hours per week.
+        </p>
+      </div>
+
+      <!-- CHART: Weekly hours comparison -->
+      <div class="chart-block">
+        <div class="chart-title">Weekly instructional hours — before and after the April 2026 directive</div>
+        <div class="chart-body">
+          <div class="bar-scale-header">
+            <div></div>
+            <div class="bar-scale-inner"><span>0</span><span>17 hrs</span><span>33 hrs</span></div>
+            <div></div>
+          </div>
+          <div class="bar-rows">
+            <div class="bar-row">
+              <div class="bar-label">Pre-2026</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:100%;background:#1e3a8a;"></div>
+              </div>
+              <div class="bar-val">33 hrs</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Post-2026</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:90.9%;background:#b91c1c;"></div>
+              </div>
+              <div class="bar-val" style="color:#b91c1c;">30 hrs</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-source">Source: Government of Nepal Cabinet Directive, Chaitra 23, 2082 · Ministry of
+          Education school schedule circulars</div>
+      </div>
+
+      <div class="callout">
+        Friday: +3 hrs. Sunday: −6 hrs. Net: <strong>−3 hrs/week</strong> — manageable with a revised calendar.
+      </div>
+
+      <h2 class="sh">Finding 01 · Instructional time loss</h2>
+
+      <div class="impact-card sev-medium">
+        <div class="card-title">
+          The 3-hour weekly gap accumulates to about 20 school days annually — a known and quantifiable transition cost.
+          <span class="sev-pill medium">Transition gap · Near-term</span>
+        </div>
+        <div class="prose">
+          <p>
+            At 36–40 school weeks per year, 3 hrs/week adds up to <strong>108–120 hours annually</strong> — 18 to 20
+            full school days. Nepal's statutory minimum is 190 days; the post-directive estimate is 170–180. The session
+            start was also pushed back 13 days (Baisakh 2 → Baisakh 15). A revised Ministry calendar and modest daily
+            extensions can close most of this.
+          </p>
+        </div>
+      </div>
+
+      <!-- CHART: Annual days comparison -->
+      <div class="chart-block">
+        <div class="chart-title">Estimated annual instructional days — pre and post directive</div>
+        <div class="chart-body">
+          <div class="bar-scale-header">
+            <div></div>
+            <div class="bar-scale-inner"><span>0</span><span>100 days</span><span>200 days</span></div>
+            <div></div>
+          </div>
+          <div class="bar-rows">
+            <div class="bar-row">
+              <div class="bar-label">Pre-2026 (actual)</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:97.5%;background:#1e3a8a;"></div>
+              </div>
+              <div class="bar-val">~195</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Post-2026 (est.)</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:87.5%;background:#b45309;"></div>
+              </div>
+              <div class="bar-val" style="color:#b45309;">~175</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Statutory minimum</div>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:95%;background:#6b7280;opacity:0.5;"></div>
+              </div>
+              <div class="bar-val" style="color:#6b7280;">190</div>
+            </div>
+          </div>
+        </div>
+        <div class="chart-source">Source: Nepal Ministry of Education · Government of Nepal Cabinet Directive, April
+          2026 · SagarmathaIQ estimates</div>
+      </div>
+
+      <h2 class="sh">Finding 02 · Global alignment</h2>
+
+      <!-- Impact card 2 -->
+      <div class="impact-card sev-low">
+        <div class="card-title">
+          Nepal was an outlier with a 6-day week. Moving to 5 days matches the model used by the US, India, and most of
+          the world.
+          <span class="sev-pill low">Positive alignment · Structural</span>
+        </div>
+        <div class="prose">
+          <p>
+            Nepal's pre-2026 6-day week was an international anomaly. Most high-performing systems run 5 days and
+            compensate through daily intensity — the US at 180 days and 6.5–7 hrs/day; India at 200–220 days on a 5-day
+            week. The post-2026 structure is correct; the task now is building daily intensity to match.
+          </p>
+        </div>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="chart-block">
+        <div class="chart-title">Annual instructional days — Nepal vs. international peers</div>
+        <div class="chart-body" style="padding:0;">
+          <table class="compare-table" style="border:none;margin:0;">
+            <thead>
+              <tr>
+                <th>Country / System</th>
+                <th>Annual days</th>
+                <th>Daily hours</th>
+                <th>Annual contact hours (est.)</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="country-col">India (RTE — grades 1–5)</td>
+                <td>200</td>
+                <td>~5.5–6</td>
+                <td>~1,100–1,200</td>
+                <td style="font-size:0.72rem;color:#6b7280;">Primary minimum</td>
+              </tr>
+              <tr>
+                <td class="country-col">India (RTE — grades 6–8)</td>
+                <td><strong>220</strong></td>
+                <td>~5.5–6</td>
+                <td>~1,210–1,320</td>
+                <td style="font-size:0.72rem;color:#6b7280;">Upper primary minimum</td>
+              </tr>
+              <tr>
+                <td class="country-col">United States (typical)</td>
+                <td>180</td>
+                <td>~6.5–7</td>
+                <td>~1,170–1,260</td>
+                <td style="font-size:0.72rem;color:#6b7280;">State mandates vary</td>
+              </tr>
+              <tr class="highlight-row">
+                <td class="country-col">Nepal — pre-2026</td>
+                <td>~195</td>
+                <td>5.5 avg</td>
+                <td>~1,070</td>
+                <td style="font-size:0.72rem;color:#1e3a8a;">6-day week, Fri half-day</td>
+              </tr>
+              <tr class="highlight-row">
+                <td class="country-col" style="color:#b45309;">Nepal — post-2026 (est.)</td>
+                <td style="color:#b45309;font-weight:700;">~175</td>
+                <td>6.0</td>
+                <td style="color:#b45309;font-weight:700;">~1,050</td>
+                <td style="font-size:0.72rem;color:#b45309;">5-day week — transition year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chart-source">Source: India RTE Act 2009 · NCES Digest of Education Statistics 2023 · Nepal Ministry
+          of Education · SagarmathaIQ estimates</div>
+      </div>
+
+      <h2 class="sh">Finding 03 · Near-term curriculum gap</h2>
+
+      <!-- Impact card 3 -->
+      <div class="impact-card sev-medium">
+        <div class="card-title">
+          Syllabi need updating for the 30-hour week — PABSON's interim workaround buys time while that happens.
+          <span class="sev-pill medium">Transition gap · Near-term</span>
+        </div>
+        <div class="prose">
+          <p>
+            Syllabi were built for 33 hrs/week. Schools are covering the same content in <strong>9% less time</strong>
+            during 2082 while curriculum revision catches up. PABSON's workaround — shifting admin and parent meetings
+            to weekends — is a practical interim fix. The real solution is a Ministry curriculum adjustment aligned to
+            the new structure.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout amber">
+        Reaching the 190-day statutory target in 2082 requires a revised calendar — extending daily hours modestly or
+        reducing non-statutory local holidays can close most of the gap.
+      </div>
+
+      <h2 class="sh">Finding 04 · The quality pivot</h2>
+
+      <!-- Impact card 4 -->
+      <div class="impact-card sev-low">
+        <div class="card-title">
+          The Ministry's shift toward competency over contact hours is consistent with how high-performing education
+          systems actually work.
+          <span class="sev-pill low">Positive direction · Structural</span>
+        </div>
+        <div class="prose">
+          <p>
+            Abolishing primary exams, banning political student organizations, and moving to competency-based learning
+            are all evidence-backed. Research broadly shows teaching quality is a stronger predictor of outcomes than
+            contact hours, though instructional time still matters for lower-income students. A well-taught 30-hour week
+            can outperform a poorly structured 33-hour one.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="sh">Finding 05 · Wellbeing evidence and Nepal's local context</h2>
+
+      <!-- Impact card 5 -->
+      <div class="impact-card sev-low">
+        <div class="card-title">
+          Research supports rest as a learning enabler — and in Nepal's rural context, Sunday school carried real hidden
+          costs.
+          <span class="sev-pill low">Supporting evidence · Structural</span>
+        </div>
+        <div class="prose">
+          <p>
+            A peer-reviewed study of Oklahoma high schools (Morton, 2022, <em>Educational Evaluation and Policy
+              Analysis</em>) found shorter school weeks reduced bullying by <strong>39%</strong> and fighting by
+            <strong>31%</strong> with no impact on test scores. RAND (2021) survey data across US districts shows
+            <strong>85% of students</strong> liked the reduced schedule "a lot," and <strong>84% of parents</strong>
+            preferred it over a five-day week, citing lower stress and less burnout.
+          </p>
+          <p>
+            In Nepal's rural context, Sunday school competed directly with the agricultural calendar. The ILO Nepal
+            Child Labour Report 2021 (NLFS 2017/18) shows <strong>87% of child laborers work in agriculture</strong> —
+            Sunday being peak farm and market day. For many families, a free Sunday reduces the absenteeism and dropout
+            pressure that never showed in official attendance figures.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- END TAB 1 -->
+
+    <!-- ══════════ TAB 2: WHAT CAN BE DONE ══════════ -->
+    <div class="tab-panel" id="tab-response">
+
+      <!-- Horizon 1: Immediate -->
+      <div class="horizon">
+        <div class="horizon-line" style="background:var(--red);"></div>
+        <span class="horizon-label" style="color:var(--red);">Immediate — weeks</span>
+        <div class="horizon-line" style="background:var(--red);"></div>
+      </div>
+
+      <table class="mit-table">
+        <thead>
+          <tr>
+            <th style="width:30%;">Action</th>
+            <th style="width:50%;">What it requires</th>
+            <th>Feasibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="mit-action">Enforce Friday full-day (10 AM–4 PM)</div>
+              <div class="mit-desc">Convert the Friday half-day standard to a full 6-hour day across all public schools
+                immediately.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Ministerial circular already implies it. Schools just need
+              explicit confirmation.</td>
+            <td><span class="feas high">High</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mit-action">Move non-academic programs to weekends</div>
+              <div class="mit-desc">Shift staff training, parent meetings, and admin days to Saturday or Sunday.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">School management agreement needed. No legal barriers; teacher
+              cooperation required.</td>
+            <td><span class="feas medium">Medium</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mit-action">Reprioritize the syllabus internally</div>
+              <div class="mit-desc">Sequence high-stakes content earlier; defer low-priority units to protect SEE prep
+                time.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">No Ministry approval needed. Depends on teacher capacity and
+              principal leadership.</td>
+            <td><span class="feas medium">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Horizon 2: Short-term -->
+      <div class="horizon">
+        <div class="horizon-line" style="background:var(--amber);"></div>
+        <span class="horizon-label" style="color:var(--amber);">Short-term — months</span>
+        <div class="horizon-line" style="background:var(--amber);"></div>
+      </div>
+
+      <table class="mit-table">
+        <thead>
+          <tr>
+            <th style="width:30%;">Action</th>
+            <th style="width:50%;">What it requires</th>
+            <th>Feasibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="mit-action">Extend daily schedule by 30–45 minutes</div>
+              <div class="mit-desc">Shift end of school day from 4:00 PM to 4:30 or 4:45 PM to recover roughly 2.5 hours
+                per week.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Needs Ministry circular. Affects teacher contracts and
+              transport schedules.</td>
+            <td><span class="feas medium">Medium</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mit-action">Issue official 190-day contingency calendar</div>
+              <div class="mit-desc">Ministry publishes a revised calendar showing how 190 days can be reached, with
+                specific holiday reductions.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Needs Ministry–Cabinet coordination. Gives schools legal cover
+              to cut non-statutory local holidays.</td>
+            <td><span class="feas medium">Medium</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mit-action">Formal curriculum trimming for 2082</div>
+              <div class="mit-desc">CDC identifies units to defer or drop, aligned to the ~10% time reduction.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Needs CDC and exam board coordination. Reduces year-end
+              pressure on students and teachers.</td>
+            <td><span class="feas low">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Horizon 3: Structural -->
+      <div class="horizon">
+        <div class="horizon-line" style="background:var(--navy);"></div>
+        <span class="horizon-label" style="color:var(--navy);">Structural — one year or more</span>
+        <div class="horizon-line" style="background:var(--navy);"></div>
+      </div>
+
+      <table class="mit-table">
+        <thead>
+          <tr>
+            <th style="width:30%;">Action</th>
+            <th style="width:50%;">What it requires</th>
+            <th>Feasibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="mit-action">Implement competency-based curriculum</div>
+              <div class="mit-desc">Shift from contact-hour coverage to demonstrated competency outcomes, reducing the
+                structural dependency on day counts.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Minister Pokharel's stated direction. Needs teacher retraining,
+              new assessment design, and CDC framework revision.</td>
+            <td><span class="feas low">Low</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mit-action">Revise statutory day count to 180</div>
+              <div class="mit-desc">Align Nepal's formal minimum with the US model and compensate through higher daily
+                intensity (6.5+ hours).</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Parliament or Ministry-level regulatory change needed.</td>
+            <td><span class="feas low">Low</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mit-action">Conditional Saturday makeup classes</div>
+              <div class="mit-desc">Schools below 190 days by mid-year get Cabinet authorization to run Saturday
+                sessions.</div>
+            </td>
+            <td style="font-size:0.76rem;color:#6b7280;">Needs Cabinet amendment. Precedented in Nepal's emergency
+              academic extensions.</td>
+            <td><span class="feas low">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Callout -->
+      <div class="callout" style="margin-top:1.5rem;">
+        <strong>Priority:</strong> Enforce Friday full-day and issue a revised Ministry calendar — two steps that close
+        most of the 2082 gap without touching the directive.
+      </div>
+
+    </div>
+    <!-- END TAB 2 -->
+
+    <!-- BOTTOM LINE -->
+    <h2 class="sh" style="margin-top:2.5rem;">Bottom line</h2>
+
+    <div style="border:1px solid var(--rule-dark);margin-bottom:2rem;">
+      <div style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 100%);padding:0.85rem 1.1rem;">
+        <div style="font-size:1rem;font-weight:700;color:white;line-height:1.3;">Nepal's five-day school week is the
+          right call — the transition just needs to be managed deliberately</div>
+      </div>
+      <div style="padding:1.1rem 1.3rem;">
+        <div class="prose">
+          <p>
+            The directive is sound policy, and Nepal was overdue for a 5-day week. The evidence on wellbeing, teacher
+            retention, and rural attendance all support the change. A 6-day school week when most of the world had moved
+            on was an anomaly with real costs — costs that aggregate instructional-hour data never fully captured.
+          </p>
+          <p>
+            The task now is administrative: revised calendar, Friday full-day enforced, curriculum aligned. <strong>A
+              30-hour week at genuine intensity is a better system</strong> than a 33-hour week absorbed by absenteeism,
+            agricultural pull, and political strikes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLE FOOTER -->
+    <footer class="article-footer">
+      <p><strong>Data sources:</strong> Government of Nepal Cabinet Directive, Chaitra 23, 2082 · Nepal Oil Corporation
+        financial reports, April 2026 · National PABSON public statements · Nepal Ministry of Education school schedule
+        circulars · India Right to Education Act 2009 · US NCES Digest of Education Statistics 2023 · The Himalayan
+        Times · MyRepublica · Ratopati English · Xinhua Nepal bureau</p>
+      <p><strong>SagarmathaIQ</strong> is an independent quantitative research group of expat Nepali academics.
+        sagarmathaiq.github.io · April 2026</p>
+    </footer>
+
+  </article>
+
+  <script>
+    function showTab(e, id) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      e.target.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>
