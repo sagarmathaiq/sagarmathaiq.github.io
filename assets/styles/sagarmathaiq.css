@@ -1,0 +1,248 @@
+/* ══════════════════════════════════════════════════════════
+   SagarmathaIQ — Shared Dashboard Stylesheet
+   Open quantitative analysis from the Himalayas
+   sagarmathaiq.github.io
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ──
+   Add this to every dashboard page <head> before this stylesheet:
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+*/
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #1F2937;
+    background: #F9FAFB;
+}
+
+/* ── Header ── */
+.header { position: relative; color: white; text-align: center; overflow: hidden; }
+.header-hero {
+    position: absolute; inset: 0;
+    background: url('hero-banner.png') center center / cover no-repeat;
+    z-index: 0;
+}
+.header-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(15,30,80,0.62) 0%, rgba(10,20,60,0.72) 100%);
+    z-index: 1;
+}
+.header-content { position: relative; z-index: 2; padding: 3.5rem 2rem 2.5rem; }
+.logo { margin-bottom: 0.75rem; }
+.logo img { height: 80px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4)); }
+.header-sub { font-size: 1.05rem; opacity: 0.9; margin-bottom: 0.3rem; }
+.header-meta {
+    font-size: 0.75rem; font-family: 'SFMono-Regular', 'Courier New', monospace;
+    letter-spacing: 0.12em; opacity: 0.7; text-transform: uppercase;
+}
+.nav-buttons { margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.nav-button {
+    background: rgba(255,255,255,0.2); color: white;
+    padding: 0.75rem 1.5rem; border-radius: 6px; text-decoration: none;
+    font-weight: 500; transition: background 0.3s; border: 1px solid rgba(255,255,255,0.3);
+}
+.nav-button:hover { background: rgba(255,255,255,0.3); }
+
+/* ── Layout ── */
+.container { max-width: 1100px; margin: 2.5rem auto; padding: 0 1rem; }
+
+/* ── Section heading ── */
+.section-heading {
+    font-size: 0.75rem; font-family: 'SFMono-Regular', 'Courier New', monospace;
+    font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #6B7280; margin-bottom: 1rem;
+}
+
+/* ── Mission card ── */
+.mission {
+    background: white; padding: 2rem; border-radius: 8px;
+    margin-bottom: 2.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.mission h2 { font-size: 1.2rem; color: #1E3A8A; margin-bottom: 0.6rem; }
+.mission p  { color: #4B5563; font-size: 0.97rem; margin-bottom: 0.6rem; }
+.mission p:last-child { margin-bottom: 0; }
+
+/* ── Provenance strip ── */
+.provenance { display: flex; flex-wrap: wrap; border: 1px solid #E5E7EB; border-radius: 6px; overflow: hidden; margin-top: 1.25rem; }
+.prov-item { flex: 1; min-width: 160px; padding: 0.75rem 1rem; background: #F9FAFB; border-right: 1px solid #E5E7EB; }
+.prov-item:last-child { border-right: none; }
+.prov-label { font-size: 0.62rem; font-family: 'SFMono-Regular', 'Courier New', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 3px; font-weight: 700; }
+.prov-value { font-size: 0.78rem; color: #6B7280; }
+
+/* ── Project card ── */
+.project-card { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 2.5rem; overflow: hidden; }
+.project-card-header {
+    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+    padding: 1.5rem 2rem; display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+}
+.project-card-left { flex: 1; min-width: 200px; }
+.project-label { font-size: 0.7rem; font-family: 'SFMono-Regular', 'Courier New', monospace; letter-spacing: 0.15em; color: rgba(255,255,255,0.85); margin-bottom: 4px; font-weight: 700; }
+.project-title { font-size: 1.35rem; font-weight: 800; color: white; margin-bottom: 6px; letter-spacing: -0.02em; }
+.project-desc { font-size: 0.87rem; color: rgba(255,255,255,0.9); line-height: 1.55; }
+.status-badge { display: inline-block; font-size: 0.65rem; font-family: 'SFMono-Regular', 'Courier New', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 20px; margin-top: 0.6rem; }
+.status-complete  { background: rgba(34,197,94,0.25);  color: #86EFAC; }
+.status-published { background: rgba(56,189,248,0.25); color: #BAE6FD; }
+
+/* ── Project links ── */
+.project-links { display: flex; gap: 10px; flex-shrink: 0; flex-wrap: wrap; align-items: flex-start; }
+.proj-btn { padding: 0.6rem 1.2rem; border-radius: 5px; font-size: 0.83rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; white-space: nowrap; }
+.proj-btn:hover { opacity: 0.85; }
+.proj-btn-primary   { background: white; color: #1E3A8A; }
+.proj-btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+
+/* ── Stats bar ── */
+.project-stats { display: flex; gap: 0; border-bottom: 1px solid #F3F4F6; flex-wrap: wrap; }
+.stat-item { flex: 1; min-width: 120px; padding: 1rem 1.5rem; border-right: 1px solid #F3F4F6; }
+.stat-item:last-child { border-right: none; }
+.stat-label { font-size: 0.7rem; font-family: 'SFMono-Regular', 'Courier New', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 2px; }
+.stat-value { font-size: 1.1rem; font-weight: 700; color: #1E3A8A; }
+
+/* ── Forecast banners ── */
+.forecast-cards { display: flex; flex-direction: column; gap: 0.6rem; }
+.forecast-banner { background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%); border-radius: 6px; padding: 1.1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; flex-wrap: wrap; }
+.forecast-banner-alt { background: linear-gradient(135deg, #1E293B 0%, #1E3A8A 100%); }
+.forecast-banner-left { flex: 1; min-width: 180px; }
+.forecast-banner-label { font-size: 0.65rem; font-family: 'SFMono-Regular', 'Courier New', monospace; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 2px; font-weight: 700; }
+.forecast-banner-title { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 3px; }
+.forecast-banner-desc { font-size: 0.82rem; color: rgba(255,255,255,0.85); line-height: 1.45; }
+.forecast-banner-btn { background: white; color: #1E3A8A; padding: 0.5rem 1.1rem; border-radius: 5px; font-size: 0.82rem; font-weight: 600; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: opacity 0.2s; }
+.forecast-banner-btn:hover { opacity: 0.85; }
+.forecast-banner-btn-alt { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.25); }
+.project-dashboards { padding: 1.5rem 2rem; }
+.project-dashboards h3 { font-size: 0.75rem; font-family: 'SFMono-Regular', 'Courier New', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7280; margin-bottom: 1rem; }
+
+/* ── Analysis sections ── */
+.analysis-section { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 2rem; overflow: hidden; }
+.analysis-section-header { background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%); padding: 1rem 1.5rem; display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.finding-tag { font-size: 0.65rem; font-family: 'SFMono-Regular', 'Courier New', monospace; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 700; flex-shrink: 0; }
+.finding-title { font-size: 1rem; font-weight: 700; color: white; }
+.analysis-body { padding: 1.5rem 2rem; }
+.analysis-desc { font-size: 0.87rem; color: #4B5563; line-height: 1.75; margin-bottom: 1.25rem; max-width: 700px; }
+.analysis-desc strong { color: #1E3A8A; }
+.chart-label { font-size: 0.7rem; font-family: 'SFMono-Regular', 'Courier New', monospace; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6B7280; margin-bottom: 0.75rem; }
+
+/* ── Insight boxes ── */
+.insight-box { background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 3px solid #1D4ED8; border-radius: 0 5px 5px 0; padding: 0.85rem 1rem; font-size: 0.83rem; color: #1E40AF; line-height: 1.65; margin-top: 1rem; }
+.insight-box strong { color: #1E3A8A; }
+.insight-box-green { background: #F0FDF4; border-color: #BBF7D0; border-left-color: #16A34A; color: #166534; }
+.insight-box-green strong { color: #15803D; }
+
+/* ── Source line ── */
+.source-line { font-size: 0.67rem; font-family: 'SFMono-Regular', 'Courier New', monospace; color: #9CA3AF; border-left: 2px solid #E5E7EB; padding-left: 8px; margin-top: 1rem; }
+
+/* ── Chart wrapper ── */
+.chart-wrap { width: 100%; overflow-x: auto; margin-bottom: 0.5rem; }
+.chart-wrap svg { display: block; width: 100%; }
+
+/* ── GDP proportional bar ── */
+.gdp-bar { display: flex; border-radius: 4px; overflow: hidden; height: 44px; margin-bottom: 0.6rem; }
+.gdp-seg { display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; font-family: 'SFMono-Regular', 'Courier New', monospace; }
+.gdp-legend { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.gdp-legend-item { display: flex; gap: 6px; align-items: center; font-size: 0.78rem; color: #6B7280; }
+.gdp-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── Concerns list ── */
+.concerns-list { list-style: none; }
+.concerns-list li { display: grid; grid-template-columns: 2rem 1fr; gap: 0.75rem; padding: 1rem 0; border-bottom: 1px solid #F3F4F6; align-items: start; }
+.concerns-list li:last-child { border-bottom: none; }
+.concern-icon  { font-size: 1.1rem; padding-top: 2px; }
+.concern-title { font-size: 0.88rem; font-weight: 700; color: #1F2937; margin-bottom: 3px; }
+.concern-desc  { font-size: 0.8rem; color: #6B7280; line-height: 1.65; }
+
+/* ── Verdict table ── */
+.verdict-wrap { overflow-x: auto; }
+.verdict-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; min-width: 560px; }
+.verdict-table thead tr { background: #F3F4F6; border-bottom: 2px solid #E5E7EB; }
+.verdict-table th { padding: 0.65rem 1rem; text-align: left; font-size: 0.62rem; font-family: 'SFMono-Regular', 'Courier New', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: #9CA3AF; font-weight: 700; }
+.verdict-table td { padding: 0.85rem 1rem; border-bottom: 1px solid #F3F4F6; vertical-align: top; }
+.verdict-table tr:last-child td { border-bottom: none; }
+.verdict-table .claim-col   { color: #1F2937; font-weight: 600; }
+.verdict-table .evidence-col { color: #4B5563; line-height: 1.6; }
+.verdict-badge { display: inline-block; font-size: 0.6rem; font-family: 'SFMono-Regular', 'Courier New', monospace; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+.badge-red   { background: #FEF2F2; border: 1px solid #FECACA; color: #DC2626; }
+.badge-amber { background: #FFFBEB; border: 1px solid #FDE68A; color: #D97706; }
+.badge-green { background: #F0FDF4; border: 1px solid #BBF7D0; color: #16A34A; }
+
+/* ── Conclusion card ── */
+.conclusion { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden; margin-bottom: 2.5rem; }
+.conclusion-header { background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%); padding: 1rem 1.5rem; }
+.conclusion-header h2 { font-size: 1.1rem; font-weight: 800; color: white; letter-spacing: -0.02em; }
+.conclusion-body { padding: 1.5rem 2rem; }
+.conclusion-body p { font-size: 0.9rem; color: #4B5563; line-height: 1.8; margin-bottom: 0.85rem; }
+.conclusion-body p:last-child { margin-bottom: 0; }
+.mono-red  { font-family: 'SFMono-Regular', 'Courier New', monospace; font-weight: 700; color: #DC2626; }
+.mono-blue { font-family: 'SFMono-Regular', 'Courier New', monospace; font-weight: 700; color: #1E3A8A; }
+
+/* ── Section divider ── */
+.divider { display: flex; align-items: center; gap: 12px; margin: 2.5rem 0; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #E5E7EB; }
+
+/* ── Footer ── */
+.footer { background: #1E293B; color: #94A3B8; text-align: center; padding: 2.5rem 1rem; margin-top: 3rem; }
+.footer-brand { font-size: 1rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+.footer-tagline { font-size: 0.85rem; margin-bottom: 1rem; color: #64748B; }
+.footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.25rem; font-size: 0.85rem; }
+.footer-links a { color: #94A3B8; text-decoration: none; }
+.footer-links a:hover { color: white; }
+.footer-divider { border: none; border-top: 1px solid #334155; margin: 1.25rem auto; max-width: 400px; }
+.footer-disclaimer { font-size: 0.78rem; color: #475569; max-width: 620px; margin: 0 auto 1rem; line-height: 1.6; }
+.footer-visitor { margin-top: 0.75rem; }
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+    body { background: #141c2e; color: #e2e8f0; }
+    .mission, .project-card, .analysis-section, .conclusion {
+        background: #1d2a42; box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .mission h2 { color: #a5c8fd; }
+    .mission p, .analysis-desc, .conclusion-body p { color: #cbd5e1; }
+    .project-stats { border-bottom-color: #2e3f58; }
+    .stat-item { border-right-color: #2e3f58; }
+    .insight-box { background: #1a2f52; border-color: #1d4ed8; border-left-color: #60a5fa; color: #a5c8fd; }
+    .insight-box strong { color: #bfdbfe; }
+    .insight-box-green { background: #042712; border-color: #166534; border-left-color: #4ade80; color: #86efac; }
+    .prov-item { background: #141c2e; border-color: #2e3f58; }
+    .prov-label { color: #475569; }
+    .prov-value { color: #94a3b8; }
+    .concerns-list li { border-bottom-color: #2e3f58; }
+    .concern-title { color: #f8fafc; }
+    .concern-desc  { color: #94a3b8; }
+    .verdict-table thead tr { background: #141c2e; }
+    .verdict-table th { color: #475569; }
+    .verdict-table td { border-bottom-color: #2e3f58; }
+    .verdict-table .claim-col  { color: #f8fafc; }
+    .verdict-table .evidence-col { color: #94a3b8; }
+    .badge-red   { background: #3d0a0a; border-color: #7f1d1d; }
+    .badge-amber { background: #3a1c02; border-color: #78350f; }
+    .gdp-legend-item { color: #94a3b8; }
+    .source-line { color: #475569; border-left-color: #2e3f58; }
+    .divider::before, .divider::after { background: #2e3f58; }
+    .footer { background: #0d1117; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .header h1 { font-size: 1.5rem; }
+    .project-card-header, .analysis-section-header { flex-direction: column; }
+    .project-links { width: 100%; }
+    .proj-btn { flex: 1; text-align: center; }
+    .nav-buttons { flex-direction: column; align-items: center; }
+    .nav-button { width: 100%; max-width: 300px; }
+    .analysis-body { padding: 1.25rem; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 0 0.75rem; }
+    .mission, .analysis-body { padding: 1.25rem; }
+    .project-card-header { padding: 1.25rem; }
+    .project-title { font-size: 1.1rem; }
+    .project-stats { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid #F3F4F6; }
+}
