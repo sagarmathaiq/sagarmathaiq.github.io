@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ne">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>डिजिटल युगको विरोधाभास: प्रविधिले हामीलाई चलाख बनाउँदैछ कि मूर्ख? | SagarmathaIQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --np-serif: 'Noto Serif Devanagari', Georgia, serif;
+            --np-sans: 'Noto Sans Devanagari', system-ui, sans-serif;
+            --en: 'Inter', -apple-system, sans-serif;
+            --mono: 'SFMono-Regular', 'Courier New', monospace;
+
+            --bg: #ffffff;
+            --bg-tint: #f9fafb;
+
+            --ink: #111827;
+            --ink-body: #1f2937;
+            --ink-mid: #4b5563;
+            --ink-light: #6b7280;
+            --ink-faint: #9ca3af;
+
+            --rule: #e5e7eb;
+            --rule-dark: #d1d5db;
+
+            --navy: #1e3a8a;
+            --blue: #1d4ed8;
+            --amber: #b45309;
+            --red: #b91c1c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 17px;
+        }
+
+        body {
+            font-family: var(--np-serif);
+            background: var(--bg);
+            color: var(--ink-body);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── Site header ── */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 2px solid #111827;
+            padding: 0.7rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .site-header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .brand-link {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-decoration: none;
+            color: inherit;
+            transition: opacity 0.15s;
+        }
+
+        .brand-link:hover {
+            opacity: 0.7;
+        }
+
+        .site-logo {
+            height: 34px;
+            width: auto;
+        }
+
+        .site-name {
+            font-family: var(--en);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .site-tagline {
+            font-family: var(--np-sans);
+            font-size: 0.72rem;
+            color: var(--ink-light);
+            letter-spacing: 0.01em;
+        }
+
+        .back-link {
+            margin-left: auto;
+            font-family: var(--np-sans);
+            font-size: 0.78rem;
+            color: var(--ink-mid);
+            text-decoration: none;
+            padding: 0.4rem 0.7rem;
+            border-radius: 4px;
+            border: 1px solid var(--rule-dark);
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            background: var(--bg-tint);
+            color: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .back-link-arrow {
+            display: inline-block;
+            margin-right: 4px;
+            font-family: var(--en);
+        }
+
+        /* ── Article ── */
+        .article {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 4rem;
+        }
+
+        .kicker {
+            font-family: var(--np-sans);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1rem;
+        }
+
+        .headline {
+            font-family: var(--np-sans);
+            color: var(--ink);
+            font-size: clamp(1.65rem, 4.5vw, 2.4rem);
+            font-weight: 800;
+            line-height: 1.22;
+            letter-spacing: -0.01em;
+            margin-bottom: 1.4rem;
+        }
+
+        .meta {
+            font-family: var(--np-sans);
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding: 0.85rem 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2rem;
+        }
+
+        .meta strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        /* ── Prose ── */
+        .prose {
+            font-family: var(--np-serif);
+            color: var(--ink-body);
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        .prose p {
+            margin-bottom: 1.25rem;
+        }
+
+        .prose p:first-of-type::first-letter {
+            font-family: var(--np-sans);
+            font-size: 3.4rem;
+            font-weight: 700;
+            float: left;
+            line-height: 0.95;
+            margin: 0.35rem 0.6rem 0 0;
+            color: var(--navy);
+        }
+
+        .section-heading {
+            font-family: var(--np-sans);
+            color: var(--ink);
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.35;
+            letter-spacing: -0.005em;
+            margin: 2.75rem 0 1.1rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        /* ── Article footer ── */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule-dark);
+            font-family: var(--np-sans);
+            font-size: 0.85rem;
+            color: var(--ink-light);
+            line-height: 1.7;
+        }
+
+        .article-footer p {
+            margin-bottom: 0.6rem;
+            max-width: 680px;
+        }
+
+        .article-footer strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .article-footer .footer-en {
+            font-family: var(--en);
+            font-size: 0.78rem;
+            color: var(--ink-faint);
+            margin-top: 0.85rem;
+        }
+
+        .article-footer .back-link {
+            display: inline-block;
+            margin-left: 0;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .article {
+                padding: 1.75rem 1rem 3rem;
+            }
+
+            .prose {
+                font-size: 1rem;
+                line-height: 1.8;
+            }
+
+            .section-heading {
+                font-size: 1.2rem;
+                margin-top: 2.25rem;
+            }
+
+            .meta {
+                gap: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="brand-link" aria-label="Back to SagarmathaIQ home">
+                <img src="./assets/agarmathaiq-logo.jpeg" alt="SagarmathaIQ" class="site-logo">
+                <div>
+                    <div class="site-name">SagarmathaIQ</div>
+                    <div class="site-tagline">स्वतन्त्र मात्रात्मक अनुसन्धान</div>
+                </div>
+            </a>
+            <a href="index.html" class="back-link"><span class="back-link-arrow">&larr;</span>सबै परियोजना</a>
+        </div>
+    </header>
+
+    <article class="article">
+
+        <div class="kicker">ओपिनियन &middot; मे २०२६ &middot; प्रविधि र समाज</div>
+
+        <h1 class="headline">डिजिटल युगको विरोधाभास: प्रविधिले हामीलाई चलाख बनाउँदैछ कि मूर्ख?</h1>
+
+        <div class="meta">
+            <span><strong>प्रकाशित</strong> मे २०२६</span>
+            <span><strong>विधा</strong> ओपिनियन</span>
+            <span><strong>विषय</strong> प्रविधि, शिक्षा, बौद्धिक स्वास्थ्य</span>
+        </div>
+
+        <div class="prose">
+
+            <p>बीसौँ शताब्दीमा मानव जाति आईक्यू स्कोर मापनका आधारमा निरन्तर बुद्धिमान बन्दै गएको देखिन्थ्यो। सन् १९३० को
+                दशकदेखि विश्वभर यो स्कोर प्रत्येक दशकमा झन्डै तीन अङ्कले वृद्धि भएको थियो। न्युजिल्यान्डका समाजशास्त्री
+                जेम्स फ्लीनको नामबाट यसलाई 'फ्लीन इफेक्ट' भनियो। राम्रो पोषण, विस्तारित शिक्षा र अमूर्त सोचको माग गर्ने
+                आधुनिक वातावरणले यो बौद्धिक फड्को सम्भव बनाएको थियो। तर, २१औँ शताब्दीको यो मोडसम्म आइपुग्दा त्यो सुखद
+                कथाले जटिल मोड लिएको छ। पछिल्लो तथ्याङ्कले हामी बौद्धिक रूपमा फेरि ओरालो लाग्न थालेको सङ्केत गर्दछ।</p>
+
+            <h2 class="section-heading">विपरीत मोड: 'रिभर्स फ्लीन इफेक्ट'</h2>
+
+            <p>सन् १९७० को मध्यतिर आइपुग्दा नर्वे, फिनल्यान्ड, डेनमार्क र बेलायत जस्ता विकसित मुलुकहरूमा आईक्यू स्कोर
+                बढ्नुको साटो उल्टै घट्न थालेको पाइयो। नर्वेमा सात लाख तीस हजारभन्दा बढी सैनिक भर्ती परीक्षाको नतिजा
+                विश्लेषण गर्दा सन् १९७५ पछि जन्मिएका पुस्ताको बौद्धिक स्तरमा उल्लेखनीय गिरावट देखियो। यसै प्रवृत्तिलाई
+                अहिले 'रिभर्स फ्लीन इफेक्ट' भनिन्छ।</p>
+
+            <p>विशेष कुरा के छ भने, यो गिरावट वंशानुगत नभई पूर्णतः वातावरणीय प्रभावको परिणाम हो। एउटै घरमा हुर्किएका
+                दाजुभाइबीच समेत आईक्यू अङ्कमा भिन्नता देखिनुले बाहिरी वातावरणमा आएका केही यस्ता परिवर्तनहरूलाई सङ्केत
+                गर्छन्, जसले परिवारभित्रै बौद्धिक ह्रास निम्त्याइरहेका थिए।</p>
+
+            <h2 class="section-heading">डिजिटल 'ब्रेन रोट' र ध्यानको सङ्कट</h2>
+
+            <p>गिरावटको यो समय स्मार्टफोन र इन्टरनेटको व्यापक विस्तारसँग ठ्याक्कै मेल खान्छ। न्युयोर्क विश्वविद्यालयका
+                मनोवैज्ञानिक जोनाथन ह्वाइटले सन् २०१० देखि २०१५ को अवधिलाई बाल्यकालको 'ग्रेट रिवायरिङ' को संज्ञा दिएका
+                छन्। यसै सन्दर्भमा, अक्सफोर्डले सन् २०२४ को 'वर्ड अफ द इयर' घोषित गरेको 'ब्रेन रोट' ले निम्न स्तरका
+                डिजिटल सामग्रीको अत्यधिक उपभोगबाट उत्पन्न हुने संज्ञानात्मक शिथिलतालाई स्पष्ट रूपमा बुझाउँछ।</p>
+
+            <p>युनिभर्सिटी अफ क्यालिफोर्नियाकी ग्लोरिया मार्ककामार्कको अध्ययन अनुसार, सन् २००४ मा डिजिटल उपकरणमा एउटै
+                काममा केन्द्रित हुन सक्ने औसत समय १५० सेकेन्ड थियो, जुन २०२४ मा आइपुग्दा नाटकीय रूपमा घटेर मात्र ४७
+                सेकेन्डमा झरेको छ। टिकटक र स्न्यापच्याट जस्ता प्लेटफर्ममा छिटो-छिटो बदलिने सामग्रीले हाम्रो 'वर्किङ
+                मेमोरी' र एकाग्रतालाई निरन्तर ध्वस्त बनाउँदै लगेको छ, जसले गर्दा हाम्रो बौद्धिक क्षमतामा ह्रास आइरहेको
+                छ।</p>
+
+            <h2 class="section-heading">एआई र 'बौद्धिक परजीविता'</h2>
+
+            <p>एकाग्रता र ध्यानको यो ह्राससँगै एआईको उदयले हाम्रो सोच्ने मौलिक प्रक्रियालाई नै विस्थापित गर्ने अर्को
+                गम्भीर जोखिम निम्त्याएको छ। एआईले उत्पादकतामा त व्यापक वृद्धि ल्याउँछ, तर मुख्य प्रश्न यो हो कि त्यो
+                उत्पादकताको मूल्य कतै हाम्रै सोच्ने क्षमताले त तिरिरहेको छैन?</p>
+
+            <p>मानिसले आफ्नो मानसिक कार्य बाहिरी साधनलाई सुम्पिने प्रक्रिया, जसलाई 'कोग्निटिभ अफलोडिङ' भनिन्छ, एआईको
+                आगमनसँगै चरम बिन्दुमा पुगेको छ। क्यालकुलेटरले गणना त गर्छ, तर त्यसका लागि हामीले नै प्रश्न सोध्नुपर्छ।
+                एआईले भने प्रश्न र उत्तर दुवै तयार पारिदिने हुँदा हाम्रो सोच्ने श्रम लगभग शून्यमा झरेको छ। त्यसैले यसलाई
+                'सहयोगी साधन' भन्नु भन्दा 'बौद्धिक परजीविता' (Intellectual Parasitism) भन्नु बढी सटीक देखिन्छ।</p>
+
+            <p>एमआईटी मिडिया ल्याबकी अनुसन्धानकर्ता डा. नातालिया कोस्म्यनाको टोलीले सन् २०२५ मा गरेको "Your Brain on
+                ChatGPT" शीर्षकको एक अध्ययनले यस तथ्यलाई थप पुष्टि गरेको छ। अनुसन्धानकर्ताहरूले इलेक्ट्रोइन्सेफालोग्राम
+                (EEG) मार्फत निबन्ध लेख्ने ५४ जना सहभागीहरूको मस्तिष्क स्क्यानगरेका थिए। नतिजा अनुसार, च्याटजीपीटी
+                प्रयोग गर्नेहरूको मस्तिष्कका ३२ वटै क्षेत्रमा सक्रियता सबैभन्दा न्यून पाइएको थियो। अझ उदेकलाग्दो कुरा त
+                के थियो भने, एआई प्रयोग गरेर निबन्ध लेख्ने सहभागीहरूलाई आफ्नो निबन्धमा के लेखिएको छ भन्ने समेत सम्झना
+                थिएन। यसले एआईले 'काम चलाउ नतिजा' (Passable Work) निकाल्न त सघाउँछ, तर वास्तविक 'उपयोगी ज्ञान' (Usable
+                Knowledge) भने प्रदान गर्दैन भन्ने कुरालाई स्पष्ट पार्दछ।</p>
+
+            <h2 class="section-heading">नेपालको सन्दर्भ: शैक्षिक सङ्कट र डिजिटल खाडल</h2>
+
+            <p>बौद्धिक ह्रासको यो समस्या विकसित राष्ट्रहरूमा मात्र सीमित छैन। जहाँ डिजिटल पहुँच तीव्र गतिमा विस्तार
+                भइरहेको छ तर त्यसको शैक्षिक तयारी र विवेकपूर्ण प्रयोगको चेतना कमजोर छ, त्यहाँ जोखिम झन् बढी हुन्छ। नेपाल
+                ठ्याक्कै यही अवस्थामा छ, जहाँ 'रिभर्स फ्लीन इफेक्ट' र 'बौद्धिक परजीविता' को प्रभाव अझ गहिरो देखिन सक्छ।
+            </p>
+
+            <p>सन् २०२४ को माध्यमिक शिक्षा परीक्षा (SEE) मा ५२.१४ प्रतिशत विद्यार्थी 'नन्-ग्रेडेड' हुनु केवल एक तथ्याङ्क
+                मात्र होइन, यो हाम्रो प्रणालीगत बौद्धिक क्षयको भयावह सङ्केत हो। युनिसेफको तथ्याङ्क अनुसार, ९ देखि १४
+                वर्षका ५६ प्रतिशत नेपाली बालबालिकामा कक्षा २-३ स्तरको आधारभूत साक्षरता समेत छैन, जसले शिक्षाको जग नै
+                कमजोर रहेको देखाउँछ।</p>
+
+            <p>सहरी क्षेत्रका विद्यार्थीहरूमा स्मार्टफोन र एआई उपकरणहरूको पहुँच बढेको छ, तर यसको प्रयोग सृजनशीलता र
+                गहिरो सिकाइका लागि भन्दा बढी गृहकार्य सार्नमा केन्द्रित भइरहेको छ। ९०.७ प्रतिशत विद्यार्थीलाई एआईबारे
+                सामान्य ज्ञान त छ, तर यसले उनीहरूको मौलिक सोच र विश्लेषणात्मक क्षमतामा ल्याउन सक्ने दीर्घकालीन ह्रासबारे
+                भने सार्वजनिक बहस अझै हुन सकेको छैन। यो अवस्थाले नेपालमा डिजिटल प्रविधिको प्रयोगले बौद्धिक विकासमा कस्तो
+                प्रभाव पार्दैछ भन्ने गम्भीर प्रश्न खडा गर्छ।</p>
+
+            <h2 class="section-heading">एआई: बुद्धिको नयाँ स्वरूप कि क्षयीकरण?</h2>
+
+            <p>यी सबै तथ्याङ्क र विश्लेषणका बाबजुद, पछिल्ला यूरोपेली संज्ञानात्मक अध्ययनहरूले एउटा चाखलाग्दो निष्कर्ष
+                निकालेका छन्: हामी समग्रमा मूर्ख बन्दैछौँ भन्दा पनि हाम्रो बुद्धि 'विशेषीकृत' हुँदैछ। यसको अर्थ हो, हामी
+                डिजिटल इन्टरफेस चलाउन र द्रुत जानकारी प्रशोधन गर्न त खप्पिस भएका छौँ, तर गहिरो अध्ययन, जटिल तर्क र
+                दूरगामी योजना बनाउने क्षमतामा भने कमजोर हुँदैछौँ। यसरी 'ब्रेन क्यापिटल' अर्थात् बौद्धिक पूँजीको वितरण
+                असमान बन्दैछ, जहाँ सतही कौशलहरू बढ्दै जान्छन् भने गहिरो र आलोचनात्मक सोच खुम्चिँदै जान्छ।</p>
+
+            <p>जेम्स फ्लीनले आफ्नो निधनअघि एउटा गम्भीर चिन्ता व्यक्त गरेका थिए: 'अमूर्त सोच र तार्किक योजना बनाउन सक्ने
+                मानिसहरूको सङ्ख्या विश्वभर नै खुम्चिँदैछ।' उनको यो भनाइ आजको सन्दर्भमा झनै सान्दर्भिक देखिन्छ। भविष्यको
+                विश्वमा त्यही बौद्धिक पूँजी नै सबैभन्दा ठूलो शक्ति हुनेछ। तर त्यो पूँजी तब मात्र सुरक्षित रहन्छ जब हामी
+                आफ्नो मस्तिष्कलाई पूर्ण रूपमा मेसिनको हातमा सुम्पिँदैनौँ। प्रविधिले जीवनलाई सहज त बनाउँछ, तर मस्तिष्कलाई
+                सक्रिय र तीक्ष्ण राख्नका लागि थोरै घर्षण र चुनौती आवश्यक हुन्छ।</p>
+
+        </div>
+
+        <footer class="article-footer">
+            <p><strong>SagarmathaIQ</strong> स्वतन्त्र मात्रात्मक अनुसन्धान समूह हो। यो लेख ओपिनियन शृङ्खला अन्तर्गत
+                प्रकाशित गरिएको हो। यहाँ व्यक्त विचारहरू लेखकका हुन्।</p>
+            <p class="footer-en">SagarmathaIQ is an independent quantitative research group. This piece is published
+                under the Opinion series. Views expressed are the author's own. sagarmathaiq.github.io &middot; May 2026
+            </p>
+            <a href="index.html" class="back-link"><span class="back-link-arrow">&larr;</span>सबै परियोजना</a>
+        </footer>
+
+    </article>
+
+</body>
+
+</html>
