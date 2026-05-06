@@ -1,690 +1,1175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The sukumbasi story has two sides. Most coverage shows one. | SagarmathaIQ</title>
-<style>
-:root {
-    --serif: Georgia, 'Times New Roman', serif;
-    --sans:  -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --mono:  'SFMono-Regular', 'Courier New', monospace;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The sukumbasi story has two sides. Most coverage shows one. | SagarmathaIQ</title>
+    <style>
+        :root {
+            --serif: Georgia, 'Times New Roman', serif;
+            --sans: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --mono: 'SFMono-Regular', 'Courier New', monospace;
 
-    --bg:        #ffffff;
-    --bg-tint:   #f9fafb;
-    --bg-chip:   #f3f4f6;
+            --bg: #ffffff;
+            --bg-tint: #f9fafb;
+            --bg-chip: #f3f4f6;
 
-    --ink:       #111827;
-    --ink-body:  #374151;
-    --ink-mid:   #4b5563;
-    --ink-light: #6b7280;
-    --ink-faint: #9ca3af;
+            --ink: #111827;
+            --ink-body: #374151;
+            --ink-mid: #4b5563;
+            --ink-light: #6b7280;
+            --ink-faint: #9ca3af;
 
-    --rule:      #e5e7eb;
-    --rule-dark: #d1d5db;
+            --rule: #e5e7eb;
+            --rule-dark: #d1d5db;
 
-    --red:       #b91c1c;
-    --red-bg:    #fef2f2;
-    --amber:     #b45309;
-    --amber-bg:  #fffbeb;
-    --green:     #15803d;
-    --green-bg:  #f0fdf4;
-    --navy:      #1e3a8a;
-    --blue:      #1d4ed8;
-}
+            --red: #b91c1c;
+            --red-bg: #fef2f2;
+            --amber: #b45309;
+            --amber-bg: #fffbeb;
+            --green: #15803d;
+            --green-bg: #f0fdf4;
+            --navy: #1e3a8a;
+            --blue: #1d4ed8;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 17px; }
-body {
-    font-family: var(--serif);
-    background: var(--bg);
-    color: var(--ink-body);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ── Site header ── */
-.site-header {
-    background: #ffffff;
-    border-bottom: 2px solid #111827;
-    padding: 0.7rem 0;
-    position: sticky; top: 0; z-index: 50;
-}
-.site-header-inner {
-    max-width: 1100px; margin: 0 auto; padding: 0 1.25rem;
-    display: flex; align-items: center; gap: 0.85rem;
-}
-.site-logo { height: 34px; width: auto; }
-.site-name { font-family: var(--sans); font-size: 0.95rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-.site-tagline { font-family: var(--sans); font-size: 0.7rem; color: var(--ink-light); letter-spacing: 0.01em; }
-.header-right { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-faint); margin-left: auto; }
+        html {
+            font-size: 17px;
+        }
 
-/* ── Article ── */
-.article { max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+        body {
+            font-family: var(--serif);
+            background: var(--bg);
+            color: var(--ink-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-.kicker {
-    font-family: var(--sans); font-size: 0.72rem;
-    font-weight: 700; color: var(--red);
-    text-transform: uppercase; letter-spacing: 0.12em;
-    margin-bottom: 0.85rem;
-}
+        /* ── Site header ── */
+        .site-header {
+            background: #ffffff;
+            border-bottom: 2px solid #111827;
+            padding: 0.7rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
 
-.headline {
-    font-family: var(--serif); color: var(--ink);
-    font-size: clamp(1.7rem, 4.5vw, 2.5rem);
-    font-weight: 700; line-height: 1.18;
-    letter-spacing: -0.02em; max-width: 720px;
-    margin-bottom: 1.4rem;
-}
+        .site-header-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
 
-.standfirst {
-    font-family: var(--sans); font-size: 0.97rem;
-    color: var(--ink-mid); line-height: 1.65;
-    background: var(--bg-tint);
-    border-left: 3px solid var(--navy);
-    padding: 0.95rem 1.1rem;
-    margin-bottom: 1.4rem;
-}
+        .site-logo {
+            height: 34px;
+            width: auto;
+        }
 
-.bluf {
-    background: #fffbeb;
-    border: 1px solid #fde68a;
-    border-left: 3px solid var(--amber);
-    padding: 1rem 1.15rem;
-    margin: 1.4rem 0 1.6rem;
-    font-family: var(--serif);
-}
-.bluf-label {
-    display: inline-block;
-    font-family: var(--mono); font-size: 0.62rem;
-    font-weight: 700; letter-spacing: 0.18em;
-    color: var(--amber); text-transform: uppercase;
-    margin-bottom: 0.5rem;
-}
-.bluf-lead { font-size: 1.05rem; color: var(--ink); font-weight: 700; line-height: 1.45; margin-bottom: 0.55rem; }
-.bluf-body { font-size: 0.94rem; color: var(--ink-body); line-height: 1.65; }
+        .site-name {
+            font-family: var(--sans);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
 
-.meta {
-    font-family: var(--sans); font-size: 0.74rem;
-    color: var(--ink-light); display: flex; gap: 1.5rem;
-    flex-wrap: wrap; padding: 0.85rem 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 2rem;
-}
-.meta strong { color: var(--ink); font-weight: 700; }
+        .site-tagline {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            letter-spacing: 0.01em;
+        }
 
-/* ── Stat row ── */
-.stat-row {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    border: 1px solid var(--rule-dark);
-    margin-bottom: 2.25rem;
-}
-.stat-cell {
-    padding: 1rem 1.1rem;
-    border-right: 1px solid var(--rule);
-    font-family: var(--sans);
-}
-.stat-cell:last-child { border-right: none; }
-.stat-label {
-    font-family: var(--mono); font-size: 0.62rem;
-    font-weight: 700; color: var(--ink-light);
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 0.35rem;
-}
-.stat-val {
-    font-size: 1.4rem; font-weight: 700;
-    color: var(--ink); font-variant-numeric: tabular-nums;
-    margin-bottom: 0.25rem; line-height: 1.1;
-}
-.stat-val.red { color: var(--red); }
-.stat-val.amber { color: var(--amber); }
-.stat-val.green { color: var(--green); }
-.stat-note { font-size: 0.72rem; color: var(--ink-light); line-height: 1.4; }
+        .header-right {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--ink-faint);
+            margin-left: auto;
+        }
 
-/* ── Section heading ── */
-.sh {
-    font-family: var(--sans); color: var(--ink);
-    font-size: 1.25rem; font-weight: 700;
-    letter-spacing: -0.01em;
-    margin: 2.5rem 0 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--rule);
-}
-.sh-sub {
-    font-family: var(--mono); font-size: 0.66rem;
-    font-weight: 700; letter-spacing: 0.14em;
-    color: var(--ink-light); text-transform: uppercase;
-    margin: 1.75rem 0 0.7rem;
-}
+        /* ── Article ── */
+        .article {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2.5rem 1.25rem 4rem;
+        }
 
-/* ── Prose ── */
-.prose { font-family: var(--serif); color: var(--ink-body); font-size: 0.97rem; line-height: 1.75; }
-.prose p { margin-bottom: 1rem; max-width: 720px; }
-.prose strong { color: var(--ink); font-weight: 700; }
-.prose em { color: var(--ink); font-style: italic; }
+        .kicker {
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.85rem;
+        }
 
-.mono-red  { font-family: var(--mono); font-weight: 700; color: var(--red); font-variant-numeric: tabular-nums; }
-.mono-blue { font-family: var(--mono); font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
-.mono-amber { font-family: var(--mono); font-weight: 700; color: var(--amber); font-variant-numeric: tabular-nums; }
+        .headline {
+            font-family: var(--serif);
+            color: var(--ink);
+            font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.18;
+            letter-spacing: -0.02em;
+            max-width: 720px;
+            margin-bottom: 1.4rem;
+        }
 
-/* ── Callouts ── */
-.callout {
-    border-left: 3px solid var(--navy);
-    background: var(--bg-tint);
-    padding: 0.85rem 1.1rem;
-    margin: 1.25rem 0;
-    font-family: var(--sans);
-    font-size: 0.92rem;
-    color: var(--ink-body);
-    line-height: 1.6;
-}
-.callout.red    { border-left-color: var(--red);   background: var(--red-bg);   color: #7f1d1d; }
-.callout.amber  { border-left-color: var(--amber); background: var(--amber-bg); color: #78350f; }
-.callout.green  { border-left-color: var(--green); background: var(--green-bg); color: #14532d; }
-.callout strong { color: inherit; font-weight: 700; }
+        .standfirst {
+            font-family: var(--sans);
+            font-size: 0.97rem;
+            color: var(--ink-mid);
+            line-height: 1.65;
+            background: var(--bg-tint);
+            border-left: 3px solid var(--navy);
+            padding: 0.95rem 1.1rem;
+            margin-bottom: 1.4rem;
+        }
 
-/* ── Two-side argument cards ── */
-.argument-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 1rem;
-    margin: 1.25rem 0 1.5rem;
-}
-.arg-card {
-    border: 1px solid var(--rule-dark);
-    padding: 1.1rem 1.2rem;
-    background: var(--bg);
-}
-.arg-card.gov { border-left: 3px solid var(--blue); }
-.arg-card.crit { border-left: 3px solid var(--amber); }
-.arg-card-label {
-    font-family: var(--mono); font-size: 0.63rem;
-    font-weight: 700; letter-spacing: 0.14em;
-    text-transform: uppercase; margin-bottom: 0.45rem;
-}
-.arg-card.gov .arg-card-label { color: var(--blue); }
-.arg-card.crit .arg-card-label { color: var(--amber); }
-.arg-card-title {
-    font-family: var(--sans); font-size: 1rem; font-weight: 700;
-    color: var(--ink); margin-bottom: 0.65rem; line-height: 1.35;
-}
-.arg-card-body { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-body); line-height: 1.65; }
-.arg-card-body p { margin-bottom: 0.65rem; }
-.arg-card-body p:last-child { margin-bottom: 0; }
+        .bluf {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-left: 3px solid var(--amber);
+            padding: 1rem 1.15rem;
+            margin: 1.4rem 0 1.6rem;
+            font-family: var(--serif);
+        }
 
-/* ── Bar chart ── */
-.bar-chart { margin: 1rem 0 1.5rem; }
-.bar-scale {
-    display: grid; grid-template-columns: 165px 1fr 70px;
-    font-family: var(--mono); font-size: 0.62rem;
-    color: var(--ink-light); margin-bottom: 0.4rem;
-    letter-spacing: 0.04em;
-}
-.bar-scale-track { display: flex; justify-content: space-between; padding: 0 4px; }
-.bar-row {
-    display: grid; grid-template-columns: 165px 1fr 70px;
-    align-items: center; gap: 0.6rem;
-    padding: 0.35rem 0;
-}
-.bar-label {
-    font-family: var(--sans); font-size: 0.78rem;
-    color: var(--ink-body); line-height: 1.35;
-}
-.bar-track {
-    height: 18px; background: var(--bg-chip);
-    position: relative;
-}
-.bar-fill { height: 100%; }
-.bar-val {
-    font-family: var(--mono); font-size: 0.78rem;
-    font-weight: 700; color: var(--ink);
-    text-align: right; font-variant-numeric: tabular-nums;
-}
+        .bluf-label {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--amber);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
 
-.chart-block {
-    border: 1px solid var(--rule-dark);
-    padding: 1rem 1.1rem 0.85rem;
-    margin: 1rem 0 1.5rem;
-}
-.chart-title {
-    font-family: var(--sans); font-size: 0.86rem;
-    font-weight: 700; color: var(--ink);
-    margin-bottom: 0.85rem;
-    line-height: 1.3;
-}
-.chart-source {
-    font-family: var(--mono); font-size: 0.66rem;
-    color: var(--ink-faint); border-left: 2px solid var(--rule);
-    padding-left: 8px; margin-top: 0.7rem;
-}
+        .bluf-lead {
+            font-size: 1.05rem;
+            color: var(--ink);
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 0.55rem;
+        }
 
-/* ── Tables ── */
-.dtable {
-    width: 100%; border-collapse: collapse;
-    font-family: var(--sans); font-size: 0.82rem;
-    margin: 1rem 0 1.5rem;
-}
-.dtable thead { background: var(--bg-tint); border-top: 1px solid var(--rule-dark); border-bottom: 1px solid var(--rule-dark); }
-.dtable th {
-    padding: 0.55rem 0.7rem; text-align: left;
-    font-family: var(--mono); font-size: 0.62rem;
-    font-weight: 700; color: var(--ink-light);
-    letter-spacing: 0.12em; text-transform: uppercase;
-}
-.dtable td {
-    padding: 0.7rem; border-bottom: 1px solid var(--rule);
-    color: var(--ink-body); vertical-align: top; line-height: 1.55;
-}
-.dtable td strong { color: var(--ink); font-weight: 700; }
+        .bluf-body {
+            font-size: 0.94rem;
+            color: var(--ink-body);
+            line-height: 1.65;
+        }
 
-/* ── Verdict pills ── */
-.verdict-pill {
-    display: inline-block; font-family: var(--mono);
-    font-size: 0.6rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 3px 7px; border-radius: 2px;
-    white-space: nowrap;
-}
-.verdict-pill.red    { background: var(--red-bg);   color: var(--red);   border: 1px solid #fecaca; }
-.verdict-pill.amber  { background: var(--amber-bg); color: var(--amber); border: 1px solid #fde68a; }
-.verdict-pill.green  { background: var(--green-bg); color: var(--green); border: 1px solid #bbf7d0; }
-.verdict-pill.blue   { background: #eff6ff;         color: var(--navy);  border: 1px solid #bfdbfe; }
+        .meta {
+            font-family: var(--sans);
+            font-size: 0.74rem;
+            color: var(--ink-light);
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            padding: 0.85rem 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2rem;
+        }
 
-/* ── Horizon dividers ── */
-.horizon {
-    display: flex; align-items: center; gap: 0.85rem;
-    margin: 2rem 0 0.85rem;
-}
-.horizon-line { flex: 1; height: 1px; background: var(--ink); }
-.horizon-label {
-    font-family: var(--mono); font-size: 0.65rem;
-    font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--ink);
-}
+        .meta strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
 
-/* ── Article footer ── */
-.article-footer {
-    margin-top: 3rem; padding-top: 1.5rem;
-    border-top: 1px solid var(--rule-dark);
-    font-family: var(--sans); font-size: 0.78rem;
-    color: var(--ink-light); line-height: 1.65;
-}
-.article-footer p { margin-bottom: 0.5rem; max-width: 720px; }
-.article-footer strong { color: var(--ink); font-weight: 700; }
+        /* ── Stat row ── */
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            border: 1px solid var(--rule-dark);
+            margin-bottom: 2.25rem;
+        }
 
-@media (max-width: 640px) {
-    .bar-row, .bar-scale { grid-template-columns: 110px 1fr 60px; }
-    .stat-cell { border-right: none; border-bottom: 1px solid var(--rule); }
-    .stat-cell:last-child { border-bottom: none; }
-    .meta { gap: 0.85rem; }
-    .article { padding: 1.5rem 1rem 3rem; }
-}
-</style>
+        .stat-cell {
+            padding: 1rem 1.1rem;
+            border-right: 1px solid var(--rule);
+            font-family: var(--sans);
+        }
+
+        .stat-cell:last-child {
+            border-right: none;
+        }
+
+        .stat-label {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--ink-light);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .stat-val {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--ink);
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 0.25rem;
+            line-height: 1.1;
+        }
+
+        .stat-val.red {
+            color: var(--red);
+        }
+
+        .stat-val.amber {
+            color: var(--amber);
+        }
+
+        .stat-val.green {
+            color: var(--green);
+        }
+
+        .stat-note {
+            font-size: 0.72rem;
+            color: var(--ink-light);
+            line-height: 1.4;
+        }
+
+        /* ── Section heading ── */
+        .sh {
+            font-family: var(--sans);
+            color: var(--ink);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .sh-sub {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--ink-light);
+            text-transform: uppercase;
+            margin: 1.75rem 0 0.7rem;
+        }
+
+        /* ── Prose ── */
+        .prose {
+            font-family: var(--serif);
+            color: var(--ink-body);
+            font-size: 0.97rem;
+            line-height: 1.75;
+        }
+
+        .prose p {
+            margin-bottom: 1rem;
+            max-width: 720px;
+        }
+
+        .prose strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .prose em {
+            color: var(--ink);
+            font-style: italic;
+        }
+
+        .mono-red {
+            font-family: var(--mono);
+            font-weight: 700;
+            color: var(--red);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .mono-blue {
+            font-family: var(--mono);
+            font-weight: 700;
+            color: var(--navy);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .mono-amber {
+            font-family: var(--mono);
+            font-weight: 700;
+            color: var(--amber);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ── Callouts ── */
+        .callout {
+            border-left: 3px solid var(--navy);
+            background: var(--bg-tint);
+            padding: 0.85rem 1.1rem;
+            margin: 1.25rem 0;
+            font-family: var(--sans);
+            font-size: 0.92rem;
+            color: var(--ink-body);
+            line-height: 1.6;
+        }
+
+        .callout.red {
+            border-left-color: var(--red);
+            background: var(--red-bg);
+            color: #7f1d1d;
+        }
+
+        .callout.amber {
+            border-left-color: var(--amber);
+            background: var(--amber-bg);
+            color: #78350f;
+        }
+
+        .callout.green {
+            border-left-color: var(--green);
+            background: var(--green-bg);
+            color: #14532d;
+        }
+
+        .callout strong {
+            color: inherit;
+            font-weight: 700;
+        }
+
+        /* ── Two-side argument cards ── */
+        .argument-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 1rem;
+            margin: 1.25rem 0 1.5rem;
+        }
+
+        .arg-card {
+            border: 1px solid var(--rule-dark);
+            padding: 1.1rem 1.2rem;
+            background: var(--bg);
+        }
+
+        .arg-card.gov {
+            border-left: 3px solid var(--blue);
+        }
+
+        .arg-card.crit {
+            border-left: 3px solid var(--amber);
+        }
+
+        .arg-card-label {
+            font-family: var(--mono);
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-bottom: 0.45rem;
+        }
+
+        .arg-card.gov .arg-card-label {
+            color: var(--blue);
+        }
+
+        .arg-card.crit .arg-card-label {
+            color: var(--amber);
+        }
+
+        .arg-card-title {
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.65rem;
+            line-height: 1.35;
+        }
+
+        .arg-card-body {
+            font-family: var(--serif);
+            font-size: 0.9rem;
+            color: var(--ink-body);
+            line-height: 1.65;
+        }
+
+        .arg-card-body p {
+            margin-bottom: 0.65rem;
+        }
+
+        .arg-card-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Bar chart ── */
+        .bar-chart {
+            margin: 1rem 0 1.5rem;
+        }
+
+        .bar-scale {
+            display: grid;
+            grid-template-columns: 165px 1fr 70px;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            color: var(--ink-light);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.04em;
+        }
+
+        .bar-scale-track {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 4px;
+        }
+
+        .bar-row {
+            display: grid;
+            grid-template-columns: 165px 1fr 70px;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.35rem 0;
+        }
+
+        .bar-label {
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            color: var(--ink-body);
+            line-height: 1.35;
+        }
+
+        .bar-track {
+            height: 18px;
+            background: var(--bg-chip);
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+        }
+
+        .bar-val {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--ink);
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .chart-block {
+            border: 1px solid var(--rule-dark);
+            padding: 1rem 1.1rem 0.85rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .chart-title {
+            font-family: var(--sans);
+            font-size: 0.86rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .chart-source {
+            font-family: var(--mono);
+            font-size: 0.66rem;
+            color: var(--ink-faint);
+            border-left: 2px solid var(--rule);
+            padding-left: 8px;
+            margin-top: 0.7rem;
+        }
+
+        /* ── Tables ── */
+        .dtable {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--sans);
+            font-size: 0.82rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .dtable thead {
+            background: var(--bg-tint);
+            border-top: 1px solid var(--rule-dark);
+            border-bottom: 1px solid var(--rule-dark);
+        }
+
+        .dtable th {
+            padding: 0.55rem 0.7rem;
+            text-align: left;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            color: var(--ink-light);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .dtable td {
+            padding: 0.7rem;
+            border-bottom: 1px solid var(--rule);
+            color: var(--ink-body);
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .dtable td strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        /* ── Verdict pills ── */
+        .verdict-pill {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 7px;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .verdict-pill.red {
+            background: var(--red-bg);
+            color: var(--red);
+            border: 1px solid #fecaca;
+        }
+
+        .verdict-pill.amber {
+            background: var(--amber-bg);
+            color: var(--amber);
+            border: 1px solid #fde68a;
+        }
+
+        .verdict-pill.green {
+            background: var(--green-bg);
+            color: var(--green);
+            border: 1px solid #bbf7d0;
+        }
+
+        .verdict-pill.blue {
+            background: #eff6ff;
+            color: var(--navy);
+            border: 1px solid #bfdbfe;
+        }
+
+        /* ── Horizon dividers ── */
+        .horizon {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin: 2rem 0 0.85rem;
+        }
+
+        .horizon-line {
+            flex: 1;
+            height: 1px;
+            background: var(--ink);
+        }
+
+        .horizon-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        /* ── Article footer ── */
+        .article-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule-dark);
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            color: var(--ink-light);
+            line-height: 1.65;
+        }
+
+        .article-footer p {
+            margin-bottom: 0.5rem;
+            max-width: 720px;
+        }
+
+        .article-footer strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        @media (max-width: 640px) {
+
+            .bar-row,
+            .bar-scale {
+                grid-template-columns: 110px 1fr 60px;
+            }
+
+            .stat-cell {
+                border-right: none;
+                border-bottom: 1px solid var(--rule);
+            }
+
+            .stat-cell:last-child {
+                border-bottom: none;
+            }
+
+            .meta {
+                gap: 0.85rem;
+            }
+
+            .article {
+                padding: 1.5rem 1rem 3rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header class="site-header">
-    <div class="site-header-inner">
-        <img src="sagarmathaiq-logo.jpeg" alt="SagarmathaIQ" class="site-logo">
-        <div>
-            <div class="site-name">SagarmathaIQ</div>
-            <div class="site-tagline">Open quantitative analysis from the Himalayas</div>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <img src="./assets/sagarmathaiq-logo.jpeg" alt="SagarmathaIQ" class="site-logo">
+            <div>
+                <div class="site-name">SagarmathaIQ</div>
+                <div class="site-tagline">Open quantitative analysis from the Himalayas</div>
+            </div>
+            <div class="header-right">sagarmathaiq.github.io</div>
         </div>
-        <div class="header-right">sagarmathaiq.github.io</div>
-    </div>
-</header>
+    </header>
 
-<article class="article">
+    <article class="article">
 
-    <div class="kicker">Factcheck · May 2026 · Urban Policy &amp; Land Rights</div>
+        <div class="kicker">Factcheck · May 2026 · Urban Policy &amp; Land Rights</div>
 
-    <h1 class="headline">The sukumbasi story has two sides. Most coverage shows one.</h1>
+        <h1 class="headline">The sukumbasi story has two sides. Most coverage shows one.</h1>
 
-    <div class="standfirst">
-        Bulldozers cleared roughly 1,800 families from Kathmandu's riverbanks between April 25 and early May. The government calls it a long-overdue reform. Critics call it a forced eviction. Both descriptions are technically correct. Neither is complete.
-    </div>
-
-    <div class="bluf">
-        <span class="bluf-label">Bottom line up front</span>
-        <p class="bluf-lead">The eviction is a genuine policy attempt. It is also a procedural failure. Treating it as one or the other is the framing problem.</p>
-        <p class="bluf-body">A government internal study found <strong>only 20% of riverside households within Kathmandu Metropolitan City meet the legal definition of a sukumbasi</strong>. That is a real fact and the basis for the government's case. <strong>The state has also demolished homes of roughly 1,800 families before completing the verification</strong> that would have separated the 20% from the 80%. That is also a real fact. Coverage that emphasizes one and skips the other is producing a narrative, not journalism.</p>
-    </div>
-
-    <div class="meta">
-        <span><strong>Published</strong> May 4, 2026</span>
-        <span><strong>Sources</strong> Kathmandu Post · Nepalnews · Ratopati · Khabarhub · Amnesty Nepal · NHRC · Govt. of Nepal</span>
-        <span><strong>Category</strong> Factcheck</span>
-    </div>
-
-    <!-- ── KEY NUMBERS ── -->
-    <div class="stat-row">
-        <div class="stat-cell">
-            <div class="stat-label">Families displaced</div>
-            <div class="stat-val red">1,816</div>
-            <div class="stat-note">Registered as squatters during eviction. Civil society puts the figure higher.</div>
+        <div class="standfirst">
+            Bulldozers cleared roughly 1,800 families from Kathmandu's riverbanks between April 25 and early May. The
+            government calls it a long-overdue reform. Critics call it a forced eviction. Both descriptions are
+            technically correct. Neither is complete.
         </div>
-        <div class="stat-cell">
-            <div class="stat-label">Genuine sukumbasi</div>
-            <div class="stat-val amber">~20%</div>
-            <div class="stat-note">Of the 2,245 KMC riverside households surveyed in the 2024 study. Strict 1964 Land Act definition.</div>
-        </div>
-        <div class="stat-cell">
-            <div class="stat-label">2012 Ichhangu apartments</div>
-            <div class="stat-val red">0</div>
-            <div class="stat-note">Families who moved in. Rs 230 million spent. Buildings still empty.</div>
-        </div>
-        <div class="stat-cell">
-            <div class="stat-label">Land commissions formed</div>
-            <div class="stat-val amber">22</div>
-            <div class="stat-note">Since 1990. None completed nationwide verification.</div>
-        </div>
-        <div class="stat-cell">
-            <div class="stat-label">Current shelter capacity</div>
-            <div class="stat-val red">45</div>
-            <div class="stat-note">People who can be housed in the Nagarjun apartments. About 1,816 families have been registered as displaced, which is closer to 7,000-9,000 individuals.</div>
-        </div>
-    </div>
 
-    <!-- ── SECTION 1: What is actually happening ── -->
-    <h2 class="sh">What is actually happening</h2>
-    <div class="prose">
-        <p>On April 23, 2026, the new RSP government issued an order to clear squatter settlements along the Bagmati and its tributaries. Loudspeaker notices began the same evening. By April 25, bulldozers entered Thapathali. Bulldozers moved through Gairigaun, Sinamangal, Teku, Banshighat, Anamnagar, and Manohara across the first week of May.</p>
-        <p>The government's official position: demolitions targeted illegal structures on encroached public riverbank land. Verified families will be moved to apartments in Nagarjun-1 and other identified safe sites. A 100-point governance roadmap promises nationwide digital verification within 60 days and full resolution within 1,000 days.</p>
-        <p>The critics' position: demolitions began before verification was completed. The resettlement infrastructure currently has space for <span class="mono-red">45 people</span>, against displacement of roughly 1,800 families. The sequence violates the Supreme Court's July 2024 ruling, which required housing before eviction. Amnesty International and the National Human Rights Commission have both formally objected. The Supreme Court issued a show-cause order on May 4.</p>
-        <p>Both descriptions are factually accurate. The question is not which side is right. It is which facts each side has chosen to present.</p>
-    </div>
+        <div class="bluf">
+            <span class="bluf-label">Bottom line up front</span>
+            <p class="bluf-lead">The eviction is a genuine policy attempt. It is also a procedural failure. Treating it
+                as one or the other is the framing problem.</p>
+            <p class="bluf-body">A government internal study found <strong>only 20% of riverside households within
+                    Kathmandu Metropolitan City meet the legal definition of a sukumbasi</strong>. That is a real fact
+                and the basis for the government's case. <strong>The state has also demolished homes of roughly 1,800
+                    families before completing the verification</strong> that would have separated the 20% from the 80%.
+                That is also a real fact. Coverage that emphasizes one and skips the other is producing a narrative, not
+                journalism.</p>
+        </div>
 
-    <!-- ── SECTION 2: The two cases ── -->
-    <h2 class="sh">The two cases, side by side</h2>
-    <div class="prose">
-        <p>Both the government and its critics have a defensible case. Reading either one in isolation produces a wrong picture.</p>
-    </div>
+        <div class="meta">
+            <span><strong>Published</strong> May 4, 2026</span>
+            <span><strong>Sources</strong> Kathmandu Post · Nepalnews · Ratopati · Khabarhub · Amnesty Nepal · NHRC ·
+                Govt. of Nepal</span>
+            <span><strong>Category</strong> Factcheck</span>
+        </div>
 
-    <div class="argument-grid">
-        <div class="arg-card gov">
-            <div class="arg-card-label">The government's case</div>
-            <div class="arg-card-title">After 22 failed commissions, somebody had to act</div>
-            <div class="arg-card-body">
-                <p><strong>The 80% problem is real.</strong> A 2024 study by the Ministry of Urban Development found that of 2,245 households in Kathmandu Metropolitan City's riverside settlements, only about 20% meet the strict legal definition of landless. Documented cases include people claiming sukumbasi status while owning <strong>21 to 25 ropani of land</strong> in their home districts, in some cases working as real estate dealers.</p>
-                <p><strong>The "settlement" keeps growing.</strong> The Thapathali count rose from 238 (2021) to 391 (2024), suggesting opportunistic occupation around election cycles.</p>
-                <p><strong>Inaction has a body count too.</strong> Riverside huts flood every monsoon. The settlements fail every safety standard. Twenty-two land commissions have spent thirty-six years not solving this.</p>
+        <!-- ── KEY NUMBERS ── -->
+        <div class="stat-row">
+            <div class="stat-cell">
+                <div class="stat-label">Families displaced</div>
+                <div class="stat-val red">1,816</div>
+                <div class="stat-note">Registered as squatters during eviction. Civil society puts the figure higher.
+                </div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-label">Genuine sukumbasi</div>
+                <div class="stat-val amber">~20%</div>
+                <div class="stat-note">Of the 2,245 KMC riverside households surveyed in the 2024 study. Strict 1964
+                    Land Act definition.</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-label">2012 Ichhangu apartments</div>
+                <div class="stat-val red">0</div>
+                <div class="stat-note">Families who moved in. Rs 230 million spent. Buildings still empty.</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-label">Land commissions formed</div>
+                <div class="stat-val amber">22</div>
+                <div class="stat-note">Since 1990. None completed nationwide verification.</div>
+            </div>
+            <div class="stat-cell">
+                <div class="stat-label">Current shelter capacity</div>
+                <div class="stat-val red">45</div>
+                <div class="stat-note">People who can be housed in the Nagarjun apartments. About 1,816 families have
+                    been registered as displaced, which is closer to 7,000-9,000 individuals.</div>
             </div>
         </div>
 
-        <div class="arg-card crit">
-            <div class="arg-card-label">The critics' case</div>
-            <div class="arg-card-title">Demolish first, verify later inverts the legal sequence</div>
-            <div class="arg-card-body">
-                <p><strong>The Constitution is explicit.</strong> Article 37 guarantees the right to housing. Article 16 guarantees life with dignity. The 2018 Right to Housing Act and the Supreme Court's July 2024 ruling are equally clear: <strong>housing comes before eviction</strong>. The current operation reverses that.</p>
-                <p><strong>Capacity numbers do not match the rhetoric.</strong> The Nagarjun apartments hold 45 people. About 1,800 families have been displaced. The arithmetic is the rebuttal.</p>
-                <p><strong>The same government promised the opposite.</strong> RSP's election manifesto promised to stand <em>in front of</em> the bulldozers, not drive them. Even second-tier RSP leaders say they were not consulted before the operation.</p>
+        <!-- ── SECTION 1: What is actually happening ── -->
+        <h2 class="sh">What is actually happening</h2>
+        <div class="prose">
+            <p>On April 23, 2026, the new RSP government issued an order to clear squatter settlements along the Bagmati
+                and its tributaries. Loudspeaker notices began the same evening. By April 25, bulldozers entered
+                Thapathali. Bulldozers moved through Gairigaun, Sinamangal, Teku, Banshighat, Anamnagar, and Manohara
+                across the first week of May.</p>
+            <p>The government's official position: demolitions targeted illegal structures on encroached public
+                riverbank land. Verified families will be moved to apartments in Nagarjun-1 and other identified safe
+                sites. A 100-point governance roadmap promises nationwide digital verification within 60 days and full
+                resolution within 1,000 days.</p>
+            <p>The critics' position: demolitions began before verification was completed. The resettlement
+                infrastructure currently has space for <span class="mono-red">45 people</span>, against displacement of
+                roughly 1,800 families. The sequence violates the Supreme Court's July 2024 ruling, which required
+                housing before eviction. Amnesty International and the National Human Rights Commission have both
+                formally objected. The Supreme Court issued a show-cause order on May 4.</p>
+            <p>Both descriptions are factually accurate. The question is not which side is right. It is which facts each
+                side has chosen to present.</p>
+        </div>
+
+        <!-- ── SECTION 2: The two cases ── -->
+        <h2 class="sh">The two cases, side by side</h2>
+        <div class="prose">
+            <p>Both the government and its critics have a defensible case. Reading either one in isolation produces a
+                wrong picture.</p>
+        </div>
+
+        <div class="argument-grid">
+            <div class="arg-card gov">
+                <div class="arg-card-label">The government's case</div>
+                <div class="arg-card-title">After 22 failed commissions, somebody had to act</div>
+                <div class="arg-card-body">
+                    <p><strong>The 80% problem is real.</strong> A 2024 study by the Ministry of Urban Development found
+                        that of 2,245 households in Kathmandu Metropolitan City's riverside settlements, only about 20%
+                        meet the strict legal definition of landless. Documented cases include people claiming sukumbasi
+                        status while owning <strong>21 to 25 ropani of land</strong> in their home districts, in some
+                        cases working as real estate dealers.</p>
+                    <p><strong>The "settlement" keeps growing.</strong> The Thapathali count rose from 238 (2021) to 391
+                        (2024), suggesting opportunistic occupation around election cycles.</p>
+                    <p><strong>Inaction has a body count too.</strong> Riverside huts flood every monsoon. The
+                        settlements fail every safety standard. Twenty-two land commissions have spent thirty-six years
+                        not solving this.</p>
+                </div>
+            </div>
+
+            <div class="arg-card crit">
+                <div class="arg-card-label">The critics' case</div>
+                <div class="arg-card-title">Demolish first, verify later inverts the legal sequence</div>
+                <div class="arg-card-body">
+                    <p><strong>The Constitution is explicit.</strong> Article 37 guarantees the right to housing.
+                        Article 16 guarantees life with dignity. The 2018 Right to Housing Act and the Supreme Court's
+                        July 2024 ruling are equally clear: <strong>housing comes before eviction</strong>. The current
+                        operation reverses that.</p>
+                    <p><strong>Capacity numbers do not match the rhetoric.</strong> The Nagarjun apartments hold 45
+                        people. About 1,800 families have been displaced. The arithmetic is the rebuttal.</p>
+                    <p><strong>The same government promised the opposite.</strong> RSP's election manifesto promised to
+                        stand <em>in front of</em> the bulldozers, not drive them. Even second-tier RSP leaders say they
+                        were not consulted before the operation.</p>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- ── SECTION 3: Where each side's framing breaks down ── -->
-    <h2 class="sh">Where each side's framing breaks down</h2>
+        <!-- ── SECTION 3: Where each side's framing breaks down ── -->
+        <h2 class="sh">Where each side's framing breaks down</h2>
 
-    <div class="prose">
-        <p>The honest examination is not which side is right. It is what each side leaves out.</p>
-    </div>
-
-    <h3 class="sh-sub">Where the government framing breaks down</h3>
-    <div class="prose">
-        <p><strong>The 2012 Ichhangu Narayan disaster is treated as if it never happened.</strong> The state has been here before. After the 2012 Thapathali eviction, the government built 227 housing units at Ichhangu Narayan in the Nagarjun hills, at a cost of <span class="mono-red">Rs 230 million</span>. Not a single displaced family moved in. The site lacked public transport, employment access, and adequate water. Squatters who could have benefited refused. Those who resisted stayed in Thapathali. The lesson the riverbank community took away from 2012 was simple: <em>resistance works, compliance does not</em>. The current government has not learned that lesson. It has repeated the structure.</p>
-        <p><strong>The 22-commission failure is presented as proof that nothing else can work.</strong> But the commissions did not fail because the work is impossible. They failed because every change of government brought a fresh round of political appointments and a reset of verification progress. The 22nd commission identified <span class="mono-blue">156,800</span> landless squatters and <span class="mono-blue">783,000</span> unorganized settler families before its term expired in September 2024 with distribution incomplete. The 23rd commission has not yet been formed. Citing the failures of an institution the state just let lapse is a strange basis for skipping it.</p>
-        <p><strong>The KMC-Land Commission MoU was never properly implemented.</strong> An August 2022 agreement between KMC and the Land Commission committed both sides to jointly verify Kathmandu Valley squatters. That work would have produced exactly the data that justifies rights-compliant evictions today. The verification work was not done. That is on the state, not on the people who were supposed to be verified.</p>
-    </div>
-
-    <h3 class="sh-sub">Where the critics' framing breaks down</h3>
-    <div class="prose">
-        <p><strong>The 80% non-genuine number is real, documented, and almost never quoted.</strong> Investigative reporting has named individuals owning 21-25 ropani while claiming sukumbasi status. The numbers grew from 238 to 391 in three years. Coverage that frames the evictions as a violation of the rights of "the landless", without noting that most of the displaced are not legally landless, is hiding a load-bearing fact.</p>
-        <p><strong>"Wait for verification" has been the answer for thirty-six years.</strong> Every previous commission was followed by another commission. Every eviction attempt was followed by a court order, a backlash, a partial retreat, and a deferred problem. The Maoist-era promise of land for freed bonded labourers is still unfulfilled. The Constitution's housing right is still aspirational. Continuing to defer action is also a policy choice. It just doesn't carry the political costs of acting.</p>
-        <p><strong>The settlements ARE flood-prone.</strong> This is not a government talking point invented for the eviction. The Bagmati and Bishnumati flood every monsoon. The structures that were demolished were corrugated metal and bamboo. They shake when trucks pass. Treating the riverbank as an acceptable permanent address ages badly the next time the monsoon arrives.</p>
-        <p><strong>Procedural perfection is also a way of doing nothing.</strong> Every demand the critics raise is reasonable in isolation. Stacked together, they describe a pre-condition set that has historically produced no movement at all. The honest version of the critique would say so: the 22-commission record is partly the cumulative cost of "do it right or don't do it" applied to a problem with no flawless implementation path.</p>
-    </div>
-
-    <!-- ── SECTION 4: Key facts as bar charts ── -->
-    <h2 class="sh">The numbers most coverage skips</h2>
-
-    <div class="chart-block">
-        <div class="chart-title">Composition of Kathmandu Valley riverside settlements, 2024</div>
-        <div class="bar-chart">
-            <div class="bar-scale">
-                <div></div>
-                <div class="bar-scale-track"><span>0%</span><span>50%</span><span>100%</span></div>
-                <div></div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">Genuine landless<br><span style="font-size:0.66rem;color:var(--ink-light);">(per 1964 Land Act)</span></div>
-                <div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--green);"></div></div>
-                <div class="bar-val">~20%</div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">Unorganized settlers<br><span style="font-size:0.66rem;color:var(--ink-light);">(land elsewhere or unverified)</span></div>
-                <div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--amber);"></div></div>
-                <div class="bar-val">~55%</div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">Documented "hukumbasi"<br><span style="font-size:0.66rem;color:var(--ink-light);">(own significant land)</span></div>
-                <div class="bar-track"><div class="bar-fill" style="width:25%;background:var(--red);"></div></div>
-                <div class="bar-val">~25%</div>
-            </div>
+        <div class="prose">
+            <p>The honest examination is not which side is right. It is what each side leaves out.</p>
         </div>
-        <div class="chart-source">Source: Ministry of Urban Development internal study (cited in myRepublica, July 2024) and Kathmandu Valley Development Authority property records (cited in Ratopati, April 2026). The "unorganized" and "hukumbasi" split is approximate; the only rigorous number in this distribution is the ~20% genuine landless figure. The remainder is reconstructed from named cases and KVDA property cross-checks.</div>
-    </div>
 
-    <div class="chart-block">
-        <div class="chart-title">Riverside settlement population growth, Kathmandu Valley, 1990 to 2024</div>
-        <div class="bar-chart">
-            <div class="bar-scale">
-                <div></div>
-                <div class="bar-scale-track"><span>0</span><span>20,000</span><span>40,000 people</span></div>
-                <div></div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">1990 (pre-civil war)</div>
-                <div class="bar-track"><div class="bar-fill" style="width:6%;background:var(--ink-light);"></div></div>
-                <div class="bar-val">&lt;3,000</div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">2003</div>
-                <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--ink-light);"></div></div>
-                <div class="bar-val">~20,000</div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">2019</div>
-                <div class="bar-track"><div class="bar-fill" style="width:72%;background:var(--ink-light);"></div></div>
-                <div class="bar-val">~29,000</div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">2022</div>
-                <div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--ink-light);"></div></div>
-                <div class="bar-val">~35,000</div>
-            </div>
-            <div class="bar-row">
-                <div class="bar-label">2024 (riverside only)</div>
-                <div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--navy);"></div></div>
-                <div class="bar-val">~14,000</div>
-            </div>
+        <h3 class="sh-sub">Where the government framing breaks down</h3>
+        <div class="prose">
+            <p><strong>The 2012 Ichhangu Narayan disaster is treated as if it never happened.</strong> The state has
+                been here before. After the 2012 Thapathali eviction, the government built 227 housing units at Ichhangu
+                Narayan in the Nagarjun hills, at a cost of <span class="mono-red">Rs 230 million</span>. Not a single
+                displaced family moved in. The site lacked public transport, employment access, and adequate water.
+                Squatters who could have benefited refused. Those who resisted stayed in Thapathali. The lesson the
+                riverbank community took away from 2012 was simple: <em>resistance works, compliance does not</em>. The
+                current government has not learned that lesson. It has repeated the structure.</p>
+            <p><strong>The 22-commission failure is presented as proof that nothing else can work.</strong> But the
+                commissions did not fail because the work is impossible. They failed because every change of government
+                brought a fresh round of political appointments and a reset of verification progress. The 22nd
+                commission identified <span class="mono-blue">156,800</span> landless squatters and <span
+                    class="mono-blue">783,000</span> unorganized settler families before its term expired in September
+                2024 with distribution incomplete. The 23rd commission has not yet been formed. Citing the failures of
+                an institution the state just let lapse is a strange basis for skipping it.</p>
+            <p><strong>The KMC-Land Commission MoU was never properly implemented.</strong> An August 2022 agreement
+                between KMC and the Land Commission committed both sides to jointly verify Kathmandu Valley squatters.
+                That work would have produced exactly the data that justifies rights-compliant evictions today. The
+                verification work was not done. That is on the state, not on the people who were supposed to be
+                verified.</p>
         </div>
-        <div class="chart-source">Source: 2003 figure from Kathmandu Valley settlement audit; 2019 from Nepal Landless Democratic Union Party survey; 2022 from Bagmati Civilization Committee; 2024 from Land Commission registry (Kathmandu Valley riverside subset only; valley-wide total estimated near 50,000 families). The drop from 2022 to 2024 reflects narrower geographic scope (riverside only), not population decline.</div>
-    </div>
 
-    <!-- ── SECTION 5: The Ichhangu case study ── -->
-    <h2 class="sh">The Ichhangu test</h2>
-    <div class="prose">
-        <p>The single piece of context that explains everyone's behaviour in 2026 is what happened in 2012.</p>
-        <p>In May 2012, the Baburam Bhattarai government deployed over 1,000 security personnel to demolish 251 huts in Thapathali. Around 1,000 people were left homeless, including roughly 400 children. After the international backlash, Bhattarai pledged <span class="mono-blue">Rs 15,000</span> in immediate three-month renting allowance and committed to a permanent solution: a resettlement project at Ichhangu Narayan in the Nagarjun hills, on land bought from the Ichhangu Land Pooling Committee. A separate <span class="mono-blue">Rs 25,000</span> relocation grant was offered later; only 46 of 258 displaced families ever received it.</p>
-        <p>Construction began in July 2012 and was completed in September 2014. The project produced <span class="mono-blue">227 housing units</span> across two locations, at a total cost of around <span class="mono-blue">Rs 230 million</span>. Each unit was about 200 square feet and was offered for sale at Rs 1.2 million on low-interest loans, or for rent.</p>
-        <p>Not a single displaced family moved in. <em>Twelve years later, the buildings are still mostly empty.</em></p>
-    </div>
+        <h3 class="sh-sub">Where the critics' framing breaks down</h3>
+        <div class="prose">
+            <p><strong>The 80% non-genuine number is real, documented, and almost never quoted.</strong> Investigative
+                reporting has named individuals owning 21-25 ropani while claiming sukumbasi status. The numbers grew
+                from 238 to 391 in three years. Coverage that frames the evictions as a violation of the rights of "the
+                landless", without noting that most of the displaced are not legally landless, is hiding a load-bearing
+                fact.</p>
+            <p><strong>"Wait for verification" has been the answer for thirty-six years.</strong> Every previous
+                commission was followed by another commission. Every eviction attempt was followed by a court order, a
+                backlash, a partial retreat, and a deferred problem. The Maoist-era promise of land for freed bonded
+                labourers is still unfulfilled. The Constitution's housing right is still aspirational. Continuing to
+                defer action is also a policy choice. It just doesn't carry the political costs of acting.</p>
+            <p><strong>The settlements ARE flood-prone.</strong> This is not a government talking point invented for the
+                eviction. The Bagmati and Bishnumati flood every monsoon. The structures that were demolished were
+                corrugated metal and bamboo. They shake when trucks pass. Treating the riverbank as an acceptable
+                permanent address ages badly the next time the monsoon arrives.</p>
+            <p><strong>Procedural perfection is also a way of doing nothing.</strong> Every demand the critics raise is
+                reasonable in isolation. Stacked together, they describe a pre-condition set that has historically
+                produced no movement at all. The honest version of the critique would say so: the 22-commission record
+                is partly the cumulative cost of "do it right or don't do it" applied to a problem with no flawless
+                implementation path.</p>
+        </div>
 
-    <div class="callout red">
-        <strong>Why the 2012 project failed:</strong> No community consultation during construction. Distance from employment in central Kathmandu. Inadequate public transport. No reliable water. Units too small for the family sizes typical of the displaced population. Pricing structure that effectively excluded daily-wage workers. Every flaw was foreseeable; none were addressed because the affected families were not part of the design process.
-    </div>
+        <!-- ── SECTION 4: Key facts as bar charts ── -->
+        <h2 class="sh">The numbers most coverage skips</h2>
 
-    <div class="prose">
-        <p>The 2026 government's plan currently offers space for 45 people in the same Nagarjun area. Whether the new operation reproduces the 2012 outcome depends entirely on choices that have not yet been made: whether resettlement is co-designed, whether transport and employment access are real, whether the units fit the families' actual needs, whether timelines are statutorily binding.</p>
-        <p>The state has time to learn the 2012 lesson. Whether it will is a different question.</p>
-    </div>
+        <div class="chart-block">
+            <div class="chart-title">Composition of Kathmandu Valley riverside settlements, 2024</div>
+            <div class="bar-chart">
+                <div class="bar-scale">
+                    <div></div>
+                    <div class="bar-scale-track"><span>0%</span><span>50%</span><span>100%</span></div>
+                    <div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Genuine landless<br><span
+                            style="font-size:0.66rem;color:var(--ink-light);">(per 1964 Land Act)</span></div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:20%;background:var(--green);"></div>
+                    </div>
+                    <div class="bar-val">~20%</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Unorganized settlers<br><span
+                            style="font-size:0.66rem;color:var(--ink-light);">(land elsewhere or unverified)</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:55%;background:var(--amber);"></div>
+                    </div>
+                    <div class="bar-val">~55%</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Documented "hukumbasi"<br><span
+                            style="font-size:0.66rem;color:var(--ink-light);">(own significant land)</span></div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:25%;background:var(--red);"></div>
+                    </div>
+                    <div class="bar-val">~25%</div>
+                </div>
+            </div>
+            <div class="chart-source">Source: Ministry of Urban Development internal study (cited in myRepublica, July
+                2024) and Kathmandu Valley Development Authority property records (cited in Ratopati, April 2026). The
+                "unorganized" and "hukumbasi" split is approximate; the only rigorous number in this distribution is the
+                ~20% genuine landless figure. The remainder is reconstructed from named cases and KVDA property
+                cross-checks.</div>
+        </div>
 
-    <!-- ── SECTION 6: Verdict table on specific media claims ── -->
-    <h2 class="sh">Claim by claim</h2>
-    <div class="prose">
-        <p>Specific framings circulating in coverage of the operation, evaluated against the documented record.</p>
-    </div>
+        <div class="chart-block">
+            <div class="chart-title">Riverside settlement population growth, Kathmandu Valley, 1990 to 2024</div>
+            <div class="bar-chart">
+                <div class="bar-scale">
+                    <div></div>
+                    <div class="bar-scale-track"><span>0</span><span>20,000</span><span>40,000 people</span></div>
+                    <div></div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">1990 (pre-civil war)</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:6%;background:var(--ink-light);"></div>
+                    </div>
+                    <div class="bar-val">&lt;3,000</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">2003</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:50%;background:var(--ink-light);"></div>
+                    </div>
+                    <div class="bar-val">~20,000</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">2019</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:72%;background:var(--ink-light);"></div>
+                    </div>
+                    <div class="bar-val">~29,000</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">2022</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:88%;background:var(--ink-light);"></div>
+                    </div>
+                    <div class="bar-val">~35,000</div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">2024 (riverside only)</div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width:35%;background:var(--navy);"></div>
+                    </div>
+                    <div class="bar-val">~14,000</div>
+                </div>
+            </div>
+            <div class="chart-source">Source: 2003 figure from Kathmandu Valley settlement audit; 2019 from Nepal
+                Landless Democratic Union Party survey; 2022 from Bagmati Civilization Committee; 2024 from Land
+                Commission registry (Kathmandu Valley riverside subset only; valley-wide total estimated near 50,000
+                families). The drop from 2022 to 2024 reflects narrower geographic scope (riverside only), not
+                population decline.</div>
+        </div>
 
-    <table class="dtable">
-        <thead>
-            <tr>
-                <th style="width:30%;">Claim in circulation</th>
-                <th style="width:54%;">What the evidence shows</th>
-                <th style="width:16%;">Verdict</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>"This is a forced eviction of the landless poor"</strong></td>
-                <td>True for ~20% of those displaced, who meet the strict legal definition of sukumbasi. For the remaining ~80%, the legal status is contested. The framing collapses the distinction.</td>
-                <td><span class="verdict-pill amber">Partly</span></td>
-            </tr>
-            <tr>
-                <td><strong>"All squatters are fake; this is just removing encroachers"</strong></td>
-                <td>The state's own study found about 20% of the 2,245 KMC riverside households are genuine sukumbasi. Applied to the 1,816 displaced, that suggests roughly 360 are genuinely landless under the strict definition. Treating all of them as encroachers contradicts the government's own data.</td>
-                <td><span class="verdict-pill red">False</span></td>
-            </tr>
-            <tr>
-                <td><strong>"The government is taking long-overdue action"</strong></td>
-                <td>True. After 22 land commissions and 36 years of deferral, this is the first government to control federal authority and resettlement infrastructure simultaneously, with the political capital to act.</td>
-                <td><span class="verdict-pill green">Supported</span></td>
-            </tr>
-            <tr>
-                <td><strong>"Adequate resettlement was arranged before demolition"</strong></td>
-                <td>Current Nagarjun capacity is 45 people. Approximately 1,800 families have been displaced. Most are in temporary lodges, not permanent housing. This does not meet the Supreme Court's 2024 housing-before-eviction standard.</td>
-                <td><span class="verdict-pill red">False</span></td>
-            </tr>
-            <tr>
-                <td><strong>"Verification was done before demolition"</strong></td>
-                <td>The Land Records Information Management System verification began the day after demolitions started. The KMC-Land Commission MoU from 2022 to jointly verify squatters was never properly implemented.</td>
-                <td><span class="verdict-pill red">False</span></td>
-            </tr>
-            <tr>
-                <td><strong>"The settlements are flood-prone and unsafe"</strong></td>
-                <td>Documented and uncontested. Riverbank structures flood annually during monsoon. Public safety is a legitimate basis for relocation. It is not, by itself, a basis for skipping verification.</td>
-                <td><span class="verdict-pill green">Supported</span></td>
-            </tr>
-            <tr>
-                <td><strong>"The Ichhangu apartments prove resettlement does not work"</strong></td>
-                <td>The 2012 project failed because it ignored community input, employment access, and transport. The lesson is that <em>this kind</em> of resettlement does not work, not that resettlement is impossible.</td>
-                <td><span class="verdict-pill red">Misleading</span></td>
-            </tr>
-            <tr>
-                <td><strong>"The government has a credible 1,000-day plan"</strong></td>
-                <td>The 100-point roadmap exists on paper. Implementation specifics, including which sites, what budget, what tenure terms, and what role for the local governments constitutionally responsible for verification, are not yet public.</td>
-                <td><span class="verdict-pill amber">Partly</span></td>
-            </tr>
-            <tr>
-                <td><strong>"The eviction violates the Constitution"</strong></td>
-                <td>The Supreme Court has issued a show-cause order; constitutional adjudication is in progress. Article 37 housing rights and Article 16 dignity protections are at stake. The legal question is open, not settled either way.</td>
-                <td><span class="verdict-pill amber">Partly</span></td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- ── SECTION 5: The Ichhangu case study ── -->
+        <h2 class="sh">The Ichhangu test</h2>
+        <div class="prose">
+            <p>The single piece of context that explains everyone's behaviour in 2026 is what happened in 2012.</p>
+            <p>In May 2012, the Baburam Bhattarai government deployed over 1,000 security personnel to demolish 251 huts
+                in Thapathali. Around 1,000 people were left homeless, including roughly 400 children. After the
+                international backlash, Bhattarai pledged <span class="mono-blue">Rs 15,000</span> in immediate
+                three-month renting allowance and committed to a permanent solution: a resettlement project at Ichhangu
+                Narayan in the Nagarjun hills, on land bought from the Ichhangu Land Pooling Committee. A separate <span
+                    class="mono-blue">Rs 25,000</span> relocation grant was offered later; only 46 of 258 displaced
+                families ever received it.</p>
+            <p>Construction began in July 2012 and was completed in September 2014. The project produced <span
+                    class="mono-blue">227 housing units</span> across two locations, at a total cost of around <span
+                    class="mono-blue">Rs 230 million</span>. Each unit was about 200 square feet and was offered for
+                sale at Rs 1.2 million on low-interest loans, or for rent.</p>
+            <p>Not a single displaced family moved in. <em>Twelve years later, the buildings are still mostly
+                    empty.</em></p>
+        </div>
 
-    <!-- ── SECTION 7: What genuine resolution looks like ── -->
-    <h2 class="sh">What genuine resolution would look like</h2>
-    <div class="prose">
-        <p>If the goal is to actually solve the sukumbasi problem, not win the news cycle on it, six things have to happen. None are individually controversial. Together, no government has yet sustained them.</p>
-    </div>
+        <div class="callout red">
+            <strong>Why the 2012 project failed:</strong> No community consultation during construction. Distance from
+            employment in central Kathmandu. Inadequate public transport. No reliable water. Units too small for the
+            family sizes typical of the displaced population. Pricing structure that effectively excluded daily-wage
+            workers. Every flaw was foreseeable; none were addressed because the affected families were not part of the
+            design process.
+        </div>
 
-    <div class="horizon">
-        <div class="horizon-line"></div>
-        <span class="horizon-label">Immediate</span>
-        <div class="horizon-line"></div>
-    </div>
+        <div class="prose">
+            <p>The 2026 government's plan currently offers space for 45 people in the same Nagarjun area. Whether the
+                new operation reproduces the 2012 outcome depends entirely on choices that have not yet been made:
+                whether resettlement is co-designed, whether transport and employment access are real, whether the units
+                fit the families' actual needs, whether timelines are statutorily binding.</p>
+            <p>The state has time to learn the 2012 lesson. Whether it will is a different question.</p>
+        </div>
 
-    <table class="dtable">
-        <thead>
-            <tr>
-                <th style="width:32%;">Action</th>
-                <th style="width:48%;">What it requires</th>
-                <th>Feasibility</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Pause demolitions until verification is complete</strong><br><span style="color:var(--ink-light);font-size:0.78rem;">Per Supreme Court 2024 sequence</span></td>
-                <td>Cabinet decision. The Land Records IMS is already running; finishing the work for the displaced takes weeks, not months.</td>
-                <td><span class="verdict-pill green">High</span></td>
-            </tr>
-            <tr>
-                <td><strong>Constitute the 23rd Land Commission</strong><br><span style="color:var(--ink-light);font-size:0.78rem;">22nd term expired September 2024</span></td>
-                <td>Federal appointment with statutory protection from political reshuffles. The legal basis exists.</td>
-                <td><span class="verdict-pill green">High</span></td>
-            </tr>
-            <tr>
-                <td><strong>Co-design resettlement with the displaced</strong><br><span style="color:var(--ink-light);font-size:0.78rem;">The Ichhangu lesson</span></td>
-                <td>Community workshops on site selection, unit size, transport links, employment proximity. Lumanti and similar groups have done this before.</td>
-                <td><span class="verdict-pill amber">Medium</span></td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- ── SECTION 6: Verdict table on specific media claims ── -->
+        <h2 class="sh">Claim by claim</h2>
+        <div class="prose">
+            <p>Specific framings circulating in coverage of the operation, evaluated against the documented record.</p>
+        </div>
 
-    <div class="horizon">
-        <div class="horizon-line"></div>
-        <span class="horizon-label">Within the 1,000-day promise</span>
-        <div class="horizon-line"></div>
-    </div>
+        <table class="dtable">
+            <thead>
+                <tr>
+                    <th style="width:30%;">Claim in circulation</th>
+                    <th style="width:54%;">What the evidence shows</th>
+                    <th style="width:16%;">Verdict</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>"This is a forced eviction of the landless poor"</strong></td>
+                    <td>True for ~20% of those displaced, who meet the strict legal definition of sukumbasi. For the
+                        remaining ~80%, the legal status is contested. The framing collapses the distinction.</td>
+                    <td><span class="verdict-pill amber">Partly</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"All squatters are fake; this is just removing encroachers"</strong></td>
+                    <td>The state's own study found about 20% of the 2,245 KMC riverside households are genuine
+                        sukumbasi. Applied to the 1,816 displaced, that suggests roughly 360 are genuinely landless
+                        under the strict definition. Treating all of them as encroachers contradicts the government's
+                        own data.</td>
+                    <td><span class="verdict-pill red">False</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"The government is taking long-overdue action"</strong></td>
+                    <td>True. After 22 land commissions and 36 years of deferral, this is the first government to
+                        control federal authority and resettlement infrastructure simultaneously, with the political
+                        capital to act.</td>
+                    <td><span class="verdict-pill green">Supported</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"Adequate resettlement was arranged before demolition"</strong></td>
+                    <td>Current Nagarjun capacity is 45 people. Approximately 1,800 families have been displaced. Most
+                        are in temporary lodges, not permanent housing. This does not meet the Supreme Court's 2024
+                        housing-before-eviction standard.</td>
+                    <td><span class="verdict-pill red">False</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"Verification was done before demolition"</strong></td>
+                    <td>The Land Records Information Management System verification began the day after demolitions
+                        started. The KMC-Land Commission MoU from 2022 to jointly verify squatters was never properly
+                        implemented.</td>
+                    <td><span class="verdict-pill red">False</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"The settlements are flood-prone and unsafe"</strong></td>
+                    <td>Documented and uncontested. Riverbank structures flood annually during monsoon. Public safety is
+                        a legitimate basis for relocation. It is not, by itself, a basis for skipping verification.</td>
+                    <td><span class="verdict-pill green">Supported</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"The Ichhangu apartments prove resettlement does not work"</strong></td>
+                    <td>The 2012 project failed because it ignored community input, employment access, and transport.
+                        The lesson is that <em>this kind</em> of resettlement does not work, not that resettlement is
+                        impossible.</td>
+                    <td><span class="verdict-pill red">Misleading</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"The government has a credible 1,000-day plan"</strong></td>
+                    <td>The 100-point roadmap exists on paper. Implementation specifics, including which sites, what
+                        budget, what tenure terms, and what role for the local governments constitutionally responsible
+                        for verification, are not yet public.</td>
+                    <td><span class="verdict-pill amber">Partly</span></td>
+                </tr>
+                <tr>
+                    <td><strong>"The eviction violates the Constitution"</strong></td>
+                    <td>The Supreme Court has issued a show-cause order; constitutional adjudication is in progress.
+                        Article 37 housing rights and Article 16 dignity protections are at stake. The legal question is
+                        open, not settled either way.</td>
+                    <td><span class="verdict-pill amber">Partly</span></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <table class="dtable">
-        <thead>
-            <tr>
-                <th style="width:32%;">Action</th>
-                <th style="width:48%;">What it requires</th>
-                <th>Feasibility</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Single national landless database</strong><br><span style="color:var(--ink-light);font-size:0.78rem;">Cross-tier, cross-checked</span></td>
-                <td>Federal-provincial-local data sharing agreement. The 22nd commission's MoUs with 680 of 753 local governments are the foundation; they need to be activated, not restarted.</td>
-                <td><span class="verdict-pill amber">Medium</span></td>
-            </tr>
-            <tr>
-                <td><strong>Tiered policy by category</strong><br><span style="color:var(--ink-light);font-size:0.78rem;">20% / 55% / 25% need different responses</span></td>
-                <td>Genuine landless: secure land allocation per Land Act. Unorganized: pathway to formalization or alternative tenure. Documented hukumbasi: penalty plus removal. The categories already exist in law.</td>
-                <td><span class="verdict-pill amber">Medium</span></td>
-            </tr>
-            <tr>
-                <td><strong>Statutory protection for verification</strong><br><span style="color:var(--ink-light);font-size:0.78rem;">Surviving government changes</span></td>
-                <td>Constitutional or legislative provision insulating the Land Commission from each new cabinet's appointment cycle. The reason 22 commissions failed is not technical capacity but discontinuity.</td>
-                <td><span class="verdict-pill red">Low</span></td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- ── SECTION 7: What genuine resolution looks like ── -->
+        <h2 class="sh">What genuine resolution would look like</h2>
+        <div class="prose">
+            <p>If the goal is to actually solve the sukumbasi problem, not win the news cycle on it, six things have to
+                happen. None are individually controversial. Together, no government has yet sustained them.</p>
+        </div>
 
-    <div class="callout amber">
-        <strong>The honest assessment:</strong> The constraint is not technical, financial, or even constitutional. It is political continuity. Every commission since 1990 has produced largely the same recommendations. The bottleneck is not knowing what to do. It is sustaining the doing of it across multiple governments.
-    </div>
+        <div class="horizon">
+            <div class="horizon-line"></div>
+            <span class="horizon-label">Immediate</span>
+            <div class="horizon-line"></div>
+        </div>
 
-    <!-- ── SECTION 8: Bottom line ── -->
-    <h2 class="sh">Bottom line</h2>
-    <div class="prose">
-        <p>The eviction is real. The fake-squatter problem is real. The constitutional violation risk is real. The 22-commission failure is real. The Ichhangu warning is real. The flood risk is real. <em>All at the same time.</em> Anyone telling you the story is simpler than this is selling you a narrative.</p>
-        <p>The government's framing minimizes the procedural failures, the broken manifesto promise, the absent resettlement infrastructure, and the institutional memory of 2012. The critics' framing minimizes the documented hukumbasi cases, the demographic growth pattern, the safety risk to actual residents, and the cost of further deferral. Each side uses accurate facts as cover for the inaccurate ones.</p>
-        <p>Honest coverage of the sukumbasi question requires holding both columns at once: <span class="mono-blue">action that has been overdue for thirty-six years</span> and <span class="mono-red">a sequence that almost certainly violates the Constitution</span>. The two facts do not cancel out. They define the actual stakes. This is the first government with the political capital to break the 22-commission deadlock. It is also the government most at risk of breaking it the wrong way.</p>
-        <p>What happens in the next ninety days, especially around the Supreme Court's pending ruling and the constitution of the 23rd Land Commission, decides which story this becomes. The data is currently consistent with both outcomes.</p>
-    </div>
+        <table class="dtable">
+            <thead>
+                <tr>
+                    <th style="width:32%;">Action</th>
+                    <th style="width:48%;">What it requires</th>
+                    <th>Feasibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pause demolitions until verification is complete</strong><br><span
+                            style="color:var(--ink-light);font-size:0.78rem;">Per Supreme Court 2024 sequence</span>
+                    </td>
+                    <td>Cabinet decision. The Land Records IMS is already running; finishing the work for the displaced
+                        takes weeks, not months.</td>
+                    <td><span class="verdict-pill green">High</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Constitute the 23rd Land Commission</strong><br><span
+                            style="color:var(--ink-light);font-size:0.78rem;">22nd term expired September 2024</span>
+                    </td>
+                    <td>Federal appointment with statutory protection from political reshuffles. The legal basis exists.
+                    </td>
+                    <td><span class="verdict-pill green">High</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Co-design resettlement with the displaced</strong><br><span
+                            style="color:var(--ink-light);font-size:0.78rem;">The Ichhangu lesson</span></td>
+                    <td>Community workshops on site selection, unit size, transport links, employment proximity. Lumanti
+                        and similar groups have done this before.</td>
+                    <td><span class="verdict-pill amber">Medium</span></td>
+                </tr>
+            </tbody>
+        </table>
 
-    <footer class="article-footer">
-        <p><strong>Methodology notes:</strong> The ~20% genuine sukumbasi figure is from a Ministry of Urban Development study cited in myRepublica (July 2024). The Ichhangu Narayan project costs and outcomes are documented in the Kathmandu Post (July 2019), Amnesty Nepal (July 2023), and Nepalnews (April 2026). The 1,816 displaced-families figure is the government's own registration count as of May 4, 2026. Civil society networks including Nepal Mahila Ekata Samaj report a higher figure of around 25,000 displaced people across 3,500 structures. The hukumbasi land-ownership cases (Dineshman Shrestha, Chandra Bahadur Yonjan, Padamraj Khadka and others) are from Kathmandu Valley Development Authority records published by Ratopati, April 2026.</p>
-        <p><strong>Verdicts:</strong> Supported = primary source confirms. Partly = some elements supported, others not. False = primary source contradicts. Misleading = technically true but framed in a way that obscures the relevant context.</p>
-        <p><strong>SagarmathaIQ</strong> is an independent quantitative research group. sagarmathaiq.github.io · May 2026</p>
-    </footer>
+        <div class="horizon">
+            <div class="horizon-line"></div>
+            <span class="horizon-label">Within the 1,000-day promise</span>
+            <div class="horizon-line"></div>
+        </div>
 
-</article>
+        <table class="dtable">
+            <thead>
+                <tr>
+                    <th style="width:32%;">Action</th>
+                    <th style="width:48%;">What it requires</th>
+                    <th>Feasibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Single national landless database</strong><br><span
+                            style="color:var(--ink-light);font-size:0.78rem;">Cross-tier, cross-checked</span></td>
+                    <td>Federal-provincial-local data sharing agreement. The 22nd commission's MoUs with 680 of 753
+                        local governments are the foundation; they need to be activated, not restarted.</td>
+                    <td><span class="verdict-pill amber">Medium</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Tiered policy by category</strong><br><span
+                            style="color:var(--ink-light);font-size:0.78rem;">20% / 55% / 25% need different
+                            responses</span></td>
+                    <td>Genuine landless: secure land allocation per Land Act. Unorganized: pathway to formalization or
+                        alternative tenure. Documented hukumbasi: penalty plus removal. The categories already exist in
+                        law.</td>
+                    <td><span class="verdict-pill amber">Medium</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Statutory protection for verification</strong><br><span
+                            style="color:var(--ink-light);font-size:0.78rem;">Surviving government changes</span></td>
+                    <td>Constitutional or legislative provision insulating the Land Commission from each new cabinet's
+                        appointment cycle. The reason 22 commissions failed is not technical capacity but discontinuity.
+                    </td>
+                    <td><span class="verdict-pill red">Low</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="callout amber">
+            <strong>The honest assessment:</strong> The constraint is not technical, financial, or even constitutional.
+            It is political continuity. Every commission since 1990 has produced largely the same recommendations. The
+            bottleneck is not knowing what to do. It is sustaining the doing of it across multiple governments.
+        </div>
+
+        <!-- ── SECTION 8: Bottom line ── -->
+        <h2 class="sh">Bottom line</h2>
+        <div class="prose">
+            <p>The eviction is real. The fake-squatter problem is real. The constitutional violation risk is real. The
+                22-commission failure is real. The Ichhangu warning is real. The flood risk is real. <em>All at the same
+                    time.</em> Anyone telling you the story is simpler than this is selling you a narrative.</p>
+            <p>The government's framing minimizes the procedural failures, the broken manifesto promise, the absent
+                resettlement infrastructure, and the institutional memory of 2012. The critics' framing minimizes the
+                documented hukumbasi cases, the demographic growth pattern, the safety risk to actual residents, and the
+                cost of further deferral. Each side uses accurate facts as cover for the inaccurate ones.</p>
+            <p>Honest coverage of the sukumbasi question requires holding both columns at once: <span
+                    class="mono-blue">action that has been overdue for thirty-six years</span> and <span
+                    class="mono-red">a sequence that almost certainly violates the Constitution</span>. The two facts do
+                not cancel out. They define the actual stakes. This is the first government with the political capital
+                to break the 22-commission deadlock. It is also the government most at risk of breaking it the wrong
+                way.</p>
+            <p>What happens in the next ninety days, especially around the Supreme Court's pending ruling and the
+                constitution of the 23rd Land Commission, decides which story this becomes. The data is currently
+                consistent with both outcomes.</p>
+        </div>
+
+        <footer class="article-footer">
+            <p><strong>Methodology notes:</strong> The ~20% genuine sukumbasi figure is from a Ministry of Urban
+                Development study cited in myRepublica (July 2024). The Ichhangu Narayan project costs and outcomes are
+                documented in the Kathmandu Post (July 2019), Amnesty Nepal (July 2023), and Nepalnews (April 2026). The
+                1,816 displaced-families figure is the government's own registration count as of May 4, 2026. Civil
+                society networks including Nepal Mahila Ekata Samaj report a higher figure of around 25,000 displaced
+                people across 3,500 structures. The hukumbasi land-ownership cases (Dineshman Shrestha, Chandra Bahadur
+                Yonjan, Padamraj Khadka and others) are from Kathmandu Valley Development Authority records published by
+                Ratopati, April 2026.</p>
+            <p><strong>Verdicts:</strong> Supported = primary source confirms. Partly = some elements supported, others
+                not. False = primary source contradicts. Misleading = technically true but framed in a way that obscures
+                the relevant context.</p>
+            <p><strong>SagarmathaIQ</strong> is an independent quantitative research group. sagarmathaiq.github.io · May
+                2026</p>
+        </footer>
+
+    </article>
 
 </body>
+
 </html>
