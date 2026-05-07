@@ -243,6 +243,38 @@
             margin-left: 0;
             margin-top: 1rem;
         }
+        /* ── AI disclosure box ── */
+        .ai-disclosure {
+            margin-top: 2.5rem;
+            padding: 1.1rem 1.25rem;
+            background: var(--bg-tint);
+            border: 1px solid var(--rule);
+            border-left: 3px solid var(--amber);
+            border-radius: 4px;
+        }
+        .ai-disclosure-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.55rem;
+        }
+        .ai-disclosure-body {
+            font-family: var(--np-sans);
+            font-size: 0.92rem;
+            color: var(--ink-body);
+            line-height: 1.65;
+            margin-bottom: 0.5rem;
+        }
+        .ai-disclosure-en {
+            font-family: var(--en);
+            font-size: 0.8rem;
+            color: var(--ink-light);
+            line-height: 1.55;
+            font-style: italic;
+        }
 
         @media (max-width: 640px) {
             .article {
@@ -288,10 +320,10 @@
         <h1 class="headline">डिजिटल युगको विरोधाभास: प्रविधिले हामीलाई चलाख बनाउँदैछ कि मूर्ख?</h1>
 
         <div class="meta">
-            <span><strong>प्रकाशित</strong> मे २०२६</span>
-            <span><strong>विधा</strong> ओपिनियन</span>
-            <span><strong>विषय</strong> प्रविधि, शिक्षा, बौद्धिक स्वास्थ्य</span>
-            <span><strong>By</strong> D. Rimal and N. Bhattarai </span>
+            <span><strong>Published</strong> May 2026</span>
+            <span><strong>Category</strong> Opinion</span>
+            <span><strong>Topics</strong> Technology, Education, Cognitive Health</span>
+            <span><strong>By</strong> Dipak Rimal &middot; Nabraj Bhattarai </span>
         </div>
 
         <div class="prose">
@@ -377,6 +409,12 @@
                 आफ्नो मस्तिष्कलाई पूर्ण रूपमा मेसिनको हातमा सुम्पिँदैनौँ। प्रविधिले जीवनलाई सहज त बनाउँछ, तर मस्तिष्कलाई
                 सक्रिय र तीक्ष्ण राख्नका लागि थोरै घर्षण र चुनौती आवश्यक हुन्छ।</p>
 
+        </div>
+
+        <div class="ai-disclosure">
+        <div class="ai-disclosure-label">पूर्ण खुलासा &middot; Full Disclosure</div>
+            <p class="ai-disclosure-body">यो लेख तयार पार्ने विभिन्न चरणहरूमा एआई उपकरणहरूको प्रयोग गरिएको थियो। बौद्धिक पूँजीको प्रश्न उठाउने यो लेख आफैँ त्यही प्रविधिको सहयोगमा तयार भएको कुरा पाठकहरूले थाहा पाउनु जरुरी छ।</p>
+            <p class="ai-disclosure-en">While producing this piece, AI tools were used at various stages. We think readers deserve to know that an essay raising questions about intellectual capital was itself produced with help from the same technology it discusses.</p>
         </div>
 
         <footer class="article-footer">
