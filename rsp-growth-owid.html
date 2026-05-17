@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 7% Promise — SagarmathaIQ</title>
+  <style>
+    /* ===== LIGHT MODE TOKENS ===== */
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono:  'SFMono-Regular', 'Courier New', monospace;
+
+      --bg:        #ffffff;
+      --bg-tint:   #f9fafb;
+      --bg-chip:   #f3f4f6;
+
+      --ink:       #111827;
+      --ink-mid:   #374151;
+      --ink-light: #6b7280;
+      --ink-faint: #9ca3af;
+
+      --rule:      #e5e7eb;
+      --rule-dark: #d1d5db;
+      --rule-strong: #111827;
+      --grid:      #e5e7eb;
+
+      --c-target:  #1d4ed8;   /* RSP target / requirement — blue */
+      --c-promise: #b45309;   /* RSP promise — amber */
+      --c-imf:     #b91c1c;   /* IMF baseline / problem — red */
+      --c-hist:    #94a3b8;   /* historical / reference — grey */
+      --c-nepal:   #b91c1c;   /* Nepal callout */
+    }
+
+    /* ===== DARK MODE TOKENS ===== */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #0b1220;
+        --bg-tint:   #131c2e;
+        --bg-chip:   #1e293b;
+
+        --ink:       #f1f5f9;
+        --ink-mid:   #cbd5e1;
+        --ink-light: #94a3b8;
+        --ink-faint: #64748b;
+
+        --rule:      #1f2937;
+        --rule-dark: #334155;
+        --rule-strong: #f1f5f9;
+        --grid:      #1e293b;
+
+        --c-target:  #60a5fa;
+        --c-promise: #fbbf24;
+        --c-imf:     #f87171;
+        --c-hist:    #64748b;
+        --c-nepal:   #f87171;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { font-size: 17px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink-mid);
+      font-family: var(--serif);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* ===== SITE HEADER ===== */
+    .site-header { background: var(--bg); border-bottom: 1px solid var(--rule); }
+    .site-header-inner {
+      max-width: 800px; margin: 0 auto; padding: 14px 24px;
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--sans);
+    }
+    .site-mark-icon {
+      width: 32px; height: 32px;
+      background: var(--c-target); color: var(--bg);
+      font-family: var(--mono); font-weight: 700; font-size: 0.85rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 4px;
+    }
+    .site-name { font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .site-tagline { font-size: 0.72rem; color: var(--ink-light); margin-top: -1px; }
+
+    /* ===== ARTICLE ===== */
+    .article { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .kicker {
+      font-family: var(--sans);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--c-imf); margin-bottom: 18px;
+    }
+    .headline {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+      line-height: 1.15; color: var(--ink); font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: -0.01em;
+    }
+    .dek {
+      font-family: var(--sans);
+      font-size: 1.08rem; line-height: 1.5;
+      color: var(--ink-light);
+      margin: 0 0 28px;
+    }
+    .dek strong { color: var(--ink); font-weight: 600; }
+
+    .meta {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--ink-faint); letter-spacing: 0.04em;
+      padding: 10px 0; margin-bottom: 44px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: flex; flex-wrap: wrap; gap: 18px;
+    }
+    .meta span strong { color: var(--ink); font-weight: 600; }
+
+    /* ===== CHART BLOCK (OWID style) ===== */
+    .chart {
+      margin: 0 0 56px;
+    }
+    .chart-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+    .chart-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.3;
+      color: var(--ink); font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .chart-subtitle {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .chart-svg-wrap {
+      width: 100%;
+    }
+    .chart-svg-wrap svg {
+      width: 100%; height: auto;
+      font-family: var(--sans);
+    }
+    .chart-source {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      line-height: 1.5;
+    }
+
+    /* ===== SVG ELEMENT STYLES ===== */
+    .axis-line { stroke: var(--rule-dark); stroke-width: 1; }
+    .grid-line { stroke: var(--grid); stroke-width: 1; stroke-dasharray: 2,3; }
+    .tick-text { fill: var(--ink-light); font-size: 11px; }
+    .axis-title { fill: var(--ink-light); font-size: 11px; font-weight: 600; }
+    .data-label { font-size: 12px; font-weight: 600; }
+    .end-label-bold { font-size: 12px; font-weight: 700; }
+    .end-label-light { font-size: 11px; font-weight: 400; fill: var(--ink-light); }
+    .annot { font-size: 10.5px; font-style: italic; fill: var(--ink-light); }
+
+    /* ===== BETWEEN-CHART NOTES ===== */
+    .note {
+      font-family: var(--serif);
+      font-size: 1rem; line-height: 1.7;
+      color: var(--ink-mid);
+      max-width: 680px;
+      margin: 0 0 40px;
+    }
+    .note strong { color: var(--ink); font-weight: 700; }
+    .mono-red    { font-family: var(--mono); color: var(--c-imf);     font-weight: 600; }
+    .mono-amber  { font-family: var(--mono); color: var(--c-promise); font-weight: 600; }
+    .mono-blue   { font-family: var(--mono); color: var(--c-target);  font-weight: 600; }
+
+    /* ===== EQUATION ===== */
+    .eqn {
+      font-family: var(--mono); font-size: 0.92rem;
+      background: var(--bg-tint);
+      padding: 12px 16px;
+      border-left: 3px solid var(--c-target);
+      margin: 0 0 40px;
+      color: var(--ink);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+    .eqn small { color: var(--ink-faint); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .eqn .eq { color: var(--ink-light); margin: 0 4px; }
+
+    /* ===== HERO STAT (alternative to chart for one finding) ===== */
+    .hero-stat {
+      text-align: center;
+      padding: 32px 16px;
+      margin: 0 0 40px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-stat-val {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--c-imf);
+      margin-bottom: 8px;
+    }
+    .hero-stat-label {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 72px; padding-top: 24px;
+      border-top: 2px solid var(--rule-strong);
+      font-family: var(--sans); font-size: 0.78rem; color: var(--ink-light);
+      line-height: 1.6;
+    }
+    .footer p { margin: 0 0 8px; }
+    .footer strong { color: var(--ink); font-weight: 700; }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .article { padding: 32px 16px 60px; }
+      .end-label-bold { font-size: 11px; }
+      .end-label-light { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <div class="site-mark-icon">SQ</div>
+    <div>
+      <div class="site-name">SagarmathaIQ</div>
+      <div class="site-tagline">Open quantitative analysis from the Himalayas</div>
+    </div>
+  </div>
+</header>
+
+<article class="article">
+
+  <div class="kicker">Economy · May 2026</div>
+
+  <h1 class="headline">
+    Three numbers in RSP's manifesto. They don't add up.
+  </h1>
+
+  <p class="dek">
+    The Rastriya Swatantra Party promised <strong>7% annual GDP growth</strong>, a <strong>$100B economy</strong>, and per capita income tripling to <strong>$3,000</strong> in five years. Anchored to the same starting point, only one of these can be true at a time.
+  </p>
+
+  <div class="meta">
+    <span><strong>Published</strong> May 16, 2026</span>
+    <span><strong>Author</strong> SagarmathaIQ</span>
+    <span><strong>Method</strong> Compound annual growth on IMF base</span>
+  </div>
+
+  <!-- ====== CHART 1 — HERO ====== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 1</div>
+    <div class="chart-title">RSP's $100B target sits above every realistic five-year endpoint</div>
+    <div class="chart-subtitle">Nepal GDP in 2031 under different sustained annual real growth rates, starting from the IMF 2026 estimate of $45.8B.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bar chart comparing GDP scenarios">
+        <!-- gridlines -->
+        <g>
+          <line class="grid-line" x1="220" y1="40"  x2="700" y2="40"/>
+          <line class="grid-line" x1="220" y1="100" x2="700" y2="100"/>
+          <line class="grid-line" x1="220" y1="160" x2="700" y2="160"/>
+          <line class="grid-line" x1="220" y1="220" x2="700" y2="220"/>
+          <line class="grid-line" x1="220" y1="280" x2="700" y2="280"/>
+          <line class="axis-line" x1="220" y1="340" x2="700" y2="340"/>
+        </g>
+        <!-- x-axis labels -->
+        <g>
+          <text class="tick-text" x="220" y="358" text-anchor="middle">$0B</text>
+          <text class="tick-text" x="316" y="358" text-anchor="middle">$25B</text>
+          <text class="tick-text" x="412" y="358" text-anchor="middle">$50B</text>
+          <text class="tick-text" x="508" y="358" text-anchor="middle">$75B</text>
+          <text class="tick-text" x="604" y="358" text-anchor="middle">$100B</text>
+          <text class="tick-text" x="700" y="358" text-anchor="middle">$125B</text>
+        </g>
+
+        <!-- BARS — each: y, width based on (val * 384 / 100), x=220 -->
+        <!-- $100B target: width = (100/125)*480 = 384 -->
+        <g>
+          <rect x="220" y="60"  width="384" height="42" fill="var(--c-target)" />
+          <text class="data-label" x="608" y="86" fill="var(--ink)">$100B</text>
+          <text class="end-label-light" x="608" y="100">RSP target</text>
+        </g>
+        <!-- 7% promise: $64.3B → width = (64.3/125)*480 = 246.9 -->
+        <g>
+          <rect x="220" y="120" width="247" height="42" fill="var(--c-promise)" />
+          <text class="data-label" x="471" y="146" fill="var(--ink)">$64.3B</text>
+          <text class="end-label-light" x="471" y="160">at 7% promised growth</text>
+        </g>
+        <!-- 10-yr historical 5.8%: $60.7B → 233 -->
+        <g>
+          <rect x="220" y="180" width="233" height="42" fill="var(--c-hist)" />
+          <text class="data-label" x="457" y="206" fill="var(--ink)">$60.7B</text>
+          <text class="end-label-light" x="457" y="220">at Nepal's 10-yr avg (5.8%)</text>
+        </g>
+        <!-- 4.7% 5-yr historical: $57.6B → 221.2 -->
+        <g>
+          <rect x="220" y="240" width="221" height="42" fill="var(--c-hist)" opacity="0.7" />
+          <text class="data-label" x="445" y="266" fill="var(--ink)">$57.6B</text>
+          <text class="end-label-light" x="445" y="280">at Nepal's 5-yr avg (4.7%)</text>
+        </g>
+        <!-- 3% IMF: $53.1B → 204 -->
+        <g>
+          <rect x="220" y="300" width="204" height="42" fill="var(--c-imf)" />
+          <text class="data-label" x="428" y="326" fill="var(--ink)">$53.1B</text>
+          <text class="end-label-light" x="428" y="340">at IMF 2026 baseline (3.0%)</text>
+        </g>
+
+        <!-- Row labels (left) -->
+        <g>
+          <text class="end-label-bold" x="210" y="85"  text-anchor="end" fill="var(--ink)">$100B target</text>
+          <text class="end-label-bold" x="210" y="145" text-anchor="end" fill="var(--ink)">7% promise</text>
+          <text class="end-label-bold" x="210" y="205" text-anchor="end" fill="var(--ink)">10-yr trend</text>
+          <text class="end-label-bold" x="210" y="265" text-anchor="end" fill="var(--ink)">5-yr trend</text>
+          <text class="end-label-bold" x="210" y="325" text-anchor="end" fill="var(--ink)">IMF baseline</text>
+        </g>
+
+        <!-- Gap annotation -->
+        <g>
+          <line x1="467" y1="120" x2="467" y2="282" stroke="var(--c-imf)" stroke-width="1.2" stroke-dasharray="3,3"/>
+          <line x1="604" y1="60"  x2="604" y2="282" stroke="var(--c-imf)" stroke-width="1.2" stroke-dasharray="3,3"/>
+          <text class="annot" x="535" y="20" text-anchor="middle" fill="var(--c-imf)">— $36B gap —</text>
+          <line x1="467" y1="14" x2="604" y2="14" stroke="var(--c-imf)" stroke-width="1"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: IMF World Economic Outlook (April 2026); World Economics 5- and 10-year CAGR tables; SagarmathaIQ calculations. Bars show 2031 endpoint at sustained annual growth from $45.8B 2026 base.</div>
+  </div>
+
+  <p class="note">
+    The promise of 7% growth and the promise of a $100B economy describe two different five-year futures. Compound arithmetic forces a choice.
+  </p>
+
+  <div class="eqn">
+    <small>Growth rate required to reach $100B from $45.8B in 5 years</small>
+    r <span class="eq">=</span> (100 / 45.8)<sup>1/5</sup> − 1 <span class="eq">=</span> <span class="mono-red">16.9% per year</span>
+  </div>
+
+  <!-- ====== CHART 2 — TRAJECTORY ====== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 2</div>
+    <div class="chart-title">The $100B path diverges from every realistic trajectory by year two</div>
+    <div class="chart-subtitle">Nepal GDP, projected 2026–2031, at four sustained annual real growth rates.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Line chart of GDP trajectories 2026-2031">
+        <!-- gridlines and y-axis ticks -->
+        <g>
+          <line class="grid-line" x1="60" y1="60"  x2="540" y2="60"/>
+          <line class="grid-line" x1="60" y1="120" x2="540" y2="120"/>
+          <line class="grid-line" x1="60" y1="180" x2="540" y2="180"/>
+          <line class="grid-line" x1="60" y1="240" x2="540" y2="240"/>
+          <line class="grid-line" x1="60" y1="300" x2="540" y2="300"/>
+          <line class="axis-line" x1="60" y1="360" x2="540" y2="360"/>
+          <text class="tick-text" x="55" y="64"  text-anchor="end">$110B</text>
+          <text class="tick-text" x="55" y="124" text-anchor="end">$90B</text>
+          <text class="tick-text" x="55" y="184" text-anchor="end">$70B</text>
+          <text class="tick-text" x="55" y="244" text-anchor="end">$50B</text>
+          <text class="tick-text" x="55" y="304" text-anchor="end">$30B</text>
+          <text class="tick-text" x="55" y="364" text-anchor="end">$10B</text>
+        </g>
+        <!-- x-axis ticks -->
+        <g>
+          <text class="tick-text" x="60"  y="380" text-anchor="middle">2026</text>
+          <text class="tick-text" x="156" y="380" text-anchor="middle">2027</text>
+          <text class="tick-text" x="252" y="380" text-anchor="middle">2028</text>
+          <text class="tick-text" x="348" y="380" text-anchor="middle">2029</text>
+          <text class="tick-text" x="444" y="380" text-anchor="middle">2030</text>
+          <text class="tick-text" x="540" y="380" text-anchor="middle">2031</text>
+          <text class="axis-title" x="300" y="406" text-anchor="middle">Year</text>
+        </g>
+        <!-- y-axis title -->
+        <text class="axis-title" x="20" y="200" text-anchor="middle" transform="rotate(-90, 20, 200)">GDP (current US$)</text>
+
+        <!-- DATA LINES -->
+        <!-- y = 360 - (val-10)/100 * 300; so val=45.8 → y = 360 - 35.8/100*300 = 360-107.4 = 252.6 -->
+        <!-- Helper: y(v) = 360 - (v-10)*3 -->
+
+        <!-- $100B target line (17% growth): values 45.8, 53.5, 62.6, 73.2, 85.5, 100 -->
+        <!-- y: 252.6, 229.5, 202.2, 170.4, 133.5, 90 -->
+        <polyline points="60,252.6 156,229.5 252,202.2 348,170.4 444,133.5 540,90"
+                  fill="none" stroke="var(--c-target)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="540" cy="90" r="3.5" fill="var(--c-target)"/>
+
+        <!-- 7% promise: 45.8, 49.0, 52.5, 56.2, 60.1, 64.3 -->
+        <!-- y: 252.6, 243.0, 232.5, 221.4, 209.7, 197.1 -->
+        <polyline points="60,252.6 156,243.0 252,232.5 348,221.4 444,209.7 540,197.1"
+                  fill="none" stroke="var(--c-promise)" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="540" cy="197.1" r="3.5" fill="var(--c-promise)"/>
+
+        <!-- 4.7% 5-yr historical: 45.8, 48.0, 50.2, 52.6, 55.1, 57.6 -->
+        <!-- y: 252.6, 246.0, 239.4, 232.2, 224.7, 217.2 -->
+        <polyline points="60,252.6 156,246.0 252,239.4 348,232.2 444,224.7 540,217.2"
+                  fill="none" stroke="var(--c-hist)" stroke-width="2" stroke-linejoin="round" stroke-dasharray="0"/>
+        <circle cx="540" cy="217.2" r="3" fill="var(--c-hist)"/>
+
+        <!-- 3% IMF baseline: 45.8, 47.2, 48.6, 50.0, 51.5, 53.1 -->
+        <!-- y: 252.6, 248.4, 244.2, 240.0, 235.5, 230.7 -->
+        <polyline points="60,252.6 156,248.4 252,244.2 348,240.0 444,235.5 540,230.7"
+                  fill="none" stroke="var(--c-imf)" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="540" cy="230.7" r="3" fill="var(--c-imf)"/>
+
+        <!-- Starting point marker -->
+        <circle cx="60" cy="252.6" r="3" fill="var(--ink)"/>
+        <text class="end-label-light" x="60" y="270" text-anchor="middle">$45.8B</text>
+
+        <!-- END LABELS (offset right of plot) -->
+        <text class="end-label-bold" x="550" y="86"  fill="var(--c-target)">$100B</text>
+        <text class="end-label-light" x="550" y="100">RSP target (needs 17%)</text>
+
+        <text class="end-label-bold" x="550" y="195" fill="var(--c-promise)">$64B</text>
+        <text class="end-label-light" x="550" y="209">at 7% promised</text>
+
+        <text class="end-label-bold" x="550" y="223" fill="var(--c-hist)">$58B</text>
+        <text class="end-label-light" x="550" y="237">at 4.7% (5-yr avg)</text>
+
+        <text class="end-label-bold" x="550" y="250" fill="var(--c-imf)">$53B</text>
+        <text class="end-label-light" x="550" y="264">at 3% (IMF base)</text>
+
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: IMF WEO April 2026 (base); World Bank Nepal Development Update April 2026 (IMF/WB scenarios); SagarmathaIQ scenario calculations.</div>
+  </div>
+
+  <p class="note">
+    To reach $100B from today's base, Nepal's economy would have to grow at <span class="mono-red">17%</span> every year for five consecutive years. That is more than double the manifesto's stated rate. It is also more than triple the IMF's forecast and the World Bank's long-term outlook.
+  </p>
+
+  <!-- ====== CHART 3 — GROWTH RATE LADDER ====== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 3</div>
+    <div class="chart-title">The manifesto's GDP target requires growth Nepal has never sustained</div>
+    <div class="chart-subtitle">Required vs. promised vs. historical vs. forecast real GDP growth, annual.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 440" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Horizontal bar chart of growth rates">
+        <!-- x scale: 0 to 20% mapped to 240-680 -->
+        <!-- so each 1% = 22 pixels -->
+        <!-- gridlines at 0,5,10,15,20 -->
+        <g>
+          <line class="grid-line" x1="240" y1="40" x2="240" y2="380"/>
+          <line class="grid-line" x1="350" y1="40" x2="350" y2="380"/>
+          <line class="grid-line" x1="460" y1="40" x2="460" y2="380"/>
+          <line class="grid-line" x1="570" y1="40" x2="570" y2="380"/>
+          <line class="grid-line" x1="680" y1="40" x2="680" y2="380"/>
+          <text class="tick-text" x="240" y="400" text-anchor="middle">0%</text>
+          <text class="tick-text" x="350" y="400" text-anchor="middle">5%</text>
+          <text class="tick-text" x="460" y="400" text-anchor="middle">10%</text>
+          <text class="tick-text" x="570" y="400" text-anchor="middle">15%</text>
+          <text class="tick-text" x="680" y="400" text-anchor="middle">20%</text>
+          <text class="axis-title" x="460" y="424" text-anchor="middle">Real GDP growth, annual</text>
+        </g>
+
+        <!-- 7% reference line (vertical, light) -->
+        <line x1="394" y1="40" x2="394" y2="380" stroke="var(--c-promise)" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+        <text class="annot" x="394" y="32" text-anchor="middle" fill="var(--c-promise)">RSP promise = 7%</text>
+
+        <!-- BARS -->
+        <!-- Required 16.9%: width = 16.9 * 22 = 371.8 -->
+        <g>
+          <rect x="240" y="60" width="372" height="28" fill="var(--c-imf)"/>
+          <text class="end-label-bold" x="620" y="79" fill="var(--ink)">16.9%</text>
+        </g>
+        <!-- RSP promise 7%: width = 154 -->
+        <g>
+          <rect x="240" y="100" width="154" height="28" fill="var(--c-promise)"/>
+          <text class="end-label-bold" x="402" y="119" fill="var(--ink)">7.0%</text>
+        </g>
+        <!-- Nepal 10-yr CAGR 5.8%: width = 127.6 -->
+        <g>
+          <rect x="240" y="140" width="128" height="28" fill="var(--c-hist)"/>
+          <text class="end-label-bold" x="376" y="159" fill="var(--ink)">5.8%</text>
+        </g>
+        <!-- Nepal 5-yr 4.7%: 103.4 -->
+        <g>
+          <rect x="240" y="180" width="103" height="28" fill="var(--c-hist)" opacity="0.85"/>
+          <text class="end-label-bold" x="352" y="199" fill="var(--ink)">4.7%</text>
+        </g>
+        <!-- WB long-term ~4%: 88 -->
+        <g>
+          <rect x="240" y="220" width="88" height="28" fill="var(--c-hist)" opacity="0.7"/>
+          <text class="end-label-bold" x="337" y="239" fill="var(--ink)">4.0%</text>
+        </g>
+        <!-- Nepal 3-yr 3.4%: 74.8 -->
+        <g>
+          <rect x="240" y="260" width="75" height="28" fill="var(--c-hist)" opacity="0.6"/>
+          <text class="end-label-bold" x="324" y="279" fill="var(--ink)">3.4%</text>
+        </g>
+        <!-- IMF 2026 3.0%: 66 -->
+        <g>
+          <rect x="240" y="300" width="66" height="28" fill="var(--c-imf)" opacity="0.7"/>
+          <text class="end-label-bold" x="315" y="319" fill="var(--ink)">3.0%</text>
+        </g>
+        <!-- WB FY26 2.3%: 50.6 -->
+        <g>
+          <rect x="240" y="340" width="51" height="28" fill="var(--c-imf)" opacity="0.55"/>
+          <text class="end-label-bold" x="300" y="359" fill="var(--ink)">2.3%</text>
+        </g>
+
+        <!-- Row labels -->
+        <g>
+          <text class="end-label-bold" x="232" y="78"  text-anchor="end" fill="var(--ink)">Required for $100B</text>
+          <text class="end-label-light" x="232" y="91" text-anchor="end">(arithmetic)</text>
+
+          <text class="end-label-bold" x="232" y="118" text-anchor="end" fill="var(--ink)">RSP promise</text>
+          <text class="end-label-light" x="232" y="131" text-anchor="end">(manifesto)</text>
+
+          <text class="end-label-bold" x="232" y="158" text-anchor="end" fill="var(--ink)">Nepal 10-yr avg</text>
+          <text class="end-label-light" x="232" y="171" text-anchor="end">(2015-2025)</text>
+
+          <text class="end-label-bold" x="232" y="198" text-anchor="end" fill="var(--ink)">Nepal 5-yr avg</text>
+          <text class="end-label-light" x="232" y="211" text-anchor="end">(2020-2025)</text>
+
+          <text class="end-label-bold" x="232" y="238" text-anchor="end" fill="var(--ink)">WB long-term</text>
+          <text class="end-label-light" x="232" y="251" text-anchor="end">(forecast to 2029)</text>
+
+          <text class="end-label-bold" x="232" y="278" text-anchor="end" fill="var(--ink)">Nepal 3-yr avg</text>
+          <text class="end-label-light" x="232" y="291" text-anchor="end">(2022-2025)</text>
+
+          <text class="end-label-bold" x="232" y="318" text-anchor="end" fill="var(--ink)">IMF 2026</text>
+          <text class="end-label-light" x="232" y="331" text-anchor="end">(WEO April 2026)</text>
+
+          <text class="end-label-bold" x="232" y="358" text-anchor="end" fill="var(--ink)">WB FY26</text>
+          <text class="end-label-light" x="232" y="371" text-anchor="end">(post-unrest revision)</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: IMF World Economic Outlook April 2026; World Bank Nepal Development Update April 2026; World Economics CAGR tables; ISAS-NUS analysis of RSP manifesto.</div>
+  </div>
+
+  <p class="note">
+    Nepal's best decade averaged <span class="mono-blue">5.8%</span>. Its best individual five-year stretch did not exceed it materially. To deliver the $100B target, every year of the next five must outpace <em>every</em> year of the past fifteen, and do so by a large margin.
+  </p>
+
+  <!-- ====== CHART 4 — HISTORICAL NEPAL ====== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 4</div>
+    <div class="chart-title">Nepal has crossed 7% growth in only three years since 2011</div>
+    <div class="chart-subtitle">Annual real GDP growth, %, 2011 to 2026 (2026 projected by IMF).</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Annual GDP growth bar chart for Nepal 2011-2026">
+        <!-- y: -4 to 10 mapped to 320 to 40; range 14% over 280 pixels = 20px per percent -->
+        <!-- y(v) = 320 - (v - (-4))*20 = 320 - (v+4)*20 = 240 - 20v -->
+        <!-- y(0) = 240, y(7) = 100, y(-4) = 320, y(10) = 40 -->
+        <g>
+          <line class="grid-line" x1="60" y1="40"  x2="700" y2="40"/>   <!-- 10 -->
+          <line class="grid-line" x1="60" y1="100" x2="700" y2="100"/>  <!-- 7 -->
+          <line class="grid-line" x1="60" y1="160" x2="700" y2="160"/>  <!-- 4 -->
+          <line class="axis-line" x1="60" y1="240" x2="700" y2="240"/>  <!-- 0 -->
+          <line class="grid-line" x1="60" y1="320" x2="700" y2="320"/>  <!-- -4 -->
+
+          <text class="tick-text" x="55" y="44"  text-anchor="end">10%</text>
+          <text class="tick-text" x="55" y="104" text-anchor="end">7%</text>
+          <text class="tick-text" x="55" y="164" text-anchor="end">4%</text>
+          <text class="tick-text" x="55" y="244" text-anchor="end">0%</text>
+          <text class="tick-text" x="55" y="324" text-anchor="end">-4%</text>
+        </g>
+
+        <!-- 7% reference line, bold -->
+        <line x1="60" y1="100" x2="700" y2="100" stroke="var(--c-promise)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text class="annot" x="690" y="94" text-anchor="end" fill="var(--c-promise)">RSP target rate = 7%</text>
+
+        <!-- Bars. 16 years, plot width 640 (from x=60 to 700), so each bar slot = 40px, bar width = 28 -->
+        <!-- Values: 2011=3.4, 2012=4.1, 2013=3.5, 2014=6.0, 2015=4.0, 2016=0.4, 2017=9.0, 2018=7.6, 2019=6.7, 2020=-2.4, 2021=4.8, 2022=5.6, 2023=2.0, 2024=3.9, 2025=4.5, 2026=3.0 -->
+        <!-- bar x = 60 + i*40 + 6 (centered, width 28) -->
+
+        <!-- 2011: 3.4, y = 240 - 3.4*20 = 172, h = 240-172 = 68 -->
+        <rect x="66"  y="172" width="28" height="68"  fill="var(--c-hist)"/>
+        <!-- 2012: 4.1, y = 240 - 82 = 158, h = 82 -->
+        <rect x="106" y="158" width="28" height="82"  fill="var(--c-hist)"/>
+        <!-- 2013: 3.5, y = 170, h = 70 -->
+        <rect x="146" y="170" width="28" height="70"  fill="var(--c-hist)"/>
+        <!-- 2014: 6.0, y = 120, h = 120 -->
+        <rect x="186" y="120" width="28" height="120" fill="var(--c-hist)"/>
+        <!-- 2015: 4.0, y = 160, h = 80 -->
+        <rect x="226" y="160" width="28" height="80"  fill="var(--c-hist)"/>
+        <!-- 2016: 0.4 (earthquake), y = 232, h = 8 -->
+        <rect x="266" y="232" width="28" height="8"   fill="var(--c-hist)"/>
+        <!-- 2017: 9.0 (rebound), y = 60, h = 180 - HIGHLIGHT -->
+        <rect x="306" y="60"  width="28" height="180" fill="var(--c-target)"/>
+        <!-- 2018: 7.6, y = 88, h = 152 - HIGHLIGHT -->
+        <rect x="346" y="88"  width="28" height="152" fill="var(--c-target)"/>
+        <!-- 2019: 6.7, y = 106, h = 134 -->
+        <rect x="386" y="106" width="28" height="134" fill="var(--c-hist)"/>
+        <!-- 2020: -2.4 (COVID), y = 240, h = 48 (bar goes down) -->
+        <rect x="426" y="240" width="28" height="48"  fill="var(--c-imf)"/>
+        <!-- 2021: 4.8, y = 144, h = 96 -->
+        <rect x="466" y="144" width="28" height="96"  fill="var(--c-hist)"/>
+        <!-- 2022: 5.6, y = 128, h = 112 -->
+        <rect x="506" y="128" width="28" height="112" fill="var(--c-hist)"/>
+        <!-- 2023: 2.0, y = 200, h = 40 -->
+        <rect x="546" y="200" width="28" height="40"  fill="var(--c-hist)"/>
+        <!-- 2024: 3.9, y = 162, h = 78 -->
+        <rect x="586" y="162" width="28" height="78"  fill="var(--c-hist)"/>
+        <!-- 2025: 4.5, y = 150, h = 90 -->
+        <rect x="626" y="150" width="28" height="90"  fill="var(--c-hist)"/>
+        <!-- 2026: 3.0 projected, y = 180, h = 60 -->
+        <rect x="666" y="180" width="28" height="60"  fill="var(--c-hist)" opacity="0.5"/>
+
+        <!-- X-axis labels (every other year) -->
+        <text class="tick-text" x="80"  y="340" text-anchor="middle">'11</text>
+        <text class="tick-text" x="160" y="340" text-anchor="middle">'13</text>
+        <text class="tick-text" x="240" y="340" text-anchor="middle">'15</text>
+        <text class="tick-text" x="320" y="340" text-anchor="middle">'17</text>
+        <text class="tick-text" x="400" y="340" text-anchor="middle">'19</text>
+        <text class="tick-text" x="480" y="340" text-anchor="middle">'21</text>
+        <text class="tick-text" x="560" y="340" text-anchor="middle">'23</text>
+        <text class="tick-text" x="640" y="340" text-anchor="middle">'25</text>
+
+        <!-- Annotations -->
+        <text class="annot" x="320" y="50" text-anchor="middle" fill="var(--c-target)">2017–2018: earthquake rebound</text>
+        <text class="annot" x="440" y="304" text-anchor="middle" fill="var(--c-imf)">2020: COVID</text>
+        <text class="annot" x="680" y="174" text-anchor="end">2026 projected</text>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: World Bank World Development Indicators; IMF World Economic Outlook April 2026. Years are fiscal/calendar approximations.</div>
+  </div>
+
+  <p class="note">
+    Three years above 7%, all clustered around the post-earthquake reconstruction window. Two of those were rebound from a contracted base, not a sustainable trajectory. Outside that window, Nepal has averaged closer to <span class="mono-blue">4%</span>.
+  </p>
+
+  <!-- ====== CHART 5 — THE 7% CLUB ====== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 5</div>
+    <div class="chart-title">Only 13 economies have ever sustained 7%+ growth for 25 years. Only one was landlocked.</div>
+    <div class="chart-subtitle">Identified by the World Bank's Commission on Growth and Development (2008). Years shown are the period each economy maintained ≥7% annual real GDP growth.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 580" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bar chart of countries that sustained 7% growth">
+        <!-- timeline 1950 to 2010, mapped 260 to 700, so each year = 7.33px -->
+        <!-- y(year) = 260 + (year-1950)*7.33 -->
+        <g>
+          <line class="grid-line" x1="260" y1="40"  x2="260" y2="540"/>
+          <line class="grid-line" x1="406" y1="40"  x2="406" y2="540"/>
+          <line class="grid-line" x1="553" y1="40"  x2="553" y2="540"/>
+          <line class="grid-line" x1="700" y1="40"  x2="700" y2="540"/>
+          <text class="tick-text" x="260" y="556" text-anchor="middle">1950</text>
+          <text class="tick-text" x="406" y="556" text-anchor="middle">1970</text>
+          <text class="tick-text" x="553" y="556" text-anchor="middle">1990</text>
+          <text class="tick-text" x="700" y="556" text-anchor="middle">2010</text>
+        </g>
+
+        <!-- Rows (14 countries + Nepal): height 30 each, start at y=40 -->
+        <!-- helper: x(year) = 260 + (year-1950)*7.33 -->
+        <!-- China 1961-2005 -->
+        <rect x="340.6" y="48" width="322.5" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="62" text-anchor="end" fill="var(--ink)">China</text>
+        <text class="end-label-light" x="252" y="74" text-anchor="end">coastal · mfg export</text>
+
+        <!-- Botswana 1960-2005 -->
+        <rect x="333.3" y="78" width="329.9" height="20" fill="var(--c-imf)"/>
+        <text class="end-label-bold" x="252" y="92" text-anchor="end" fill="var(--ink)">Botswana</text>
+        <text class="end-label-light" x="252" y="104" text-anchor="end"><tspan fill="var(--c-imf)" font-weight="700">landlocked</tspan> · diamonds</text>
+
+        <!-- Korea 1960-2001 -->
+        <rect x="333.3" y="108" width="300.6" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="122" text-anchor="end" fill="var(--ink)">Korea, Rep.</text>
+        <text class="end-label-light" x="252" y="134" text-anchor="end">coastal · mfg</text>
+
+        <!-- Oman 1960-1999 -->
+        <rect x="333.3" y="138" width="285.9" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="152" text-anchor="end" fill="var(--ink)">Oman</text>
+        <text class="end-label-light" x="252" y="164" text-anchor="end">coastal · oil</text>
+
+        <!-- Hong Kong 1960-1997 -->
+        <rect x="333.3" y="168" width="271.2" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="182" text-anchor="end" fill="var(--ink)">Hong Kong</text>
+        <text class="end-label-light" x="252" y="194" text-anchor="end">coastal · port</text>
+
+        <!-- Thailand 1960-1997 -->
+        <rect x="333.3" y="198" width="271.2" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="212" text-anchor="end" fill="var(--ink)">Thailand</text>
+        <text class="end-label-light" x="252" y="224" text-anchor="end">coastal · mfg + tourism</text>
+
+        <!-- Taiwan 1965-2002 -->
+        <rect x="369.9" y="228" width="271.2" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="242" text-anchor="end" fill="var(--ink)">Taiwan</text>
+        <text class="end-label-light" x="252" y="254" text-anchor="end">coastal · mfg</text>
+
+        <!-- Singapore 1967-2002 -->
+        <rect x="384.6" y="258" width="256.5" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="272" text-anchor="end" fill="var(--ink)">Singapore</text>
+        <text class="end-label-light" x="252" y="284" text-anchor="end">coastal · port + mfg</text>
+
+        <!-- Japan 1950-1983 -->
+        <rect x="260" y="288" width="241.9" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="302" text-anchor="end" fill="var(--ink)">Japan</text>
+        <text class="end-label-light" x="252" y="314" text-anchor="end">coastal · mfg</text>
+
+        <!-- Indonesia 1966-1997 -->
+        <rect x="377.3" y="318" width="227.2" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="332" text-anchor="end" fill="var(--ink)">Indonesia</text>
+        <text class="end-label-light" x="252" y="344" text-anchor="end">coastal archipelago</text>
+
+        <!-- Malta 1963-1994 -->
+        <rect x="355.3" y="348" width="227.2" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="362" text-anchor="end" fill="var(--ink)">Malta</text>
+        <text class="end-label-light" x="252" y="374" text-anchor="end">island · services</text>
+
+        <!-- Malaysia 1967-1997 -->
+        <rect x="384.6" y="378" width="219.9" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="392" text-anchor="end" fill="var(--ink)">Malaysia</text>
+        <text class="end-label-light" x="252" y="404" text-anchor="end">coastal · mixed</text>
+
+        <!-- Brazil 1950-1980 -->
+        <rect x="260" y="408" width="219.9" height="20" fill="var(--c-target)"/>
+        <text class="end-label-bold" x="252" y="422" text-anchor="end" fill="var(--ink)">Brazil</text>
+        <text class="end-label-light" x="252" y="434" text-anchor="end">coastal · large market</text>
+
+        <!-- Nepal: 0 years - highlighted -->
+        <line x1="260" y1="468" x2="262" y2="468" stroke="var(--c-nepal)" stroke-width="3"/>
+        <circle cx="263" cy="468" r="4" fill="var(--c-nepal)"/>
+        <text class="end-label-bold" x="252" y="472" text-anchor="end" fill="var(--c-nepal)" font-weight="700">Nepal</text>
+        <text class="end-label-light" x="252" y="484" text-anchor="end" fill="var(--c-nepal)"><tspan font-weight="700">landlocked</tspan> · mountainous · 0 years</text>
+
+        <text class="end-label-light" x="280" y="472" fill="var(--c-nepal)" font-style="italic">never sustained 7% in any window</text>
+
+        <text class="annot" x="260" y="514" fill="var(--ink-light)" font-style="normal">12 of 13 cases are coastal trading or manufacturing economies.</text>
+        <text class="annot" x="260" y="528" fill="var(--ink-light)" font-style="normal">None are predominantly mountainous.</text>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Commission on Growth and Development, "The Growth Report" (World Bank, 2008). Sustained periods identified from World Bank World Development Indicators.</div>
+  </div>
+
+  <p class="note">
+    The geography of sustained high growth is overwhelmingly coastal. Nepal's geography matches none of the 13 cases. This does not make 7% impossible. It does make it a category-breaking promise.
+  </p>
+
+  <!-- ====== HERO STAT ====== -->
+  <div class="hero-stat">
+    <div class="hero-stat-val">$36B</div>
+    <div class="hero-stat-label">The gap between RSP's $100B headline target and what 7% growth actually delivers in five years. The manifesto offers both numbers. Only one of them can be true.</div>
+  </div>
+
+  <!-- ====== BOTTOM LINE ====== -->
+  <p class="note">
+    <strong>Pick one.</strong> If RSP wants to keep the 7% growth promise, the target should be $64B. If it wants to keep the $100B target, the growth rate quoted should be 17%, not 7%. A $60-65B economy by 2031 would still be Nepal's best decade. Selling it honestly builds the credibility this government will need to spend later. Selling $100B sets up an arithmetic ceiling no policy can break through.
+  </p>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <p><strong>Data sources:</strong> IMF World Economic Outlook (April 2026) for current GDP and 2026 forecast; World Bank Nepal Development Update (April 2026) for FY26 forecast and long-term outlook; World Economics CAGR tables for 3-, 5-, and 10-year averages; Commission on Growth and Development "The Growth Report" (World Bank, 2008) for the 13 high-growth case identification; ISAS-NUS, "A New Government in Nepal: What Lies Ahead?" (March 2026) for the RSP manifesto targets.</p>
+    <p><strong>Method:</strong> Required growth rate to reach a future GDP target = (target/current)^(1/N) − 1, where N is years. Scenario endpoints computed by compounding the base annually. All values in current US$ unless otherwise noted.</p>
+    <p><strong>SagarmathaIQ</strong> is an independent quantitative research group of expat Nepali academics. Not affiliated with any political party, government, or media outlet. sagarmathaiq.github.io · May 2026</p>
+  </footer>
+
+</article>
+
+</body>
+</html>
