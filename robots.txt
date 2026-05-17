@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /sagarmathaiq-review.html
+Disallow: /index.html_bckup
+
+Sitemap: https://sagarmathaiq.github.io/sitemap.xml

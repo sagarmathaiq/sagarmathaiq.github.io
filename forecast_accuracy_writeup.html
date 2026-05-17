@@ -4,7 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2082 Model Post-Mortem — SagarmathaIQ</title>
+  <title>2082 Election Model Post-Mortem — SagarmathaIQ</title>
+  <meta name="description" content="Post-mortem of SagarmathaIQ's Nepal 2082 election model: 82/165 FPTP accuracy, 14/15 in Kathmandu Valley, RSP undercounting, and lessons for 2087.">
+  <link rel="canonical" href="https://sagarmathaiq.github.io/forecast_accuracy_writeup.html">
+  <meta property="og:title" content="2082 Election Model Post-Mortem — SagarmathaIQ">
+  <meta property="og:description" content="82/165 FPTP accuracy. 14/15 in Kathmandu Valley. Where the model failed and what changes for 2087.">
+  <meta property="og:url" content="https://sagarmathaiq.github.io/forecast_accuracy_writeup.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
   <style>
     :root {
       --charcoal: #1a1a1a;
@@ -486,22 +494,7 @@
 <body>
   <div class="page">
 
-    <div class="header">
-      <div class="brand">SagarmathaIQ · Analytica Nepal · Post-Election Model Audit · Falgun 2082</div>
-      <h1>2082 Election: Model Post-Mortem</h1>
-      <div class="meta">Published forecast (March 1, 2082) vs. official results · result.election.gov.np · All 165 seats
-        declared</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
-        <a href="index.html"
-          style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,.8);text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:3px;padding:5px 12px">
-          ← Back to home
-        </a>
-        <a href="constituency_results.html"
-          style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,.8);text-decoration:none;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:3px;padding:5px 12px">
-          View all 165 constituency results →
-        </a>
-      </div>
-    </div>
+    <div id="site-header"></div>
 
     <!-- Byline -->
     <div class="byline-block">
@@ -958,6 +951,9 @@
     </section>
 
   </div>
+
+  <div id="site-footer"></div>
+  <script src="./assets/js/site.js"></script>
 </body>
 
 </html>

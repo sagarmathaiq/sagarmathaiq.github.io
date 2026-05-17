@@ -5,70 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Methodology — SagarmathaIQ</title>
+    <meta name="description" content="How SagarmathaIQ builds Nepal election forecasts: Dirichlet constituency models, Monte Carlo simulation, and PR seat allocation methodology.">
+    <link rel="canonical" href="https://sagarmathaiq.github.io/methodology.html">
+    <meta property="og:title" content="Methodology — SagarmathaIQ">
+    <meta property="og:description" content="How SagarmathaIQ builds Nepal election forecasts: Dirichlet constituency models, Monte Carlo simulation, and PR seat allocation methodology.">
+    <meta property="og:url" content="https://sagarmathaiq.github.io/methodology.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+    <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            line-height: 1.7;
-            color: #1F2937;
-            background: #F9FAFB;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .logo {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .nav-buttons {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .nav-button.active {
-            background: rgba(255, 255, 255, 0.35);
-            font-weight: 700;
-        }
-
         .container {
             max-width: 860px;
             margin: 2.5rem auto;
@@ -331,11 +276,6 @@
         }
 
         @media (prefers-color-scheme: dark) {
-            body {
-                background: #0F172A;
-                color: #E2E8F0;
-            }
-
             .page-intro,
             .section {
                 background: #1E293B;
@@ -439,16 +379,7 @@
 
 <body>
 
-    <header class="header">
-        <div class="logo">🏔️</div>
-        <h1>SagarmathaIQ</h1>
-        <p class="tagline">Peak Election Intelligence</p>
-        <div class="nav-buttons">
-            <a href="index.html" class="nav-button">Forecasts</a>
-            <a href="methodology.html" class="nav-button active">Methodology</a>
-            <a href="about.html" class="nav-button">Who We Are</a>
-        </div>
-    </header>
+    <div id="site-header"></div>
 
     <div class="container">
 
@@ -780,22 +711,8 @@
 
     </div>
 
-    <footer style="background:#1E293B;color:#94A3B8;text-align:center;padding:2.5rem 1rem;margin-top:0;">
-        <div style="font-size:1rem;font-weight:700;color:white;margin-bottom:0.4rem;">🏔️ SagarmathaIQ</div>
-        <div style="font-size:0.85rem;color:#64748B;margin-bottom:1rem;">Open quantitative analysis from the Himalayas
-        </div>
-        <div
-            style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;font-size:0.85rem;margin-bottom:1.25rem;">
-            <a href="index.html" style="color:#94A3B8;text-decoration:none;">Forecasts</a>
-            <a href="about.html" style="color:#94A3B8;text-decoration:none;">Who We Are</a>
-            <a href="mailto:sagarmathaiq@gmail.com" style="color:#94A3B8;text-decoration:none;">Email Us</a>
-        </div>
-        <hr style="border:none;border-top:1px solid #334155;max-width:400px;margin:0 auto 1.25rem;">
-        <p style="font-size:0.78rem;color:#475569;max-width:600px;margin:0 auto;">
-            Methodology documented here reflects the 2082 model. Parameters and structural assumptions
-            will be revised for the 2087 cycle based on lessons from the post-mortem.
-        </p>
-    </footer>
+    <div id="site-footer"></div>
+<script src="./assets/js/site.js"></script>
 </body>
 
 </html>

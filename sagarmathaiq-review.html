@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Dashboard — SagarmathaIQ</title>
+  <meta name="description" content="Internal SagarmathaIQ review dashboard for editing and approving analysis pieces.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
+  <style>
+    /* ── Review-specific layout & state only ── */
+    /* Everything else uses sagarmathaiq.css classes */
+
+    .review-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      min-height: calc(100vh - 52px);
+    }
+
+    /* Sticky topbar — not in shared CSS */
+    .review-topbar {
+      background: #1E293B;
+      height: 52px;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #334155;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1rem; }
+    .topbar-title {
+      font-size: 0.78rem;
+      color: #94A3B8;
+      max-width: 420px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+    .progress-wrap { display: flex; align-items: center; gap: 0.6rem; }
+    .progress-bar  { width: 120px; height: 5px; background: #334155; border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #1D4ED8, #3B82F6); border-radius: 3px; transition: width 0.35s; }
+    .progress-label { font-size: 0.68rem; font-family: 'SFMono-Regular','Courier New',monospace; color: #64748B; min-width: 30px; }
+
+    /* Sticky panes */
+    .art-pane {
+      border-right: 1px solid #E5E7EB;
+      overflow-y: auto;
+      height: calc(100vh - 52px);
+      position: sticky;
+      top: 52px;
+    }
+    .rev-pane {
+      overflow-y: auto;
+      height: calc(100vh - 52px);
+      position: sticky;
+      top: 52px;
+      background: white;
+    }
+
+    /* Section block — wraps existing analysis-section */
+    .sec-block {
+      border-bottom: 1px solid #F3F4F6;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+      transition: background 0.12s, border-left-color 0.15s;
+    }
+    .sec-block:hover { background: #F0F6FF; }
+    .sec-block.active { background: #EFF6FF; }
+    .sec-block.st-approved { border-left-color: #16A34A; }
+    .sec-block.st-flagged  { border-left-color: #DC2626; }
+    /* Remove box-shadow from nested analysis-section inside sec-block */
+    .sec-block .analysis-section { box-shadow: none; border-radius: 0; margin-bottom: 0; }
+    .sec-block .analysis-body { display: none; }
+    .sec-block.active .analysis-body { display: block; }
+
+    /* Status dot — small indicator in section header */
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #D1D5DB;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .status-dot.approved { background: #16A34A; }
+    .status-dot.flagged  { background: #DC2626; }
+
+    /* Review pane header */
+    .rev-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #E5E7EB;
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 10;
+    }
+
+    /* Action buttons */
+    .action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 1rem; }
+    .action-btn {
+      padding: 0.6rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-approve     { background: #F0FDF4; border-color: #BBF7D0; color: #16A34A; }
+    .btn-approve.sel { background: #16A34A; border-color: #16A34A; color: white; }
+    .btn-flag        { background: #FEF2F2; border-color: #FECACA; color: #DC2626; }
+    .btn-flag.sel    { background: #DC2626; border-color: #DC2626; color: white; }
+
+    /* Comment box */
+    .comment-box {
+      width: 100%; padding: 0.6rem 0.75rem;
+      font-size: 0.78rem; font-family: 'Inter', sans-serif; color: #1F2937;
+      border: 1px solid #E5E7EB; border-radius: 5px;
+      resize: vertical; min-height: 68px;
+      background: #F9FAFB; outline: none;
+      transition: border-color 0.15s;
+    }
+    .comment-box:focus { border-color: #1E3A8A; background: white; }
+    .comment-box::placeholder { color: #9CA3AF; }
+
+    /* Nav row */
+    .nav-row {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 1.25rem; padding-top: 1rem;
+      border-top: 1px solid #E5E7EB;
+    }
+    .nav-btn {
+      padding: 0.4rem 0.85rem;
+      border-radius: 5px; font-size: 0.75rem; font-weight: 600;
+      cursor: pointer; border: 1px solid #E5E7EB;
+      background: white; color: #4B5563;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) { border-color: #1E3A8A; color: #1E3A8A; }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* Checklist table */
+    .cl-row {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.5rem 0; border-bottom: 1px solid #F3F4F6;
+      cursor: pointer; transition: background 0.1s;
+    }
+    .cl-row:last-child { border-bottom: none; }
+    .cl-row:hover { background: #F9FAFB; margin: 0 -1.25rem; padding: 0.5rem 1.25rem; }
+    .cl-icon { font-size: 0.72rem; width: 16px; text-align: center; flex-shrink: 0; color: #9CA3AF; }
+    .cl-icon.approved { color: #16A34A; }
+    .cl-icon.flagged  { color: #DC2626; }
+    .cl-label { font-size: 0.75rem; color: #1F2937; flex: 1; }
+
+    /* Final stats mini-grid */
+    .final-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.5rem; margin-bottom: 1rem; }
+    .final-stat { text-align: center; padding: 0.5rem; border-radius: 5px; border: 1px solid #E5E7EB; background: #F9FAFB; }
+    .final-stat-val { font-size: 1.25rem; font-weight: 700; font-family: 'SFMono-Regular','Courier New',monospace; line-height: 1; }
+    .final-stat-lbl { font-size: 0.56rem; font-family: 'SFMono-Regular','Courier New',monospace; color: #9CA3AF; margin-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* Publish banner */
+    .pub-banner {
+      padding: 1.5rem 1.25rem;
+      background: #F0FDF4; border: 1px solid #BBF7D0;
+      border-radius: 8px; text-align: center;
+      margin: 1.25rem;
+    }
+    .pub-icon  { font-size: 2rem; margin-bottom: 0.5rem; }
+    .pub-title { font-size: 0.9rem; font-weight: 700; color: #16A34A; margin-bottom: 0.25rem; }
+    .pub-meta  { font-size: 0.67rem; font-family: 'SFMono-Regular','Courier New',monospace; color: #166534; }
+
+    @media (prefers-color-scheme: dark) {
+      .art-pane { border-right-color: #2e3f58; }
+      .rev-pane { background: #1d2a42; }
+      .rev-header { background: #1d2a42; border-bottom-color: #2e3f58; }
+      .sec-block { border-bottom-color: #253047; }
+      .sec-block:hover { background: #1a2f52; }
+      .sec-block.active { background: #1a3060; }
+      .comment-box { background: #141c2e; border-color: #2e3f58; color: #e2e8f0; }
+      .comment-box:focus { border-color: #a5c8fd; background: #1d2a42; }
+      .nav-btn { background: #1d2a42; border-color: #2e3f58; color: #94a3b8; }
+      .nav-btn:hover:not(:disabled) { border-color: #a5c8fd; color: #a5c8fd; }
+      .cl-row { border-bottom-color: #253047; }
+      .cl-row:hover { background: #253047; }
+      .cl-label { color: #e2e8f0; }
+      .final-stat { background: #141c2e; border-color: #2e3f58; }
+      .btn-approve     { background: #042712; border-color: #166534; color: #6ee7a0; }
+      .btn-approve.sel { background: #16A34A; border-color: #16A34A; color: white; }
+      .btn-flag        { background: #3d0a0a; border-color: #7f1d1d; color: #fc8080; }
+      .btn-flag.sel    { background: #DC2626; border-color: #DC2626; color: white; }
+    }
+
+    @media (max-width: 800px) {
+      .review-layout { grid-template-columns: 1fr; }
+      .art-pane, .rev-pane { height: auto; position: static; }
+      .art-pane { border-right: none; border-bottom: 1px solid #E5E7EB; }
+      .topbar-title { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="review-topbar">
+  <div class="topbar-left">
+    <div class="footer-brand" style="margin:0;font-size:0.85rem;">SagarmathaIQ</div>
+    <span class="topbar-title">Nepal's shift to a five-day school week — human review</span>
+  </div>
+  <div class="topbar-right">
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+      <span class="progress-label" id="progLbl">0%</span>
+    </div>
+    <button class="proj-btn proj-btn-primary" id="btnPub" disabled onclick="publish()" style="opacity:0.4;cursor:not-allowed;">Approve &amp; Publish</button>
+  </div>
+</div>
+
+<div class="review-layout">
+
+  <!-- ── Article pane ── -->
+  <div class="art-pane">
+
+    <!-- Article summary header uses project-card -->
+    <div class="project-card" style="margin:0;border-radius:0;box-shadow:none;">
+      <div class="project-card-header">
+        <div class="project-card-left">
+          <div class="project-label">Impact Analysis · April 2026 · Education Policy</div>
+          <div class="project-title" style="font-size:1rem;">Nepal's shift to a five-day school week</div>
+          <div class="project-desc">April 2026 directive · Human review · <span id="revByLine">0 of 10 sections reviewed</span></div>
+          <span class="status-badge status-published" id="pubBadge">In review</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="secList"></div>
+  </div>
+
+  <!-- ── Review pane ── -->
+  <div class="rev-pane">
+
+    <div class="rev-header">
+      <div class="section-heading" id="rLabel" style="margin-bottom:0.2rem;"></div>
+      <div style="font-size:0.88rem;font-weight:700;color:#1F2937;" id="rName"></div>
+    </div>
+
+    <div style="padding:1rem 1.25rem;">
+
+      <!-- Prompt uses insight-box -->
+      <div class="insight-box" id="rPrompt" style="margin-top:0;margin-bottom:1rem;"></div>
+
+      <!-- FRED warning uses insight-box amber-toned -->
+      <div id="fredWarn" style="display:none;background:#FFFBEB;border:1px solid #FDE68A;border-left:3px solid #D97706;border-radius:0 5px 5px 0;padding:0.85rem 1rem;font-size:0.8rem;color:#92400e;line-height:1.65;margin-bottom:1rem;">
+        <strong>⚠ FRED flags present</strong> — one or more claims need a citation or correction before approving.
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn btn-approve" id="bApprove" onclick="setStatus('approved')">✓ Approve</button>
+        <button class="action-btn btn-flag"    id="bFlag"    onclick="setStatus('flagged')">⚑ Flag</button>
+      </div>
+
+      <div class="section-heading" style="margin-bottom:0.4rem;">Reviewer note</div>
+      <textarea class="comment-box" id="commentBox" placeholder="Add a note for the author (optional)..." oninput="saveComment()"></textarea>
+
+      <div class="nav-row">
+        <button class="nav-btn" id="bPrev" onclick="go(-1)">← Prev</button>
+        <span class="source-line" id="navCtr" style="border:none;padding:0;margin:0;"></span>
+        <button class="nav-btn" id="bNext" onclick="go(1)">Next →</button>
+      </div>
+    </div>
+
+    <!-- Checklist uses verdict-table structure -->
+    <div style="padding:0 1.25rem 1rem;">
+      <div class="section-heading">Review summary</div>
+      <div id="clBody"></div>
+    </div>
+
+    <!-- Final decision panel -->
+    <div id="finalArea" style="padding:0 1.25rem 1.5rem;"></div>
+
+  </div>
+</div>
+
+<script>
+const SECTIONS = [
+  { id:'headline', label:'Header', title:'Headline, standfirst & stat row', fredFlags:false,
+    prompt:'Does the headline fairly represent the analysis? Is the standfirst accurate? Are all 6 stat values correct?',
+    claims:[
+      {t:'Headline frames policy as positive alignment with global standards', f:false},
+      {t:'Standfirst: 2-sentence summary — 6-day to 5-day, transition gap to manage', f:false},
+      {t:'Stat row: 33 hrs → 30 hrs, −9.1%, ~110 hrs/year, +52 days, 190-day target', f:false},
+    ]},
+  { id:'trigger', label:'Context', title:'The trigger — Chaitra 23, 2082', fredFlags:true,
+    prompt:'Confirm directive date and NOC figure are correct. Flag if the pre-2026 timetable still lacks a Ministry circular citation.',
+    claims:[
+      {t:'Cabinet directive: Chaitra 23, 2082 = April 6, 2026 (confirmed)', f:false},
+      {t:'NOC loss: ~Rs 11.7 billion/fortnight (confirmed: Ratopati, Rising Nepal)', f:false},
+      {t:'Pre-2026 week: Sunday full (10–4), Friday half-day (10–1) — NEEDS PRIMARY CITATION', f:true},
+      {t:'Net change: −3 hrs/week (arithmetic confirmed)', f:false},
+    ]},
+  { id:'f01', label:'Finding 01', title:'Instructional time loss', fredFlags:true,
+    prompt:'Arithmetic is verified. Flag if the 190-day statutory minimum still lacks a citation to the specific Act or Ministry regulation.',
+    claims:[
+      {t:'3 hrs/week × 36–40 weeks = 108–120 hrs/year (confirmed)', f:false},
+      {t:'18–20 full school days lost (108–120 ÷ 6 hr day)', f:false},
+      {t:'Nepal statutory minimum: 190 days — NEEDS PRIMARY CITATION', f:true},
+      {t:'Post-directive estimate: 170–180 days', f:false},
+      {t:'Session delay: Baisakh 2 → Baisakh 15 = 13 days (confirmed via Radio Nepal)', f:false},
+    ]},
+  { id:'f02', label:'Finding 02', title:'Global alignment', fredFlags:false,
+    prompt:'All comparison figures verified in prior FRED check. Confirm the framing is fair and not overstated.',
+    claims:[
+      {t:'Nepal pre-2026: 6-day week described as international anomaly', f:false},
+      {t:'US: 180 days, 6.5–7 hrs/day (NCES confirmed)', f:false},
+      {t:'India RTE grades 1–5: 200 days (RTE Act 2009 confirmed)', f:false},
+      {t:'India RTE grades 6–8: 220 days (RTE Act 2009 confirmed)', f:false},
+      {t:'Comparison table figures match verified sources', f:false},
+    ]},
+  { id:'f03', label:'Finding 03', title:'Near-term curriculum gap', fredFlags:true,
+    prompt:'Confirm PABSON attribution is accurate. The 190-day callout repeats the unverified statutory claim — note if citation has been added.',
+    claims:[
+      {t:'Syllabi built for 33 hrs/week — no adjustment announced', f:false},
+      {t:'9% less time (3 ÷ 33 = 9.09% — confirmed)', f:false},
+      {t:'PABSON workaround: shift admin/meetings to weekends', f:false},
+      {t:'190-day callout — still pending primary citation', f:true},
+    ]},
+  { id:'f04', label:'Finding 04', title:'The quality pivot', fredFlags:false,
+    prompt:'Check Ministry reform claims are attributed. Confirm the teaching quality claim is appropriately hedged (FRED fix applied).',
+    claims:[
+      {t:'Ministry measures: abolish primary exams, ban political orgs, competency-based learning', f:false},
+      {t:'"Broadly shows" not "consistently" — FRED fix applied', f:false},
+      {t:'Caveat added: instructional time matters for lower-income students', f:false},
+    ]},
+  { id:'f05', label:'Finding 05', title:'Wellbeing evidence & local context', fredFlags:false,
+    prompt:'All four FRED corrections applied. Confirm citations read naturally and agricultural context is not overstated.',
+    claims:[
+      {t:'Morton 2022 (corrected from 2023) — Educational Evaluation and Policy Analysis', f:false},
+      {t:'Bullying −39%, fighting −31% — confirmed across multiple independent sources', f:false},
+      {t:'RAND (2021): 85% of students liked it "a lot" — confirmed', f:false},
+      {t:'RAND (2021): 84% of parents preferred 4-day week (corrected from 69%)', f:false},
+      {t:'ILO 2021 (NLFS 2017/18): 87% in agriculture (corrected from 78%)', f:false},
+    ]},
+  { id:'mitigation', label:'Tab 2', title:'What can be done — 3 horizons', fredFlags:false,
+    prompt:"Are feasibility ratings consistent with Nepal's Ministry capacity? Flag any action that seems mis-rated.",
+    claims:[
+      {t:'Immediate: Friday full-day, weekend admin shift, syllabus reprioritisation', f:false},
+      {t:'Short-term: extend daily schedule, 190-day contingency calendar, CDC curriculum trim', f:false},
+      {t:'Structural: competency curriculum, revise 180-day count, conditional Saturday classes', f:false},
+      {t:'Feasibility ratings: High / Medium / Low', f:false},
+    ]},
+  { id:'bottomline', label:'Conclusion', title:'Bottom line', fredFlags:false,
+    prompt:'Does the bottom line fairly reflect all five findings? Is it proportionate — neither too optimistic nor unnecessarily alarming?',
+    claims:[
+      {t:'Tone is supportive but not uncritical — transition gap acknowledged', f:false},
+      {t:'30-hour week framed conditionally ("can outperform")', f:false},
+      {t:'No banned phrases or em-dashes', f:false},
+      {t:'Three actions: revised calendar, Friday full-day, curriculum alignment', f:false},
+    ]},
+  { id:'sources', label:'Sources', title:'Citations & article footer', fredFlags:true,
+    prompt:'Two citations are still missing. Add them or hedge the text appropriately before approving.',
+    claims:[
+      {t:'Cabinet Directive, Chaitra 23, 2082 — cited', f:false},
+      {t:'ILO Nepal Child Labour Report 2021 (NLFS 2017/18) — cited', f:false},
+      {t:'Morton 2022, Educational Evaluation and Policy Analysis — cited', f:false},
+      {t:'RAND 2021, Does Four Equal Five? — cited', f:false},
+      {t:'India RTE Act 2009 — cited', f:false},
+      {t:'NCES Digest of Education Statistics 2023 — cited', f:false},
+      {t:'190-day minimum — NO PRIMARY SOURCE CITED', f:true},
+      {t:'Pre-2026 school timetable — NO PRIMARY SOURCE CITED', f:true},
+    ]},
+];
+
+const rev = {};
+SECTIONS.forEach(s => { rev[s.id] = { status:'pending', comment:'' }; });
+let ai = 0;
+let pubAt = null;
+
+function counts() {
+  let a=0,f=0,p=0;
+  SECTIONS.forEach(s => { const st=rev[s.id].status; if(st==='approved')a++; else if(st==='flagged')f++; else p++; });
+  return {a,f,p};
+}
+
+function render() {
+  renderSections();
+  renderRevPane();
+  renderChecklist();
+  renderFinal();
+  renderTopbar();
+}
+
+function renderSections() {
+  const el = document.getElementById('secList');
+  el.innerHTML = '';
+  SECTIONS.forEach((s,i) => {
+    const r = rev[s.id];
+    const hasFred = s.claims.some(c => c.f);
+    const stClass = r.status !== 'pending' ? 'st-'+r.status : '';
+
+    const block = document.createElement('div');
+    block.className = `sec-block ${i===ai?'active':''} ${stClass}`;
+    block.onclick = () => { ai=i; render(); };
+
+    // Use analysis-section structure
+    block.innerHTML = `
+      <div class="analysis-section" style="background:transparent;">
+        <div class="analysis-section-header" style="cursor:pointer;">
+          <span class="status-dot ${r.status}"></span>
+          <span class="finding-tag">${s.label}</span>
+          <span class="finding-title">${s.title}</span>
+          ${hasFred ? '<span class="verdict-badge badge-amber" style="margin-left:auto;">FRED flags</span>' : ''}
+          ${!hasFred && r.status==='approved' ? '<span class="verdict-badge badge-green" style="margin-left:auto;">Verified</span>' : ''}
+          ${r.status==='flagged' ? '<span class="verdict-badge badge-red" style="margin-left:auto;">Flagged</span>' : ''}
+        </div>
+        <div class="analysis-body">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;">
+            ${s.claims.map(c => `
+              <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.75rem;padding:0.35rem 0.6rem;border-radius:4px;background:${c.f?'#FFFBEB':'#F9FAFB'};border:1px solid ${c.f?'#FDE68A':'#E5E7EB'};color:#374151;line-height:1.45;">
+                <span style="flex-shrink:0;margin-top:1px;">${c.f?'⚠':'·'}</span>
+                <span>${c.t}</span>
+              </li>`).join('')}
+          </ul>
+        </div>
+      </div>`;
+    el.appendChild(block);
+  });
+}
+
+function renderRevPane() {
+  const s = SECTIONS[ai];
+  const r = rev[s.id];
+  document.getElementById('rLabel').textContent = s.label + ' — reviewing';
+  document.getElementById('rName').textContent  = s.title;
+  document.getElementById('rPrompt').innerHTML  = '<strong>What to check:</strong> ' + s.prompt;
+  document.getElementById('fredWarn').style.display = s.fredFlags ? 'block' : 'none';
+  document.getElementById('bApprove').className = 'action-btn btn-approve' + (r.status==='approved'?' sel':'');
+  document.getElementById('bFlag').className    = 'action-btn btn-flag'    + (r.status==='flagged'?' sel':'');
+  document.getElementById('commentBox').value   = r.comment;
+  document.getElementById('navCtr').textContent = (ai+1) + ' / ' + SECTIONS.length;
+  document.getElementById('bPrev').disabled = ai === 0;
+  document.getElementById('bNext').disabled = ai === SECTIONS.length-1;
+}
+
+function renderChecklist() {
+  const el = document.getElementById('clBody');
+  el.innerHTML = '';
+  const icons = { approved:'✓', flagged:'⚑', pending:'○' };
+  SECTIONS.forEach((s,i) => {
+    const r = rev[s.id];
+    const row = document.createElement('div');
+    row.className = 'cl-row';
+    row.onclick = () => { ai=i; render(); };
+    const badge = r.status==='approved'
+      ? '<span class="verdict-badge badge-green">OK</span>'
+      : r.status==='flagged'
+      ? '<span class="verdict-badge badge-red">FLAG</span>'
+      : '<span class="verdict-badge" style="background:#F3F4F6;color:#9CA3AF;border:1px solid #E5E7EB;">—</span>';
+    row.innerHTML = `
+      <span class="cl-icon ${r.status}">${icons[r.status]}</span>
+      <span class="cl-label">${s.title}</span>
+      ${badge}`;
+    el.appendChild(row);
+  });
+  // Update byline
+  const {a,f,p} = counts();
+  document.getElementById('revByLine').textContent = (a+f) + ' of ' + SECTIONS.length + ' sections reviewed';
+}
+
+function renderFinal() {
+  const el = document.getElementById('finalArea');
+  if (pubAt) {
+    el.innerHTML = `<div class="pub-banner"><div class="pub-icon">✓</div><div class="pub-title">Approved for publication</div><div class="pub-meta">Reviewed &amp; approved · ${pubAt}</div></div>`;
+    document.getElementById('pubBadge').className = 'status-badge status-complete';
+    document.getElementById('pubBadge').textContent = 'Published';
+    return;
+  }
+  const {a,f,p} = counts();
+  const allDone = p === 0;
+  const canPub  = allDone && f === 0;
+  const msg = !allDone
+    ? `<p class="source-line" style="border:none;padding:0;margin-bottom:0.75rem;text-align:center;">Review ${p} remaining section${p!==1?'s':''} to continue.</p>`
+    : f > 0
+    ? `<p class="source-line" style="border:none;padding:0;margin-bottom:0.75rem;text-align:center;color:#DC2626;">${f} section${f!==1?'s':''} flagged — resolve before publishing.</p>`
+    : '';
+  el.innerHTML = `
+    <div class="section-heading">Final decision</div>
+    <div class="final-stats">
+      <div class="final-stat"><div class="final-stat-val" style="color:#16A34A;">${a}</div><div class="final-stat-lbl">Approved</div></div>
+      <div class="final-stat"><div class="final-stat-val" style="color:#DC2626;">${f}</div><div class="final-stat-lbl">Flagged</div></div>
+      <div class="final-stat"><div class="final-stat-val" style="color:#9CA3AF;">${p}</div><div class="final-stat-lbl">Pending</div></div>
+    </div>
+    ${msg}
+    <div style="display:flex;gap:0.5rem;">
+      <button class="proj-btn proj-btn-primary" style="flex:1;${canPub?'':'opacity:0.35;cursor:not-allowed;'}" ${canPub?'':'disabled'} onclick="publish()">✓ Approve &amp; Publish</button>
+      <button class="proj-btn proj-btn-secondary" style="flex:1;background:#334155;${allDone?'':'opacity:0.35;cursor:not-allowed;'}" ${allDone?'':'disabled'} onclick="requestRevision()">⚑ Request Revision</button>
+    </div>`;
+}
+
+function renderTopbar() {
+  const {a,f,p} = counts();
+  const done = a+f;
+  const pct  = Math.round((done/SECTIONS.length)*100);
+  const canPub = done===SECTIONS.length && f===0 && !pubAt;
+  document.getElementById('progFill').style.width = pct+'%';
+  document.getElementById('progLbl').textContent  = pct+'%';
+  const btn = document.getElementById('btnPub');
+  btn.disabled = !canPub;
+  btn.style.opacity  = canPub ? '1' : '0.4';
+  btn.style.cursor   = canPub ? 'pointer' : 'not-allowed';
+  if (pubAt) btn.textContent = '✓ Published';
+}
+
+function setStatus(status) {
+  const id = SECTIONS[ai].id;
+  rev[id].status = rev[id].status === status ? 'pending' : status;
+  render();
+}
+function saveComment() { rev[SECTIONS[ai].id].comment = document.getElementById('commentBox').value; }
+function go(dir) { ai = Math.max(0, Math.min(SECTIONS.length-1, ai+dir)); render(); }
+function publish() {
+  pubAt = new Date().toLocaleString('en-US', {dateStyle:'medium', timeStyle:'short'});
+  render();
+}
+function requestRevision() {
+  const flagged = SECTIONS.filter(s => rev[s.id].status === 'flagged');
+  const lines = flagged.map(s => '• ' + s.title + (rev[s.id].comment ? ': ' + rev[s.id].comment : '')).join('\n');
+  alert('Revision requested for ' + flagged.length + ' section(s):\n\n' + lines);
+}
+
+render();
+</script>
+</body>
+</html>
