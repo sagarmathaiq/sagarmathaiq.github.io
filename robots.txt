@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /sagarmathaiq-review.html
-Disallow: /rsp-growth-math.html
 Disallow: /index.html_bckup
 
 Sitemap: https://sagarmathaiq.github.io/sitemap.xml
