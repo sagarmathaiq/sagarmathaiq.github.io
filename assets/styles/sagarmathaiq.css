@@ -22,7 +22,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
     line-height: 1.6;
     color: #1F2937;
-    background: #F9FAFB;
+    background: #FAFAF9;
 }
 
 /* ── Header ── */
@@ -129,7 +129,7 @@ body {
 
 .mission h2 {
     font-size: 1.2rem;
-    color: #1E3A8A;
+    color: #9B1C1C;
     margin-bottom: 0.6rem;
 }
 
@@ -190,7 +190,7 @@ body {
 }
 
 .project-card-header {
-    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+    background: linear-gradient(135deg, #7F1D1D 0%, #1E3A8A 100%);
     padding: 1.5rem 2rem;
     display: flex;
     align-items: flex-start;
@@ -274,7 +274,7 @@ body {
 
 .proj-btn-primary {
     background: white;
-    color: #1E3A8A;
+    color: #9B1C1C;
 }
 
 .proj-btn-secondary {
@@ -314,7 +314,7 @@ body {
 .stat-value {
     font-size: 1.1rem;
     font-weight: 700;
-    color: #1E3A8A;
+    color: #9B1C1C;
 }
 
 /* ── Forecast banners ── */
@@ -325,7 +325,7 @@ body {
 }
 
 .forecast-banner {
-    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+    background: linear-gradient(135deg, #7F1D1D 0%, #1E3A8A 100%);
     border-radius: 6px;
     padding: 1.1rem 1.5rem;
     display: flex;
@@ -369,7 +369,7 @@ body {
 
 .forecast-banner-btn {
     background: white;
-    color: #1E3A8A;
+    color: #9B1C1C;
     padding: 0.5rem 1.1rem;
     border-radius: 5px;
     font-size: 0.82rem;
@@ -414,7 +414,7 @@ body {
 }
 
 .analysis-section-header {
-    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+    background: linear-gradient(135deg, #7F1D1D 0%, #1E3A8A 100%);
     padding: 1rem 1.5rem;
     display: flex;
     align-items: baseline;
@@ -677,7 +677,7 @@ body {
 }
 
 .conclusion-header {
-    background: linear-gradient(135deg, #1E3A8A 0%, #1D4ED8 100%);
+    background: linear-gradient(135deg, #7F1D1D 0%, #1E3A8A 100%);
     padding: 1rem 1.5rem;
 }
 
@@ -712,7 +712,7 @@ body {
 .mono-blue {
     font-family: 'SFMono-Regular', 'Courier New', monospace;
     font-weight: 700;
-    color: #1E3A8A;
+    color: #1D4ED8;
 }
 
 /* ── Section divider ── */
@@ -733,25 +733,25 @@ body {
 
 /* ── Footer ── */
 .footer {
-    background: #F1F5F9;
-    color: #475569;
+    background: #111827;
+    color: #9CA3AF;
     text-align: center;
     padding: 2.5rem 1rem;
     margin-top: 3rem;
-    border-top: 1px solid #E2E8F0;
+    border-top: 1px solid #1F2937;
 }
 
 .footer-brand {
     font-size: 1rem;
     font-weight: 700;
-    color: #1E293B;
+    color: #F9FAFB;
     margin-bottom: 0.4rem;
 }
 
 .footer-tagline {
     font-size: 0.85rem;
     margin-bottom: 1rem;
-    color: #64748B;
+    color: #6B7280;
 }
 
 .footer-links {
@@ -764,24 +764,24 @@ body {
 }
 
 .footer-links a {
-    color: #475569;
+    color: #9CA3AF;
     text-decoration: none;
 }
 
 .footer-links a:hover {
-    color: #1E293B;
+    color: #F9FAFB;
 }
 
 .footer-divider {
     border: none;
-    border-top: 1px solid #CBD5E1;
+    border-top: 1px solid #374151;
     margin: 1.25rem auto;
     max-width: 400px;
 }
 
 .footer-disclaimer {
     font-size: 0.78rem;
-    color: #64748B;
+    color: #6B7280;
     max-width: 620px;
     margin: 0 auto 1rem;
     line-height: 1.6;
@@ -814,11 +814,11 @@ body {
 .category-heading {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #1E3A8A;
+    color: #9B1C1C;
     letter-spacing: -0.01em;
     margin: 2.5rem 0 1rem;
     padding-bottom: 0.4rem;
-    border-bottom: 2px solid #1E3A8A;
+    border-bottom: 2px solid #9B1C1C;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
@@ -865,7 +865,7 @@ body {
 .dashboard-title {
     font-size: 0.97rem;
     font-weight: 700;
-    color: #1E3A8A;
+    color: #9B1C1C;
     margin-bottom: 3px;
 }
 
@@ -931,7 +931,7 @@ body {
 .site-nav-link {
     font-size: 0.82rem;
     font-weight: 500;
-    color: #1E3A8A;
+    color: #1D4ED8;
     text-decoration: none;
     white-space: nowrap;
 }
@@ -960,7 +960,7 @@ body {
     }
 
     .mission h2 {
-        color: #a5c8fd;
+        color: #FCA5A5;
     }
 
     .mission p,
@@ -1065,9 +1065,9 @@ body {
     }
 
     .footer {
-        background: #1e293b;
+        background: #0f172a;
         color: #94a3b8;
-        border-top-color: #2e3f58;
+        border-top-color: #1e293b;
     }
 
     .footer-brand { color: #f1f5f9; }
@@ -1086,8 +1086,8 @@ body {
     .site-nav-link { color: #93c5fd; }
 
     .category-heading {
-        color: #93C5FD;
-        border-bottom-color: #3B82F6;
+        color: #FCA5A5;
+        border-bottom-color: #9B1C1C;
     }
 
     .category-heading-count { color: #94A3B8; }
@@ -1098,7 +1098,7 @@ body {
     }
 
     .dashboard-card:hover { border-color: #3B82F6; }
-    .dashboard-title { color: #93C5FD; }
+    .dashboard-title { color: #FCA5A5; }
     .dashboard-meta { color: #94A3B8; }
 }
 
