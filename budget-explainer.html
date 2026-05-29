@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Nepal's NPR 2.1 Trillion Budget · SagarmathaIQ</title>
+  <meta name="description" content="A guide to Nepal's FY 2083/84 budget. Where NPR 2.1 trillion comes from, where it goes, what is new, and what changed for ordinary taxpayers. No spin — just the numbers.">
+  <link rel="canonical" href="https://sagarmathaiq.github.io/budget-explainer.html">
+  <meta property="og:title" content="Reading Nepal's NPR 2.1 Trillion Budget · SagarmathaIQ">
+  <meta property="og:description" content="Where NPR 2.1 trillion comes from, where it goes, what is new, and what changed for taxpayers in Nepal's FY 2083/84 budget.">
+  <meta property="og:url" content="https://sagarmathaiq.github.io/budget-explainer.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <meta property="og:image:alt" content="SagarmathaIQ — Data Analytics for Nepal">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reading Nepal's NPR 2.1 Trillion Budget · SagarmathaIQ">
+  <meta name="twitter:description" content="Where NPR 2.1 trillion comes from, where it goes, what is new, and what changed for taxpayers in Nepal's FY 2083/84 budget.">
+  <meta name="twitter:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <meta name="twitter:image:alt" content="SagarmathaIQ — Data Analytics for Nepal">
+  <link rel="icon" type="image/jpeg" href="./assets/sagarmathaiq-logo.jpeg">
+  <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
+  <style>
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono:  'SFMono-Regular', 'Courier New', monospace;
+
+      --bg:        #ffffff;
+      --bg-tint:   #f9fafb;
+      --bg-chip:   #f3f4f6;
+
+      --ink:       #111827;
+      --ink-mid:   #374151;
+      --ink-light: #6b7280;
+      --ink-faint: #9ca3af;
+
+      --rule:      #e5e7eb;
+      --rule-dark: #d1d5db;
+      --rule-strong: #111827;
+      --grid:      #e5e7eb;
+
+      --c-target:  #1d4ed8;
+      --c-promise: #b45309;
+      --c-imf:     #b91c1c;
+      --c-hist:    #94a3b8;
+      --c-green:   #15803d;
+      --c-purple:  #6d28d9;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #0b1220;
+        --bg-tint:   #131c2e;
+        --bg-chip:   #1e293b;
+        --ink:       #f1f5f9;
+        --ink-mid:   #cbd5e1;
+        --ink-light: #94a3b8;
+        --ink-faint: #64748b;
+        --rule:      #1f2937;
+        --rule-dark: #334155;
+        --rule-strong: #f1f5f9;
+        --grid:      #1e293b;
+        --c-target:  #60a5fa;
+        --c-promise: #fbbf24;
+        --c-imf:     #f87171;
+        --c-hist:    #64748b;
+        --c-green:   #4ade80;
+        --c-purple:  #a78bfa;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { font-size: 17px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink-mid);
+      font-family: var(--serif);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .article { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .kicker {
+      font-family: var(--sans);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--c-target); margin-bottom: 18px;
+    }
+    .headline {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+      line-height: 1.15; color: var(--ink); font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: -0.01em;
+    }
+    .dek {
+      font-family: var(--sans);
+      font-size: 1.08rem; line-height: 1.5;
+      color: var(--ink-light);
+      margin: 0 0 28px;
+    }
+    .dek strong { color: var(--ink); font-weight: 600; }
+
+    .meta {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--ink-faint); letter-spacing: 0.04em;
+      padding: 10px 0; margin-bottom: 44px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: flex; flex-wrap: wrap; gap: 18px;
+    }
+    .meta span strong { color: var(--ink); font-weight: 600; }
+
+    /* SECTION HEADINGS */
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.65rem;
+      line-height: 1.25;
+      color: var(--ink); font-weight: 700;
+      margin: 36px 0 14px;
+      letter-spacing: -0.005em;
+    }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--c-target);
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    /* PROSE */
+    .prose {
+      max-width: 720px;
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--ink-mid);
+      margin: 0 0 24px;
+    }
+    .prose p { margin: 0 0 1em; }
+    .prose strong { color: var(--ink); }
+    .prose em { font-style: italic; color: var(--ink); }
+
+    /* CHART BLOCKS */
+    .chart { margin: 0 0 40px; }
+    .chart-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+    .chart-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      line-height: 1.3;
+      color: var(--ink); font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .chart-subtitle {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .chart-svg-wrap { width: 100%; }
+    .chart-svg-wrap svg { width: 100%; height: auto; font-family: var(--sans); }
+    .chart-source {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--ink-faint);
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      line-height: 1.5;
+    }
+
+    /* SVG ELEMENTS */
+    .axis-line { stroke: var(--rule-dark); stroke-width: 1; }
+    .grid-line { stroke: var(--grid); stroke-width: 1; stroke-dasharray: 2,3; }
+    .tick-text { fill: var(--ink-light); font-size: 11px; }
+    .axis-title { fill: var(--ink-light); font-size: 11px; font-weight: 600; }
+    .data-label { font-size: 12px; font-weight: 600; }
+    .end-label-bold { font-size: 12px; font-weight: 700; }
+    .end-label-light { font-size: 11px; font-weight: 400; fill: var(--ink-light); }
+    .annot { font-size: 10.5px; font-style: italic; fill: var(--ink-light); }
+
+    /* STAT ROW */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      border: 1px solid var(--rule-dark);
+      margin: 0 0 36px;
+      background: var(--bg);
+    }
+    .stat-cell {
+      padding: 16px 18px;
+      border-right: 1px solid var(--rule);
+      font-family: var(--sans);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-label {
+      font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--ink-faint); margin-bottom: 6px;
+    }
+    .stat-val {
+      font-family: var(--serif); font-size: 1.5rem; font-weight: 700;
+      color: var(--ink); line-height: 1.1; margin-bottom: 4px;
+    }
+    .stat-val.blue { color: var(--c-target); }
+    .stat-val.red  { color: var(--c-imf); }
+    .stat-val.green { color: var(--c-green); }
+    .stat-val.amber { color: var(--c-promise); }
+    .stat-note { font-size: 0.74rem; color: var(--ink-light); line-height: 1.4; }
+
+    @media (max-width: 640px) {
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid var(--rule);
+      }
+      .stat-cell:last-child { border-bottom: none; }
+    }
+
+    /* INITIATIVE CARDS */
+    .init-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 18px 0 28px;
+    }
+    .init-card {
+      border: 1px solid var(--rule-dark);
+      padding: 14px 16px;
+      background: var(--bg);
+      border-left: 3px solid var(--c-target);
+    }
+    .init-card.purple { border-left-color: var(--c-purple); }
+    .init-card.green  { border-left-color: var(--c-green); }
+    .init-card.amber  { border-left-color: var(--c-promise); }
+    .init-card.red    { border-left-color: var(--c-imf); }
+    .init-label {
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      margin-bottom: 4px;
+    }
+    .init-title {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .init-body {
+      font-family: var(--serif);
+      font-size: 0.88rem;
+      color: var(--ink-mid);
+      line-height: 1.55;
+    }
+
+    /* TAX TABLE */
+    .tax-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--sans);
+      font-size: 0.86rem;
+      margin: 18px 0 28px;
+      background: var(--bg);
+    }
+    .tax-table thead th {
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--rule-dark);
+      background: var(--bg-tint);
+    }
+    .tax-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      color: var(--ink-mid);
+      line-height: 1.5;
+    }
+    .tax-table td:first-child {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .tax-table .old-val {
+      font-family: var(--mono);
+      color: var(--ink-light);
+      text-decoration: line-through;
+    }
+    .tax-table .new-val {
+      font-family: var(--mono);
+      color: var(--c-green);
+      font-weight: 600;
+    }
+
+    /* REFORM ROW */
+    .reform-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin: 18px 0 32px;
+    }
+    .reform-cell {
+      border: 1px solid var(--rule-dark);
+      padding: 16px;
+      text-align: center;
+      background: var(--bg);
+    }
+    .reform-val {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--c-target);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .reform-label {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--ink-mid);
+      line-height: 1.4;
+    }
+
+    .callout {
+      border-left: 3px solid var(--c-target);
+      background: var(--bg-tint);
+      padding: 14px 18px;
+      margin: 20px 0 28px;
+      max-width: 720px;
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--ink-mid);
+    }
+    .callout strong { color: var(--ink); }
+
+    .source-notes {
+      margin-top: 60px; padding-top: 24px;
+      border-top: 2px solid var(--rule-strong);
+      font-family: var(--sans); font-size: 0.78rem; color: var(--ink-light);
+      line-height: 1.6;
+    }
+    .source-notes p { margin: 0 0 8px; }
+    .source-notes strong { color: var(--ink); font-weight: 700; }
+    .source-notes a { color: var(--c-target); text-decoration: none; }
+    .source-notes a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .article { padding: 32px 16px 60px; }
+      .stat-val { font-size: 1.35rem; }
+      .reform-val { font-size: 1.7rem; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Reading Nepal's NPR 2.1 trillion budget",
+    "description": "A guide to Nepal's FY 2083/84 budget. Where NPR 2.1 trillion comes from, where it goes, what is new, and what changed for ordinary taxpayers. No spin — just the numbers.",
+    "url": "https://sagarmathaiq.github.io/budget-explainer.html",
+    "image": "https://sagarmathaiq.github.io/assets/hero-banner.png",
+    "datePublished": "2026-05-29",
+    "author": { "@type": "Organization", "name": "SagarmathaIQ", "url": "https://sagarmathaiq.github.io/" },
+    "publisher": { "@type": "Organization", "name": "SagarmathaIQ", "url": "https://sagarmathaiq.github.io/", "logo": { "@type": "ImageObject", "url": "https://sagarmathaiq.github.io/assets/sagarmathaiq-logo.jpeg" } }
+  }
+  </script>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article class="article">
+
+  <div class="kicker">Explainer · May 2026 · Budget</div>
+
+  <h1 class="headline">Reading Nepal's NPR 2.1 trillion budget</h1>
+
+  <p class="dek">
+    A guide to the FY 2083/84 budget tabled by Finance Minister <strong>Dr. Swarnim Wagle</strong> on 15 Jestha 2083 (29 May 2026). Where the money comes from, where it goes, what is new, and what changed for ordinary taxpayers. No spin, no theatre, just the numbers.
+  </p>
+
+  <div class="meta">
+    <span><strong>Published</strong> 29 May 2026</span>
+    <span><strong>Source</strong> Budget Speech FY 2083/84</span>
+    <span><strong>Companion piece</strong> The 7% growth assumption</span>
+  </div>
+
+  <!-- ===== HERO STATS ===== -->
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-label">Total budget</div>
+      <div class="stat-val">NPR 2,124B</div>
+      <div class="stat-note">FY 2083/84 (2026/27)</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Growth vs prior year</div>
+      <div class="stat-val blue">+25.2%</div>
+      <div class="stat-note">Over revised estimates FY 82/83</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Deficit financing</div>
+      <div class="stat-val amber">31.0%</div>
+      <div class="stat-note">Of total budget, from borrowing</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-label">Growth assumed</div>
+      <div class="stat-val red">7.0%</div>
+      <div class="stat-note">Real GDP growth target for FY 83/84</div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1: SIZE AND SHAPE ===== -->
+  <span class="section-num">01 · STRUCTURE</span>
+  <h2 class="section-title">The shape of the budget</h2>
+
+  <div class="prose">
+    <p>
+      Of every NPR 100 in the budget, NPR 60 goes to current (recurrent) spending, NPR 20 to capital investment, and NPR 20 to debt service and financing arrangements. The capital share is the lowest of the three, which is the structural reality of Nepal's fiscal architecture: most public spending pays for things the state already runs (salaries, pensions, transfers) rather than things it is building.
+    </p>
+  </div>
+
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 1</div>
+    <div class="chart-title">Three buckets of spending</div>
+    <div class="chart-subtitle">FY 2083/84 budget composition, in NPR billion and share of total.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Stacked horizontal bar of budget composition">
+        <!-- Total bar: y=60-110, x=40-680, width=640 -->
+        <!-- Per NPR: 640/2124 = 0.3013 -->
+
+        <!-- Current 1271B: width = 382.9, x=40-422.9 -->
+        <rect x="40" y="60" width="383" height="50" fill="var(--c-hist)" opacity="0.65"/>
+        <text class="data-label" x="231" y="84" text-anchor="middle" fill="var(--ink)">Current spending</text>
+        <text class="end-label-light" x="231" y="100" text-anchor="middle">NPR 1,271B · 59.8%</text>
+
+        <!-- Capital 431B: width = 129.9, x=422.9-552.8 -->
+        <rect x="423" y="60" width="130" height="50" fill="var(--c-target)"/>
+        <text class="data-label" x="488" y="84" text-anchor="middle" fill="var(--bg)">Capital</text>
+        <text class="end-label-light" x="488" y="100" text-anchor="middle" fill="var(--bg)">NPR 431B · 20.3%</text>
+
+        <!-- Debt service 423B: width = 127.4, x=552.8-680 -->
+        <rect x="553" y="60" width="127" height="50" fill="var(--c-imf)" opacity="0.7"/>
+        <text class="data-label" x="617" y="84" text-anchor="middle" fill="var(--bg)">Debt service</text>
+        <text class="end-label-light" x="617" y="100" text-anchor="middle" fill="var(--bg)">NPR 423B · 19.9%</text>
+
+        <!-- Total label -->
+        <text class="annot" x="360" y="40" text-anchor="middle" fill="var(--ink-light)">Total budget NPR 2,124 billion</text>
+
+        <!-- Annotations -->
+        <text class="end-label-light" x="231" y="135" text-anchor="middle">Salaries · pensions · social security · sector grants</text>
+        <text class="end-label-light" x="231" y="148" text-anchor="middle">Operational costs of running the state</text>
+
+        <text class="end-label-light" x="488" y="135" text-anchor="middle">Infrastructure · equipment</text>
+        <text class="end-label-light" x="488" y="148" text-anchor="middle">Construction · asset creation</text>
+
+        <text class="end-label-light" x="617" y="135" text-anchor="middle">Interest · principal</text>
+        <text class="end-label-light" x="617" y="148" text-anchor="middle">Internal &amp; external loans</text>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Budget Speech FY 2083/84, Section 64.</div>
+  </div>
+
+  <!-- ===== SECTION 2: SOURCES ===== -->
+  <span class="section-num">02 · FINANCING</span>
+  <h2 class="section-title">Where the money comes from</h2>
+
+  <div class="prose">
+    <p>
+      Two-thirds of the budget is funded by domestic tax revenue. The remaining third is some combination of foreign grants, foreign loans, and domestic borrowing. <strong>NPR 410 billion of internal borrowing</strong> is the single largest borrowing channel, exceeding the entire external financing combined.
+    </p>
+  </div>
+
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 2</div>
+    <div class="chart-title">Four sources, one of them rising</div>
+    <div class="chart-subtitle">FY 2083/84 financing mix, in NPR billion and share of total.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 220" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Stacked horizontal bar of financing sources">
+        <!-- Same scale -->
+        <!-- Revenue 1405B: width = 423, x=40-463 -->
+        <rect x="40" y="60" width="423" height="50" fill="var(--c-target)"/>
+        <text class="data-label" x="251" y="84" text-anchor="middle" fill="var(--bg)">Tax revenue</text>
+        <text class="end-label-light" x="251" y="100" text-anchor="middle" fill="var(--bg)">NPR 1,405B · 66.1%</text>
+
+        <!-- Grants 62B: width = 18.7 -->
+        <rect x="463" y="60" width="19" height="50" fill="var(--c-green)" opacity="0.7"/>
+
+        <!-- Foreign loans 247B: width = 74.4 -->
+        <rect x="482" y="60" width="74" height="50" fill="var(--c-hist)"/>
+        <text class="data-label" x="519" y="84" text-anchor="middle" fill="var(--ink)" font-size="11">Foreign loans</text>
+        <text class="end-label-light" x="519" y="100" text-anchor="middle" font-size="10">NPR 247B · 11.6%</text>
+
+        <!-- Internal borrowing 410B: width = 123.5 -->
+        <rect x="556" y="60" width="124" height="50" fill="var(--c-imf)" opacity="0.85"/>
+        <text class="data-label" x="618" y="84" text-anchor="middle" fill="var(--bg)">Internal borrowing</text>
+        <text class="end-label-light" x="618" y="100" text-anchor="middle" fill="var(--bg)">NPR 410B · 19.3%</text>
+
+        <!-- Grants callout -->
+        <line x1="472" y1="60" x2="472" y2="130" stroke="var(--c-green)" stroke-width="1"/>
+        <text class="end-label-light" x="472" y="148" text-anchor="middle" fill="var(--c-green)">Foreign grants</text>
+        <text class="end-label-light" x="472" y="161" text-anchor="middle">NPR 62B · 2.9%</text>
+
+        <!-- Total label -->
+        <text class="annot" x="360" y="40" text-anchor="middle" fill="var(--ink-light)">Total financing NPR 2,124 billion</text>
+
+        <!-- Bottom annotations -->
+        <text class="end-label-light" x="251" y="138" text-anchor="middle">Income tax · VAT · customs · excise · others</text>
+
+        <text class="end-label-light" x="519" y="138" text-anchor="middle">Multilateral &amp; bilateral</text>
+
+        <text class="end-label-light" x="618" y="138" text-anchor="middle">Govt bonds &amp; T-bills</text>
+        <text class="end-label-light" x="618" y="152" text-anchor="middle">net of NPR 246B repayment</text>
+        <text class="end-label-light" x="618" y="166" text-anchor="middle" fill="var(--c-imf)" font-weight="600">= NPR 164B net new debt</text>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Budget Speech FY 2083/84, Section 65. Internal borrowing is gross; net new domestic debt is NPR 164B after debt service.</div>
+  </div>
+
+  <div class="callout">
+    <strong>Why this matters:</strong> One in five rupees of the budget is borrowed domestically. The government is also paying back NPR 246B of old internal debt in the same year, which means it is rolling over plus adding new debt. This is fiscally manageable today but the trajectory is upward.
+  </div>
+
+  <!-- ===== SECTION 3: SECTOR ALLOCATIONS ===== -->
+  <span class="section-num">03 · ALLOCATIONS</span>
+  <h2 class="section-title">Where the money goes</h2>
+
+  <div class="prose">
+    <p>
+      The single largest non-debt category is infrastructure (roads, urban development, bridges), at <strong>NPR 286 billion</strong>. Education is second at NPR 218B. Health receives NPR 102B, agriculture NPR 47B. Two-thirds of the total goes to ministries with substantial operational footprints; the rest flows to subnational governments through equalization and sector grants.
+    </p>
+  </div>
+
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 3</div>
+    <div class="chart-title">Ten biggest sector allocations</div>
+    <div class="chart-subtitle">FY 2083/84 allocations by ministry/function, in NPR billion. Excludes debt service.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 460" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Horizontal bar chart of top sector allocations">
+        <!-- x scale: 0 to 320B mapped to 220 to 700, so each B = 1.5 px -->
+        <g>
+          <line class="grid-line" x1="220" y1="40" x2="220" y2="420"/>
+          <line class="grid-line" x1="370" y1="40" x2="370" y2="420"/>
+          <line class="grid-line" x1="520" y1="40" x2="520" y2="420"/>
+          <line class="grid-line" x1="670" y1="40" x2="670" y2="420"/>
+          <text class="tick-text" x="220" y="440" text-anchor="middle">0</text>
+          <text class="tick-text" x="370" y="440" text-anchor="middle">100</text>
+          <text class="tick-text" x="520" y="440" text-anchor="middle">200</text>
+          <text class="tick-text" x="670" y="440" text-anchor="middle">300</text>
+          <text class="axis-title" x="445" y="456" text-anchor="middle">NPR billion</text>
+        </g>
+
+        <!-- Bars. Helper: width = value * 1.5 -->
+        <!-- 1. Infrastructure 286: width = 429 -->
+        <g>
+          <rect x="220" y="55" width="429" height="26" fill="var(--c-target)"/>
+          <text class="end-label-bold" x="655" y="73" fill="var(--ink)">286B</text>
+        </g>
+        <!-- 2. Education 218: width = 327 -->
+        <g>
+          <rect x="220" y="90" width="327" height="26" fill="var(--c-target)" opacity="0.9"/>
+          <text class="end-label-bold" x="553" y="108" fill="var(--ink)">218B</text>
+        </g>
+        <!-- 3. Civil service pensions 169: width = 253.5 -->
+        <g>
+          <rect x="220" y="125" width="254" height="26" fill="var(--c-hist)"/>
+          <text class="end-label-bold" x="480" y="143" fill="var(--ink)">169B</text>
+        </g>
+        <!-- 4. Social security & welfare 123: width = 184.5 -->
+        <g>
+          <rect x="220" y="160" width="185" height="26" fill="var(--c-promise)"/>
+          <text class="end-label-bold" x="411" y="178" fill="var(--ink)">123B</text>
+        </g>
+        <!-- 5. Energy/Water/Irrigation 114: width = 171 -->
+        <g>
+          <rect x="220" y="195" width="171" height="26" fill="var(--c-target)" opacity="0.7"/>
+          <text class="end-label-bold" x="397" y="213" fill="var(--ink)">114B</text>
+        </g>
+        <!-- 6. Home Affairs 108: width = 162 -->
+        <g>
+          <rect x="220" y="230" width="162" height="26" fill="var(--c-imf)" opacity="0.7"/>
+          <text class="end-label-bold" x="388" y="248" fill="var(--ink)">108B</text>
+        </g>
+        <!-- 7. Health 96: width = 144 -->
+        <g>
+          <rect x="220" y="265" width="144" height="26" fill="var(--c-green)" opacity="0.85"/>
+          <text class="end-label-bold" x="370" y="283" fill="var(--ink)">96B</text>
+        </g>
+        <!-- 8. Agriculture/Forest/Env 73: width = 109.5 -->
+        <g>
+          <rect x="220" y="300" width="110" height="26" fill="var(--c-green)" opacity="0.7"/>
+          <text class="end-label-bold" x="336" y="318" fill="var(--ink)">73B</text>
+        </g>
+        <!-- 9. Defense 65: width = 97.5 -->
+        <g>
+          <rect x="220" y="335" width="98" height="26" fill="var(--c-imf)"/>
+          <text class="end-label-bold" x="324" y="353" fill="var(--ink)">65B</text>
+        </g>
+        <!-- 10. Tourism/Culture 11: width = 16.5 -->
+        <g>
+          <rect x="220" y="370" width="17" height="26" fill="var(--c-purple)"/>
+          <text class="end-label-bold" x="243" y="388" fill="var(--ink)">11B</text>
+        </g>
+
+        <!-- Row labels -->
+        <g>
+          <text class="end-label-bold" x="212" y="72" text-anchor="end" fill="var(--ink)">Infrastructure</text>
+          <text class="end-label-light" x="212" y="84" text-anchor="end">Roads, urban, bridges</text>
+
+          <text class="end-label-bold" x="212" y="107" text-anchor="end" fill="var(--ink)">Education</text>
+          <text class="end-label-light" x="212" y="119" text-anchor="end">incl. transfers to schools</text>
+
+          <text class="end-label-bold" x="212" y="142" text-anchor="end" fill="var(--ink)">Pensions / civil benefits</text>
+          <text class="end-label-light" x="212" y="154" text-anchor="end">Retirement + medical</text>
+
+          <text class="end-label-bold" x="212" y="177" text-anchor="end" fill="var(--ink)">Social security</text>
+          <text class="end-label-light" x="212" y="189" text-anchor="end">All allowances</text>
+
+          <text class="end-label-bold" x="212" y="212" text-anchor="end" fill="var(--ink)">Energy + Water</text>
+          <text class="end-label-light" x="212" y="224" text-anchor="end">Hydro, transmission, irrigation</text>
+
+          <text class="end-label-bold" x="212" y="247" text-anchor="end" fill="var(--ink)">Home Affairs</text>
+          <text class="end-label-light" x="212" y="259" text-anchor="end">Police, internal security</text>
+
+          <text class="end-label-bold" x="212" y="282" text-anchor="end" fill="var(--ink)">Health</text>
+          <text class="end-label-light" x="212" y="294" text-anchor="end">incl. insurance</text>
+
+          <text class="end-label-bold" x="212" y="317" text-anchor="end" fill="var(--ink)">Agriculture / Forest</text>
+          <text class="end-label-light" x="212" y="329" text-anchor="end">incl. NPR 32B fertilizer</text>
+
+          <text class="end-label-bold" x="212" y="352" text-anchor="end" fill="var(--ink)">Defense</text>
+          <text class="end-label-light" x="212" y="364" text-anchor="end">Nepal Army</text>
+
+          <text class="end-label-bold" x="212" y="387" text-anchor="end" fill="var(--ink)">Tourism / Culture</text>
+          <text class="end-label-light" x="212" y="399" text-anchor="end">incl. civil aviation</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Budget Speech FY 2083/84, sectoral allocations from Sections 40–60; Budget Annex 4 (Ministry-wise allocations). Excludes internal debt service (NPR 328B) and external debt service (NPR 90B) for comparability.</div>
+  </div>
+
+  <div class="callout">
+    <strong>Federal transfers to subnational governments:</strong> Provinces receive NPR 61.5B in equalization grants. Local governments receive NPR 90.2B in equalization grants. Combined with sector grants and revenue sharing, total transfers to subnational governments exceed <strong>NPR 600 billion</strong>, or roughly 28% of the federal budget.
+  </div>
+
+  <!-- ===== SECTION 4: NEW INITIATIVES ===== -->
+  <span class="section-num">04 · NEW INITIATIVES</span>
+  <h2 class="section-title">What is genuinely new</h2>
+
+  <div class="prose">
+    <p>
+      Many announcements in a Nepali budget reappear from year to year. The Budhi Gandaki reservoir, the Nijgadh airport, the East-West Railway, the Madan Bhandari Highway. All have appeared in multiple recent budgets without proportional delivery. The list below filters for initiatives that genuinely first appear in this budget, or represent a structural change in approach.
+    </p>
+  </div>
+
+  <div class="init-grid">
+    <div class="init-card purple">
+      <div class="init-label">Section 18</div>
+      <div class="init-title">Sovereign AI Compute Center</div>
+      <div class="init-body">Nepal's first government AI compute facility at Sucharter, Kathmandu, with AI processing unit procurement. Hydropower energy converted to subsidized compute capacity for AI startups and entrepreneurs.</div>
+    </div>
+
+    <div class="init-card">
+      <div class="init-label">Section 15</div>
+      <div class="init-title">Motherland Fund</div>
+      <div class="init-body">Strategic reserve allocation for at least three months of fuel storage and AI factory investment. Funded from a portion of foreign exchange reserves repositioned as sovereign wealth.</div>
+    </div>
+
+    <div class="init-card green">
+      <div class="init-label">Section 14</div>
+      <div class="init-title">Three new bond instruments</div>
+      <div class="init-body">Offshore Nepali rupee bond for international markets, clean energy bond, and diaspora bond. Designed to mobilize capital outside the government's balance sheet.</div>
+    </div>
+
+    <div class="init-card amber">
+      <div class="init-label">Section 19</div>
+      <div class="init-title">NEA split into three companies</div>
+      <div class="init-body">Nepal Electricity Authority restructured into separate companies for generation, transmission, and distribution/trade. Long-pending structural reform now committed to.</div>
+    </div>
+
+    <div class="init-card">
+      <div class="init-label">Section 26</div>
+      <div class="init-title">Investment Express</div>
+      <div class="init-body">Automated route system for company registration, financial services, tax onboarding, and visas. Three-month implementation timeline. Risk-based audit replacing case-by-case approval.</div>
+    </div>
+
+    <div class="init-card red">
+      <div class="init-label">Section 29</div>
+      <div class="init-title">National Asset Management Company</div>
+      <div class="init-body">New entity with special legal powers to manage non-performing bank loans and distressed non-banking assets. Target establishment by Poush 2083 (December 2026).</div>
+    </div>
+
+    <div class="init-card purple">
+      <div class="init-label">Section 21</div>
+      <div class="init-title">Twelve regional growth poles</div>
+      <div class="init-body">"Quadrangles" designated across Madhesh, Karnali, Gandaki, and Sudurpaschim with integrated infrastructure and sector investment. Anchored in agriculture, hydropower, tourism, and minerals.</div>
+    </div>
+
+    <div class="init-card green">
+      <div class="init-label">Section 22</div>
+      <div class="init-title">Vision Kathmandu 2040</div>
+      <div class="init-body">Long-term urban plan implementation begins. Underground utility ducts, integrated smart bus mobility, electric public transport, and waste management for the Kathmandu Valley.</div>
+    </div>
+
+    <div class="init-card">
+      <div class="init-label">Section 28</div>
+      <div class="init-title">Start-up financing reform</div>
+      <div class="init-body">Profit-linked tax incentives, public procurement preference, digital registration. Equity grants for early stage, concessional loans for proven concepts, expansion capital for scaling firms.</div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 5: TAX CHANGES ===== -->
+  <span class="section-num">05 · TAX CHANGES</span>
+  <h2 class="section-title">What changes in your wallet</h2>
+
+  <div class="prose">
+    <p>
+      The budget contains the most significant personal income tax overhaul in over a decade. The exemption ceiling has doubled. The top rate has dropped by ten percentage points. Customs duties on raw materials have been cut for 273 categories. Excise has been removed on 360 product lines. The net effect on a salaried worker earning between NPR 5–15 lakh annually is meaningful tax relief.
+    </p>
+  </div>
+
+  <table class="tax-table">
+    <thead>
+      <tr>
+        <th style="width:32%;">Change</th>
+        <th style="width:38%;">What is new</th>
+        <th style="width:30%;">Who benefits</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Personal income tax exemption</td>
+        <td><span class="old-val">NPR 500K</span> → <span class="new-val">NPR 1,000K</span></td>
+        <td>All taxpayers earning above NPR 500K</td>
+      </tr>
+      <tr>
+        <td>Top personal income tax rate</td>
+        <td>Reduced by <span class="new-val">10 percentage points</span></td>
+        <td>Higher-income individuals</td>
+      </tr>
+      <tr>
+        <td>Customs tier simplification</td>
+        <td><span class="old-val">11 tiers</span> → <span class="new-val">7 tiers</span></td>
+        <td>Importers, manufacturers</td>
+      </tr>
+      <tr>
+        <td>Raw material customs duty</td>
+        <td>Reduced on <span class="new-val">273 categories</span></td>
+        <td>Domestic manufacturers</td>
+      </tr>
+      <tr>
+        <td>Excise duty repeal</td>
+        <td>Removed on <span class="new-val">360 items</span></td>
+        <td>Consumers of affected goods</td>
+      </tr>
+      <tr>
+        <td>VAT discount on digital payments</td>
+        <td>New <span class="new-val">10% rebate</span> when invoice issued</td>
+        <td>Anyone paying digitally</td>
+      </tr>
+      <tr>
+        <td>Capital gains on listed securities</td>
+        <td>Now treated as <span class="new-val">final tax</span></td>
+        <td>Retail and institutional investors</td>
+      </tr>
+      <tr>
+        <td>Civil service salary</td>
+        <td><span class="new-val">+10%</span> on base + <span class="new-val">10%</span> performance allowance</td>
+        <td>500,000+ civil servants</td>
+      </tr>
+      <tr>
+        <td>Child nutrition allowance for Dalit children</td>
+        <td><span class="old-val">NPR 500</span> → <span class="new-val">NPR 1,000/month</span></td>
+        <td>Dalit families nationwide</td>
+      </tr>
+      <tr>
+        <td>Court tax dispute settlement</td>
+        <td>Pay <span class="new-val">1% surcharge</span> on disputed tax to settle</td>
+        <td>Businesses in tax litigation</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>The civil service raise:</strong> 10% on basic salary plus a new 10% performance allowance. The combined effective increase is roughly 21%. Over the past four years, cumulative inflation has been about 17.3% per the government's own consumer price index. The real wage gain is therefore around 3 to 4 percentage points after four years of no increases.
+  </div>
+
+  <!-- ===== SECTION 6: REFORM ANNOUNCEMENTS ===== -->
+  <span class="section-num">06 · REFORM</span>
+  <h2 class="section-title">The reform numbers</h2>
+
+  <div class="prose">
+    <p>
+      Wagle's budget makes a structural reform case. The government has already reduced federal ministries from 22 to 18. The budget commits to further institutional consolidation, claiming NPR 20 billion in savings from agency rationalization. That savings figure represents about 0.9% of the total budget. Symbolic more than fiscal, but a direction of travel.
+    </p>
+  </div>
+
+  <div class="reform-row">
+    <div class="reform-cell">
+      <div class="reform-val">22→18</div>
+      <div class="reform-label">Federal ministries (already done)</div>
+    </div>
+    <div class="reform-cell">
+      <div class="reform-val">31</div>
+      <div class="reform-label">Agencies to be abolished</div>
+    </div>
+    <div class="reform-cell">
+      <div class="reform-val">6</div>
+      <div class="reform-label">Agencies to be merged</div>
+    </div>
+    <div class="reform-cell">
+      <div class="reform-val">18</div>
+      <div class="reform-label">Agencies to be restructured</div>
+    </div>
+    <div class="reform-cell">
+      <div class="reform-val">NPR 20B</div>
+      <div class="reform-label">Claimed annual savings</div>
+    </div>
+    <div class="reform-cell">
+      <div class="reform-val">15</div>
+      <div class="reform-label">Laws to be repealed</div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>
+      Other governance commitments: state-owned enterprise reform with seven public enterprises evaluated for public-private partnership, Nepal Airlines converted to a company structure, Nepal Telecom's 34% shares offered to the public by Poush. The "off-balance-sheet" approach to public investment is a notable shift in fiscal strategy.
+    </p>
+  </div>
+
+  <!-- ===== BOTTOM LINE ===== -->
+  <span class="section-num">07 · WHAT TO WATCH</span>
+  <h2 class="section-title">What to watch over the next year</h2>
+
+  <div class="prose">
+    <p>
+      <strong>Will revenue meet target?</strong> The NPR 1,405B revenue target assumes 7% real GDP growth. The IMF and World Bank both forecast lower. SagarmathaIQ's <a href="budget-7-percent.html" style="color: var(--c-target);">companion analysis</a> estimates the shortfall at NPR 50–100B if growth comes in at the institutional baseline. If shortfall materializes, capital expenditure will likely take the hit mid-year.
+    </p>
+    <p>
+      <strong>Will capital execution improve?</strong> Nepal's historical pattern is to budget NPR 100 of capital and deliver NPR 60–65. The budget targets NPR 431B; realistic execution at historical rates would be NPR 270–280B. The "Mission Mode" delivery commitment in Section 11 is the test.
+    </p>
+    <p>
+      <strong>Will the new financial instruments launch?</strong> The offshore rupee bond, clean energy bond, diaspora bond, and the Motherland Fund are all flagged for the coming year. None has institutional precedent. The framework, regulator, and counterparty arrangements all need to be built from scratch. Even modest launches would mark a structural shift in Nepali public finance.
+    </p>
+    <p>
+      <strong>Will the structural reforms stick?</strong> Mergers and abolitions of agencies have been announced in previous budgets. Implementation is where the political cost typically defeats the reform commitment. The 1,000-day delivery target from the broader 100-point roadmap is the credible test.
+    </p>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="source-notes">
+    <p><strong>Data sources:</strong> Budget Speech of the Government of Nepal for FY 2083/84, presented by Finance Minister Dr. Swarnim Wagle on 15 Jestha 2083 (29 May 2026). All sector allocations from Sections 40–62 of the Budget Speech and Annexes 3 to 4 of the Budget Annex Document. Comparison figures from FY 82/83 revised estimates (Section 64).</p>
+    <p><strong>Method:</strong> Sector allocations are reported as in the Budget Speech, which uses functional groupings (some sectors combine multiple line ministries; for example, "Energy + Water" combines hydropower generation, transmission, distribution, irrigation, and rural water supply). Where this differs from Annex 3 functional classification, we use the Budget Speech figures since these are the announced amounts. Civil service pension and benefits is reported as the unified figure from Annex 4; in the functional classification it spreads across multiple categories.</p>
+    <p><strong>Companion piece:</strong> SagarmathaIQ analysis of the budget's 7% growth assumption is available <a href="budget-7-percent.html">here</a>. Our prior analysis of the underlying RSP manifesto economics is <a href="rsp-growth-owid.html">here</a>.</p>
+    <p><strong>SagarmathaIQ</strong> is an independent quantitative research group of expat Nepali academics. Not affiliated with any political party, government, or media outlet. sagarmathaiq.github.io · May 2026</p>
+  </footer>
+
+</article>
+
+<div id="site-footer"></div>
+<script src="./assets/js/site.js"></script>
+</body>
+</html>

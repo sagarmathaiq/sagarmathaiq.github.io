@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wagle's Budget Assumes 7% Growth · SagarmathaIQ</title>
+  <meta name="description" content="Finance Minister Wagle's NPR 2.1 trillion budget targets 7% real GDP growth. The IMF projects 3%. Every spending line was costed against the higher number — we show the arithmetic gap.">
+  <link rel="canonical" href="https://sagarmathaiq.github.io/budget-7-percent.html">
+  <meta property="og:title" content="Wagle's Budget Assumes 7% Growth · SagarmathaIQ">
+  <meta property="og:description" content="Finance Minister Wagle's NPR 2.1 trillion budget targets 7% real GDP growth. The IMF projects 3%. We show the revenue shortfall implied by the gap.">
+  <meta property="og:url" content="https://sagarmathaiq.github.io/budget-7-percent.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <meta property="og:image:alt" content="SagarmathaIQ — Data Analytics for Nepal">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wagle's Budget Assumes 7% Growth · SagarmathaIQ">
+  <meta name="twitter:description" content="Finance Minister Wagle's NPR 2.1 trillion budget targets 7% real GDP growth. The IMF projects 3%. We show the revenue shortfall implied by the gap.">
+  <meta name="twitter:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <meta name="twitter:image:alt" content="SagarmathaIQ — Data Analytics for Nepal">
+  <link rel="icon" type="image/jpeg" href="./assets/sagarmathaiq-logo.jpeg">
+  <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
+  <style>
+    /* ===== LIGHT MODE TOKENS ===== */
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono:  'SFMono-Regular', 'Courier New', monospace;
+
+      --bg:        #ffffff;
+      --bg-tint:   #f9fafb;
+      --bg-chip:   #f3f4f6;
+
+      --ink:       #111827;
+      --ink-mid:   #374151;
+      --ink-light: #6b7280;
+      --ink-faint: #9ca3af;
+
+      --rule:      #e5e7eb;
+      --rule-dark: #d1d5db;
+      --rule-strong: #111827;
+      --grid:      #e5e7eb;
+
+      --c-target:  #1d4ed8;
+      --c-promise: #b45309;
+      --c-imf:     #b91c1c;
+      --c-hist:    #94a3b8;
+      --c-nepal:   #b91c1c;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #0b1220;
+        --bg-tint:   #131c2e;
+        --bg-chip:   #1e293b;
+        --ink:       #f1f5f9;
+        --ink-mid:   #cbd5e1;
+        --ink-light: #94a3b8;
+        --ink-faint: #64748b;
+        --rule:      #1f2937;
+        --rule-dark: #334155;
+        --rule-strong: #f1f5f9;
+        --grid:      #1e293b;
+        --c-target:  #60a5fa;
+        --c-promise: #fbbf24;
+        --c-imf:     #f87171;
+        --c-hist:    #64748b;
+        --c-nepal:   #f87171;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { font-size: 17px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink-mid);
+      font-family: var(--serif);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .article { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .kicker {
+      font-family: var(--sans);
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--c-imf); margin-bottom: 18px;
+    }
+    .headline {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4.2vw, 2.8rem);
+      line-height: 1.15; color: var(--ink); font-weight: 700;
+      margin: 0 0 18px;
+      letter-spacing: -0.01em;
+    }
+    .dek {
+      font-family: var(--sans);
+      font-size: 1.08rem; line-height: 1.5;
+      color: var(--ink-light);
+      margin: 0 0 28px;
+    }
+    .dek strong { color: var(--ink); font-weight: 600; }
+
+    .meta {
+      font-family: var(--mono); font-size: 0.7rem;
+      color: var(--ink-faint); letter-spacing: 0.04em;
+      padding: 10px 0; margin-bottom: 44px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      display: flex; flex-wrap: wrap; gap: 18px;
+    }
+    .meta span strong { color: var(--ink); font-weight: 600; }
+
+    .chart { margin: 0 0 56px; }
+    .chart-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+    .chart-title {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.3;
+      color: var(--ink); font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .chart-subtitle {
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .chart-svg-wrap { width: 100%; }
+    .chart-svg-wrap svg { width: 100%; height: auto; font-family: var(--sans); }
+    .chart-source {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--ink-faint);
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--rule);
+      line-height: 1.5;
+    }
+
+    .axis-line { stroke: var(--rule-dark); stroke-width: 1; }
+    .grid-line { stroke: var(--grid); stroke-width: 1; stroke-dasharray: 2,3; }
+    .tick-text { fill: var(--ink-light); font-size: 11px; }
+    .axis-title { fill: var(--ink-light); font-size: 11px; font-weight: 600; }
+    .data-label { font-size: 12px; font-weight: 600; }
+    .end-label-bold { font-size: 12px; font-weight: 700; }
+    .end-label-light { font-size: 11px; font-weight: 400; fill: var(--ink-light); }
+    .annot { font-size: 10.5px; font-style: italic; fill: var(--ink-light); }
+
+    .note {
+      font-family: var(--serif);
+      font-size: 1rem; line-height: 1.7;
+      color: var(--ink-mid);
+      max-width: 680px;
+      margin: 0 0 40px;
+    }
+    .note strong { color: var(--ink); font-weight: 700; }
+    .mono-red    { font-family: var(--mono); color: var(--c-imf);     font-weight: 600; }
+    .mono-amber  { font-family: var(--mono); color: var(--c-promise); font-weight: 600; }
+    .mono-blue   { font-family: var(--mono); color: var(--c-target);  font-weight: 600; }
+
+    .eqn {
+      font-family: var(--mono); font-size: 0.92rem;
+      background: var(--bg-tint);
+      padding: 12px 16px;
+      border-left: 3px solid var(--c-target);
+      margin: 0 0 40px;
+      color: var(--ink);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+    .eqn small { color: var(--ink-faint); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .eqn .eq { color: var(--ink-light); margin: 0 4px; }
+
+    .hero-stat {
+      text-align: center;
+      padding: 32px 16px;
+      margin: 0 0 40px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-stat-val {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--c-imf);
+      margin-bottom: 8px;
+    }
+    .hero-stat-label {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .crit-grid {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 40px;
+    }
+    .crit-card {
+      border: 1px solid var(--rule-dark);
+      padding: 18px 20px;
+      background: var(--bg);
+      border-left: 3px solid var(--ink-faint);
+    }
+    .crit-title {
+      font-family: var(--sans);
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 8px;
+    }
+    .crit-body {
+      font-family: var(--serif);
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: var(--ink-mid);
+      margin: 0;
+    }
+
+    .source-notes {
+      margin-top: 72px; padding-top: 24px;
+      border-top: 2px solid var(--rule-strong);
+      font-family: var(--sans); font-size: 0.78rem; color: var(--ink-light);
+      line-height: 1.6;
+    }
+    .source-notes p { margin: 0 0 8px; }
+    .source-notes strong { color: var(--ink); font-weight: 700; }
+
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      .article { padding: 32px 16px 60px; }
+      .end-label-bold { font-size: 11px; }
+      .end-label-light { font-size: 10px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Wagle's budget assumes 7% growth. The IMF projects 3%.",
+    "description": "Finance Minister Wagle's NPR 2.1 trillion budget targets 7% real GDP growth. The IMF projects 3%. Every spending line was costed against the higher number — we show the arithmetic gap.",
+    "url": "https://sagarmathaiq.github.io/budget-7-percent.html",
+    "image": "https://sagarmathaiq.github.io/assets/hero-banner.png",
+    "datePublished": "2026-05-29",
+    "author": { "@type": "Organization", "name": "SagarmathaIQ", "url": "https://sagarmathaiq.github.io/" },
+    "publisher": { "@type": "Organization", "name": "SagarmathaIQ", "url": "https://sagarmathaiq.github.io/", "logo": { "@type": "ImageObject", "url": "https://sagarmathaiq.github.io/assets/sagarmathaiq-logo.jpeg" } }
+  }
+  </script>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article class="article">
+
+  <div class="kicker">Budget · May 2026 · Economy</div>
+
+  <h1 class="headline">Wagle's budget assumes 7% growth. The IMF projects 3%.</h1>
+
+  <p class="dek">
+    Finance Minister Dr. Swarnim Wagle's <strong>NPR 2.1 trillion</strong> budget for FY 2083/84, tabled on 15 Jestha 2083 (29 May 2026), keeps the same growth target the RSP manifesto promised two months earlier: <strong>7% real GDP growth</strong>. The IMF, World Bank, and ADB all forecast Nepal will grow at less than half that rate. Every line in the budget was costed against the higher number.
+  </p>
+
+  <div class="meta">
+    <span><strong>Published</strong> 29 May 2026</span>
+    <span><strong>Source</strong> Budget Speech FY 2083/84</span>
+    <span><strong>Method</strong> Tax-base scenario analysis</span>
+  </div>
+
+  <!-- ===== CHART 1: GROWTH ASSUMPTIONS COMPARED ===== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 1</div>
+    <div class="chart-title">Two documents say 7%. Three institutional forecasts say half that.</div>
+    <div class="chart-subtitle">Nepal real GDP growth rate, as stated or projected by each source.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bar chart of growth projections from different sources">
+        <!-- gridlines, x-axis 0 to 8% -->
+        <g>
+          <line class="grid-line" x1="240" y1="30" x2="240" y2="320"/>
+          <line class="grid-line" x1="300" y1="30" x2="300" y2="320"/>
+          <line class="grid-line" x1="360" y1="30" x2="360" y2="320"/>
+          <line class="grid-line" x1="420" y1="30" x2="420" y2="320"/>
+          <line class="grid-line" x1="480" y1="30" x2="480" y2="320"/>
+          <line class="grid-line" x1="540" y1="30" x2="540" y2="320"/>
+          <line class="grid-line" x1="600" y1="30" x2="600" y2="320"/>
+          <line class="grid-line" x1="660" y1="30" x2="660" y2="320"/>
+          <text class="tick-text" x="240" y="340" text-anchor="middle">0%</text>
+          <text class="tick-text" x="360" y="340" text-anchor="middle">2%</text>
+          <text class="tick-text" x="480" y="340" text-anchor="middle">4%</text>
+          <text class="tick-text" x="600" y="340" text-anchor="middle">6%</text>
+          <text class="tick-text" x="660" y="340" text-anchor="middle">7%</text>
+          <text class="axis-title" x="450" y="362" text-anchor="middle">Real GDP growth, annual</text>
+        </g>
+
+        <!-- 7% reference -->
+        <line x1="660" y1="30" x2="660" y2="320" stroke="var(--c-target)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+
+        <!-- Each row: x scale 0%=240, each percent = 60px -->
+        <!-- Wagle budget 7%: width = 420 -->
+        <g>
+          <rect x="240" y="50" width="420" height="28" fill="var(--c-target)"/>
+          <text class="end-label-bold" x="668" y="69" fill="var(--ink)">7.0%</text>
+        </g>
+        <!-- RSP manifesto 7%: width = 420 -->
+        <g>
+          <rect x="240" y="90" width="420" height="28" fill="var(--c-target)" opacity="0.7"/>
+          <text class="end-label-bold" x="668" y="109" fill="var(--ink)">7.0%</text>
+        </g>
+        <!-- WB long-term 4%: width = 240 -->
+        <g>
+          <rect x="240" y="140" width="240" height="28" fill="var(--c-hist)"/>
+          <text class="end-label-bold" x="488" y="159" fill="var(--ink)">4.0%</text>
+        </g>
+        <!-- Nepal 10-yr CAGR 5.8%: width = 348 -->
+        <g>
+          <rect x="240" y="180" width="348" height="28" fill="var(--c-hist)" opacity="0.7"/>
+          <text class="end-label-bold" x="596" y="199" fill="var(--ink)">5.8%</text>
+        </g>
+        <!-- Nepal 5-yr CAGR 4.7%: width = 282 -->
+        <g>
+          <rect x="240" y="220" width="282" height="28" fill="var(--c-hist)" opacity="0.7"/>
+          <text class="end-label-bold" x="530" y="239" fill="var(--ink)">4.7%</text>
+        </g>
+        <!-- IMF 2026 3.0%: width = 180 -->
+        <g>
+          <rect x="240" y="260" width="180" height="28" fill="var(--c-imf)" opacity="0.7"/>
+          <text class="end-label-bold" x="428" y="279" fill="var(--ink)">3.0%</text>
+        </g>
+        <!-- WB FY26 2.3%: width = 138 -->
+        <g>
+          <rect x="240" y="300" width="138" height="28" fill="var(--c-imf)"/>
+          <text class="end-label-bold" x="386" y="319" fill="var(--ink)">2.3%</text>
+        </g>
+
+        <!-- Row labels -->
+        <g>
+          <text class="end-label-bold" x="232" y="68" text-anchor="end" fill="var(--ink)">Wagle budget FY 83/84</text>
+          <text class="end-label-light" x="232" y="81" text-anchor="end">official assumption</text>
+
+          <text class="end-label-bold" x="232" y="108" text-anchor="end" fill="var(--ink)">RSP manifesto</text>
+          <text class="end-label-light" x="232" y="121" text-anchor="end">5-year campaign target</text>
+
+          <text class="end-label-bold" x="232" y="158" text-anchor="end" fill="var(--ink)">WB long-term</text>
+          <text class="end-label-light" x="232" y="171" text-anchor="end">average FY27–FY28</text>
+
+          <text class="end-label-bold" x="232" y="198" text-anchor="end" fill="var(--ink)">Nepal 10-yr CAGR</text>
+          <text class="end-label-light" x="232" y="211" text-anchor="end">historical 2015–2025</text>
+
+          <text class="end-label-bold" x="232" y="238" text-anchor="end" fill="var(--ink)">Nepal 5-yr CAGR</text>
+          <text class="end-label-light" x="232" y="251" text-anchor="end">historical 2020–2025</text>
+
+          <text class="end-label-bold" x="232" y="278" text-anchor="end" fill="var(--ink)">IMF April 2026</text>
+          <text class="end-label-light" x="232" y="291" text-anchor="end">WEO Nepal forecast</text>
+
+          <text class="end-label-bold" x="232" y="318" text-anchor="end" fill="var(--ink)">WB FY26</text>
+          <text class="end-label-light" x="232" y="331" text-anchor="end">April 2026 update</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Budget Speech FY 2083/84 Section 77; SagarmathaIQ analysis of RSP manifesto (March 2026); IMF World Economic Outlook (April 2026); World Bank Nepal Development Update (April 2026); World Economics historical CAGR tables. Note: World Bank further revised FY26 down to 2.1% in its October 2026 South Asia update; ADB April 2026 forecast Nepal at 2.7% for FY26.</div>
+  </div>
+
+  <p class="note">
+    The 7% number now sits in two documents that commit the government in different ways. The manifesto was a political promise. The budget is a fiscal commitment. Every spending line, every revenue projection, every borrowing decision was costed at <span class="mono-blue">7%</span> growth. The institutions that actually model Nepal's economy are projecting <span class="mono-red">2.3%</span> to <span class="mono-red">3%</span>.
+  </p>
+
+  <!-- ===== CHART 2: BUDGET STRUCTURE ===== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 2</div>
+    <div class="chart-title">The NPR 2.1 trillion budget rests on NPR 1.4 trillion in revenue. That revenue rests on 7%.</div>
+    <div class="chart-subtitle">Composition of FY 2083/84 spending (left) and financing (right), in NPR billion.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 420" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Stacked bar chart of budget composition and financing">
+        <!-- Two columns: spending (left, x=80-280) and financing (right, x=440-640) -->
+        <!-- Each total = 2124B, scale: total bar height 320, top at y=40, bottom at y=360 -->
+        <!-- Per NPR: 320/2124 = 0.1506 px per billion -->
+
+        <!-- LEFT: SPENDING -->
+        <g>
+          <!-- Current 1271B: height = 191.4, from y=168.6 to y=360 -->
+          <rect x="80" y="169" width="200" height="191" fill="var(--c-hist)" opacity="0.7"/>
+          <text class="data-label" x="180" y="276" text-anchor="middle" fill="var(--ink)">Current spending</text>
+          <text class="end-label-light" x="180" y="292" text-anchor="middle">NPR 1,271B · 59.8%</text>
+
+          <!-- Capital 431B: height = 64.9, from y=103.7 to y=168.6 -->
+          <rect x="80" y="104" width="200" height="65" fill="var(--c-target)"/>
+          <text class="data-label" x="180" y="142" text-anchor="middle" fill="var(--bg)">Capital · NPR 431B</text>
+          <text class="end-label-light" x="180" y="155" text-anchor="middle" fill="var(--bg)">20.3%</text>
+
+          <!-- Financial 423B: height = 63.7, from y=40 to y=103.7 -->
+          <rect x="80" y="40" width="200" height="64" fill="var(--c-imf)" opacity="0.7"/>
+          <text class="data-label" x="180" y="76" text-anchor="middle" fill="var(--bg)">Debt service · NPR 423B</text>
+          <text class="end-label-light" x="180" y="89" text-anchor="middle" fill="var(--bg)">19.9%</text>
+
+          <text class="axis-title" x="180" y="385" text-anchor="middle" fill="var(--ink)">SPENDING</text>
+          <text class="end-label-light" x="180" y="402" text-anchor="middle">NPR 2,124B</text>
+        </g>
+
+        <!-- ARROW between columns -->
+        <g>
+          <path d="M 300 200 L 420 200" stroke="var(--ink-light)" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="var(--ink-light)"/>
+            </marker>
+          </defs>
+          <text class="annot" x="360" y="192" text-anchor="middle" fill="var(--ink-light)">financed by</text>
+        </g>
+
+        <!-- RIGHT: FINANCING -->
+        <g>
+          <!-- Revenue 1405B: height = 211.6, from y=148.4 to y=360 -->
+          <rect x="440" y="148" width="200" height="212" fill="var(--c-target)"/>
+          <text class="data-label" x="540" y="248" text-anchor="middle" fill="var(--bg)">Revenue</text>
+          <text class="end-label-light" x="540" y="263" text-anchor="middle" fill="var(--bg)">NPR 1,405B · 66.1%</text>
+          <text class="end-label-light" x="540" y="278" text-anchor="middle" fill="var(--bg)" font-style="italic">assumes 7% growth</text>
+
+          <!-- Foreign grants 62B: height = 9.3 -->
+          <rect x="440" y="139" width="200" height="9" fill="var(--c-hist)"/>
+          <text class="end-label-light" x="540" y="146" text-anchor="middle" fill="var(--ink)" font-size="9">grants 2.9%</text>
+
+          <!-- Foreign loans 247B: height = 37.2 -->
+          <rect x="440" y="102" width="200" height="37" fill="var(--c-hist)" opacity="0.7"/>
+          <text class="end-label-light" x="540" y="125" text-anchor="middle" fill="var(--ink)">Foreign loans · NPR 247B · 11.6%</text>
+
+          <!-- Internal borrowing 410B: height = 62.0 -->
+          <rect x="440" y="40" width="200" height="62" fill="var(--c-imf)"/>
+          <text class="data-label" x="540" y="74" text-anchor="middle" fill="var(--bg)">Internal borrowing</text>
+          <text class="end-label-light" x="540" y="88" text-anchor="middle" fill="var(--bg)">NPR 410B · 19.3%</text>
+
+          <text class="axis-title" x="540" y="385" text-anchor="middle" fill="var(--ink)">FINANCING</text>
+          <text class="end-label-light" x="540" y="402" text-anchor="middle">NPR 2,124B</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Budget Speech FY 2083/84, Sections 64–65. Internal borrowing is gross; net of NPR 246B principal repayment, net new internal debt is NPR 164B.</div>
+  </div>
+
+  <p class="note">
+    Two-thirds of the budget is funded by domestic tax revenue. That revenue target of <span class="mono-blue">NPR 1,405B</span> was set assuming nominal GDP grows roughly 13% (7% real plus 6% inflation). Drop the real growth rate to the IMF's 3% baseline, nominal growth falls to about 8%, and the revenue base shrinks with it.
+  </p>
+
+  <!-- ===== CHART 3: REVENUE SCENARIOS ===== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 3</div>
+    <div class="chart-title">At the IMF's growth rate, revenue falls short by NPR 78 billion</div>
+    <div class="chart-subtitle">Projected FY 2083/84 revenue under different real growth scenarios, accounting for the budget's announced tax cuts.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bar chart of revenue scenarios">
+        <!-- gridlines: scale 1100B to 1500B -->
+        <!-- 1100 → x=240; 1500 → x=700; range = 460 px for 400B -->
+        <!-- per B: 460/400 = 1.15 px -->
+        <g>
+          <line class="grid-line" x1="240" y1="40" x2="240" y2="300"/>
+          <line class="grid-line" x1="355" y1="40" x2="355" y2="300"/>
+          <line class="grid-line" x1="470" y1="40" x2="470" y2="300"/>
+          <line class="grid-line" x1="585" y1="40" x2="585" y2="300"/>
+          <line class="grid-line" x1="700" y1="40" x2="700" y2="300"/>
+          <text class="tick-text" x="240" y="320" text-anchor="middle">NPR 1,100B</text>
+          <text class="tick-text" x="355" y="320" text-anchor="middle">1,200B</text>
+          <text class="tick-text" x="470" y="320" text-anchor="middle">1,300B</text>
+          <text class="tick-text" x="585" y="320" text-anchor="middle">1,400B</text>
+          <text class="tick-text" x="700" y="320" text-anchor="middle">1,500B</text>
+        </g>
+
+        <!-- Budget target line: 1405 → x = 240 + (1405-1100)*1.15 = 240 + 350.75 = 590.75 -->
+        <line x1="591" y1="30" x2="591" y2="305" stroke="var(--c-target)" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <text class="annot" x="591" y="22" text-anchor="middle" fill="var(--c-target)" font-weight="600">Budget target: NPR 1,405B</text>
+
+        <!-- BARS -->
+        <!-- Scenario 7% growth (budget assumption): 1405B → width = 350.75 -->
+        <g>
+          <rect x="240" y="60" width="351" height="30" fill="var(--c-target)"/>
+          <text class="end-label-bold" x="599" y="80" fill="var(--ink)">NPR 1,405B</text>
+        </g>
+        <!-- Scenario 4% real (WB long-term): 1346B → width = 246*1.15 = 282.9 -->
+        <g>
+          <rect x="240" y="105" width="283" height="30" fill="var(--c-hist)"/>
+          <text class="end-label-bold" x="531" y="125" fill="var(--ink)">NPR 1,346B</text>
+          <text class="end-label-light" x="618" y="125">−NPR 59B</text>
+        </g>
+        <!-- Scenario 3% real (IMF): 1327B → width = 227*1.15 = 261.1 -->
+        <g>
+          <rect x="240" y="150" width="261" height="30" fill="var(--c-imf)" opacity="0.7"/>
+          <text class="end-label-bold" x="509" y="170" fill="var(--ink)">NPR 1,327B</text>
+          <text class="end-label-light" x="596" y="170">−NPR 78B</text>
+        </g>
+        <!-- Scenario 2.3% real (WB FY26): 1300B → width = 200*1.15 = 230 -->
+        <g>
+          <rect x="240" y="195" width="230" height="30" fill="var(--c-imf)"/>
+          <text class="end-label-bold" x="478" y="215" fill="var(--ink)">NPR 1,300B</text>
+          <text class="end-label-light" x="565" y="215">−NPR 105B</text>
+        </g>
+
+        <!-- Row labels -->
+        <g>
+          <text class="end-label-bold" x="232" y="78" text-anchor="end" fill="var(--ink)">If 7% growth (budget)</text>
+          <text class="end-label-light" x="232" y="91" text-anchor="end">target met</text>
+
+          <text class="end-label-bold" x="232" y="123" text-anchor="end" fill="var(--ink)">If 4% growth (WB)</text>
+          <text class="end-label-light" x="232" y="136" text-anchor="end">long-term forecast</text>
+
+          <text class="end-label-bold" x="232" y="168" text-anchor="end" fill="var(--ink)">If 3% growth (IMF)</text>
+          <text class="end-label-light" x="232" y="181" text-anchor="end">2026 forecast</text>
+
+          <text class="end-label-bold" x="232" y="213" text-anchor="end" fill="var(--ink)">If 2.3% growth (WB)</text>
+          <text class="end-label-light" x="232" y="226" text-anchor="end">FY26 post-unrest</text>
+        </g>
+
+        <!-- Annotation -->
+        <text class="annot" x="370" y="265" text-anchor="middle" fill="var(--ink-light)">All scenarios account for NPR ~80B in announced tax cuts (PIT exemption,</text>
+        <text class="annot" x="370" y="280" text-anchor="middle" fill="var(--ink-light)">customs reductions on 273 raw materials, excise repeal on 360 items).</text>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: Budget Speech FY 2083/84 (revenue target, tax cuts); IMF WEO April 2026, World Bank NDU April 2026 (growth scenarios); SagarmathaIQ calculations. Method: nominal GDP growth = real growth + 5–6% inflation; tax revenue grows at unity buoyancy minus announced cuts of ~NPR 80B.</div>
+  </div>
+
+  <p class="note">
+    <strong>The shortfall is structural, not marginal.</strong> At the IMF's central forecast, the revenue gap is <span class="mono-red">NPR 78 billion</span>. That is larger than the entire defense budget (NPR 65B), and equivalent to about three-quarters of the health allocation (NPR 102B). At the World Bank's FY26 number, the gap widens to NPR 105B, the size of the entire health budget itself.
+  </p>
+
+  <!-- ===== CHART 4: WHERE THE SHORTFALL COMES OUT ===== -->
+  <div class="chart">
+    <div class="chart-eyebrow">Figure 4</div>
+    <div class="chart-title">If revenue undershoots by NPR 78B, only three doors out</div>
+    <div class="chart-subtitle">Three ways to close a mid-year revenue gap of NPR 78 billion, with the impact each one would require.</div>
+
+    <div class="chart-svg-wrap">
+      <svg viewBox="0 0 720 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Three options for closing the revenue shortfall">
+        <!-- Three columns: each 200 wide -->
+        <!-- Option 1: Cut current spending -->
+        <g>
+          <rect x="40" y="60" width="200" height="220" fill="none" stroke="var(--c-imf)" stroke-width="2"/>
+          <text class="data-label" x="140" y="90" text-anchor="middle" fill="var(--c-imf)" font-size="14" font-weight="700">Option A</text>
+          <text class="end-label-bold" x="140" y="115" text-anchor="middle" fill="var(--ink)">Cut current</text>
+          <text class="end-label-bold" x="140" y="132" text-anchor="middle" fill="var(--ink)">spending</text>
+          <line x1="60" y1="148" x2="220" y2="148" stroke="var(--rule-dark)"/>
+          <text class="data-label" x="140" y="180" text-anchor="middle" fill="var(--c-imf)" font-size="20" font-weight="700">−6.1%</text>
+          <text class="end-label-light" x="140" y="205" text-anchor="middle">across current spending</text>
+          <text class="end-label-light" x="140" y="225" text-anchor="middle">of NPR 1,271B</text>
+          <text class="annot" x="140" y="258" text-anchor="middle" fill="var(--ink-light)">Mostly salaries, pensions,</text>
+          <text class="annot" x="140" y="272" text-anchor="middle" fill="var(--ink-light)">social security. Politically</text>
+          <text class="annot" x="140" y="286" text-anchor="middle" fill="var(--ink-light)">close to impossible.</text>
+        </g>
+
+        <!-- Option 2: Cut capital spending -->
+        <g>
+          <rect x="260" y="60" width="200" height="220" fill="none" stroke="var(--c-promise)" stroke-width="2"/>
+          <text class="data-label" x="360" y="90" text-anchor="middle" fill="var(--c-promise)" font-size="14" font-weight="700">Option B</text>
+          <text class="end-label-bold" x="360" y="115" text-anchor="middle" fill="var(--ink)">Cut capital</text>
+          <text class="end-label-bold" x="360" y="132" text-anchor="middle" fill="var(--ink)">spending</text>
+          <line x1="280" y1="148" x2="440" y2="148" stroke="var(--rule-dark)"/>
+          <text class="data-label" x="360" y="180" text-anchor="middle" fill="var(--c-promise)" font-size="20" font-weight="700">−18.1%</text>
+          <text class="end-label-light" x="360" y="205" text-anchor="middle">on capital spending</text>
+          <text class="end-label-light" x="360" y="225" text-anchor="middle">of NPR 431B</text>
+          <text class="annot" x="360" y="258" text-anchor="middle" fill="var(--ink-light)">The historical default.</text>
+          <text class="annot" x="360" y="272" text-anchor="middle" fill="var(--ink-light)">Slows infrastructure,</text>
+          <text class="annot" x="360" y="286" text-anchor="middle" fill="var(--ink-light)">erodes future growth.</text>
+        </g>
+
+        <!-- Option 3: Borrow more -->
+        <g>
+          <rect x="480" y="60" width="200" height="220" fill="none" stroke="var(--c-target)" stroke-width="2"/>
+          <text class="data-label" x="580" y="90" text-anchor="middle" fill="var(--c-target)" font-size="14" font-weight="700">Option C</text>
+          <text class="end-label-bold" x="580" y="115" text-anchor="middle" fill="var(--ink)">Borrow more</text>
+          <text class="end-label-bold" x="580" y="132" text-anchor="middle" fill="var(--ink)">domestically</text>
+          <line x1="500" y1="148" x2="660" y2="148" stroke="var(--rule-dark)"/>
+          <text class="data-label" x="580" y="180" text-anchor="middle" fill="var(--c-target)" font-size="20" font-weight="700">+19%</text>
+          <text class="end-label-light" x="580" y="205" text-anchor="middle">internal borrowing</text>
+          <text class="end-label-light" x="580" y="225" text-anchor="middle">from NPR 410B base</text>
+          <text class="annot" x="580" y="258" text-anchor="middle" fill="var(--ink-light)">Crowds out private credit,</text>
+          <text class="annot" x="580" y="272" text-anchor="middle" fill="var(--ink-light)">raises future interest</text>
+          <text class="annot" x="580" y="286" text-anchor="middle" fill="var(--ink-light)">burden on the state.</text>
+        </g>
+
+        <text class="axis-title" x="360" y="320" text-anchor="middle" fill="var(--ink-light)">Each option closes the same NPR 78B gap. None is costless.</text>
+      </svg>
+    </div>
+
+    <div class="chart-source">Source: SagarmathaIQ calculations based on Budget Speech FY 2083/84. Internal borrowing already at 19.3% of total budget; current spending dominated by inflexible items including 10% salary increase, sovereign debt service, and statutory social security obligations.</div>
+  </div>
+
+  <p class="note">
+    Nepal's recent fiscal history points overwhelmingly to <strong>Option B</strong>. When growth disappoints and revenue undershoots, capital spending takes the hit, because current spending is locked in by salaries, transfers, and debt service. The same budget that announced a sovereign AI compute center, a Motherland Fund, three new bond instruments, and a NEA restructuring will then quietly underfund several of them.
+  </p>
+
+  <!-- ===== HERO STAT ===== -->
+  <div class="hero-stat">
+    <div class="hero-stat-val">NPR 78B</div>
+    <div class="hero-stat-label">The revenue shortfall implied by the IMF's growth forecast. Larger than the entire defense budget. About three-quarters of the health allocation. Available to the government only if the 7% growth assumption holds.</div>
+  </div>
+
+  <!-- ===== CRITICS SECTION ===== -->
+  <h2 class="chart-title" style="margin-bottom: 18px;">Where critics have a point</h2>
+
+  <div class="crit-grid">
+    <div class="crit-card">
+      <h3 class="crit-title">Wagle is not a typical politician forecaster</h3>
+      <p class="crit-body">
+        Dr. Wagle's professional background (PhD, World Bank, WTO senior roles, IMF consultations) is unusual for a Nepali Finance Minister. The 7% number was not inherited from a political document by accident. He chose to retain it, knowing the institutional forecasts. The reading that he is signaling reform intent rather than predicting macro outturn deserves serious weight.
+      </p>
+    </div>
+
+    <div class="crit-card">
+      <h3 class="crit-title">Tax cuts can expand the base faster than they cost</h3>
+      <p class="crit-body">
+        The budget's heaviest fiscal bet is that doubling the PIT exemption to NPR 1 million, slashing the top rate by 10 percentage points, and offering a 10% VAT discount on digital payments will pull large parts of the informal economy onto the tax rolls. If that formalization is even half-realized, revenue could hold up at lower headline growth. India's GST formalization in 2017-2019 is the closest regional comparison.
+      </p>
+    </div>
+
+    <div class="crit-card">
+      <h3 class="crit-title">Forecasts get revised</h3>
+      <p class="crit-body">
+        The IMF's 3% number is from April 2026, after a contractionary fiscal year. By October the same year, baseline forecasts often move by 1 to 2 percentage points. If political stability holds, remittances remain strong, and capital expenditure execution improves, a growth print of 5 to 6% is achievable. That would shrink the shortfall to under NPR 30 billion, well within manageable adjustment.
+      </p>
+    </div>
+
+    <div class="crit-card">
+      <h3 class="crit-title">Mid-year cuts are not catastrophic</h3>
+      <p class="crit-body">
+        Nepal's pattern of capital expenditure being trimmed mid-year is well documented, but it has not produced a fiscal crisis. The government has always closed the year. Lower capital outturn means slower infrastructure, not insolvency. The budget can still be a credible signaling document even if 80 to 85% of its capital programs eventually deliver.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== BOTTOM LINE ===== -->
+  <p class="note">
+    <strong>The honest version of the budget would price the growth assumption.</strong> The Finance Minister could have presented two scenarios alongside each other: a baseline that assumes 4% growth, and an optimistic reform path that gets to 7%. Each would have a different revenue line, a different capital envelope, and a different borrowing profile. The current document presents only the 7% case, which means every member of parliament voted on numbers that the international institutions modeling Nepal's economy think are roughly half-wrong.
+  </p>
+
+  <p class="note">
+    Two months ago, the 7% appeared in a campaign manifesto. SagarmathaIQ argued at the time that the manifesto's three economic targets could not all be true. Today the same 7% is in the federal budget. The arithmetic has not changed. What has changed is that the consequences of being wrong now show up in revenue undershoots, mid-year capital cuts, and additional domestic debt issuance. The cost of the gap between aspiration and arithmetic is being transferred to the next budget, and the one after that.
+  </p>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="source-notes">
+    <p><strong>Data sources:</strong> Budget Speech of the Government of Nepal for Fiscal Year 2083/84, presented by Finance Minister Dr. Swarnim Wagle on 15 Jestha 2083 (29 May 2026), with Sections 64, 65, 77, and budget annexes 1–7; IMF World Economic Outlook (April 2026); World Bank Nepal Development Update, "Growth Under Pressure" (April 8, 2026); World Bank South Asia Development Update, "Jobs, AI and Trade" (October 2026, which further revised Nepal FY26 to 2.1%); Asian Development Outlook (April 2026); SagarmathaIQ analysis of the RSP manifesto economic targets (March 2026, sagarmathaiq.github.io/rsp-growth).</p>
+    <p><strong>Method:</strong> Revenue scenarios computed by applying nominal GDP growth (real growth plus inflation between 5–6%) to the FY 82/83 revised revenue base of NPR 1,300B, then subtracting estimated NPR 80B in announced tax cuts. The NPR 80B estimate incorporates the doubling of the personal income tax exemption to NPR 1 million, the 10 percentage point reduction in the top PIT rate, customs rate reductions on 273 raw materials, excise repeal on 360 items, and the 10% VAT rebate on digital payments. Cut estimates are mid-range; the plausible band is NPR 60B to NPR 100B.</p>
+    <p><strong>Caveats:</strong> Tax buoyancy is assumed at unity for simplicity. Real-world buoyancy varies between 0.8 and 1.1 depending on growth composition. Inflation projection is conservative at 5 to 6%. If inflation runs higher, nominal revenue would also rise. The shortfall estimate is sensitive to both assumptions, but the direction (revenue undershoot under IMF growth) holds up under reasonable parameter changes.</p>
+    <p><strong>Companion piece:</strong> A plain-language explainer of the full budget structure — where the NPR 2.1 trillion comes from, where it goes, and what changed for taxpayers — is available at <a href="budget-explainer.html" style="color: var(--c-target);">budget-explainer.html</a>.</p>
+    <p><strong>SagarmathaIQ</strong> is an independent quantitative research group of expat Nepali academics. Not affiliated with any political party, government, or media outlet. This analysis follows our earlier piece, "RSP promised 7% growth. The manifesto's GDP target needs 17%" (March 2026). sagarmathaiq.github.io · May 2026</p>
+  </footer>
+
+</article>
+
+<div id="site-footer"></div>
+<script src="./assets/js/site.js"></script>
+</body>
+</html>
