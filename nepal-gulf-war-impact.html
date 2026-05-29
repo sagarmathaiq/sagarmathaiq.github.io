@@ -25,7 +25,7 @@
   :root {
     --serif: Georgia, 'Times New Roman', serif;
     --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --mono:  'SFMono-Regular', 'Courier New', monospace;
+    --mono: var(--sans);
 
     --ink:       #111827;
     --ink-mid:   #374151;
@@ -554,10 +554,10 @@
           <line x1="52" y1="127" x2="600" y2="127" stroke="#e5e7eb" stroke-width="1"/>
           <line x1="52" y1="162" x2="600" y2="162" stroke="#d1d5db" stroke-width="1.5"/>
           <!-- Y labels -->
-          <text x="46" y="165" text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">0%</text>
-          <text x="46" y="130" text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">10%</text>
-          <text x="46" y="95"  text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">20%</text>
-          <text x="46" y="60"  text-anchor="end" font-size="9" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">30%</text>
+          <text x="46" y="165" text-anchor="end" font-size="9" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">0%</text>
+          <text x="46" y="130" text-anchor="end" font-size="9" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">10%</text>
+          <text x="46" y="95"  text-anchor="end" font-size="9" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">20%</text>
+          <text x="46" y="60"  text-anchor="end" font-size="9" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">30%</text>
           <!--
             x(yr) = 52 + (yr-1993)/30 * 548
             y(v)  = 162 - v/30 * 140
@@ -578,19 +578,19 @@
           <circle cx="252" cy="110" r="5" fill="#b91c1c"/>
           <line x1="252" y1="104" x2="252" y2="70" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3 2"/>
           <text x="258" y="68" font-size="8.5" fill="#b91c1c" font-family="'Helvetica Neue',Arial,sans-serif" font-weight="700">GCC migration surge</text>
-          <text x="258" y="79" font-size="8" fill="#b91c1c" font-family="'SFMono-Regular','Courier New',monospace">1% → 11% in 1 year</text>
+          <text x="258" y="79" font-size="8" fill="#b91c1c" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">1% → 11% in 1 year</text>
           <!-- 2015 peak -->
           <circle cx="490" cy="33" r="4" fill="#1e3a8a"/>
-          <text x="490" y="27" text-anchor="middle" font-size="8.5" fill="#1e3a8a" font-family="'SFMono-Regular','Courier New',monospace" font-weight="700">27.6%</text>
+          <text x="490" y="27" text-anchor="middle" font-size="8.5" fill="#1e3a8a" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\" font-weight="700">27.6%</text>
           <text x="490" y="18" text-anchor="middle" font-size="8" fill="#6b7280" font-family="'Helvetica Neue',Arial,sans-serif">2015 peak</text>
           <!-- 2023 -->
           <circle cx="600" cy="37" r="5" fill="#b91c1c"/>
-          <text x="595" y="30" text-anchor="end" font-size="8.5" fill="#b91c1c" font-family="'SFMono-Regular','Courier New',monospace" font-weight="700">26.9%</text>
+          <text x="595" y="30" text-anchor="end" font-size="8.5" fill="#b91c1c" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\" font-weight="700">26.9%</text>
           <!-- X labels -->
-          <text x="52"  y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">1993</text>
-          <text x="289" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">2004</text>
-          <text x="490" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">2015</text>
-          <text x="600" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family="'SFMono-Regular','Courier New',monospace">2023</text>
+          <text x="52"  y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">1993</text>
+          <text x="289" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">2004</text>
+          <text x="490" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">2015</text>
+          <text x="600" y="175" text-anchor="middle" font-size="8" fill="#9ca3af" font-family=\"'Helvetica Neue',Helvetica,Arial,sans-serif\">2023</text>
         </svg>
       </div>
       <div class="chart-source">Source: World Bank WDI (BX.TRF.PWKR.DT.GD.ZS) &middot; NRB Quarterly Economic Bulletin &middot; TheGlobalEconomy.com.</div>
