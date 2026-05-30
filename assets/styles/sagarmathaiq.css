@@ -170,7 +170,7 @@ body {
     font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #9CA3AF;
+    color: #6B7280;
     margin-bottom: 3px;
     font-weight: 700;
 }
@@ -307,7 +307,7 @@ body {
     font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #9CA3AF;
+    color: #6B7280;
     margin-bottom: 2px;
 }
 
@@ -460,7 +460,7 @@ body {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #9B1C1C;
+    color: #374151;
     margin-bottom: 0.75rem;
 }
 
@@ -496,7 +496,7 @@ body {
 .source-line {
     font-size: 0.67rem;
     font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #9CA3AF;
+    color: #6B7280;
     border-left: 2px solid #E5E7EB;
     padding-left: 8px;
     margin-top: 1rem;
@@ -613,7 +613,7 @@ body {
     font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #9CA3AF;
+    color: #374151;
     font-weight: 700;
 }
 
@@ -734,7 +734,7 @@ body {
 /* ── Footer ── */
 .footer {
     background: #111827;
-    color: #9CA3AF;
+    color: #6B7280;
     text-align: center;
     padding: 2.5rem 1rem;
     margin-top: 3rem;
@@ -764,7 +764,7 @@ body {
 }
 
 .footer-links a {
-    color: #9CA3AF;
+    color: #6B7280;
     text-decoration: none;
 }
 
@@ -1100,6 +1100,13 @@ body {
     .dashboard-card:hover { border-color: #3B82F6; }
     .dashboard-title { color: #FCA5A5; }
     .dashboard-meta { color: #94A3B8; }
+
+    .chart-label { color: #CBD5E1; }
+    .chart-source { color: #94A3B8; }
+    .prov-label { color: #94A3B8; }
+    .stat-label { color: #94A3B8; }
+    .source-line { color: #94A3B8; }
+    .verdict-table th { color: #CBD5E1; }
 }
 
 /* ── Responsive ── */
