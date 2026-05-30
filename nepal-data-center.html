@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nepal's Data Center Bet · SagarmathaIQ</title>
+  <meta name="description" content="Nepal's government is betting on data centers and AI compute powered by hydropower. The strategic case is real. So are the dry-season electricity problem and Kathmandu's water crisis.">
+  <link rel="canonical" href="https://sagarmathaiq.github.io/nepal-data-center.html">
+  <meta property="og:title" content="Nepal's Data Center Bet · SagarmathaIQ">
+  <meta property="og:description" content="Nepal's government is positioning the country as a data center hub. The strategic case has merit. The dry-season electricity and Kathmandu water problems are real.">
+  <meta property="og:url" content="https://sagarmathaiq.github.io/nepal-data-center.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <meta property="og:image:alt" content="SagarmathaIQ — Data Analytics for Nepal">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nepal's Data Center Bet · SagarmathaIQ">
+  <meta name="twitter:description" content="Nepal's government is positioning the country as a data center hub. The strategic case has merit. The dry-season electricity and Kathmandu water problems are real.">
+  <meta name="twitter:image" content="https://sagarmathaiq.github.io/assets/hero-banner.png">
+  <meta name="twitter:image:alt" content="SagarmathaIQ — Data Analytics for Nepal">
+  <link rel="icon" type="image/jpeg" href="./assets/sagarmathaiq-logo.jpeg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Nepal's data center bet",
+    "description": "Nepal's government is positioning the country as a data center and AI compute hub powered by clean hydropower. We assess the strategic case alongside the dry-season electricity and water constraints.",
+    "datePublished": "2026-05-29",
+    "author": {"@type": "Organization", "name": "SagarmathaIQ"},
+    "publisher": {"@type": "Organization", "name": "SagarmathaIQ", "url": "https://sagarmathaiq.github.io/"}
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles/sagarmathaiq.css">
+  <style>
+    :root {
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --mono:  var(--sans);
+      --bg:        #ffffff;
+      --bg-tint:   #f9fafb;
+      --bg-chip:   #f3f4f6;
+      --ink:       #111827;
+      --ink-mid:   #374151;
+      --ink-light: #6b7280;
+      --ink-faint: #9ca3af;
+      --rule:      #e5e7eb;
+      --rule-dark: #d1d5db;
+      --rule-strong: #111827;
+      --grid:      #e5e7eb;
+      --c-blue:    #1d4ed8;
+      --c-red:     #b91c1c;
+      --c-green:   #15803d;
+      --c-amber:   #b45309;
+      --c-teal:    #0e7490;
+      --c-hist:    #94a3b8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:#0b1220; --bg-tint:#131c2e; --bg-chip:#1e293b;
+        --ink:#f1f5f9; --ink-mid:#cbd5e1; --ink-light:#94a3b8; --ink-faint:#64748b;
+        --rule:#1f2937; --rule-dark:#334155; --rule-strong:#f1f5f9; --grid:#1e293b;
+        --c-blue:#60a5fa; --c-red:#f87171; --c-green:#4ade80;
+        --c-amber:#fbbf24; --c-teal:#22d3ee; --c-hist:#64748b;
+      }
+    }
+    *{box-sizing:border-box;}
+    html{font-size:17px;}
+    body{margin:0;background:var(--bg);color:var(--ink-mid);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    .article{max-width:800px;margin:0 auto;padding:48px 24px 80px;}
+    .kicker{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-teal);margin-bottom:18px;}
+    .headline{font-family:var(--serif);font-size:clamp(1.9rem,4.2vw,2.8rem);line-height:1.15;color:var(--ink);font-weight:700;margin:0 0 18px;letter-spacing:-.01em;}
+    .dek{font-family:var(--sans);font-size:1.08rem;line-height:1.5;color:var(--ink-light);margin:0 0 28px;}
+    .dek strong{color:var(--ink);font-weight:600;}
+    .meta{font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);letter-spacing:.04em;padding:10px 0;margin-bottom:44px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:18px;}
+    .meta span strong{color:var(--ink);font-weight:600;}
+    .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));border:1px solid var(--rule-dark);margin:0 0 36px;background:var(--bg);}
+    .stat-cell{padding:16px 18px;border-right:1px solid var(--rule);font-family:var(--sans);}
+    .stat-cell:last-child{border-right:none;}
+    .stat-label{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:6px;}
+    .stat-val{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1.1;margin-bottom:4px;}
+    .stat-val.blue{color:var(--c-blue);}
+    .stat-val.red{color:var(--c-red);}
+    .stat-val.green{color:var(--c-green);}
+    .stat-val.amber{color:var(--c-amber);}
+    .stat-note{font-size:.74rem;color:var(--ink-light);line-height:1.4;}
+    .section-num{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;color:var(--c-blue);font-weight:600;margin-bottom:4px;display:block;}
+    .section-title{font-family:var(--serif);font-size:1.65rem;line-height:1.25;color:var(--ink);font-weight:700;margin:36px 0 14px;letter-spacing:-.005em;}
+    .prose{max-width:720px;font-family:var(--serif);font-size:1rem;line-height:1.7;color:var(--ink-mid);margin:0 0 24px;}
+    .prose p{margin:0 0 1em;}
+    .prose strong{color:var(--ink);}
+    .chart{margin:0 0 44px;}
+    .chart-eyebrow{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-light);margin-bottom:6px;}
+    .chart-title{font-family:var(--serif);font-size:1.2rem;line-height:1.3;color:var(--ink);font-weight:700;margin:0 0 6px;}
+    .chart-subtitle{font-family:var(--sans);font-size:.85rem;color:var(--ink-light);margin-bottom:16px;line-height:1.5;}
+    .chart-svg-wrap{width:100%;}
+    .chart-svg-wrap svg{width:100%;height:auto;font-family:var(--sans);}
+    .chart-source{font-family:var(--sans);font-size:.68rem;color:#9B1C1C;margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.5;}
+    .grid-line{stroke:var(--grid);stroke-width:1;stroke-dasharray:2,3;}
+    .tick-text{fill:var(--ink-light);font-size:11px;}
+    .axis-title{fill:var(--ink-light);font-size:11px;font-weight:600;}
+    .data-label{font-size:12px;font-weight:600;}
+    .end-label-bold{font-size:12px;font-weight:700;}
+    .end-label-light{font-size:11px;font-weight:400;fill:var(--ink-light);}
+    .annot{font-size:10.5px;font-style:italic;fill:var(--ink-light);}
+    .callout{border-left:3px solid var(--c-blue);background:var(--bg-tint);padding:14px 18px;margin:20px 0 28px;max-width:720px;font-family:var(--sans);font-size:.92rem;line-height:1.6;color:var(--ink-mid);}
+    .callout strong{color:var(--ink);}
+    .callout.red{border-left-color:var(--c-red);}
+    .callout.amber{border-left-color:var(--c-amber);}
+    .callout.green{border-left-color:var(--c-green);}
+    .pros-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0 32px;}
+    .pro-card{border:1px solid var(--rule-dark);padding:14px 16px;background:var(--bg);border-left:3px solid var(--c-green);}
+    .pro-card.amber{border-left-color:var(--c-amber);}
+    .pro-card.red{border-left-color:var(--c-red);}
+    .pro-card.blue{border-left-color:var(--c-blue);}
+    .card-label{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-bottom:4px;}
+    .card-title{font-family:var(--sans);font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:6px;line-height:1.3;}
+    .card-body{font-family:var(--serif);font-size:.88rem;color:var(--ink-mid);line-height:1.55;}
+    .compare-table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.86rem;margin:18px 0 28px;background:var(--bg);}
+    .compare-table thead th{text-align:left;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);padding:10px 12px;border-bottom:1px solid var(--rule-dark);background:var(--bg-tint);}
+    .compare-table td{padding:11px 12px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink-mid);line-height:1.5;}
+    .compare-table td:first-child{font-weight:600;color:var(--ink);}
+    .compare-table .good{color:var(--c-green);font-weight:600;}
+    .compare-table .bad{color:var(--c-red);font-weight:600;}
+    .compare-table .warn{color:var(--c-amber);font-weight:600;}
+    .verdict-box{border:2px solid var(--rule-strong);padding:24px 28px;margin:32px 0;background:var(--bg);}
+    .verdict-title{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
+    .verdict-body{font-family:var(--serif);font-size:1.02rem;line-height:1.7;color:var(--ink-mid);}
+    .verdict-body p{margin:0 0 .8em;}
+    .verdict-body p:last-child{margin:0;}
+    .verdict-body strong{color:var(--ink);}
+    .article-footer{margin-top:60px;padding-top:24px;border-top:2px solid var(--rule-strong);font-family:var(--sans);font-size:.78rem;color:var(--ink-light);line-height:1.6;}
+    .article-footer p{margin:0 0 8px;}
+    .article-footer strong{color:var(--ink);font-weight:700;}
+    @media(max-width:640px){
+      html{font-size:16px;}
+      .article{padding:32px 16px 60px;}
+      .stat-cell{border-right:none;border-bottom:1px solid var(--rule);}
+      .stat-cell:last-child{border-bottom:none;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<article class="article">
+
+<div class="kicker">Infrastructure · Energy · Environment · May 2026</div>
+
+<h1 class="headline">Nepal's data center bet</h1>
+
+<p class="dek">
+  The Balen Shah government is positioning Nepal as a data center and AI compute hub, powered by clean hydropower. The strategic case is stronger than critics admit. <strong>The dry-season electricity problem and Kathmandu's water crisis are real</strong>, and neither has a quick fix.
+</p>
+
+<div class="meta">
+  <span><strong>Published</strong> 29 May 2026</span>
+  <span><strong>Research</strong> World Bank, IEA, Berkeley Lab, Nepal Economic Forum</span>
+  <span><strong>Method</strong> Cross-country comparison, grid analysis</span>
+</div>
+
+<!-- HERO STATS -->
+<div class="stat-row">
+  <div class="stat-cell">
+    <div class="stat-label">Nepal's electricity mix</div>
+    <div class="stat-val green">99.8%</div>
+    <div class="stat-note">from hydropower. Nearly all of it run-of-river.</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Dry-season capacity drop</div>
+    <div class="stat-val red">40-60%</div>
+    <div class="stat-note">Generation falls sharply Dec-March. Nepal imports up to 25% of peak demand from India.</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">1 hyperscale DC daily water</div>
+    <div class="stat-val amber">19M L</div>
+    <div class="stat-note">~7% of Kathmandu Valley's entire daily demand. From an already stressed system.</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-label">Per capita electricity</div>
+    <div class="stat-val blue">479 kWh</div>
+    <div class="stat-note">Nepal is 2nd lowest in South Asia. Only ahead of Afghanistan.</div>
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<span class="section-num">01 · WHAT'S BEING PROPOSED</span>
+<h2 class="section-title">The government's bet</h2>
+
+<div class="prose">
+  <p>
+    Nepal already has more than ten data centers, most of them below 5 megawatts and built to serve specific industries: banks, hospitals, and government agencies. That picture is about to change, or at least the government is trying to change it.
+  </p>
+  <p>
+    Finance Minister Dr. Swarnim Wagle's FY 2083/84 budget (Section 18) commits Nepal to building its first "Sovereign AI Compute Center" at Sucharter in Kathmandu. The plan is to procure thousands of AI processing units, offer subsidized compute capacity to domestic AI startups and researchers, and back it with clean hydroelectricity. Fifteen Nepali AI researchers currently working abroad will be invited back via a government fellowship. The framing is explicit: convert Nepal's hydroelectric surplus into high-value digital exports.
+  </p>
+  <p>
+    Separately, the private sector is moving. <strong>Bichuten Data World</strong>, backed by NPR 5 billion ($37M) in domestic equity and a Laxmi Sunrise Bank credit line, is building two facilities at Chobhar (Kathmandu) and Birgunj, in partnership with Google's platform and India's VVDN Technologies for liquid cooling. Managing Director Naveen Agrawal describes it as an "AI-driven facility" that goes beyond storage. The Chobhar facility is in its final construction stage, targeting August 2026 operations.
+  </p>
+  <p>
+    Communications Minister Dr. Vikram Timsina is separately studying whether multinational technology companies should be allowed to invest in large-scale facilities. Industry analyst Rohit Chandra Shah of Huawei Nepal, the country's first Accredited Tier Specialist, notes that demand has shifted fundamentally: what once served only telecoms now serves every sector, from media to education to manufacturing. Nepal, he argues, is behind, not ahead.
+  </p>
+</div>
+
+<div class="callout">
+  <strong>The existing landscape:</strong> Nepal's current data center capacity includes WorldLink's 3.5MW facility in Chandragiri (520 racks, near the NEA Mata Tirtha substation), Yotta K1's 4MW facility in Ramkot, Ncell's Nakkhu Data Center in Lalitpur, DataHub (Nepal's first commercial Tier III), and the NEA's own 1MW Tier III center in Kathmandu. Together these are suited for domestic co-location, not hyperscale compute.
+</div>
+
+<!-- SECTION 2: PROS -->
+<span class="section-num">02 · THE STRATEGIC CASE</span>
+<h2 class="section-title">Where the argument works</h2>
+
+<div class="prose">
+  <p>
+    Several things genuinely make Nepal a plausible destination for data infrastructure, at least on paper.
+  </p>
+</div>
+
+<div class="pros-grid">
+  <div class="pro-card">
+    <div class="card-label">Energy</div>
+    <div class="card-title">Clean surplus power in monsoon</div>
+    <div class="card-body">During June to October, Nepal generates electricity it cannot fully use or export. Converting that surplus into compute exports is economically sound, provided the facilities can be sized to the seasonal window.</div>
+  </div>
+  <div class="pro-card">
+    <div class="card-label">Climate</div>
+    <div class="card-title">Altitude-assisted free cooling</div>
+    <div class="card-body">Data centers in higher elevations (Kathmandu sits at 1,400m) benefit from cooler ambient temperatures, reducing the energy and water needed for mechanical cooling. VVDN's liquid cooling at Bichuten pushes this advantage further.</div>
+  </div>
+  <div class="pro-card blue">
+    <div class="card-label">Economy</div>
+    <div class="card-title">Hard currency from digital exports</div>
+    <div class="card-body">Nepal's trade deficit is structural. Co-location and compute services sold to regional clients generate foreign exchange without the volatility of tourism or the human cost of labor migration.</div>
+  </div>
+  <div class="pro-card">
+    <div class="card-label">Jobs</div>
+    <div class="card-title">High-skill, high-wage employment</div>
+    <div class="card-body">Operating a modern data center requires network engineers, security specialists, and AI operators. These are jobs that keep technical talent in Nepal rather than pushing it toward Gulf labor markets.</div>
+  </div>
+  <div class="pro-card amber">
+    <div class="card-label">Sovereignty</div>
+    <div class="card-title">Domestic data control</div>
+    <div class="card-body">Nepali banks, hospitals, and government agencies currently store sensitive data on foreign infrastructure. Sovereign compute reduces this dependency, a legitimate national interest regardless of the commercial case.</div>
+  </div>
+  <div class="pro-card blue">
+    <div class="card-label">Geography</div>
+    <div class="card-title">Position between two markets</div>
+    <div class="card-body">Sitting between India (1.4 billion users) and China (1.4 billion), Nepal in theory has locational value for latency-sensitive applications serving South Asian clients who need something outside Indian jurisdiction.</div>
+  </div>
+</div>
+
+<!-- SECTION 3: DRY SEASON -->
+<span class="section-num">03 · THE DRY-SEASON PROBLEM</span>
+<h2 class="section-title">When the power isn't there</h2>
+
+<div class="prose">
+  <p>
+    The narrative of "Nepal has abundant clean power" is true for about five months of the year. The other seven months tell a different story.
+  </p>
+  <p>
+    Almost all of Nepal's hydropower comes from run-of-the-river plants, which generate electricity in direct proportion to river flow. The rivers run high during the monsoon (June to October) and low during the dry season (November to May). The Kali Gandaki, Nepal's largest operational plant at 144MW, drops to around 56MW in a bad dry year, a 61% fall. Chameliya has recorded 43% drops. The Middle Marshyangdi, Marshyangdi, and Trishuli stations show similar patterns. The only reservoir-based plants, Kulekhani I and II, have a combined capacity of just 92MW.
+  </p>
+  <p>
+    During the dry season, Nepal imports up to 25% of its peak electricity demand from India, much of it coal-fired. In bad hydrological years, coal imports have exceeded 50% of total consumption. The country that bills itself as a clean energy exporter is, for roughly half the year, a coal-power importer.
+  </p>
+  <p>
+    Data centers cannot turn off in the dry season. They require power 24 hours a day, 365 days a year, with uptime requirements of 99.9% or higher for Tier III facilities. Adding hyperscale compute load on top of an already import-dependent dry-season grid makes Nepal's structural electricity deficit considerably worse.
+  </p>
+</div>
+
+<!-- CHART A: HYDROPOWER SEASONALITY -->
+<div class="chart">
+  <div class="chart-eyebrow">Figure 1</div>
+  <div class="chart-title">Nepal's hydropower generation follows the monsoon, not the grid</div>
+  <div class="chart-subtitle">Approximate generation as % of installed capacity, monthly average. Run-of-river dominance creates a deep dry-season trough.</div>
+  <div class="chart-svg-wrap">
+    <svg viewBox="0 0 720 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Bar chart of Nepal monthly hydropower generation">
+      <!-- y-axis: 0-100%, bottom at y=260, top at y=30, height=230 -->
+      <!-- gridlines -->
+      <line class="grid-line" x1="60" y1="30"  x2="700" y2="30"/>
+      <line class="grid-line" x1="60" y1="87"  x2="700" y2="87"/>
+      <line class="grid-line" x1="60" y1="145" x2="700" y2="145"/>
+      <line class="grid-line" x1="60" y1="202" x2="700" y2="202"/>
+      <line class="grid-line" x1="60" y1="260" x2="700" y2="260"/>
+      <text class="tick-text" x="52" y="34"  text-anchor="end">100%</text>
+      <text class="tick-text" x="52" y="91"  text-anchor="end">75%</text>
+      <text class="tick-text" x="52" y="149" text-anchor="end">50%</text>
+      <text class="tick-text" x="52" y="206" text-anchor="end">25%</text>
+      <text class="tick-text" x="52" y="264" text-anchor="end">0%</text>
+
+      <!-- Bar width = (700-60)/12 = 53.3 each; gap 4px, bar width 49 -->
+      <!-- Height = value% × 2.3 px (230px = 100%) -->
+      <!-- Jan 45%: height=103.5, y=260-103.5=156.5 -->
+      <rect x="63"  y="157" width="45" height="103" fill="var(--c-red)" opacity=".75"/>
+      <!-- Feb 42%: height=96.6 -->
+      <rect x="116" y="164" width="45" height="96"  fill="var(--c-red)" opacity=".75"/>
+      <!-- Mar 43% -->
+      <rect x="169" y="162" width="45" height="98"  fill="var(--c-red)" opacity=".75"/>
+      <!-- Apr 50% -->
+      <rect x="222" y="145" width="45" height="115" fill="var(--c-amber)" opacity=".8"/>
+      <!-- May 62% -->
+      <rect x="275" y="117" width="45" height="143" fill="var(--c-amber)" opacity=".8"/>
+      <!-- Jun 80% -->
+      <rect x="328" y="76"  width="45" height="184" fill="var(--c-green)" opacity=".75"/>
+      <!-- Jul 97% -->
+      <rect x="381" y="37"  width="45" height="223" fill="var(--c-green)"/>
+      <!-- Aug 100% -->
+      <rect x="434" y="30"  width="45" height="230" fill="var(--c-green)"/>
+      <!-- Sep 98% -->
+      <rect x="487" y="35"  width="45" height="225" fill="var(--c-green)"/>
+      <!-- Oct 85% -->
+      <rect x="540" y="65"  width="45" height="195" fill="var(--c-teal)" opacity=".8"/>
+      <!-- Nov 65% -->
+      <rect x="593" y="111" width="45" height="149" fill="var(--c-amber)" opacity=".75"/>
+      <!-- Dec 50% -->
+      <rect x="646" y="145" width="45" height="115" fill="var(--c-red)" opacity=".75"/>
+
+      <!-- Month labels -->
+      <text class="tick-text" x="85"  y="278" text-anchor="middle">Jan</text>
+      <text class="tick-text" x="138" y="278" text-anchor="middle">Feb</text>
+      <text class="tick-text" x="191" y="278" text-anchor="middle">Mar</text>
+      <text class="tick-text" x="244" y="278" text-anchor="middle">Apr</text>
+      <text class="tick-text" x="297" y="278" text-anchor="middle">May</text>
+      <text class="tick-text" x="350" y="278" text-anchor="middle">Jun</text>
+      <text class="tick-text" x="403" y="278" text-anchor="middle">Jul</text>
+      <text class="tick-text" x="456" y="278" text-anchor="middle">Aug</text>
+      <text class="tick-text" x="509" y="278" text-anchor="middle">Sep</text>
+      <text class="tick-text" x="562" y="278" text-anchor="middle">Oct</text>
+      <text class="tick-text" x="615" y="278" text-anchor="middle">Nov</text>
+      <text class="tick-text" x="668" y="278" text-anchor="middle">Dec</text>
+
+      <!-- Annotations -->
+      <text class="annot" x="155" y="18" text-anchor="middle" fill="var(--c-red)" font-weight="600">Dry season: imports from India</text>
+      <text class="annot" x="456" y="18" text-anchor="middle" fill="var(--c-green)" font-weight="600">Monsoon surplus</text>
+
+      <!-- Bracket arrows rough -->
+      <line x1="63" y1="12" x2="245" y2="12" stroke="var(--c-red)" stroke-width="1.5"/>
+      <line x1="328" y1="12" x2="540" y2="12" stroke="var(--c-green)" stroke-width="1.5"/>
+
+      <!-- Data center demand line -->
+      <line x1="63" y1="107" x2="691" y2="107" stroke="var(--c-blue)" stroke-width="2" stroke-dasharray="5,3"/>
+      <text class="annot" x="695" y="111" text-anchor="start" fill="var(--c-blue)" font-weight="600">Data center baseline (needs 24/7)</text>
+    </svg>
+  </div>
+  <div class="chart-source">Source: Nepal Electricity Authority historical generation records; Kathmandu Post energy reporting (2017-2026); PM World Journal Nepal Hydropower Report (August 2025). Values are approximations based on documented seasonal generation drops of 40-60% at key run-of-river stations including Kali Gandaki, Marshyangdi, Middle Marshyangdi, and Chameliya. Kulekhani I and II reservoir plants (92MW combined) are the only baseload buffer.</div>
+</div>
+
+<div class="callout red">
+  <strong>The structural mismatch:</strong> A Tier III data center needs 99.9% uptime (less than 9 hours downtime per year). Nepal's run-of-river grid provides reliable capacity only during monsoon. For the remaining seven months, the grid relies on Indian imports, often coal-fired. A "green data center powered by Nepal's clean hydropower" is clean only in season.
+</div>
+
+<div class="prose">
+  <p>
+    Climate change compounds this. Research cited by the Nepal Economic Forum projects that climate-induced droughts could reduce river flows by 38 to 57 percent, threatening both dry-season and monsoon-season generation in the long term. In June 2023, unseasonal rainfall damaged 30 hydropower projects with a combined 463MW of capacity. Hydropower's reliability is not guaranteed even when the infrastructure exists.
+  </p>
+  <p>
+    The government's response is the battery storage program in Wagle's budget: 100MW of battery energy storage in the Kathmandu Valley to buffer peak dry-season shortfalls. This is the right direction, but 100MW of storage covers minutes of demand, not months. Serious data center expansion will eventually require Nepal to build reservoir-based hydropower at scale, a decades-long project, or commit to importing dry-season power, at higher cost and carbon footprint.
+  </p>
+</div>
+
+<!-- SECTION 4: WATER -->
+<span class="section-num">04 · THE WATER PROBLEM</span>
+<h2 class="section-title">What data centers actually drink</h2>
+
+<div class="prose">
+  <p>
+    Electricity gets the headlines. Water is the quieter problem, and it is arguably more pressing for Kathmandu.
+  </p>
+  <p>
+    Data centers cool their servers. Air cooling evaporates water. A typical enterprise data center uses 300,000 to 500,000 gallons (1.1 to 1.9 million liters) of water per day. A large hyperscale facility, the kind that serves global cloud clients, can use up to 5 million gallons per day, equivalent to the daily water use of a town of 10,000 to 50,000 people. Google disclosed that its global operations consumed 6.1 billion gallons of water in 2024, a 20% increase year-over-year driven by AI infrastructure.
+  </p>
+  <p>
+    Kathmandu Valley's total daily water demand is around 280 million liters. The system is already chronically short: annual groundwater extraction exceeds natural recharge, the Bagmati and Bishnumati rivers have shrunk dramatically over three decades of urbanization, and water demand grows by roughly 10% per year as the population and construction boom continues. The Melamchi diversion project added supply, but demand has outpaced it.
+  </p>
+  <p>
+    A single hyperscale data center at the Chobhar or Sucharter sites would consume roughly 19 million liters per day, about 7% of Kathmandu Valley's entire daily supply, drawn from an aquifer system that is already in deficit. This is not a hypothetical concern. It is exactly the pattern that played out in Northern Virginia, where data centers grew to consume close to 2 billion gallons of water in 2023, roughly 3% of the Potomac River Basin's total consumption.
+  </p>
+</div>
+
+<!-- CHART B: WATER SCALE -->
+<div class="chart">
+  <div class="chart-eyebrow">Figure 2</div>
+  <div class="chart-title">How data center water use compares at Kathmandu scale</div>
+  <div class="chart-subtitle">Daily water consumption in millions of liters, selected comparisons.</div>
+  <div class="chart-svg-wrap">
+    <svg viewBox="0 0 720 340" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Horizontal bar chart comparing water use">
+      <!-- scale: 0 to 300M L, x=240 to 680, per ML = 1.467px -->
+      <line class="grid-line" x1="240" y1="30" x2="240" y2="300"/>
+      <line class="grid-line" x1="387" y1="30" x2="387" y2="300"/>
+      <line class="grid-line" x1="534" y1="30" x2="534" y2="300"/>
+      <line class="grid-line" x1="680" y1="30" x2="680" y2="300"/>
+      <text class="tick-text" x="240" y="318" text-anchor="middle">0</text>
+      <text class="tick-text" x="387" y="318" text-anchor="middle">100M L</text>
+      <text class="tick-text" x="534" y="318" text-anchor="middle">200M L</text>
+      <text class="tick-text" x="680" y="318" text-anchor="middle">300M L</text>
+      <text class="axis-title" x="460" y="334" text-anchor="middle">Liters per day</text>
+
+      <!-- 1 Kathmandu household (5 ppl, 120L/pp) = 0.0006M L = barely visible -->
+      <!-- Show as a point/callout instead -->
+
+      <!-- Medium DC 1.9M L = 2.8px too small, show separately -->
+      <!-- Bichuten-scale ~5MW: ~0.95M L -->
+      <!-- Hyperscale 100MW: 19M L = 27.9px -->
+      <rect x="240" y="55" width="28" height="28" fill="var(--c-blue)"/>
+      <text class="end-label-bold" x="276" y="74" fill="var(--ink)">19M L/day</text>
+      <text class="end-label-light" x="276" y="86">Single hyperscale data center (100MW)</text>
+
+      <!-- Medium DC ~1MW: 1.9M L = 2.8px -->
+      <rect x="240" y="100" width="5" height="28" fill="var(--c-teal)"/>
+      <text class="end-label-bold" x="253" y="119" fill="var(--ink)">1.9M L/day</text>
+      <text class="end-label-light" x="253" y="131">Medium data center (~10MW)</text>
+
+      <!-- Bichuten estimated: ~0.5M L -->
+      <rect x="240" y="145" width="1" height="28" fill="var(--c-green)"/>
+      <text class="end-label-bold" x="248" y="164" fill="var(--ink)">~0.5M L/day</text>
+      <text class="end-label-light" x="248" y="176">Bichuten (initial, liquid-cooled)</text>
+
+      <!-- Kathmandu Valley demand: 280M L = 410.8px -->
+      <rect x="240" y="195" width="411" height="28" fill="var(--c-amber)" opacity=".7"/>
+      <text class="end-label-bold" x="659" y="214" fill="var(--ink)">280M L</text>
+      <text class="end-label-light" x="659" y="226">Kathmandu Valley total daily demand</text>
+
+      <!-- Kathmandu supply (deficit gap) -->
+      <text class="annot" x="360" y="248" text-anchor="middle" fill="var(--ink-light)">Kathmandu already draws more from the ground than monsoon recharge replaces.</text>
+      <text class="annot" x="360" y="262" text-anchor="middle" fill="var(--ink-light)">Groundwater table has been declining for over a decade.</text>
+      <text class="annot" x="360" y="276" text-anchor="middle" fill="var(--c-red)">A single hyperscale data center would add 7% to total Valley water demand.</text>
+    </svg>
+  </div>
+  <div class="chart-source">Source: Nature Forward (2026): enterprise data center 300K-500K gallons/day, hyperscale up to 5M gallons/day; ScienceDirect (2025) water use review; Dialogue Earth: Kathmandu daily demand 280 MLD; Springer Nature (2021): Kathmandu Valley groundwater extraction exceeds annual recharge; KUKL data. Bichuten estimated based on planned capacity and liquid-cooled WUE ratios.</div>
+</div>
+
+<div class="prose">
+  <p>
+    The Bichuten project's decision to use VVDN's liquid cooling is the right call. Liquid-cooled data centers can achieve Water Usage Effectiveness (WUE) of 0.5 liters per kilowatt-hour or less, compared to 1.8 liters or more for conventional evaporative air cooling. This matters enormously at scale. It does not eliminate the problem. It reduces it.
+  </p>
+  <p>
+    There is also an upstream water question that rarely enters the data center debate in Nepal. Hydropower "consumes" water indirectly through reservoir evaporation, at a rate of up to 18.27 gallons per kilowatt-hour, nearly 40 times the consumption rate of thermal power plants. Running data centers on hydropower that comes from reservoir-based plants is not "water-free." For run-of-river hydro the direct evaporation is minimal, but the downstream water that flows past turbines and continues toward Kathmandu's drinking water intake is water that could have been elsewhere.
+  </p>
+</div>
+
+<!-- SECTION 5: BROADER ENVIRONMENTAL -->
+<span class="section-num">05 · THE BROADER LEDGER</span>
+<h2 class="section-title">What doesn't fit the "clean" narrative</h2>
+
+<div class="prose">
+  <p>
+    Water and dry-season electricity get the most attention, but the environmental case for Nepal's data center push involves several other line items.
+  </p>
+</div>
+
+<div class="pros-grid">
+  <div class="pro-card red">
+    <div class="card-label">Hardware</div>
+    <div class="card-title">Import-dependent carbon footprint</div>
+    <div class="card-body">Every GPU, server rack, cooling unit, and UPS in Nepal's data centers will be imported, primarily from China, Taiwan, and the US. Manufacturing chips is extremely water and carbon-intensive: a single chip fabrication plant uses about 38 million liters of ultrapure water per day. The embodied carbon of the hardware is not local, but Nepal bears the e-waste.</div>
+  </div>
+  <div class="pro-card red">
+    <div class="card-label">E-waste</div>
+    <div class="card-title">No disposal infrastructure</div>
+    <div class="card-body">Server hardware has a 3-5 year useful life in AI applications before being replaced. Nepal has no licensed e-waste processing facility at data center scale. The toxic components (lead, mercury, cadmium, beryllium) need sophisticated handling. This is a solvable problem, but only if it is planned for now, before the hardware arrives.</div>
+  </div>
+  <div class="pro-card amber">
+    <div class="card-label">Land</div>
+    <div class="card-title">Pressure on Kathmandu's edges</div>
+    <div class="card-body">Both Sucharter and Chobhar are in or adjacent to the Kathmandu Valley, where usable flat land is expensive and in direct competition with housing, agriculture, and flood-plain management. Birgunj (Bichuten's second site) is better positioned given Terai land availability and proximity to the Indian grid interconnect.</div>
+  </div>
+  <div class="pro-card amber">
+    <div class="card-label">Seismicity</div>
+    <div class="card-title">Earthquake redundancy cost</div>
+    <div class="card-body">Kathmandu is in seismic zone V, Nepal's highest risk category. Tier III and Tier IV data centers serving international clients require N+1 redundancy for all critical systems. Building and certifying earthquake-resilient redundancy in Kathmandu adds significant capital cost that most feasibility estimates do not include.</div>
+  </div>
+  <div class="pro-card blue">
+    <div class="card-label">Heat</div>
+    <div class="card-title">Urban heat contribution</div>
+    <div class="card-body">Data centers reject heat into the surrounding environment. Kathmandu already has an urban heat island effect, worsened by rapid paving and construction over the last three decades. Multiple large data centers in the Valley add measurable heat load to a city where ambient temperature matters for the cooling efficiency of those same centers.</div>
+  </div>
+  <div class="pro-card">
+    <div class="card-label">Grid</div>
+    <div class="card-title">Stability requirements</div>
+    <div class="card-body">Nepal's distribution grid, outside Kathmandu, runs at power quality parameters that would trip data center UPS systems regularly. Serious investment requires serious grid stabilization. The NEA's ongoing transmission expansion (Section 43 of Wagle's budget, NPR 70B) is necessary but takes years to deliver reliable quality power.</div>
+  </div>
+</div>
+
+<!-- SECTION 6: INTERNATIONAL -->
+<span class="section-num">06 · WHAT OTHER COUNTRIES LEARNED</span>
+<h2 class="section-title">The international comparisons</h2>
+
+<table class="compare-table">
+  <thead>
+    <tr>
+      <th style="width:18%">Country</th>
+      <th style="width:27%">What happened</th>
+      <th style="width:28%">Outcome</th>
+      <th style="width:27%">Lesson for Nepal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ireland</td>
+      <td>Allowed unrestricted data center growth from mid-2010s, primarily near Dublin</td>
+      <td><span class="bad">Data centers now consume 21% of national electricity</span>, forcing EirGrid to warn of grid instability. Planning permissions effectively frozen in Dublin.</td>
+      <td>Nepal's grid is far more fragile than Ireland's was. There is no equivalent safety margin here.</td>
+    </tr>
+    <tr>
+      <td>Singapore</td>
+      <td>Was Asia's top data center destination. Imposed a 3-year moratorium in 2019 when data centers threatened national water security</td>
+      <td><span class="warn">Moratorium lifted in 2022</span> with strict sustainability standards: PUE below 1.3, WUE below 0.2, 100% renewable energy pathway required</td>
+      <td>Nepal should set the standards now, before capacity is installed and locked in. Retrofitting is far more expensive.</td>
+    </tr>
+    <tr>
+      <td>Iceland</td>
+      <td>Positioned as renewable-energy data center hub using geothermal plus hydro</td>
+      <td><span class="good">Sustained success</span> because of truly baseload renewable power (geothermal), cold climate eliminating cooling load, and strict water accounting</td>
+      <td>The model Nepal should study. The difference: geothermal is baseload. Nepal's hydro is not. Nepal's "Iceland thesis" only holds in monsoon season.</td>
+    </tr>
+    <tr>
+      <td>Netherlands</td>
+      <td>Amsterdam became Europe's largest data center hub by the late 2010s</td>
+      <td><span class="bad">Provincial ban on new data centers in North Holland (2019-2020)</span> due to water stress, land scarcity, and electricity grid strain. Partial reversal with strict criteria.</td>
+      <td>Amsterdam and Kathmandu share the same structural problem: water-stressed valley locations. The Netherlands resolved it by moving facilities outside the capital region.</td>
+    </tr>
+    <tr>
+      <td>India</td>
+      <td>Aggressive push for data center investment from 2021, targeting Mumbai, Chennai, Hyderabad, Pune</td>
+      <td><span class="good">Significant investment attracted</span>, roughly $4B committed 2021-2024. But most located near coastal grids, not landlocked interior.</td>
+      <td>Nepal's Birgunj (Terai, near Indian grid) is better positioned for private investment than Kathmandu. Coastal access to undersea cables matters for hyperscale.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- CHART C: SOUTH ASIA PER CAPITA ELECTRICITY -->
+<div class="chart">
+  <div class="chart-eyebrow">Figure 3</div>
+  <div class="chart-title">Nepal's electricity per capita is 2nd lowest in South Asia</div>
+  <div class="chart-subtitle">Annual per capita electricity consumption, kWh. Context for who benefits from the proposed data center expansion.</div>
+  <div class="chart-svg-wrap">
+    <svg viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="South Asia per capita electricity bar chart">
+      <!-- scale: 0-5000 kWh, x=240 to 680 -->
+      <line class="grid-line" x1="240" y1="30" x2="240" y2="270"/>
+      <line class="grid-line" x1="328" y1="30" x2="328" y2="270"/>
+      <line class="grid-line" x1="416" y1="30" x2="416" y2="270"/>
+      <line class="grid-line" x1="504" y1="30" x2="504" y2="270"/>
+      <line class="grid-line" x1="592" y1="30" x2="592" y2="270"/>
+      <line class="grid-line" x1="680" y1="30" x2="680" y2="270"/>
+      <text class="tick-text" x="240" y="288" text-anchor="middle">0</text>
+      <text class="tick-text" x="328" y="288" text-anchor="middle">1,000</text>
+      <text class="tick-text" x="416" y="288" text-anchor="middle">2,000</text>
+      <text class="tick-text" x="504" y="288" text-anchor="middle">3,000</text>
+      <text class="tick-text" x="592" y="288" text-anchor="middle">4,000</text>
+      <text class="tick-text" x="680" y="288" text-anchor="middle">5,000 kWh</text>
+
+      <!-- Bhutan 4800: 240 + (4800/5000)*440 = 240+422.4 = 662.4 -->
+      <rect x="240" y="45" width="422" height="28" fill="var(--c-green)" opacity=".8"/>
+      <text class="end-label-bold" x="670" y="64" fill="var(--ink)">4,800</text>
+
+      <!-- India 1200: 240+105.6=345.6 -->
+      <rect x="240" y="85" width="106" height="28" fill="var(--c-teal)" opacity=".8"/>
+      <text class="end-label-bold" x="354" y="104" fill="var(--ink)">1,200</text>
+
+      <!-- Sri Lanka 900: 240+79.2 -->
+      <rect x="240" y="125" width="79" height="28" fill="var(--c-hist)"/>
+      <text class="end-label-bold" x="327" y="144" fill="var(--ink)">900</text>
+
+      <!-- Bangladesh 550: 240+48.4 -->
+      <rect x="240" y="165" width="48" height="28" fill="var(--c-hist)" opacity=".8"/>
+      <text class="end-label-bold" x="296" y="184" fill="var(--ink)">550</text>
+
+      <!-- Nepal 479: 240+42.2 -->
+      <rect x="240" y="205" width="42" height="28" fill="var(--c-red)" opacity=".8"/>
+      <text class="end-label-bold" x="290" y="224" fill="var(--ink)">479</text>
+
+      <!-- Labels -->
+      <text class="end-label-bold" x="232" y="64"  text-anchor="end" fill="var(--ink)">Bhutan</text>
+      <text class="end-label-bold" x="232" y="104" text-anchor="end" fill="var(--ink)">India</text>
+      <text class="end-label-bold" x="232" y="144" text-anchor="end" fill="var(--ink)">Sri Lanka</text>
+      <text class="end-label-bold" x="232" y="184" text-anchor="end" fill="var(--ink)">Bangladesh</text>
+      <text class="end-label-bold" x="232" y="224" text-anchor="end" fill="var(--c-red)">Nepal</text>
+      <text class="end-label-light" x="232" y="235" text-anchor="end">2nd lowest in South Asia</text>
+
+      <text class="annot" x="460" y="256" text-anchor="middle" fill="var(--ink-light)">Before scaling data center infrastructure for regional or global clients, Nepal's 29M domestic users</text>
+      <text class="annot" x="460" y="270" text-anchor="middle" fill="var(--ink-light)">consume far less electricity than any comparable South Asian economy. Domestic supply should come first.</text>
+    </svg>
+  </div>
+  <div class="chart-source">Source: World Bank WDI (2024 latest available); IEA South Asia energy statistics; Nepal Electricity Authority annual report. Bhutan's high figure reflects hydropower exports; most domestic use is subsidized. Nepal's 479 kWh/year compares to ~1,300 kWh/year for the global developing-country average.</div>
+</div>
+
+<div class="prose">
+  <p>
+    The per capita electricity figure raises a political economy question that is absent from almost all Nepali data center coverage: <strong>who is this infrastructure for?</strong>
+  </p>
+  <p>
+    Nepal's citizens use less electricity per person than any South Asian country except Afghanistan. Rural areas still face load shedding in the dry season. Hospitals run on diesel backup generators. Agriculture depends on diesel-powered irrigation pumps in areas the grid cannot reliably reach.
+  </p>
+  <p>
+    Adding large data centers that sell compute to Indian, European, or American clients means diverting grid capacity away from domestic users, at least at the margin. The government's answer is that monsoon surplus power would otherwise be wasted or sold to India at low wholesale prices. That is a legitimate response in the monsoon months. It does not hold in the dry season, when the grid is already short.
+  </p>
+</div>
+
+<!-- SECTION 7: POLICY -->
+<span class="section-num">07 · WHAT GOOD POLICY LOOKS LIKE</span>
+<h2 class="section-title">A framework Nepal doesn't have yet</h2>
+
+<div class="prose">
+  <p>
+    Singapore's data center moratorium was lifted only when operators agreed to strict numerical standards. Nepal is moving in the opposite direction: committing public money and policy support to data centers before establishing any sustainability framework. The time to set the rules is before the concrete is poured.
+  </p>
+</div>
+
+<table class="compare-table">
+  <thead>
+    <tr>
+      <th style="width:30%">Policy area</th>
+      <th style="width:35%">What it should require</th>
+      <th style="width:35%">Nepal's current status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Power Usage Effectiveness (PUE)</td>
+      <td>Mandatory PUE below 1.4 for any DC above 2MW. Hyperscale must achieve below 1.3.</td>
+      <td><span class="bad">No standard exists.</span> Existing facilities in Kathmandu are mostly air-cooled, estimated PUE 1.8-2.0.</td>
+    </tr>
+    <tr>
+      <td>Water Usage Effectiveness (WUE)</td>
+      <td>Maximum WUE 0.5 L/kWh for new builds in the Kathmandu Valley. Liquid or immersion cooling mandatory above 5MW.</td>
+      <td><span class="warn">No standard exists.</span> Bichuten's VVDN liquid cooling is a voluntary market choice, not a legal requirement.</td>
+    </tr>
+    <tr>
+      <td>Dry-season energy sourcing</td>
+      <td>Data centers above 10MW must show a renewable power purchase agreement that covers dry-season demand, or use licensed battery storage.</td>
+      <td><span class="bad">No requirement.</span> The government's 100MW battery program is too small and too slow for commercial compliance use.</td>
+    </tr>
+    <tr>
+      <td>Location policy</td>
+      <td>Hyperscale facilities should be steered to Terai locations (Birgunj, Bhairahawa, Parsa) with better grid interconnects, lower water stress, and industrial land availability.</td>
+      <td><span class="warn">No explicit policy.</span> Both public (Sucharter) and private (Chobhar) investments are going into the already water-stressed Kathmandu Valley.</td>
+    </tr>
+    <tr>
+      <td>E-waste</td>
+      <td>Mandatory end-of-life hardware take-back, licensed processing, or export to certified facilities required before import clearance for server hardware.</td>
+      <td><span class="bad">No framework.</span> Nepal's e-waste rules cover consumer electronics but not data center hardware at scale.</td>
+    </tr>
+    <tr>
+      <td>Domestic value capture</td>
+      <td>Data centers selling to foreign clients above a size threshold should hire locally above a minimum ratio and provide a share of compute capacity at subsidized rates to domestic institutions.</td>
+      <td><span class="warn">Bichuten has stated domestic intent voluntarily.</span> No legal obligation for future investors.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout green">
+  <strong>The Birgunj case:</strong> Bichuten's decision to build one facility in Birgunj is worth noting. Birgunj sits in the Terai, has direct rail and road access to India, better grid interconnect to the Indian network for dry-season backup, and far more industrial land. Steering hyperscale investment toward Terai cities rather than the Kathmandu Valley would reduce pressure on water, land, and urban grid systems simultaneously. The government has not stated this as policy.
+</div>
+
+<!-- VERDICT -->
+<span class="section-num">08 · THE HONEST VERDICT</span>
+<h2 class="section-title">What the numbers say</h2>
+
+<div class="verdict-box">
+  <div class="verdict-title">SagarmathaIQ Assessment</div>
+  <div class="verdict-body">
+    <p>
+      <strong>The strategic case has real merit.</strong> Nepal has genuine advantages: monsoon surplus, altitude-assisted cooling, a growing domestic digital economy that needs sovereign infrastructure, and a diaspora with tech capital and skills that can be mobilized. The instinct to convert hydropower into higher-value exports rather than selling raw kilowatt-hours to India at wholesale prices is economically sound.
+    </p>
+    <p>
+      <strong>The current execution has structural problems.</strong> Concentrating new data centers in the Kathmandu Valley, without mandatory water efficiency standards, dry-season power sourcing requirements, or a location policy that steers hyperscale to the Terai, is the path most likely to produce an Ireland-style backlash within five years.
+    </p>
+    <p>
+      <strong>The environmental case turns entirely on scale and location.</strong> A few well-designed, liquid-cooled facilities below 20MW operating primarily on monsoon surplus, located in industrial zones near Birgunj or Bhairahawa, would have manageable environmental costs and genuine economic benefits. A Kathmandu Valley hyperscale build-out without regulation would be a serious mistake for a city already running a water deficit.
+    </p>
+    <p>
+      <strong>The honest question nobody is asking:</strong> Before Nepal invites foreign hyperscale clients in, it should first answer why its own citizens use 479 kWh per person per year, less than one-tenth of Bhutan's figure. Data center infrastructure that serves the domestic economy, improves grid reliability for households and hospitals, and uses clean seasonal surplus wisely is a fundamentally different proposition from one that primarily serves foreign cloud clients while drawing from Kathmandu's groundwater.
+    </p>
+  </div>
+</div>
+
+<footer class="article-footer">
+  <p><strong>Sources:</strong> Balen Shah and PM background: Britannica (April 2026), Wikipedia, Reuters (March 27, 2026); Bichuten Data World: Nepal Khabar (May 2026) interview with MD Naveen Agrawal; Government proposals: Budget Speech FY 2083/84 Section 18 (Finance Minister Dr. Swarnim Wagle), Fiscal Nepal "Data as the new oil" (May 21, 2026); Data center water consumption: EESI (2026), Nature Forward (2026), ScienceDirect review of data center water use (April 2025), npj Clean Water (2021); Global electricity demand: IEA (2025), Sustainability Atlas (February 2026); Hydropower seasonality: Kathmandu Post power reporting (2017-2026), PM World Journal Nepal Hydropower Report (August 2025), Nepal Economic Forum climate/hydropower analysis (2025), NepalConnect (February 2026); Kathmandu water: Dialogue Earth, Springer Nature (2021), MDPI Water journal (2025), Winrock Nepal water resources profile; Per capita electricity: World Bank WDI, IEA South Asia; International comparisons: Irish Grid EirGrid reports, Singapore EDB moratorium statements, Netherlands Province of North Holland DC policy.</p>
+  <p><strong>Note on estimates:</strong> Hydropower seasonality values are approximations derived from documented percentage drops at specific stations. Actual monthly generation varies by year and hydrological conditions. Water consumption figures for Bichuten are SagarmathaIQ estimates based on planned capacity and published WUE ratios for liquid-cooled facilities, not official disclosures.</p>
+  <p><strong>SagarmathaIQ</strong> is an independent quantitative research group of expat Nepali academics. Not affiliated with any party, government, or industry group. sagarmathaiq.github.io · May 2026</p>
+</footer>
+
+</article>
+
+<div id="site-footer"></div>
+<script src="./assets/js/site.js"></script>
+</body>
+</html>
