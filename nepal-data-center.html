@@ -65,9 +65,8 @@
         --c-amber:#fbbf24; --c-teal:#22d3ee; --c-hist:#64748b;
       }
     }
-    *{box-sizing:border-box;}
     html{font-size:17px;}
-    body{margin:0;background:var(--bg);color:var(--ink-mid);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    body{margin:0;background:var(--bg);color:var(--ink-mid);font-family:var(--serif);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 0.2s,color 0.2s;}
     .article{max-width:800px;margin:0 auto;padding:48px 24px 80px;}
     .kicker{font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c-teal);margin-bottom:18px;}
     .headline{font-family:var(--serif);font-size:clamp(1.9rem,4.2vw,2.8rem);line-height:1.15;color:var(--ink);font-weight:700;margin:0 0 18px;letter-spacing:-.01em;}
@@ -104,11 +103,8 @@
     .end-label-bold{font-size:12px;font-weight:700;}
     .end-label-light{font-size:11px;font-weight:400;fill:var(--ink-light);}
     .annot{font-size:10.5px;font-style:italic;fill:var(--ink-light);}
-    .callout{border-left:3px solid var(--c-blue);background:var(--bg-tint);padding:14px 18px;margin:20px 0 28px;max-width:720px;font-family:var(--sans);font-size:.92rem;line-height:1.6;color:var(--ink-mid);}
+    .callout{border-left:3px solid var(--c-red);background:var(--bg-tint);padding:14px 18px;margin:20px 0 28px;max-width:720px;font-family:var(--sans);font-size:.92rem;line-height:1.6;color:var(--ink-mid);}
     .callout strong{color:var(--ink);}
-    .callout.red{border-left-color:var(--c-red);}
-    .callout.amber{border-left-color:var(--c-amber);}
-    .callout.green{border-left-color:var(--c-green);}
     .pros-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:18px 0 32px;}
     .pro-card{border:1px solid var(--rule-dark);padding:14px 16px;background:var(--bg);border-left:3px solid var(--c-green);}
     .pro-card.amber{border-left-color:var(--c-amber);}
@@ -124,12 +120,6 @@
     .compare-table .good{color:var(--c-green);font-weight:600;}
     .compare-table .bad{color:var(--c-red);font-weight:600;}
     .compare-table .warn{color:var(--c-amber);font-weight:600;}
-    .verdict-box{border:2px solid var(--rule-strong);padding:24px 28px;margin:32px 0;background:var(--bg);}
-    .verdict-title{font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px;}
-    .verdict-body{font-family:var(--serif);font-size:1.02rem;line-height:1.7;color:var(--ink-mid);}
-    .verdict-body p{margin:0 0 .8em;}
-    .verdict-body p:last-child{margin:0;}
-    .verdict-body strong{color:var(--ink);}
     .article-footer{margin-top:60px;padding-top:24px;border-top:2px solid var(--rule-strong);font-family:var(--sans);font-size:.78rem;color:var(--ink-light);line-height:1.6;}
     .article-footer p{margin:0 0 8px;}
     .article-footer strong{color:var(--ink);font-weight:700;}
@@ -152,7 +142,7 @@
 <h1 class="headline">Nepal's data center bet</h1>
 
 <p class="dek">
-  The Balen Shah government is positioning Nepal as a data center and AI compute hub, powered by clean hydropower. The strategic case is stronger than critics admit. <strong>The dry-season electricity problem and Kathmandu's water crisis are real</strong>, and neither has a quick fix.
+  Nepal wants to become a regional data center hub, powered by hydroelectricity. The strategic logic is sound. <strong>The dry-season power shortage and Kathmandu's water crisis are also real</strong>, and neither has a quick fix.
 </p>
 
 <div class="meta">
@@ -165,8 +155,8 @@
 <div class="stat-row">
   <div class="stat-cell">
     <div class="stat-label">Nepal's electricity mix</div>
-    <div class="stat-val green">99.8%</div>
-    <div class="stat-note">from hydropower. Nearly all of it run-of-river.</div>
+    <div class="stat-val green">~95%</div>
+    <div class="stat-note">of installed capacity from hydropower (NEA, March 2025). Solar growing rapidly. Nearly all hydro is run-of-river.</div>
   </div>
   <div class="stat-cell">
     <div class="stat-label">Dry-season capacity drop</div>
@@ -191,20 +181,20 @@
 
 <div class="prose">
   <p>
-    Nepal already has more than ten data centers, most of them below 5 megawatts and built to serve specific industries: banks, hospitals, and government agencies. That picture is about to change, or at least the government is trying to change it.
+    Nepal has more than ten data centers today, most below 5MW, built to serve banks, hospitals, and government agencies. That's the baseline. The government wants to change it.
   </p>
   <p>
-    Finance Minister Dr. Swarnim Wagle's FY 2083/84 budget (Section 18) commits Nepal to building its first "Sovereign AI Compute Center" at Sucharter in Kathmandu. The plan is to procure thousands of AI processing units, offer subsidized compute capacity to domestic AI startups and researchers, and back it with clean hydroelectricity. Fifteen Nepali AI researchers currently working abroad will be invited back via a government fellowship. The framing is explicit: convert Nepal's hydroelectric surplus into high-value digital exports.
+    Finance Minister Dr. Swarnim Wagle's FY 2083/84 budget commits Nepal to building its first "Sovereign AI Compute Center" at Sucharter in Kathmandu. The plan: procure thousands of AI processing units, offer subsidized compute to domestic startups and researchers, and back it all with clean hydroelectricity. Fifteen Nepali AI researchers working abroad will be brought back on government fellowships. The pitch is simple — convert hydroelectric surplus into high-value digital exports instead of selling raw power to India at wholesale rates.
   </p>
   <p>
-    Separately, the private sector is moving. <strong>Bichuten Data World</strong>, backed by NPR 5 billion ($37M) in domestic equity and a Laxmi Sunrise Bank credit line, is building two facilities at Chobhar (Kathmandu) and Birgunj, in partnership with Google's platform and India's VVDN Technologies for liquid cooling. Managing Director Naveen Agrawal describes it as an "AI-driven facility" that goes beyond storage. The Chobhar facility is in its final construction stage, targeting August 2026 operations.
+    The private sector isn't waiting. <strong>Bichuten Data World</strong>, backed by NPR 5 billion ($37M) in domestic equity and a Laxmi Sunrise Bank credit line, is building two facilities at Chobhar (Kathmandu) and Birgunj, using Google's platform and India's VVDN Technologies for liquid cooling. Managing Director Naveen Agrawal calls it an "AI-driven facility," not just storage. Chobhar is in final construction, targeting August 2026.
   </p>
   <p>
-    Communications Minister Dr. Vikram Timsina is separately studying whether multinational technology companies should be allowed to invest in large-scale facilities. Industry analyst Rohit Chandra Shah of Huawei Nepal, the country's first Accredited Tier Specialist, notes that demand has shifted fundamentally: what once served only telecoms now serves every sector, from media to education to manufacturing. Nepal, he argues, is behind, not ahead.
+    Communications Minister Dr. Vikram Timsina is also studying whether multinationals should be allowed to invest in large-scale facilities. Industry analyst Rohit Chandra Shah of Huawei Nepal — the country's first Accredited Tier Specialist — puts it plainly: what once served only telecoms now serves every sector. Nepal isn't ahead of this trend. It's catching up.
   </p>
 </div>
 
-<div class="callout">
+<div class="insight-box">
   <strong>The existing landscape:</strong> Nepal's current data center capacity includes WorldLink's 3.5MW facility in Chandragiri (520 racks, near the NEA Mata Tirtha substation), Yotta K1's 4MW facility in Ramkot, Ncell's Nakkhu Data Center in Lalitpur, DataHub (Nepal's first commercial Tier III), and the NEA's own 1MW Tier III center in Kathmandu. Together these are suited for domestic co-location, not hyperscale compute.
 </div>
 
@@ -214,7 +204,7 @@
 
 <div class="prose">
   <p>
-    Several things genuinely make Nepal a plausible destination for data infrastructure, at least on paper.
+    There are real reasons Nepal makes sense as a data center destination.
   </p>
 </div>
 
@@ -257,16 +247,16 @@
 
 <div class="prose">
   <p>
-    The narrative of "Nepal has abundant clean power" is true for about five months of the year. The other seven months tell a different story.
+    "Nepal has abundant clean power" is true for about five months. The other seven tell a different story.
   </p>
   <p>
-    Almost all of Nepal's hydropower comes from run-of-the-river plants, which generate electricity in direct proportion to river flow. The rivers run high during the monsoon (June to October) and low during the dry season (November to May). The Kali Gandaki, Nepal's largest operational plant at 144MW, drops to around 56MW in a bad dry year, a 61% fall. Chameliya has recorded 43% drops. The Middle Marshyangdi, Marshyangdi, and Trishuli stations show similar patterns. The only reservoir-based plants, Kulekhani I and II, have a combined capacity of just 92MW.
+    Almost all of Nepal's hydropower is run-of-river — output tracks river flow directly. Rivers run high June through October, low November through May. Major stations show it: Chameliya fell from 30MW to 17MW during the 2019 dry season, a 43% drop (Kathmandu Post, Nov 2019). Other stations show similar patterns. The only facilities with real baseload buffer are the Kulekhani complex — Kulekhani I (60MW), II (32MW), and III (14MW, commissioned 2019) — 106MW total.
   </p>
   <p>
-    During the dry season, Nepal imports up to 25% of its peak electricity demand from India, much of it coal-fired. In bad hydrological years, coal imports have exceeded 50% of total consumption. The country that bills itself as a clean energy exporter is, for roughly half the year, a coal-power importer.
+    Nepal still imports power from India during dry months. In FY 2024–25, it imported NPR 12.92 billion worth while exporting NPR 17.46 billion, becoming a net electricity exporter annually for the first time (NEA, August 2025). That's real progress. But the seasonal mismatch hasn't gone away.
   </p>
   <p>
-    Data centers cannot turn off in the dry season. They require power 24 hours a day, 365 days a year, with uptime requirements of 99.9% or higher for Tier III facilities. Adding hyperscale compute load on top of an already import-dependent dry-season grid makes Nepal's structural electricity deficit considerably worse.
+    Data centers can't turn off in winter. Tier III facilities need 99.9% uptime — under 9 hours of downtime per year. Stacking hyperscale compute load on a grid that still relies on Indian imports every dry season makes that remaining deficit considerably harder to manage.
   </p>
 </div>
 
@@ -344,7 +334,7 @@
       <text class="annot" x="695" y="111" text-anchor="start" fill="var(--c-blue)" font-weight="600">Data center baseline (needs 24/7)</text>
     </svg>
   </div>
-  <div class="chart-source">Source: Nepal Electricity Authority historical generation records; Kathmandu Post energy reporting (2017-2026); PM World Journal Nepal Hydropower Report (August 2025). Values are approximations based on documented seasonal generation drops of 40-60% at key run-of-river stations including Kali Gandaki, Marshyangdi, Middle Marshyangdi, and Chameliya. Kulekhani I and II reservoir plants (92MW combined) are the only baseload buffer.</div>
+  <div class="chart-source">Source: Nepal Electricity Authority historical generation records; Kathmandu Post energy reporting (2017–2026); PM World Journal Nepal Hydropower Report (August 2025). Values are approximations based on documented seasonal generation drops at key run-of-river stations including Kali Gandaki, Marshyangdi, Middle Marshyangdi, and Chameliya. Kulekhani I, II, and III reservoir plants (106MW combined) are the only baseload buffer.</div>
 </div>
 
 <div class="callout red">
@@ -353,10 +343,10 @@
 
 <div class="prose">
   <p>
-    Climate change compounds this. Research cited by the Nepal Economic Forum projects that climate-induced droughts could reduce river flows by 38 to 57 percent, threatening both dry-season and monsoon-season generation in the long term. In June 2023, unseasonal rainfall damaged 30 hydropower projects with a combined 463MW of capacity. Hydropower's reliability is not guaranteed even when the infrastructure exists.
+    Climate change makes this worse. The Nepal Economic Forum projects droughts could cut river flows 38 to 57 percent over the long term. In June 2023, unseasonal floods damaged 30 hydropower projects totaling 463MW. Hydropower is clean. It isn't guaranteed.
   </p>
   <p>
-    The government's response is the battery storage program in Wagle's budget: 100MW of battery energy storage in the Kathmandu Valley to buffer peak dry-season shortfalls. This is the right direction, but 100MW of storage covers minutes of demand, not months. Serious data center expansion will eventually require Nepal to build reservoir-based hydropower at scale, a decades-long project, or commit to importing dry-season power, at higher cost and carbon footprint.
+    The government's answer is 100MW of battery storage in Wagle's budget. Right direction, wrong scale. A hundred megawatts of storage covers minutes of demand, not months. Fixing the dry-season gap ultimately requires either reservoir-scale hydropower — a decades-long project — or accepting that dry-season data centers will run on imported power.
   </p>
 </div>
 
@@ -366,16 +356,16 @@
 
 <div class="prose">
   <p>
-    Electricity gets the headlines. Water is the quieter problem, and it is arguably more pressing for Kathmandu.
+    Electricity gets the headlines. Water is the quieter problem, and for Kathmandu it may be more urgent.
   </p>
   <p>
-    Data centers cool their servers. Air cooling evaporates water. A typical enterprise data center uses 300,000 to 500,000 gallons (1.1 to 1.9 million liters) of water per day. A large hyperscale facility, the kind that serves global cloud clients, can use up to 5 million gallons per day, equivalent to the daily water use of a town of 10,000 to 50,000 people. Google disclosed that its global operations consumed 6.1 billion gallons of water in 2024, a 20% increase year-over-year driven by AI infrastructure.
+    Servers generate heat. Cooling that heat takes water. A typical enterprise data center uses 1.1 to 1.9 million liters per day. A large hyperscale facility — the kind that serves global cloud clients — can use up to 19 million liters. Google reported consuming approximately 6 billion gallons across all its data centers and offices in 2024, an 8% increase over 2023 and roughly three times its 2016 level, driven largely by AI (Google 2024 Environmental Report).
   </p>
   <p>
-    Kathmandu Valley's total daily water demand is around 280 million liters. The system is already chronically short: annual groundwater extraction exceeds natural recharge, the Bagmati and Bishnumati rivers have shrunk dramatically over three decades of urbanization, and water demand grows by roughly 10% per year as the population and construction boom continues. The Melamchi diversion project added supply, but demand has outpaced it.
+    Kathmandu Valley's total daily water demand is about 280 million liters — and the system is already short. Groundwater extraction exceeds natural recharge. The Bagmati and Bishnumati rivers have shrunk dramatically over three decades of urbanization. Water demand grows about 10% per year. Melamchi added supply. Demand outpaced it anyway.
   </p>
   <p>
-    A single hyperscale data center at the Chobhar or Sucharter sites would consume roughly 19 million liters per day, about 7% of Kathmandu Valley's entire daily supply, drawn from an aquifer system that is already in deficit. This is not a hypothetical concern. It is exactly the pattern that played out in Northern Virginia, where data centers grew to consume close to 2 billion gallons of water in 2023, roughly 3% of the Potomac River Basin's total consumption.
+    A single hyperscale data center at Chobhar or Sucharter would consume 7% of the entire Valley's daily water supply, drawn from an aquifer already in deficit. This isn't hypothetical. Northern Virginia's data center cluster grew to consume close to 2 billion gallons of water in 2023 — about 3% of the Potomac River Basin's total. Kathmandu has far less slack.
   </p>
 </div>
 
@@ -433,10 +423,10 @@
 
 <div class="prose">
   <p>
-    The Bichuten project's decision to use VVDN's liquid cooling is the right call. Liquid-cooled data centers can achieve Water Usage Effectiveness (WUE) of 0.5 liters per kilowatt-hour or less, compared to 1.8 liters or more for conventional evaporative air cooling. This matters enormously at scale. It does not eliminate the problem. It reduces it.
+    Bichuten's choice of VVDN liquid cooling helps. Liquid-cooled facilities can hit a Water Usage Effectiveness (WUE) of 0.5 liters per kilowatt-hour or less, versus 1.8 liters or more for conventional air cooling. That's a big difference at scale. It doesn't make the problem disappear. It shrinks it.
   </p>
   <p>
-    There is also an upstream water question that rarely enters the data center debate in Nepal. Hydropower "consumes" water indirectly through reservoir evaporation, at a rate of up to 18.27 gallons per kilowatt-hour, nearly 40 times the consumption rate of thermal power plants. Running data centers on hydropower that comes from reservoir-based plants is not "water-free." For run-of-river hydro the direct evaporation is minimal, but the downstream water that flows past turbines and continues toward Kathmandu's drinking water intake is water that could have been elsewhere.
+    There's also an upstream question rarely raised in Nepal. Reservoir-based hydropower evaporates water — published estimates suggest up to 18.27 gallons per kilowatt-hour, far more than thermal plants. Nepal's grid is mostly run-of-river, so direct evaporation is minimal. But the water flowing past turbines is water diverted from the same river systems that feed Kathmandu's drinking water intakes downstream.
   </p>
 </div>
 
@@ -446,7 +436,7 @@
 
 <div class="prose">
   <p>
-    Water and dry-season electricity get the most attention, but the environmental case for Nepal's data center push involves several other line items.
+    Water and electricity aren't the only issues. The environmental ledger has other entries.
   </p>
 </div>
 
@@ -500,13 +490,13 @@
     <tr>
       <td>Ireland</td>
       <td>Allowed unrestricted data center growth from mid-2010s, primarily near Dublin</td>
-      <td><span class="bad">Data centers now consume 21% of national electricity</span>, forcing EirGrid to warn of grid instability. Planning permissions effectively frozen in Dublin.</td>
+      <td><span class="bad">Data centers now consume 22% of national electricity</span>, forcing EirGrid to warn of grid instability. Planning permissions effectively frozen in Dublin.</td>
       <td>Nepal's grid is far more fragile than Ireland's was. There is no equivalent safety margin here.</td>
     </tr>
     <tr>
       <td>Singapore</td>
-      <td>Was Asia's top data center destination. Imposed a 3-year moratorium in 2019 when data centers threatened national water security</td>
-      <td><span class="warn">Moratorium lifted in 2022</span> with strict sustainability standards: PUE below 1.3, WUE below 0.2, 100% renewable energy pathway required</td>
+      <td>Was Asia's top data center destination. Imposed a moratorium in 2019 when data center growth threatened national energy sustainability and land constraints</td>
+      <td><span class="warn">Moratorium lifted in phases from 2022</span> with strict sustainability standards: PUE below 1.3, WUE of 2.0 m³/MWh or lower (per Singapore's Green Data Centre Roadmap, May 2024), 100% renewable energy pathway required</td>
       <td>Nepal should set the standards now, before capacity is installed and locked in. Retrofitting is far more expensive.</td>
     </tr>
     <tr>
@@ -537,39 +527,39 @@
   <div class="chart-subtitle">Annual per capita electricity consumption, kWh. Context for who benefits from the proposed data center expansion.</div>
   <div class="chart-svg-wrap">
     <svg viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet" role="img" aria-label="South Asia per capita electricity bar chart">
-      <!-- scale: 0-5000 kWh, x=240 to 680 -->
+      <!-- scale: 0-16000 kWh, x=240 to 680 (440px range) -->
       <line class="grid-line" x1="240" y1="30" x2="240" y2="270"/>
-      <line class="grid-line" x1="328" y1="30" x2="328" y2="270"/>
-      <line class="grid-line" x1="416" y1="30" x2="416" y2="270"/>
-      <line class="grid-line" x1="504" y1="30" x2="504" y2="270"/>
-      <line class="grid-line" x1="592" y1="30" x2="592" y2="270"/>
+      <line class="grid-line" x1="295" y1="30" x2="295" y2="270"/>
+      <line class="grid-line" x1="350" y1="30" x2="350" y2="270"/>
+      <line class="grid-line" x1="460" y1="30" x2="460" y2="270"/>
+      <line class="grid-line" x1="570" y1="30" x2="570" y2="270"/>
       <line class="grid-line" x1="680" y1="30" x2="680" y2="270"/>
       <text class="tick-text" x="240" y="288" text-anchor="middle">0</text>
-      <text class="tick-text" x="328" y="288" text-anchor="middle">1,000</text>
-      <text class="tick-text" x="416" y="288" text-anchor="middle">2,000</text>
-      <text class="tick-text" x="504" y="288" text-anchor="middle">3,000</text>
-      <text class="tick-text" x="592" y="288" text-anchor="middle">4,000</text>
-      <text class="tick-text" x="680" y="288" text-anchor="middle">5,000 kWh</text>
+      <text class="tick-text" x="295" y="288" text-anchor="middle">2,000</text>
+      <text class="tick-text" x="350" y="288" text-anchor="middle">4,000</text>
+      <text class="tick-text" x="460" y="288" text-anchor="middle">8,000</text>
+      <text class="tick-text" x="570" y="288" text-anchor="middle">12,000</text>
+      <text class="tick-text" x="680" y="288" text-anchor="middle">16,000 kWh</text>
 
-      <!-- Bhutan 4800: 240 + (4800/5000)*440 = 240+422.4 = 662.4 -->
-      <rect x="240" y="45" width="422" height="28" fill="var(--c-green)" opacity=".8"/>
-      <text class="end-label-bold" x="670" y="64" fill="var(--ink)">4,800</text>
+      <!-- Bhutan ~15,000: 240 + (15000/16000)*440 = 652.5 → width=412 -->
+      <rect x="240" y="45" width="412" height="28" fill="var(--c-green)" opacity=".8"/>
+      <text class="end-label-bold" x="660" y="64" fill="var(--ink)">~15,000</text>
 
-      <!-- India 1200: 240+105.6=345.6 -->
-      <rect x="240" y="85" width="106" height="28" fill="var(--c-teal)" opacity=".8"/>
-      <text class="end-label-bold" x="354" y="104" fill="var(--ink)">1,200</text>
+      <!-- India 1,200: 240 + (1200/16000)*440 = 273 → width=33 -->
+      <rect x="240" y="85" width="33" height="28" fill="var(--c-teal)" opacity=".8"/>
+      <text class="end-label-bold" x="281" y="104" fill="var(--ink)">1,200</text>
 
-      <!-- Sri Lanka 900: 240+79.2 -->
-      <rect x="240" y="125" width="79" height="28" fill="var(--c-hist)"/>
-      <text class="end-label-bold" x="327" y="144" fill="var(--ink)">900</text>
+      <!-- Sri Lanka 900: width=25 -->
+      <rect x="240" y="125" width="25" height="28" fill="var(--c-hist)"/>
+      <text class="end-label-bold" x="273" y="144" fill="var(--ink)">900</text>
 
-      <!-- Bangladesh 550: 240+48.4 -->
-      <rect x="240" y="165" width="48" height="28" fill="var(--c-hist)" opacity=".8"/>
-      <text class="end-label-bold" x="296" y="184" fill="var(--ink)">550</text>
+      <!-- Bangladesh 550: width=15 -->
+      <rect x="240" y="165" width="15" height="28" fill="var(--c-hist)" opacity=".8"/>
+      <text class="end-label-bold" x="263" y="184" fill="var(--ink)">550</text>
 
-      <!-- Nepal 479: 240+42.2 -->
-      <rect x="240" y="205" width="42" height="28" fill="var(--c-red)" opacity=".8"/>
-      <text class="end-label-bold" x="290" y="224" fill="var(--ink)">479</text>
+      <!-- Nepal 479: width=13 -->
+      <rect x="240" y="205" width="13" height="28" fill="var(--c-red)" opacity=".8"/>
+      <text class="end-label-bold" x="261" y="224" fill="var(--ink)">479</text>
 
       <!-- Labels -->
       <text class="end-label-bold" x="232" y="64"  text-anchor="end" fill="var(--ink)">Bhutan</text>
@@ -583,18 +573,18 @@
       <text class="annot" x="460" y="270" text-anchor="middle" fill="var(--ink-light)">consume far less electricity than any comparable South Asian economy. Domestic supply should come first.</text>
     </svg>
   </div>
-  <div class="chart-source">Source: World Bank WDI (2024 latest available); IEA South Asia energy statistics; Nepal Electricity Authority annual report. Bhutan's high figure reflects hydropower exports; most domestic use is subsidized. Nepal's 479 kWh/year compares to ~1,300 kWh/year for the global developing-country average.</div>
+  <div class="chart-source">Source: World Bank WDI (2024 latest available); IEA South Asia energy statistics; LowCarbonPower.org (2023 data). Bhutan's ~15,000 kWh/capita figure reflects large hydropower exports counted in consumption statistics; most domestic residential use is subsidized and heavily export-skewed. Nepal's 479 kWh/year is roughly one-thirtieth of Bhutan's figure and well below the ~1,300 kWh/year global developing-country average.</div>
 </div>
 
 <div class="prose">
   <p>
-    The per capita electricity figure raises a political economy question that is absent from almost all Nepali data center coverage: <strong>who is this infrastructure for?</strong>
+    This chart raises a question that almost nobody in the Nepali data center debate asks: <strong>who is this infrastructure actually for?</strong>
   </p>
   <p>
-    Nepal's citizens use less electricity per person than any South Asian country except Afghanistan. Rural areas still face load shedding in the dry season. Hospitals run on diesel backup generators. Agriculture depends on diesel-powered irrigation pumps in areas the grid cannot reliably reach.
+    Nepal's citizens use less electricity per person than every South Asian country except Afghanistan. Rural areas still face dry-season load shedding. Hospitals run on diesel backup. Farms in grid-unreliable areas depend on diesel irrigation pumps.
   </p>
   <p>
-    Adding large data centers that sell compute to Indian, European, or American clients means diverting grid capacity away from domestic users, at least at the margin. The government's answer is that monsoon surplus power would otherwise be wasted or sold to India at low wholesale prices. That is a legitimate response in the monsoon months. It does not hold in the dry season, when the grid is already short.
+    Data centers selling compute to Indian, European, or American clients will divert grid capacity from domestic users at the margin. The government's answer — monsoon surplus would otherwise be wasted or sold cheap to India — is fair for the wet months. It doesn't hold in the dry season, when the grid is already short.
   </p>
 </div>
 
@@ -604,7 +594,7 @@
 
 <div class="prose">
   <p>
-    Singapore's data center moratorium was lifted only when operators agreed to strict numerical standards. Nepal is moving in the opposite direction: committing public money and policy support to data centers before establishing any sustainability framework. The time to set the rules is before the concrete is poured.
+    Singapore only lifted its data center moratorium when operators agreed to hard numerical targets. Nepal is doing the opposite: committing public money and policy support before setting any sustainability standards. Rules need to come before the concrete, not after.
   </p>
 </div>
 
@@ -625,7 +615,7 @@
     <tr>
       <td>Water Usage Effectiveness (WUE)</td>
       <td>Maximum WUE 0.5 L/kWh for new builds in the Kathmandu Valley. Liquid or immersion cooling mandatory above 5MW.</td>
-      <td><span class="warn">No standard exists.</span> Bichuten's VVDN liquid cooling is a voluntary market choice, not a legal requirement.</td>
+      <td><span class="warn">No standard exists.</span> Bichuten's VVDN liquid cooling is a voluntary market choice, not a legal requirement. For reference, Singapore's Green Data Centre Roadmap (2024) targets 2.0 m³/MWh; Nepal should aim to set a more stringent standard from the outset.</td>
     </tr>
     <tr>
       <td>Dry-season energy sourcing</td>
@@ -650,7 +640,7 @@
   </tbody>
 </table>
 
-<div class="callout green">
+<div class="insight-box insight-box-green">
   <strong>The Birgunj case:</strong> Bichuten's decision to build one facility in Birgunj is worth noting. Birgunj sits in the Terai, has direct rail and road access to India, better grid interconnect to the Indian network for dry-season backup, and far more industrial land. Steering hyperscale investment toward Terai cities rather than the Kathmandu Valley would reduce pressure on water, land, and urban grid systems simultaneously. The government has not stated this as policy.
 </div>
 
@@ -658,27 +648,30 @@
 <span class="section-num">08 · THE HONEST VERDICT</span>
 <h2 class="section-title">What the numbers say</h2>
 
-<div class="verdict-box">
-  <div class="verdict-title">SagarmathaIQ Assessment</div>
-  <div class="verdict-body">
+<div class="conclusion">
+  <div class="conclusion-header">
+    <h2>SagarmathaIQ Assessment</h2>
+  </div>
+  <div class="conclusion-body">
     <p>
-      <strong>The strategic case has real merit.</strong> Nepal has genuine advantages: monsoon surplus, altitude-assisted cooling, a growing domestic digital economy that needs sovereign infrastructure, and a diaspora with tech capital and skills that can be mobilized. The instinct to convert hydropower into higher-value exports rather than selling raw kilowatt-hours to India at wholesale prices is economically sound.
+      <strong>The strategic case is real.</strong> Nepal has genuine advantages: monsoon surplus, altitude cooling, a domestic digital economy that needs sovereign infrastructure, and a diaspora with capital and skills. Converting hydropower into compute exports instead of selling raw power to India at wholesale rates is economically sound.
     </p>
     <p>
-      <strong>The current execution has structural problems.</strong> Concentrating new data centers in the Kathmandu Valley, without mandatory water efficiency standards, dry-season power sourcing requirements, or a location policy that steers hyperscale to the Terai, is the path most likely to produce an Ireland-style backlash within five years.
+      <strong>The execution has structural problems.</strong> Piling new data centers into the Kathmandu Valley without water efficiency standards, dry-season power requirements, or a location policy steering hyperscale to the Terai is the fastest route to an Ireland-style crisis within five years.
     </p>
     <p>
-      <strong>The environmental case turns entirely on scale and location.</strong> A few well-designed, liquid-cooled facilities below 20MW operating primarily on monsoon surplus, located in industrial zones near Birgunj or Bhairahawa, would have manageable environmental costs and genuine economic benefits. A Kathmandu Valley hyperscale build-out without regulation would be a serious mistake for a city already running a water deficit.
+      <strong>The environmental case depends entirely on scale and location.</strong> A few well-designed, liquid-cooled facilities below 20MW, running primarily on monsoon surplus near Birgunj or Bhairahawa, are defensible. A Kathmandu Valley hyperscale build-out without regulation is not — not for a city already running a water deficit.
     </p>
     <p>
-      <strong>The honest question nobody is asking:</strong> Before Nepal invites foreign hyperscale clients in, it should first answer why its own citizens use 479 kWh per person per year, less than one-tenth of Bhutan's figure. Data center infrastructure that serves the domestic economy, improves grid reliability for households and hospitals, and uses clean seasonal surplus wisely is a fundamentally different proposition from one that primarily serves foreign cloud clients while drawing from Kathmandu's groundwater.
+      <strong>The question nobody is asking:</strong> Before Nepal pitches itself to foreign hyperscale clients, it should explain why its own citizens use 479 kWh per person per year — roughly one-thirtieth of Bhutan's figure. Infrastructure that serves the domestic economy and uses clean seasonal surplus wisely is a different proposition from one that primarily serves foreign cloud clients while drawing from Kathmandu's groundwater.
     </p>
   </div>
 </div>
 
 <footer class="article-footer">
-  <p><strong>Sources:</strong> Balen Shah and PM background: Britannica (April 2026), Wikipedia, Reuters (March 27, 2026); Bichuten Data World: Nepal Khabar (May 2026) interview with MD Naveen Agrawal; Government proposals: Budget Speech FY 2083/84 Section 18 (Finance Minister Dr. Swarnim Wagle), Fiscal Nepal "Data as the new oil" (May 21, 2026); Data center water consumption: EESI (2026), Nature Forward (2026), ScienceDirect review of data center water use (April 2025), npj Clean Water (2021); Global electricity demand: IEA (2025), Sustainability Atlas (February 2026); Hydropower seasonality: Kathmandu Post power reporting (2017-2026), PM World Journal Nepal Hydropower Report (August 2025), Nepal Economic Forum climate/hydropower analysis (2025), NepalConnect (February 2026); Kathmandu water: Dialogue Earth, Springer Nature (2021), MDPI Water journal (2025), Winrock Nepal water resources profile; Per capita electricity: World Bank WDI, IEA South Asia; International comparisons: Irish Grid EirGrid reports, Singapore EDB moratorium statements, Netherlands Province of North Holland DC policy.</p>
+  <p><strong>Sources:</strong> Balen Shah and PM background: Britannica (April 2026), Wikipedia, Reuters (March 27, 2026); Bichuten Data World: Nepal Khabar (May 2026) interview with MD Naveen Agrawal; Government proposals: Budget Speech FY 2083/84 Section 18 (Finance Minister Dr. Swarnim Wagle), Fiscal Nepal "Data as the new oil" (May 21, 2026); Data center water consumption: EESI (2026), Nature Forward (2026), ScienceDirect review of data center water use (April 2025), npj Clean Water (2021), Google 2024 Environmental Report (Anadolu, Feb 2025); Global electricity demand: IEA (2025), Sustainability Atlas (February 2026); Hydropower seasonality: Kathmandu Post power reporting (2017–2026, including Nov 2019 dry-season drops at Chameliya and Kali Gandaki), PM World Journal Nepal Hydropower Report (August 2025), Nepal Economic Forum climate/hydropower analysis (2025), NepalConnect (February 2026); Nepal net electricity exporter: NEA spokesperson Rajan Dhakal, Kathmandu Post (August 2025), Rising Nepal Daily (August 2025); Kulekhani capacity: Wikipedia, ScienceDirect (2020); Kathmandu water: Dialogue Earth, Springer Nature (2021), MDPI Water journal (2025), Winrock Nepal water resources profile; Per capita electricity: World Bank WDI, IEA South Asia, LowCarbonPower.org (Bhutan 2023 data); International comparisons: Irish CSO electricity consumption report (June 2025), EirGrid reports, Singapore EDB moratorium statements, Singapore IMDA Green Data Centre Roadmap (May 2024), Netherlands Province of North Holland DC policy.</p>
   <p><strong>Note on estimates:</strong> Hydropower seasonality values are approximations derived from documented percentage drops at specific stations. Actual monthly generation varies by year and hydrological conditions. Water consumption figures for Bichuten are SagarmathaIQ estimates based on planned capacity and published WUE ratios for liquid-cooled facilities, not official disclosures.</p>
+  <p><strong>Corrections applied (May 2026):</strong> Bhutan per capita electricity figure updated from 4,800 to ~15,000 kWh (LowCarbonPower.org 2023); Ireland DC share updated from 21% to 22% (CSO Ireland, June 2025); Google water consumption corrected to ~6B gallons with 8% YoY increase (2024 data); Singapore WUE standard corrected to 2.0 m³/MWh per IMDA Green Data Centre Roadmap (May 2024); Nepal's net exporter status (FY 2024–25) incorporated in dry-season analysis; Kulekhani total reservoir capacity updated to 106MW including Kulekhani III (commissioned 2019).</p>
   <p><strong>SagarmathaIQ</strong> is an independent quantitative research group of expat Nepali academics. Not affiliated with any party, government, or industry group. sagarmathaiq.github.io · May 2026</p>
 </footer>
 
